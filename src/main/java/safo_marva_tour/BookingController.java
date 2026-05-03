@@ -49,12 +49,19 @@ public class BookingController {
 
             String url = "https://api.telegram.org/bot" + botToken + "/sendMessage";
             
-            Map<String, Object> body = new HashMap<>();
-            body.put("chat_id", adminId);
-            body.put("text", message);
-            body.put("parse_mode", "HTML");
+            String[] adminIds = adminId.split(",");
+            for (String id : adminIds) {
+                Map<String, Object> body = new HashMap<>();
+                body.put("chat_id", id.trim());
+                body.put("text", message);
+                body.put("parse_mode", "HTML");
 
-            restTemplate.postForEntity(url, body, String.class);
+                try {
+                    restTemplate.postForEntity(url, body, String.class);
+                } catch (Exception e) {
+                    System.err.println("Error sending to admin " + id + ": " + e.getMessage());
+                }
+            }
 
             return ResponseEntity.ok().body(Map.of("success", true));
         } catch (Exception e) {
