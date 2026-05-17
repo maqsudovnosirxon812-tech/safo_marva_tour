@@ -29,16 +29,9 @@
         }
     </script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
             rel="stylesheet">
-    <script>
-        // Supabase Initialization
-        const SUPABASE_URL = "https://hddpzctigsjqljtooogq.supabase.co";
-        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhkZHB6Y3RpZ3NqcWxqdG9vb2dxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc2Mzc0MDAsImV4cCI6MjA5MzIxMzQwMH0.OfwTe9X1_hGzdYVrV2hF_DmFwNBVjjVkQLcAmV_uA84";
-        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    </script>
     <meta name="description"
           content="Safo Marva Tour - O'zbekistondagi ishonchli Umra va Haj sayohat agentligi. 2026-yilgi iyun va iyul oylari uchun maxsus paketlar va qulay ziyorat imkoniyatlari.">
     <meta name="keywords"
@@ -378,10 +371,14 @@
                 <button @click="activeModal = null" class="text-white hover:text-brand-gold font-bold">X</button>
             </div>
             <div class="px-8 py-8 space-y-6">
-                <!-- Ramada Hotel Image -->
-                <div class="rounded-2xl overflow-hidden shadow-lg h-56 cursor-pointer">
-                    <img @click="openLightbox(['galereya/Ramada Zad Al Tayser/5c5da9610fe3dd282a6797478642cd9e.jpg'], 0)"
-                         src="galereya/Ramada Zad Al Tayser/5c5da9610fe3dd282a6797478642cd9e.jpg"
+                <!-- Dynamic Ramada Hotel Image/Video -->
+                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video cursor-pointer bg-black">
+                    <!-- Agar video bo'lsa -->
+                    <video x-show="packagesData.standard?.video_url" :src="packagesData.standard?.video_url" controls class="w-full h-full object-cover"></video>
+                    <!-- Agar video bo'lmasa rasm ko'rsatiladi -->
+                    <img x-show="!packagesData.standard?.video_url" 
+                         @click="openLightbox([packagesData.standard?.image_url || 'galereya/Ramada Zad Al Tayser/5c5da9610fe3dd282a6797478642cd9e.jpg'], 0)"
+                         :src="packagesData.standard?.image_url || 'galereya/Ramada Zad Al Tayser/5c5da9610fe3dd282a6797478642cd9e.jpg'"
                          class="w-full h-full object-cover hover:scale-105 transition-all">
                 </div>
                 <div>
@@ -426,11 +423,17 @@
                 <button @click="activeModal = null" class="font-bold">X</button>
             </div>
             <div class="px-8 py-8 space-y-6">
-                <!-- Hotel Video -->
+                <!-- Dynamic Comfort Hotel Image/Video -->
                 <div class="rounded-2xl overflow-hidden shadow-lg bg-black aspect-video mb-6">
-                    <video controls class="w-full h-full object-cover">
-                        <source src="galereya/Al%20EBAA/IMG_6465.MP4" type="video/mp4">
-                    </video>
+                    <!-- Agar video bo'lsa (yoki custom video yuklangan bo'lsa) -->
+                    <video x-show="packagesData.comfort?.video_url || !packagesData.comfort?.image_url" 
+                           :src="packagesData.comfort?.video_url || 'galereya/Al%20EBAA/IMG_6465.MP4'" 
+                           controls class="w-full h-full object-cover"></video>
+                    <!-- Agar rasm yuklangan bo'lsa -->
+                    <img x-show="packagesData.comfort?.image_url && !packagesData.comfort?.video_url" 
+                         @click="openLightbox([packagesData.comfort?.image_url], 0)"
+                         :src="packagesData.comfort?.image_url" 
+                         class="w-full h-full object-cover hover:scale-105 transition-all">
                 </div>
                 <div>
                     <h4 class="font-bold text-brand-red mb-2 uppercase text-xs tracking-widest">Mehmonxona:</h4>
@@ -471,10 +474,14 @@
                 <button @click="activeModal = null" class="font-bold">X</button>
             </div>
             <div class="px-8 py-8 space-y-6">
-                <!-- Anjum Hotel Image -->
-                <div class="rounded-2xl overflow-hidden shadow-lg h-56 cursor-pointer">
-                    <img @click="openLightbox(['galereya/ANJUM mehmonxonasi/7621835549ae5f328e2b2a1ba87a74e1.jpg'], 0)"
-                         src="galereya/ANJUM mehmonxonasi/7621835549ae5f328e2b2a1ba87a74e1.jpg"
+                <!-- Dynamic LUX Hotel Image/Video -->
+                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video cursor-pointer bg-black">
+                    <!-- Agar video bo'lsa -->
+                    <video x-show="packagesData.lux?.video_url" :src="packagesData.lux?.video_url" controls class="w-full h-full object-cover"></video>
+                    <!-- Agar video bo'lmasa rasm ko'rsatiladi -->
+                    <img x-show="!packagesData.lux?.video_url" 
+                         @click="openLightbox([packagesData.lux?.image_url || 'galereya/ANJUM mehmonxonasi/7621835549ae5f328e2b2a1ba87a74e1.jpg'], 0)"
+                         :src="packagesData.lux?.image_url || 'galereya/ANJUM mehmonxonasi/7621835549ae5f328e2b2a1ba87a74e1.jpg'"
                          class="w-full h-full object-cover hover:scale-105 transition-all">
                 </div>
                 <div>
@@ -514,8 +521,16 @@
                 <button @click="activeModal = null" class="font-bold">X</button>
             </div>
             <div class="px-8 py-8 space-y-6">
-                <!-- Waqf Al Safi Gallery -->
-                <div class="grid grid-cols-3 gap-2 mb-6" x-data="{
+                <!-- Custom Dynamic Image/Video (If set by admin) -->
+                <div x-show="packagesData.lux_premium?.image_url || packagesData.lux_premium?.video_url" class="rounded-2xl overflow-hidden shadow-lg aspect-video cursor-pointer bg-black mb-6">
+                    <video x-show="packagesData.lux_premium?.video_url" :src="packagesData.lux_premium?.video_url" controls class="w-full h-full object-cover"></video>
+                    <img x-show="packagesData.lux_premium?.image_url && !packagesData.lux_premium?.video_url" 
+                         @click="openLightbox([packagesData.lux_premium?.image_url], 0)"
+                         :src="packagesData.lux_premium?.image_url" 
+                         class="w-full h-full object-cover hover:scale-105 transition-all">
+                </div>
+                <!-- Waqf Al Safi Gallery (Only show if NO custom media is set) -->
+                <div x-show="!packagesData.lux_premium?.image_url && !packagesData.lux_premium?.video_url" class="grid grid-cols-3 gap-2 mb-6" x-data="{
                         waqfImages: [
                             'galereya/Waqf%20al%20safi/photo_2026-04-26_21-09-15.jpg',
                             'galereya/Waqf%20al%20safi/photo_2026-04-26_21-08-50.jpg',
@@ -591,8 +606,16 @@
                 <button @click="activeModal = null" class="font-bold text-2xl">×</button>
             </div>
             <div class="px-8 py-8">
-                <!-- 14-Day Videos -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                <!-- Custom Dynamic Image/Video (If set by admin) -->
+                <div x-show="packagesData.special_14day?.image_url || packagesData.special_14day?.video_url" class="rounded-2xl overflow-hidden shadow-lg aspect-video cursor-pointer bg-black mb-8">
+                    <video x-show="packagesData.special_14day?.video_url" :src="packagesData.special_14day?.video_url" controls class="w-full h-full object-cover"></video>
+                    <img x-show="packagesData.special_14day?.image_url && !packagesData.special_14day?.video_url" 
+                         @click="openLightbox([packagesData.special_14day?.image_url], 0)"
+                         :src="packagesData.special_14day?.image_url" 
+                         class="w-full h-full object-cover hover:scale-105 transition-all">
+                </div>
+                <!-- 14-Day Videos (Only show if NO custom media is set) -->
+                <div x-show="!packagesData.special_14day?.image_url && !packagesData.special_14day?.video_url" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                     <div class="rounded-2xl overflow-hidden bg-black aspect-video relative">
                         <video controls class="w-full h-full object-cover">
                             <source src="galereya/Mehrob%20Toiba/IMG_3334.MP4" type="video/mp4">
@@ -882,6 +905,28 @@
                         </template>
                     </div>
                 </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Operator jinsi</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <template x-for="op in ['Erkak', 'Ayol kishi']">
+                            <button type="button" @click="bookingOperator = op"
+                                    :class="bookingOperator === op ? 'bg-brand-red text-white border-brand-red' : 'bg-gray-50 text-gray-600 border-gray-200'"
+                                    class="py-3.5 rounded-2xl text-xs font-bold border transition-all active:scale-95"
+                                    x-text="op"></button>
+                        </template>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">To'lov turi</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <template x-for="pay in ['Naqd pul', 'Plastik karta']">
+                            <button type="button" @click="bookingPayment = pay"
+                                    :class="bookingPayment === pay ? 'bg-brand-red text-white border-brand-red' : 'bg-gray-50 text-gray-600 border-gray-200'"
+                                    class="py-3.5 rounded-2xl text-xs font-bold border transition-all active:scale-95"
+                                    x-text="pay"></button>
+                        </template>
+                    </div>
+                </div>
                 <button type="submit"
                         :disabled="isSubmitting"
                         :class="isSubmitting ? 'bg-gray-400 cursor-not-allowed' : 'bg-brand-gold hover:shadow-2xl'"
@@ -1042,7 +1087,7 @@
                     btn_send: "Send"
                 }
             },
-            t(key) {
+                t(key) {
                 return this.translations[this.currentLang][key] || key;
             },
             setLang(lang) {
@@ -1057,21 +1102,83 @@
             bookingName: '',
             bookingPhone: '',
             bookingRoom: '4 kishilik',
+            bookingOperator: 'Erkak',
+            bookingPayment: 'Naqd pul',
             selectedPackage: '',
             showSuccess: false,
             isSubmitting: false,
-            packagesData: {},
+            packagesData: {
+                standard: {
+                    price: '1150',
+                    image_url: 'galereya/Ramada Zad Al Tayser/5c5da9610fe3dd282a6797478642cd9e.jpg',
+                    video_url: ''
+                },
+                comfort: {
+                    price: '1300',
+                    image_url: '',
+                    video_url: 'galereya/Al%20EBAA/IMG_6465.MP4'
+                },
+                lux: {
+                    price: '1550',
+                    image_url: 'galereya/ANJUM mehmonxonasi/7621835549ae5f328e2b2a1ba87a74e1.jpg',
+                    video_url: ''
+                },
+                lux_premium: {
+                    price: '1650',
+                    image_url: '',
+                    video_url: ''
+                },
+                special_14day: {
+                    price: '1390',
+                    image_url: '',
+                    video_url: ''
+                }
+            },
             async init() {
-                // Supabase ma'lumotlarini olish
-                const { data: packages, error } = await supabaseClient
-                    .from('packages')
-                    .select('*');
+                // Backend API orqali paketlarni olish
+                try {
+                    const packagesApiHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:'
+                        ? 'http://localhost:3000/api/packages'
+                        : '/api/packages';
+                    const res = await fetch(packagesApiHost);
+                    if (res.ok) {
+                        const packages = await res.json();
+                        const dbPackages = packages.reduce((acc, pkg) => {
+                            acc[pkg.key_name] = pkg;
+                            return acc;
+                        }, {});
+                        
+                        // Merge dbPackages into our default packagesData to preserve static fallbacks
+                        Object.keys(dbPackages).forEach(key => {
+                            this.packagesData[key] = {
+                                ...this.packagesData[key],
+                                ...dbPackages[key]
+                            };
+                        });
+                    }
+                } catch (err) {
+                    console.warn("Could not load packages from backend, using default static packages", err);
+                }
 
-                if (!error && packages) {
-                    this.packagesData = packages.reduce((acc, pkg) => {
-                        acc[pkg.key_name] = pkg;
-                        return acc;
-                    }, {});
+                // Custom rasm va videolarni backenddan olish
+                try {
+                    const apiHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:'
+                        ? 'http://localhost:3000/api/packages/media'
+                        : '/api/packages/media';
+                    const mediaRes = await fetch(apiHost);
+                    if (mediaRes.ok) {
+                        const mediaData = await mediaRes.json();
+                        Object.keys(mediaData).forEach(key => {
+                            if (this.packagesData[key]) {
+                                if (mediaData[key].image_url) this.packagesData[key].image_url = mediaData[key].image_url;
+                                if (mediaData[key].video_url) this.packagesData[key].video_url = mediaData[key].video_url;
+                            } else {
+                                this.packagesData[key] = { image_url: mediaData[key].image_url, video_url: mediaData[key].video_url };
+                            }
+                        });
+                    }
+                } catch (err) {
+                    console.warn("Could not load dynamic media, falling back to defaults", err);
                 }
 
                 this.$watch('activeModal', value => {
@@ -1108,54 +1215,43 @@
                 if(!this.isSubmitting) {
                     this.isSubmitting = true;
                     try {
-                        // 1. Telegram API orqali to'g'ridan-to'g'ri xabar yuborish
-                        const botToken = "8726481674:AAEqvxqyqLsvrN3vIuDXi-2jJRJkPVPp0sc";
-                        const adminIds = ["6448561095", "1809187274"];
-                        const now = new Date().toLocaleString("ru-RU", {timeZone: "Asia/Tashkent"});
-                        const roomInfo = this.selectedPackage === "14 Kunlik Paket" ? "\n🛏 Xona turi: " + this.bookingRoom : "";
-                        
-                        const message = `🌟 <b>YANGI MUROJAAT!</b> 🌟\n\n` +
-                                        `👤 <b>Mijoz:</b> ${cleanName}\n` +
-                                        `📞 <b>Telefon:</b> <code>${cleanPhone}</code>\n` +
-                                        `📦 <b>Tanlangan paket:</b> ${this.selectedPackage}${roomInfo}\n\n` +
-                                        `📅 <b>Vaqt:</b> ${now}\n` +
-                                        `🌐 <b>Manba:</b> Safo Marva Tour (Veb-sayt)\n\n` +
-                                        `📞 <b>Qo'ng'iroq uchun:</b> <a href="tel:${cleanPhone.replace(/\s/g, '')}">${cleanPhone}</a>`;
+                        // Backend API orqali xavfsiz yuborish
+                        // Agar lokal ishlayotgan bo'lsa (file:// yoki localhost), u holda http://localhost:3000 ga yuboradi.
+                        // Agar serverda bo'lsa relative '/api/leads' dan foydalanadi.
+                        const apiHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:'
+                            ? 'http://localhost:3000/api/leads'
+                            : '/api/leads';
 
-                        for (const adminId of adminIds) {
-                            try {
-                                await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-                                    method: 'POST',
-                                    headers: { 'Content-Type': 'application/json' },
-                                    body: JSON.stringify({
-                                        chat_id: adminId,
-                                        text: message,
-                                        parse_mode: 'HTML'
-                                    })
-                                });
-                            } catch (e) { console.error("Telegram send error", e); }
-                        }
-
-                        // 2. Supabase (zaxira)
-                        try {
-                            await supabaseClient.from('leads').insert([{
+                        const response = await fetch(apiHost, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
                                 name: cleanName,
                                 phone: cleanPhone,
                                 package: this.selectedPackage,
-                                room: this.bookingRoom,
-                                source: "web-site"
-                            }]);
-                        } catch (sErr) { console.warn("Supabase backup failed", sErr); }
+                                room: this.selectedPackage === "14 Kunlik Paket" ? this.bookingRoom : "",
+                                operator: this.bookingOperator,
+                                paymentMethod: this.bookingPayment
+                            })
+                        });
 
-                        this.showSuccess = true;
-                        setTimeout(() => {
-                            this.activeModal = null;
-                            this.showSuccess = false;
-                            this.bookingName = '';
-                            this.bookingPhone = '';
-                        }, 3000);
+                        const result = await response.json();
+
+                        if (response.ok && result.success) {
+                            this.showSuccess = true;
+                            setTimeout(() => {
+                                this.activeModal = null;
+                                this.showSuccess = false;
+                                this.bookingName = '';
+                                this.bookingPhone = '';
+                                this.bookingOperator = 'Erkak';
+                                this.bookingPayment = 'Naqd pul';
+                            }, 3000);
+                        } else {
+                            throw new Error(result.error || "Murojaat yuborishda xatolik.");
+                        }
                     } catch (err) {
-                        console.error(err);
+                        console.error("Booking error:", err);
                         alert("Xatolik yuz berdi. Iltimos qaytadan urinib ko'ring yoki qo'ng'iroq qiling.");
                     } finally {
                         this.isSubmitting = false;

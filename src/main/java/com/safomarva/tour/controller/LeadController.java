@@ -1,0 +1,115 @@
+package com.safomarva.tour.controller;
+
+import com.safomarva.tour.model.LeadEntity;
+import com.safomarva.tour.repository.LeadRepository;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
+
+@RestController
+@CrossOrigin(origins = "*")
+@RequestMapping("/api")
+public class LeadController {
+
+    private final LeadRepository leadRepository;
+    private final RestTemplate restTemplate = new RestTemplate();
+
+    @Value("${bot.leadToken}")
+    private String leadBotToken;
+
+    @Value("${bot.admins}")
+    private String adminsStr;
+
+    public LeadController(LeadRepository leadRepository) {
+        this.leadRepository = leadRepository;
+    }
+
+    // Public API: Capture landing page lead registration form
+    @PostMapping("/leads")
+    public ResponseEntity<?> createLead(@RequestBody Map<String, String> body) {
+        String name = body.get("name");
+        String phone = body.get("phone");
+        String selectedPackage = body.get("package");
+        String room = body.get("room");
+        String operator = body.get("operator");
+        String paymentMethod = body.get("paymentMethod");
+
+        // Basic Validation
+        if (name == null || phone == null || selectedPackage == null) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Name, phone, and package are required."));
+        }
+
+        // Clean and sanitize input values
+        String cleanName = name.trim().replaceAll("[<>]", "");
+        String cleanPhone = phone.trim().replaceAll("[^+0-9]", "");
+        if (!cleanPhone.startsWith("+")) {
+            cleanPhone = "+" + cleanPhone;
+        }
+        String finalRoom = room != null ? room.trim() : "Kiritilmagan";
+        String finalOperator = operator != null ? operator.trim() : "Erkak";
+        String finalPayment = paymentMethod != null ? paymentMethod.trim() : "Naqd pul";
+
+        boolean dbSaved = false;
+        try {
+            // 1. Save to PostgreSQL database
+            LeadEntity lead = new LeadEntity(cleanName, cleanPhone, selectedPackage, finalRoom, "web-site");
+            lead.setOperator(finalOperator);
+            lead.setPaymentMethod(finalPayment);
+            leadRepository.save(lead);
+            dbSaved = true;
+            System.out.println("✅ Lead successfully saved to PostgreSQL via Spring JPA: " + cleanName);
+        } catch (Exception e) {
+            System.err.println("⚠️ PostgreSQL lead insertion warning: " + e.getMessage());
+        }
+
+        // 2. Dispatch Telegram Notification to Administrators
+        try {
+            String[] adminIds = adminsStr.split(",");
+            String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
+            String roomInfo = (selectedPackage.contains("14") || selectedPackage.equalsIgnoreCase("special_14day"))
+                    ? "\n🛏 <b>Xona turi:</b> " + finalRoom
+                    : "";
+
+            String message = "🌟 <b>YANGI MUROJAAT!</b> 🌟\n\n" +
+                    "👤 <b>Mijoz:</b> " + cleanName + "\n" +
+                    "📞 <b>Telefon:</b> <code>" + cleanPhone + "</code>\n" +
+                    "📦 <b>Tanlangan paket:</b> " + selectedPackage + roomInfo + "\n" +
+                    "🎧 <b>Operator jinsi:</b> " + finalOperator + "\n" +
+                    "💳 <b>To'lov turi:</b> " + finalPayment + "\n\n" +
+                    "📅 <b>Vaqt:</b> " + now + "\n" +
+                    "🌐 <b>Manba:</b> Safo Marva Tour (Veb-sayt)\n\n" +
+                    "📞 <b>Qo'ng'iroq uchun:</b> <a href=\"tel:" + cleanPhone.replaceAll("\\s", "") + "\">" + cleanPhone + "</a>";
+
+            String telegramUrl = "https://api.telegram.org/bot" + leadBotToken + "/sendMessage";
+
+            for (String adminId : adminIds) {
+                String trimmedId = adminId.trim();
+                if (trimmedId.isEmpty()) continue;
+
+                // Send request asynchronously/separately
+                new Thread(() -> {
+                    try {
+                        Map<String, Object> request = new HashMap<>();
+                        request.put("chat_id", trimmedId);
+                        request.put("text", message);
+                        request.put("parse_mode", "HTML");
+
+                        restTemplate.postForObject(telegramUrl, request, String.class);
+                    } catch (Exception e) {
+                        System.err.println("❌ Failed to send Telegram notification to admin " + trimmedId + ": " + e.getMessage());
+                    }
+                }).start();
+            }
+        } catch (Exception e) {
+            System.err.println("❌ Telegram notification dispatch failed: " + e.getMessage());
+        }
+
+        return ResponseEntity.ok(Map.of("success", true, "dbSaved", dbSaved, "message", "Booking lead successfully processed."));
+    }
+}
