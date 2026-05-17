@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="uz" class="scroll-smooth">
+<html lang="uz" class="scroll-smooth" :class="{ 'dark': isDark }" x-data="tourApp()">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: blob: 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://hddpzctigsjqljtooogq.supabase.co https://*.supabase.co https://api.telegram.org;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: blob: 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://hddpzctigsjqljtooogq.supabase.co https://*.supabase.co https://api.telegram.org http://localhost:* http://127.0.0.1:*; ">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Safo Marva Tour - Umra Ziyorati 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -108,52 +109,57 @@
     </style>
 </head>
 
-<body class="bg-gray-50 font-sans text-gray-900" x-data="tourApp()" @scroll.window="scrolled = (window.pageYOffset > 50)">
+<body class="bg-gray-50 dark:bg-[#0B0F19] font-sans text-gray-900 dark:text-gray-100 transition-colors duration-300" @scroll.window="scrolled = (window.pageYOffset > 50)">
 
 <!-- Navbar -->
 <nav class="fixed w-full z-50 py-4 transition-all duration-300"
-     :class="scrolled ? 'bg-brand-red shadow-xl py-2' : 'glass py-4'">
+     :class="scrolled ? 'bg-white/95 dark:bg-[#0B0F19]/95 border-b border-gray-200 dark:border-brand-gold/20 shadow-xl py-2 backdrop-blur-md' : 'glass py-4'">
     <div class="container mx-auto px-6 flex justify-between items-center">
         <div class="flex items-center">
             <img src="safo_marva.png" alt="Safo Marva Logo" class="h-12 w-auto mr-3 rounded-lg shadow-lg">
-            <span class="text-white font-bold text-xl tracking-wider hidden md:block uppercase">SAFO MARVA
+            <span class="text-gray-900 dark:text-white font-bold text-xl tracking-wider hidden md:block uppercase">SAFO MARVA
                     TOUR</span>
         </div>
 
         <!-- Desktop Menu Links -->
-        <!-- Desktop Menu Links -->
         <div class="hidden lg:flex items-center space-x-8">
             <a href="#packages"
-               class="text-white hover:text-brand-gold transition-colors text-sm font-medium uppercase tracking-widest" x-text="t('menu_packages')"></a>
+               class="text-gray-800 dark:text-white hover:text-brand-gold transition-colors text-sm font-medium uppercase tracking-widest" x-text="t('menu_packages')"></a>
             <a href="#why-choose"
-               class="text-white hover:text-brand-gold transition-colors text-sm font-medium uppercase tracking-widest" x-text="t('menu_why_us')"></a>
+               class="text-gray-800 dark:text-white hover:text-brand-gold transition-colors text-sm font-medium uppercase tracking-widest" x-text="t('menu_why_us')"></a>
             <a href="#gallery"
-               class="text-white hover:text-brand-gold transition-colors text-sm font-medium uppercase tracking-widest" x-text="t('menu_gallery')"></a>
+               class="text-gray-800 dark:text-white hover:text-brand-gold transition-colors text-sm font-medium uppercase tracking-widest" x-text="t('menu_gallery')"></a>
         </div>
 
         <div class="flex items-center space-x-4 md:space-x-6">
-            <!-- Language Switcher -->
-            <div class="hidden sm:flex items-center space-x-2 mr-4">
-                <button @click="setLang('uz')" :class="currentLang === 'uz' ? 'text-brand-gold' : 'text-gray-400'" class="text-xs font-bold hover:text-white transition-colors">UZ</button>
-                <button @click="setLang('ru')" :class="currentLang === 'ru' ? 'text-brand-gold' : 'text-gray-400'" class="text-xs font-bold hover:text-white transition-colors">RU</button>
-                <button @click="setLang('en')" :class="currentLang === 'en' ? 'text-brand-gold' : 'text-gray-400'" class="text-xs font-bold hover:text-white transition-colors">EN</button>
+            <!-- Language Switcher & Theme Toggle -->
+            <div class="hidden sm:flex items-center space-x-3 mr-4">
+                <button @click="toggleTheme()" class="text-gray-600 dark:text-gray-400 hover:text-brand-gold dark:hover:text-white transition-colors mr-2">
+                    <svg x-show="!isDark" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                    <svg x-show="isDark" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                </button>
+                <div class="flex items-center space-x-2">
+                    <button @click="setLang('uz')" :class="currentLang === 'uz' ? 'text-brand-gold' : 'text-gray-600 dark:text-gray-400'" class="text-xs font-bold hover:text-gray-900 dark:hover:text-white transition-colors">UZ</button>
+                    <button @click="setLang('ru')" :class="currentLang === 'ru' ? 'text-brand-gold' : 'text-gray-600 dark:text-gray-400'" class="text-xs font-bold hover:text-gray-900 dark:hover:text-white transition-colors">RU</button>
+                    <button @click="setLang('en')" :class="currentLang === 'en' ? 'text-brand-gold' : 'text-gray-600 dark:text-gray-400'" class="text-xs font-bold hover:text-gray-900 dark:hover:text-white transition-colors">EN</button>
+                </div>
             </div>
 
             <div class="hidden sm:flex flex-col text-right">
                 <a href="tel:+998555177373"
-                   class="text-white hover:text-brand-gold transition-colors font-bold text-sm">+998 55 517 73 73</a>
+                   class="text-gray-900 dark:text-white hover:text-brand-gold transition-colors font-bold text-sm">+998 55 517 73 73</a>
                 <a href="tel:+998946257772"
-                   class="text-gray-300 hover:text-brand-gold transition-colors text-xs">+998 94 625 77 72</a>
+                   class="text-gray-600 dark:text-gray-300 hover:text-brand-gold transition-colors text-xs">+998 94 625 77 72</a>
             </div>
             <a href="https://t.me/safomarvatour"
                class="hidden md:block bg-brand-gold hover:bg-yellow-600 text-brand-red px-6 py-2 rounded-full font-bold transition-transform hover:scale-105" x-text="t('btn_contact')"></a>
 
             <!-- Mobile Menu Button -->
-            <button @click="mobileMenu = !mobileMenu" class="lg:hidden text-white p-2">
+            <button @click="mobileMenu = !mobileMenu" class="lg:hidden text-gray-900 dark:text-white p-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                          d="M4 6h16M4 12h16M4 18h16" />
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                           d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
         </div>
@@ -164,14 +170,24 @@
          x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
          x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
          x-transition:leave-end="opacity-0 -translate-y-4"
-         class="lg:hidden bg-brand-red border-t border-red-800 absolute top-full left-0 w-full shadow-2xl py-6 px-6 space-y-4 text-center">
-        <a @click="mobileMenu = false" href="#packages" class="block text-white text-lg font-medium">Paketlar</a>
-        <a @click="mobileMenu = false" href="#why-choose" class="block text-white text-lg font-medium">Nega biz?</a>
-        <a @click="mobileMenu = false" href="#gallery" class="block text-white text-lg font-medium">Galereya</a>
-        <div class="pt-4 border-t border-red-800">
-            <a href="tel:+998555177373" class="block text-brand-gold font-bold mb-2">+998 55 517 73 73</a>
+         class="lg:hidden bg-white dark:bg-[#0B0F19] border-t border-gray-200 dark:border-gray-800 absolute top-full left-0 w-full shadow-2xl py-6 px-6 text-center z-40">
+        
+        <div class="flex justify-center space-x-6 mb-6">
+            <button @click="toggleTheme()" class="text-gray-600 dark:text-gray-400 p-2">
+                <svg x-show="!isDark" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                <svg x-show="isDark" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+            </button>
+        </div>
+
+        <div class="space-y-4">
+            <a @click="mobileMenu = false" href="#packages" class="block text-gray-900 dark:text-white text-lg font-medium" x-text="t('menu_packages')"></a>
+            <a @click="mobileMenu = false" href="#why-choose" class="block text-gray-900 dark:text-white text-lg font-medium" x-text="t('menu_why_us')"></a>
+            <a @click="mobileMenu = false" href="#gallery" class="block text-gray-900 dark:text-white text-lg font-medium" x-text="t('menu_gallery')"></a>
+        </div>
+        <div class="pt-6 mt-6 border-t border-gray-200 dark:border-gray-800">
+            <a href="tel:+998555177373" class="block text-brand-gold font-bold mb-4 text-xl">+998 55 517 73 73</a>
             <a href="https://t.me/safomarvatour"
-               class="inline-block bg-brand-gold text-brand-red px-8 py-3 rounded-full font-bold mt-2">BOG'LANISH</a>
+               class="inline-block bg-brand-gold text-brand-red px-8 py-3 rounded-full font-bold w-full" x-text="t('btn_contact')"></a>
         </div>
     </div>
 </nav>
@@ -184,7 +200,7 @@
         <p class="text-xl md:text-2xl mb-10 text-gray-200" x-text="t('hero_desc')"></p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
             <a href="#packages"
-               class="bg-white text-brand-red px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all shadow-lg" x-text="t('hero_btn1')"></a>
+               class="bg-brand-gold text-brand-red px-10 py-4 rounded-full font-bold text-lg hover:bg-yellow-600 transition-all shadow-lg" x-text="t('hero_btn1')"></a>
             <a href="tel:+998555177373"
                class="border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-brand-red transition-all" x-text="t('hero_btn2')"></a>
         </div>
@@ -192,88 +208,87 @@
 </section>
 
 <!-- Packages Section -->
-<section id="packages" class="py-24 bg-white">
+<section id="packages" class="py-24 bg-gray-50 dark:bg-[#0B0F19] transition-colors duration-300">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-serif text-brand-red mb-4">Umra Paketlarimiz</h2>
+            <h2 class="text-4xl md:text-5xl font-serif text-brand-gold mb-4">Umra Paketlarimiz</h2>
             <div class="w-24 h-1 bg-brand-gold mx-auto mb-6"></div>
-            <p class="text-gray-600 max-w-2xl mx-auto">Siz va yaqinlaringiz uchun iyun oyi uchun maxsus ishlab
-                chiqilgan, barcha qulayliklarga ega takliflar.</p>
+            <p class="text-gray-400 max-w-2xl mx-auto">Siz va yaqinlaringiz uchun maxsus ishlab chiqilgan, barcha qulayliklarga ega takliflar.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 reveal">
 
             <!-- Standard Card -->
             <div
-                    class="bg-white rounded-2xl border border-gray-100 p-6 shadow-lg hover:shadow-2xl transition-all flex flex-col">
-                <span class="text-brand-red font-bold text-xs tracking-widest uppercase mb-2">10 KECHALIK</span>
-                <h3 class="text-xl font-bold mb-4 uppercase">Standart Paket</h3>
-                <p class="text-gray-500 text-sm mb-6">Sifatli va hamyonbop tanlov.</p>
+                    class="bg-white dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col">
+                <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">10 KECHALIK</span>
+                <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">Standart Paket</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Sifatli va hamyonbop tanlov.</p>
                 <div class="text-3xl font-bold text-brand-gold mb-6">$<span x-text="packagesData.standard?.price || '1150'"></span> <span
-                        class="text-sm text-gray-400 font-normal">/ dan</span></div>
+                        class="text-sm text-gray-500 font-normal">/ dan</span></div>
                 <div class="mt-auto space-y-3">
                     <button @click="activeModal = 'standard'"
-                            class="w-full bg-gray-100 text-gray-800 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors">Batafsil
+                            class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors">Batafsil
                         ma'lumot</button>
                     <button @click="activeModal = 'booking'; selectedPackage = 'Standart Paket'"
-                            class="block w-full bg-brand-red text-white py-3 rounded-xl font-bold text-center hover:bg-red-800 shadow-md">Band
+                            class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95">Band
                         qilish</button>
                 </div>
             </div>
 
             <!-- Comfort Card -->
             <div
-                    class="bg-white rounded-2xl border-2 border-brand-gold p-6 shadow-2xl transition-all flex flex-col relative scale-105 z-10">
+                    class="bg-white dark:bg-[#1C263B]/80 backdrop-blur-md rounded-3xl border-2 border-brand-gold p-6 shadow-xl dark:shadow-[0_0_35px_rgba(212,175,55,0.2)] transition-all duration-300 flex flex-col relative scale-105 z-10">
                 <div
-                        class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-gold text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
+                        class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-gold text-brand-red px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">
                     Ommabop</div>
-                <span class="text-brand-red font-bold text-xs tracking-widest uppercase mb-2">10 KECHALIK</span>
-                <h3 class="text-xl font-bold mb-4 uppercase">Komfort Paket</h3>
-                <p class="text-gray-500 text-sm mb-6">Qulay mehmonxona va yuqori darajadagi xizmat.</p>
+                <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">10 KECHALIK</span>
+                <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">Komfort Paket</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm mb-6">Qulay mehmonxona va yuqori darajadagi xizmat.</p>
                 <div class="text-3xl font-bold text-brand-gold mb-6">$<span x-text="packagesData.comfort?.price || '1300'"></span> <span
-                        class="text-sm text-gray-400 font-normal">/ dan</span></div>
+                        class="text-sm text-gray-500 dark:text-gray-400 font-normal">/ dan</span></div>
                 <div class="mt-auto space-y-3">
                     <button @click="activeModal = 'comfort'"
-                            class="w-full bg-gray-100 text-gray-800 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors">Batafsil
+                            class="w-full bg-gray-100 dark:bg-[#25324D] text-gray-800 dark:text-gray-100 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#2F3F60] transition-colors">Batafsil
                         ma'lumot</button>
                     <button @click="activeModal = 'booking'; selectedPackage = 'Komfort Paket'"
-                            class="block w-full bg-brand-red text-white py-3 rounded-xl font-bold text-center hover:bg-red-800 shadow-md">Band
+                            class="block w-full bg-brand-red text-white py-3 rounded-xl font-bold text-center hover:bg-red-800 shadow-md transition-all active:scale-95">Band
                         qilish</button>
                 </div>
             </div>
 
             <!-- LUX Card -->
             <div
-                    class="bg-white rounded-2xl border border-gray-100 p-6 shadow-lg hover:shadow-2xl transition-all flex flex-col">
-                <span class="text-brand-red font-bold text-xs tracking-widest uppercase mb-2">10 KECHALIK</span>
-                <h3 class="text-xl font-bold mb-4 uppercase">LUX Paket</h3>
-                <p class="text-gray-500 text-sm mb-6">Haramga yaqin va premium mehmonxonalar.</p>
+                    class="bg-white dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col">
+                <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">10 KECHALIK</span>
+                <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">LUX Paket</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Haramga yaqin va premium mehmonxonalar.</p>
                 <div class="text-3xl font-bold text-brand-gold mb-6">$<span x-text="packagesData.lux?.price || '1550'"></span> <span
-                        class="text-sm text-gray-400 font-normal">/ dan</span></div>
+                        class="text-sm text-gray-500 font-normal">/ dan</span></div>
                 <div class="mt-auto space-y-3">
                     <button @click="activeModal = 'lux'"
-                            class="w-full bg-gray-100 text-gray-800 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors">Batafsil
+                            class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors">Batafsil
                         ma'lumot</button>
                     <button @click="activeModal = 'booking'; selectedPackage = 'LUX Paket'"
-                            class="block w-full bg-brand-red text-white py-3 rounded-xl font-bold text-center hover:bg-red-800 shadow-md">Band
+                            class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95">Band
                         qilish</button>
                 </div>
             </div>
 
             <!-- LUX Premium Card -->
             <div
-                    class="bg-brand-dark rounded-2xl border border-gray-800 p-6 shadow-lg hover:shadow-2xl transition-all flex flex-col text-white">
+                    class="bg-white dark:bg-[#1C263B]/60 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-brand-gold/30 p-6 shadow-xl hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] dark:hover:border-brand-gold transition-all duration-300 flex flex-col">
                 <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">PREMIUM</span>
-                <h3 class="text-xl font-bold mb-4 uppercase">LUX Premium</h3>
-                <p class="text-gray-400 text-sm mb-6">Eng yuqori darajadagi qulaylik va ibodat muhiti.</p>
+                <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">LUX Premium</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm mb-6">Eng yuqori darajadagi qulaylik va ibodat muhiti.</p>
                 <div class="text-3xl font-bold text-brand-gold mb-6">$<span x-text="packagesData.lux_premium?.price || '1650'"></span> <span
-                        class="text-sm text-gray-500 font-normal">/ dan</span></div>
+                        class="text-sm text-gray-500 dark:text-gray-400 font-normal">/ dan</span></div>
                 <div class="mt-auto space-y-3">
                     <button @click="activeModal = 'lux_premium'"
-                            class="w-full bg-gray-800 text-white py-3 rounded-xl font-semibold hover:bg-gray-700 transition-colors border border-gray-700">Batafsil
+                            class="w-full bg-gray-100 dark:bg-[#25324D] text-gray-800 dark:text-gray-100 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#2F3F60] transition-colors border border-transparent dark:border-gray-700">Batafsil
                         ma'lumot</button>
                     <button @click="activeModal = 'booking'; selectedPackage = 'LUX Premium'"
-                            class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md">Band
+                            class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95">Band
                         qilish</button>
                 </div>
             </div>
@@ -283,69 +298,66 @@
 </section>
 
 <!-- 14-Day Special Section -->
-<section class="py-24 bg-gray-100 reveal">
+<section class="py-24 bg-white dark:bg-[#090D16] transition-colors duration-300 reveal">
     <div class="container mx-auto px-6">
-        <div class="bg-brand-red rounded-[2.5rem] shadow-3xl overflow-hidden flex flex-col lg:flex-row">
-            <div class="lg:w-5/12 p-12 lg:p-16 text-white flex flex-col justify-center">
+        <div class="bg-gradient-to-br from-[#8B0000] to-[#550000] rounded-[2.5rem] shadow-3xl overflow-hidden flex flex-col lg:flex-row border border-red-900/50">
+            <div class="lg:w-5/12 p-8 lg:p-16 text-white flex flex-col justify-center">
                 <h2 class="text-brand-gold font-bold tracking-[0.2em] mb-4 uppercase text-sm">Eksklyuziv Taklif</h2>
-                <h3 class="text-4xl md:text-5xl font-serif mb-8 leading-tight">14 Kunlik "Al Ebaa" Komfort Paketi
-                </h3>
-                <p class="text-red-100 text-lg mb-10 leading-relaxed">Iyun va Iyul oylari uchun maxsus. Toshkentdan
-                    to'g'ridan-to'g'ri reyslar va barcha qulayliklar mujassam.</p>
+                <h3 class="text-4xl md:text-5xl font-serif mb-8 leading-tight">14 Kunlik "Al Ebaa" Komfort Paketi</h3>
+                <p class="text-red-100 text-lg mb-10 leading-relaxed">Iyun va Iyul oylari uchun maxsus. Toshkentdan to'g'ridan-to'g'ri reyslar va barcha qulayliklar mujassam.</p>
 
                 <div class="grid grid-cols-2 gap-6 mb-8">
-                    <div class="bg-red-900/50 p-4 rounded-2xl border border-red-800">
+                    <div class="bg-black/40 p-4 rounded-2xl border border-brand-gold/20">
                         <p class="text-xs text-red-200 uppercase mb-1">Makkada</p>
                         <p class="font-bold">7 KECHA</p>
                     </div>
-                    <div class="bg-red-900/50 p-4 rounded-2xl border border-red-800">
+                    <div class="bg-black/40 p-4 rounded-2xl border border-brand-gold/20">
                         <p class="text-xs text-red-200 uppercase mb-1">Madinada</p>
                         <p class="font-bold">7 KECHA</p>
                     </div>
                 </div>
 
                 <button @click="activeModal = '14day'"
-                        class="bg-white text-brand-red py-4 rounded-2xl font-bold text-lg hover:bg-brand-gold hover:text-white transition-all shadow-xl">Barchasini
-                    bilish</button>
+                        class="bg-brand-gold text-brand-red py-4 rounded-2xl font-bold text-lg hover:bg-yellow-600 hover:text-brand-red transition-all shadow-xl">Barchasini bilish</button>
             </div>
-            <div class="lg:w-7/12 bg-white p-12 lg:p-16">
+            <div class="lg:w-7/12 bg-gray-50 dark:bg-[#121824] p-8 lg:p-16 border-t lg:border-t-0 lg:border-l border-brand-gold/10 transition-colors duration-300">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
                     <div class="space-y-6">
-                        <h4 class="text-2xl font-serif text-brand-red border-b pb-4">Xizmatlarimiz</h4>
-                        <ul class="space-y-4 text-gray-700">
+                        <h4 class="text-2xl font-serif text-brand-gold border-b border-gray-200 dark:border-gray-800 pb-4">Xizmatlarimiz</h4>
+                        <ul class="space-y-4 text-gray-700 dark:text-gray-300">
                             <li class="flex items-center"><span
-                                    class="w-6 h-6 bg-red-100 text-brand-red rounded-full flex items-center justify-center text-xs mr-3 font-bold">✓</span>
+                                    class="w-6 h-6 bg-gray-200 dark:bg-[#1B2538] text-brand-gold border border-brand-gold/20 rounded-full flex items-center justify-center text-xs mr-3 font-bold">✓</span>
                                 Aviachiptalar (Borish-kelish)</li>
                             <li class="flex items-center"><span
-                                    class="w-6 h-6 bg-red-100 text-brand-red rounded-full flex items-center justify-center text-xs mr-3 font-bold">✓</span>
+                                    class="w-6 h-6 bg-gray-200 dark:bg-[#1B2538] text-brand-gold border border-brand-gold/20 rounded-full flex items-center justify-center text-xs mr-3 font-bold">✓</span>
                                 Viza xizmati</li>
                             <li class="flex items-center"><span
-                                    class="w-6 h-6 bg-red-100 text-brand-red rounded-full flex items-center justify-center text-xs mr-3 font-bold">✓</span>
+                                    class="w-6 h-6 bg-gray-200 dark:bg-[#1B2538] text-brand-gold border border-brand-gold/20 rounded-full flex items-center justify-center text-xs mr-3 font-bold">✓</span>
                                 Madina-Makka Tezyurar poezd</li>
                             <li class="flex items-center"><span
-                                    class="w-6 h-6 bg-red-100 text-brand-red rounded-full flex items-center justify-center text-xs mr-3 font-bold">✓</span>
+                                    class="w-6 h-6 bg-gray-200 dark:bg-[#1B2538] text-brand-gold border border-brand-gold/20 rounded-full flex items-center justify-center text-xs mr-3 font-bold">✓</span>
                                 2 mahal mazali taomlar</li>
                             <li class="flex items-center"><span
-                                    class="w-6 h-6 bg-red-100 text-brand-red rounded-full flex items-center justify-center text-xs mr-3 font-bold">✓</span>
+                                    class="w-6 h-6 bg-gray-200 dark:bg-[#1B2538] text-brand-gold border border-brand-gold/20 rounded-full flex items-center justify-center text-xs mr-3 font-bold">✓</span>
                                 Malakali yo'lboshchi va shifokor</li>
                         </ul>
                     </div>
                     <div class="space-y-6">
-                        <h4 class="text-2xl font-serif text-brand-red border-b pb-4">Narxlar</h4>
+                        <h4 class="text-2xl font-serif text-brand-gold border-b border-gray-200 dark:border-gray-800 pb-4">Narxlar</h4>
                         <div class="space-y-4">
                             <div @click="activeModal = 'booking'; selectedPackage = '14 Kunlik Paket'; bookingRoom = '4 kishilik'"
-                                 class="flex justify-between items-center bg-gray-50 p-4 rounded-xl cursor-pointer hover:bg-brand-gold/10 transition-all border border-transparent hover:border-brand-gold">
-                                <span class="text-gray-600">4 kishilik xona</span>
+                                 class="flex justify-between items-center bg-white dark:bg-[#1B2436] p-4 rounded-xl cursor-pointer hover:bg-brand-gold/10 transition-all border border-gray-200 dark:border-transparent hover:border-brand-gold shadow-sm dark:shadow-none">
+                                <span class="text-gray-700 dark:text-gray-300">4 kishilik xona</span>
                                 <span class="font-bold text-brand-gold text-xl">$<span x-text="packagesData.special_14day?.price || '1390'"></span></span>
                             </div>
                             <div @click="activeModal = 'booking'; selectedPackage = '14 Kunlik Paket'; bookingRoom = '3 kishilik'"
-                                 class="flex justify-between items-center bg-gray-50 p-4 rounded-xl cursor-pointer hover:bg-brand-gold/10 transition-all border border-transparent hover:border-brand-gold">
-                                <span class="text-gray-600">3 kishilik xona</span>
+                                 class="flex justify-between items-center bg-white dark:bg-[#1B2436] p-4 rounded-xl cursor-pointer hover:bg-brand-gold/10 transition-all border border-gray-200 dark:border-transparent hover:border-brand-gold shadow-sm dark:shadow-none">
+                                <span class="text-gray-700 dark:text-gray-300">3 kishilik xona</span>
                                 <span class="font-bold text-brand-gold text-xl">$1490</span>
                             </div>
                             <div @click="activeModal = 'booking'; selectedPackage = '14 Kunlik Paket'; bookingRoom = '2 kishilik'"
-                                 class="flex justify-between items-center bg-gray-50 p-4 rounded-xl border-2 border-brand-gold cursor-pointer hover:bg-brand-gold/10 transition-all">
-                                <span class="text-gray-600">2 kishilik xona</span>
+                                 class="flex justify-between items-center bg-white dark:bg-[#1B2436] p-4 rounded-xl border-2 border-brand-gold cursor-pointer hover:bg-brand-gold/10 transition-all shadow-sm dark:shadow-none">
+                                <span class="text-gray-700 dark:text-gray-300">2 kishilik xona</span>
                                 <span class="font-bold text-brand-gold text-xl">$1650</span>
                             </div>
                         </div>
@@ -362,11 +374,11 @@
      aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
         <div @click="activeModal = null"
-             class="fixed inset-0 transition-opacity bg-gray-900 bg-opacity-75 backdrop-blur-sm"></div>
+             class="fixed inset-0 transition-opacity bg-[#04060B] bg-opacity-80 backdrop-blur-md"></div>
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
         <div
-                class="inline-block overflow-hidden text-left align-bottom transition-all transform bg-white rounded-3xl shadow-3xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-            <div class="bg-brand-red px-8 py-6 flex justify-between items-center">
+                class="inline-block overflow-hidden text-left align-bottom transition-all transform bg-white dark:bg-[#121824] border border-gray-200 dark:border-gray-800 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.3)] sm:my-8 sm:align-middle sm:max-w-lg sm:w-full text-gray-900 dark:text-white">
+            <div class="bg-brand-red/90 px-8 py-6 flex justify-between items-center border-b border-red-900/50">
                 <h3 class="text-xl font-bold text-white uppercase tracking-wider">Standart Paket Tafsilotlari</h3>
                 <button @click="activeModal = null" class="text-white hover:text-brand-gold font-bold">X</button>
             </div>
@@ -382,31 +394,30 @@
                          class="w-full h-full object-cover hover:scale-105 transition-all">
                 </div>
                 <div>
-                    <h4 class="font-bold text-brand-red mb-2 uppercase text-xs tracking-widest">Mehmonxona:</h4>
-                    <p class="text-gray-700 font-semibold">Ramada Zad Al Tayser</p>
+                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Mehmonxona:</h4>
+                    <p class="font-semibold text-gray-900 dark:text-white">Ramada Zad Al Tayser</p>
                 </div>
                 <div>
-                    <h4 class="font-bold text-brand-red mb-2 uppercase text-xs tracking-widest">Transport:</h4>
-                    <ul class="text-gray-600 space-y-1">
+                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Transport:</h4>
+                    <ul class="text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• Madinadan Makkaga tezyurar poezd</li>
                         <li>• Borish-kelish aviachiptalari</li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold text-brand-red mb-2 uppercase text-xs tracking-widest">Xizmatlar:</h4>
-                    <ul class="text-gray-600 space-y-1">
+                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Xizmatlar:</h4>
+                    <ul class="text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• Umra vizasi</li>
                         <li>• Malakali ellikboshi (yo'lboshchi)</li>
                         <li>• Tibbiy sug'urta</li>
                     </ul>
                 </div>
-                <div class="bg-gray-50 p-4 rounded-2xl border border-gray-100">
-                    <p class="text-xs text-gray-500 uppercase mb-1">Boshlang'ich Narx:</p>
+                <div class="bg-gray-50 dark:bg-[#1B2436] p-4 rounded-2xl border border-gray-200 dark:border-gray-800">
+                    <p class="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1">Boshlang'ich Narx:</p>
                     <p class="text-3xl font-bold text-brand-gold">$<span x-text="packagesData.standard?.price"></span></p>
                 </div>
                 <button @click="activeModal = 'booking'; selectedPackage = 'Standart Paket'"
-                        class="block w-full bg-brand-red text-white py-4 rounded-2xl font-bold text-center hover:bg-red-800 shadow-xl transition-all">HOZIR
-                    BAND QILISH</button>
+                        class="block w-full bg-brand-gold text-brand-red py-4 rounded-2xl font-bold text-center hover:bg-yellow-600 shadow-xl transition-all">HOZIR BAND QILISH</button>
             </div>
         </div>
     </div>
@@ -415,9 +426,9 @@
 <!-- Comfort Modal -->
 <div x-show="activeModal === 'comfort'" x-cloak class="fixed inset-0 z-[100] overflow-y-auto">
     <div class="flex items-center justify-center min-h-screen px-4 sm:p-0">
-        <div @click="activeModal = null" class="fixed inset-0 bg-gray-900/75 backdrop-blur-sm"></div>
+        <div @click="activeModal = null" class="fixed inset-0 bg-[#04060B] bg-opacity-80 backdrop-blur-md"></div>
         <div
-                class="inline-block bg-white rounded-3xl shadow-3xl sm:max-w-lg sm:w-full z-10 overflow-hidden transform transition-all">
+                class="inline-block bg-white dark:bg-[#121824] border border-gray-200 dark:border-gray-800 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.3)] sm:max-w-lg sm:w-full z-10 overflow-hidden transform transition-all text-gray-900 dark:text-white">
             <div class="bg-brand-gold px-8 py-6 flex justify-between items-center text-brand-red">
                 <h3 class="text-xl font-bold uppercase tracking-wider">Komfort Paket Tafsilotlari</h3>
                 <button @click="activeModal = null" class="font-bold">X</button>
@@ -431,33 +442,32 @@
                            controls class="w-full h-full object-cover"></video>
                     <!-- Agar rasm yuklangan bo'lsa -->
                     <img x-show="packagesData.comfort?.image_url && !packagesData.comfort?.video_url" 
-                         @click="openLightbox([packagesData.comfort?.image_url], 0)"
-                         :src="packagesData.comfort?.image_url" 
-                         class="w-full h-full object-cover hover:scale-105 transition-all">
+                          @click="openLightbox([packagesData.comfort?.image_url], 0)"
+                          :src="packagesData.comfort?.image_url" 
+                          class="w-full h-full object-cover hover:scale-105 transition-all">
                 </div>
                 <div>
-                    <h4 class="font-bold text-brand-red mb-2 uppercase text-xs tracking-widest">Mehmonxona:</h4>
-                    <p class="text-gray-700 font-semibold italic">AL EBAA mehmonxonasi</p>
+                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Mehmonxona:</h4>
+                    <p class="font-semibold italic text-gray-900 dark:text-white">AL EBAA mehmonxonasi</p>
                 </div>
                 <div>
-                    <h4 class="font-bold text-brand-red mb-2 uppercase text-xs tracking-widest">Dasturda:</h4>
-                    <ul class="text-gray-600 space-y-1">
+                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Dasturda:</h4>
+                    <ul class="text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• Madinadan Makkaga tezyurar poezd</li>
                         <li>• 2 mahal mazali taomlar</li>
                         <li>• Makka va Madina bo'ylab ekskursiyalar</li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold text-brand-red mb-2 uppercase text-xs tracking-widest">Qulayliklar:</h4>
-                    <p class="text-gray-600">Juma namozlarini Haram masjidlarida ado etish imkoniyati.</p>
+                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Qulayliklar:</h4>
+                    <p class="text-gray-700 dark:text-gray-300">Juma namozlarini Haram masjidlarida ado etish imkoniyati.</p>
                 </div>
-                <div class="bg-gray-50 p-4 rounded-2xl border border-brand-gold">
-                    <p class="text-xs text-gray-500 uppercase mb-1">Boshlang'ich Narx:</p>
+                <div class="bg-gray-50 dark:bg-[#1B2436] p-4 rounded-2xl border border-gray-200 dark:border-brand-gold/30">
+                    <p class="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1">Boshlang'ich Narx:</p>
                     <p class="text-3xl font-bold text-brand-gold">$<span x-text="packagesData.comfort?.price"></span></p>
                 </div>
                 <button @click="activeModal = 'booking'; selectedPackage = 'Komfort Paket'"
-                        class="block w-full bg-brand-red text-white py-4 rounded-2xl font-bold text-center hover:bg-red-800 shadow-xl transition-all">HOZIR
-                    BAND QILISH</button>
+                        class="block w-full bg-brand-red text-white py-4 rounded-2xl font-bold text-center hover:bg-red-800 shadow-xl transition-all">HOZIR BAND QILISH</button>
             </div>
         </div>
     </div>
@@ -466,10 +476,10 @@
 <!-- LUX Modal -->
 <div x-show="activeModal === 'lux'" x-cloak class="fixed inset-0 z-[100] overflow-y-auto">
     <div class="flex items-center justify-center min-h-screen px-4 sm:p-0">
-        <div @click="activeModal = null" class="fixed inset-0 bg-gray-900/75 backdrop-blur-sm"></div>
+        <div @click="activeModal = null" class="fixed inset-0 bg-[#04060B] bg-opacity-80 backdrop-blur-md"></div>
         <div
-                class="inline-block bg-white rounded-3xl shadow-3xl sm:max-w-lg sm:w-full z-10 overflow-hidden transform transition-all">
-            <div class="bg-brand-red px-8 py-6 flex justify-between items-center text-white">
+                class="inline-block bg-white dark:bg-[#121824] border border-gray-200 dark:border-gray-800 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.3)] sm:max-w-lg sm:w-full z-10 overflow-hidden transform transition-all text-gray-900 dark:text-white">
+            <div class="bg-brand-red/90 px-8 py-6 flex justify-between items-center text-white border-b border-red-900/50">
                 <h3 class="text-xl font-bold uppercase tracking-wider">LUX Paket Tafsilotlari</h3>
                 <button @click="activeModal = null" class="font-bold">X</button>
             </div>
@@ -480,31 +490,29 @@
                     <video x-show="packagesData.lux?.video_url" :src="packagesData.lux?.video_url" controls class="w-full h-full object-cover"></video>
                     <!-- Agar video bo'lmasa rasm ko'rsatiladi -->
                     <img x-show="!packagesData.lux?.video_url" 
-                         @click="openLightbox([packagesData.lux?.image_url || 'galereya/ANJUM mehmonxonasi/7621835549ae5f328e2b2a1ba87a74e1.jpg'], 0)"
-                         :src="packagesData.lux?.image_url || 'galereya/ANJUM mehmonxonasi/7621835549ae5f328e2b2a1ba87a74e1.jpg'"
-                         class="w-full h-full object-cover hover:scale-105 transition-all">
+                          @click="openLightbox([packagesData.lux?.image_url || 'galereya/ANJUM mehmonxonasi/7621835549ae5f328e2b2a1ba87a74e1.jpg'], 0)"
+                          :src="packagesData.lux?.image_url || 'galereya/ANJUM mehmonxonasi/7621835549ae5f328e2b2a1ba87a74e1.jpg'"
+                          class="w-full h-full object-cover hover:scale-105 transition-all">
                 </div>
                 <div>
-                    <h4 class="font-bold text-brand-red mb-2 uppercase text-xs tracking-widest">Mehmonxona:</h4>
-                    <p class="text-gray-700 font-semibold">ANJUM mehmonxonasi</p>
-                    <p class="text-sm text-gray-500">Makkada Haramga juda yaqin masofada.</p>
+                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Mehmonxona:</h4>
+                    <p class="font-semibold text-gray-900 dark:text-white">ANJUM mehmonxonasi</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Makkada Haramga juda yaqin masofada.</p>
                 </div>
                 <div>
-                    <h4 class="font-bold text-brand-red mb-2 uppercase text-xs tracking-widest">Premium Xizmatlar:
-                    </h4>
-                    <ul class="text-gray-600 space-y-1">
+                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Premium Xizmatlar:</h4>
+                    <ul class="text-gray-700 dark:text-gray-300 space-y-1">
                         <li>• Haramain tezyurar poezdi</li>
                         <li>• Yuqori sifatli transfer xizmatlari</li>
                         <li>• Maxsus guruh rahbarlari</li>
                     </ul>
                 </div>
-                <div class="bg-gray-50 p-4 rounded-2xl">
-                    <p class="text-xs text-gray-500 uppercase mb-1">Boshlang'ich Narx:</p>
+                <div class="bg-gray-50 dark:bg-[#1B2436] p-4 rounded-2xl border border-gray-200 dark:border-gray-800">
+                    <p class="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1">Boshlang'ich Narx:</p>
                     <p class="text-3xl font-bold text-brand-gold">$1550</p>
                 </div>
                 <button @click="activeModal = 'booking'; selectedPackage = 'LUX Paket'"
-                        class="block w-full bg-brand-red text-white py-4 rounded-2xl font-bold text-center hover:bg-red-800 shadow-xl transition-all">HOZIR
-                    BAND QILISH</button>
+                        class="block w-full bg-brand-gold text-brand-red py-4 rounded-2xl font-bold text-center hover:bg-yellow-600 shadow-xl transition-all">HOZIR BAND QILISH</button>
             </div>
         </div>
     </div>
@@ -513,10 +521,10 @@
 <!-- LUX Premium Modal -->
 <div x-show="activeModal === 'lux_premium'" x-cloak class="fixed inset-0 z-[100] overflow-y-auto">
     <div class="flex items-center justify-center min-h-screen px-4 sm:p-0">
-        <div @click="activeModal = null" class="fixed inset-0 bg-gray-900/75 backdrop-blur-sm"></div>
+        <div @click="activeModal = null" class="fixed inset-0 bg-[#04060B] bg-opacity-80 backdrop-blur-md"></div>
         <div
-                class="inline-block bg-brand-dark rounded-3xl shadow-3xl sm:max-w-lg sm:w-full z-10 overflow-hidden border border-gray-700 transform transition-all">
-            <div class="bg-brand-gold px-8 py-6 flex justify-between items-center text-brand-red">
+                class="inline-block bg-white dark:bg-[#121824] rounded-3xl shadow-3xl sm:max-w-lg sm:w-full z-10 overflow-hidden border border-gray-200 dark:border-brand-gold/30 transform transition-all text-gray-900 dark:text-white">
+            <div class="bg-brand-gold px-8 py-6 flex justify-between items-center text-brand-red border-b border-brand-gold/10">
                 <h3 class="text-xl font-bold uppercase tracking-wider">LUX Premium Tafsilotlari</h3>
                 <button @click="activeModal = null" class="font-bold">X</button>
             </div>
@@ -525,9 +533,9 @@
                 <div x-show="packagesData.lux_premium?.image_url || packagesData.lux_premium?.video_url" class="rounded-2xl overflow-hidden shadow-lg aspect-video cursor-pointer bg-black mb-6">
                     <video x-show="packagesData.lux_premium?.video_url" :src="packagesData.lux_premium?.video_url" controls class="w-full h-full object-cover"></video>
                     <img x-show="packagesData.lux_premium?.image_url && !packagesData.lux_premium?.video_url" 
-                         @click="openLightbox([packagesData.lux_premium?.image_url], 0)"
-                         :src="packagesData.lux_premium?.image_url" 
-                         class="w-full h-full object-cover hover:scale-105 transition-all">
+                          @click="openLightbox([packagesData.lux_premium?.image_url], 0)"
+                          :src="packagesData.lux_premium?.image_url" 
+                          class="w-full h-full object-cover hover:scale-105 transition-all">
                 </div>
                 <!-- Waqf Al Safi Gallery (Only show if NO custom media is set) -->
                 <div x-show="!packagesData.lux_premium?.image_url && !packagesData.lux_premium?.video_url" class="grid grid-cols-3 gap-2 mb-6" x-data="{
@@ -562,34 +570,30 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-gray-800 p-4 rounded-2xl">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-gray-50 dark:bg-[#1B2436] p-4 rounded-2xl border border-gray-200 dark:border-gray-800">
                         <h4 class="font-bold text-brand-gold mb-1 uppercase text-[10px]">Madina (3 kecha)</h4>
-                        <p class="text-white text-sm">Bosphorus Waqf Al Safi</p>
+                        <p class="text-gray-900 dark:text-white text-sm">Bosphorus Waqf Al Safi</p>
                     </div>
-                    <div class="bg-gray-800 p-4 rounded-2xl">
+                    <div class="bg-gray-50 dark:bg-[#1B2436] p-4 rounded-2xl border border-gray-200 dark:border-gray-800">
                         <h4 class="font-bold text-brand-gold mb-1 uppercase text-[10px]">Makka (4 kecha)</h4>
-                        <p class="text-white text-sm">Jumeirah Jabal Omar</p>
+                        <p class="text-gray-900 dark:text-white text-sm">Jumeirah Jabal Omar</p>
                     </div>
                 </div>
                 <div>
                     <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Imtiyozlar:</h4>
-                    <ul class="text-gray-300 space-y-2 text-sm">
-                        <li class="flex items-start"><span class="text-brand-gold mr-2">✦</span> Haramga eng yaqin
-                            masofadagi 5 yulduzli mehmonxonalar.</li>
-                        <li class="flex items-start"><span class="text-brand-gold mr-2">✦</span> Haramain tezyurar
-                            poyezdida VIP sayohat.</li>
-                        <li class="flex items-start"><span class="text-brand-gold mr-2">✦</span> Shaxsiy xizmat
-                            ko'rsatish va sokinlik.</li>
+                    <ul class="text-gray-700 dark:text-gray-300 space-y-2 text-sm">
+                        <li class="flex items-start"><span class="text-brand-gold mr-2">✦</span> Haramga eng yaqin masofadagi 5 yulduzli mehmonxonalar.</li>
+                        <li class="flex items-start"><span class="text-brand-gold mr-2">✦</span> Haramain tezyurar poyezdida VIP sayohat.</li>
+                        <li class="flex items-start"><span class="text-brand-gold mr-2">✦</span> Shaxsiy xizmat ko'rsatish va sokinlik.</li>
                     </ul>
                 </div>
-                <div class="bg-gray-800 p-4 rounded-2xl border border-gray-700">
-                    <p class="text-xs text-gray-500 uppercase mb-1">Paket Narxi:</p>
+                <div class="bg-gray-50 dark:bg-[#1B2436] p-4 rounded-2xl border border-gray-200 dark:border-gray-800">
+                    <p class="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1">Paket Narxi:</p>
                     <p class="text-3xl font-bold text-brand-gold">$1650</p>
                 </div>
                 <button @click="activeModal = 'booking'; selectedPackage = 'LUX Premium'"
-                        class="block w-full bg-brand-gold text-brand-red py-4 rounded-2xl font-bold text-center hover:bg-yellow-500 shadow-xl transition-all">PREMIUM
-                    BAND QILISH</button>
+                        class="block w-full bg-brand-gold text-brand-red py-4 rounded-2xl font-bold text-center hover:bg-yellow-500 shadow-xl transition-all">PREMIUM BAND QILISH</button>
             </div>
         </div>
     </div>
@@ -598,10 +602,10 @@
 <!-- 14-Day Modal -->
 <div x-show="activeModal === '14day'" x-cloak class="fixed inset-0 z-[100] overflow-y-auto">
     <div class="flex items-center justify-center min-h-screen px-4 sm:p-0">
-        <div @click="activeModal = null" class="fixed inset-0 bg-gray-900/75 backdrop-blur-sm"></div>
+        <div @click="activeModal = null" class="fixed inset-0 bg-[#04060B] bg-opacity-80 backdrop-blur-md"></div>
         <div
-                class="inline-block bg-white rounded-3xl shadow-3xl sm:max-w-2xl sm:w-full z-10 overflow-hidden transform transition-all">
-            <div class="bg-brand-red px-8 py-6 flex justify-between items-center text-white">
+                class="inline-block bg-white dark:bg-[#121824] border border-gray-200 dark:border-gray-800 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.3)] sm:max-w-2xl sm:w-full z-10 overflow-hidden transform transition-all text-gray-900 dark:text-white">
+            <div class="bg-brand-red/90 px-8 py-6 flex justify-between items-center text-white border-b border-red-900/50">
                 <h3 class="text-xl font-bold uppercase tracking-wider">14 Kunlik Komfort Paket (Batafsil)</h3>
                 <button @click="activeModal = null" class="font-bold text-2xl">×</button>
             </div>
@@ -610,9 +614,9 @@
                 <div x-show="packagesData.special_14day?.image_url || packagesData.special_14day?.video_url" class="rounded-2xl overflow-hidden shadow-lg aspect-video cursor-pointer bg-black mb-8">
                     <video x-show="packagesData.special_14day?.video_url" :src="packagesData.special_14day?.video_url" controls class="w-full h-full object-cover"></video>
                     <img x-show="packagesData.special_14day?.image_url && !packagesData.special_14day?.video_url" 
-                         @click="openLightbox([packagesData.special_14day?.image_url], 0)"
-                         :src="packagesData.special_14day?.image_url" 
-                         class="w-full h-full object-cover hover:scale-105 transition-all">
+                          @click="openLightbox([packagesData.special_14day?.image_url], 0)"
+                          :src="packagesData.special_14day?.image_url" 
+                          class="w-full h-full object-cover hover:scale-105 transition-all">
                 </div>
                 <!-- 14-Day Videos (Only show if NO custom media is set) -->
                 <div x-show="!packagesData.special_14day?.image_url && !packagesData.special_14day?.video_url" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
@@ -632,35 +636,25 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                     <div>
-                        <h4 class="font-bold text-brand-red mb-4 uppercase text-xs tracking-widest border-b pb-2">
-                            Mehmonxonalar:</h4>
-                        <p class="text-gray-700"><strong>Madina:</strong> Mehrob Toiba (7 kecha)</p>
-                        <p class="text-gray-700"><strong>Makka:</strong> Al Ebaa Hotel (7 kecha)</p>
-                        <p class="mt-4 text-sm text-gray-500 italic">Har ikki shaharda ham Juma namozini ado etish
-                            imkoniyati mavjud.</p>
+                        <h4 class="font-bold text-brand-gold mb-4 uppercase text-xs tracking-widest border-b border-gray-200 dark:border-gray-800 pb-2">Mehmonxonalar:</h4>
+                        <p class="text-gray-700 dark:text-gray-300"><strong>Madina:</strong> Mehrob Toiba (7 kecha)</p>
+                        <p class="text-gray-700 dark:text-gray-300"><strong>Makka:</strong> Al Ebaa Hotel (7 kecha)</p>
+                        <p class="mt-4 text-sm text-gray-500 italic">Har ikki shaharda ham Juma namozini ado etish imkoniyati mavjud.</p>
                     </div>
                     <div>
-                        <h4 class="font-bold text-brand-red mb-4 uppercase text-xs tracking-widest border-b pb-2">
-                            Hadialarimiz:</h4>
+                        <h4 class="font-bold text-brand-gold mb-4 uppercase text-xs tracking-widest border-b border-gray-200 dark:border-gray-800 pb-2">Hadialarimiz:</h4>
                         <div class="flex flex-wrap gap-2">
-                                <span
-                                        class="bg-red-50 text-brand-red px-3 py-1 rounded-full text-xs font-semibold">Zam-Zam
-                                    5L</span>
-                            <span
-                                    class="bg-red-50 text-brand-red px-3 py-1 rounded-full text-xs font-semibold">Nimcha</span>
-                            <span
-                                    class="bg-red-50 text-brand-red px-3 py-1 rounded-full text-xs font-semibold">Sumka</span>
-                            <span
-                                    class="bg-red-50 text-brand-red px-3 py-1 rounded-full text-xs font-semibold">Abaya</span>
-                            <span
-                                    class="bg-red-50 text-brand-red px-3 py-1 rounded-full text-xs font-semibold">Beyjik</span>
+                            <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Zam-Zam 5L</span>
+                            <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Nimcha</span>
+                            <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Sumka</span>
+                            <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Abaya</span>
+                            <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Beyjik</span>
                         </div>
                     </div>
                 </div>
 
-                <h4 class="font-bold text-brand-red mb-4 uppercase text-xs tracking-widest border-b pb-2">To'liq
-                    Xizmatlar:</h4>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 mb-8 text-gray-600 text-sm">
+                <h4 class="font-bold text-brand-gold mb-4 uppercase text-xs tracking-widest border-b border-gray-200 dark:border-gray-800 pb-2">To'liq Xizmatlar:</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 mb-8 text-gray-700 dark:text-gray-300 text-sm">
                     <li>Tezyurar poezd (Madina-Makka)</li>
                     <li>2 mahal sifatli taomlar</li>
                     <li>Ziyoratgohlar bo'ylab ekskursiyalar</li>
@@ -671,13 +665,13 @@
                 </div>
 
                 <div
-                        class="bg-gray-50 p-6 rounded-3xl border border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        class="bg-gray-50 dark:bg-[#1B2436] p-6 rounded-3xl border border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
                     <div class="text-center sm:text-left">
-                        <p class="text-xs text-gray-500 uppercase">Narx (4 kishilik xonada):</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 uppercase">Narx (4 kishilik xonada):</p>
                         <p class="text-4xl font-bold text-brand-gold">$1390</p>
                     </div>
                     <button @click="activeModal = 'booking'; selectedPackage = '14 Kunlik Paket'"
-                            class="w-full sm:w-auto bg-brand-red text-white px-10 py-4 rounded-2xl font-bold hover:bg-red-800 shadow-xl text-center">BOG'LANISH</button>
+                            class="w-full sm:w-auto bg-brand-gold text-brand-red px-10 py-4 rounded-2xl font-bold hover:bg-yellow-600 shadow-xl text-center">BOG'LANISH</button>
                 </div>
             </div>
         </div>
@@ -685,49 +679,45 @@
 </div>
 
 <!-- Why Choose Us -->
-<section id="why-choose" class="py-24 bg-white reveal">
+<section id="why-choose" class="py-24 bg-gray-50 dark:bg-[#0B0F19] transition-colors duration-300 reveal">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16">
-            <h2 class="text-4xl font-serif text-brand-red mb-4">Nega Aynan Safo Marva Tour?</h2>
+            <h2 class="text-4xl font-serif text-brand-gold mb-4">Nega Aynan Safo Marva Tour?</h2>
             <div class="w-24 h-1 bg-brand-gold mx-auto"></div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div
-                    class="text-center p-8 rounded-3xl bg-gray-50 hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-brand-gold">
+                    class="text-center p-8 rounded-3xl bg-white dark:bg-[#151C2C]/40 border border-gray-200 dark:border-gray-800/80 hover:bg-gray-50 dark:hover:bg-[#151C2C]/80 hover:border-brand-gold/30 shadow-sm dark:shadow-none hover:shadow-xl transition-all duration-300">
                 <div class="text-4xl mb-6">📜</div>
-                <h4 class="text-xl font-bold mb-4 uppercase">Litsenziyalangan</h4>
-                <p class="text-gray-600">Davlat tomonidan berilgan barcha litsenziyalarga egamiz. Sizning
-                    xavfsizligingiz biz uchun birinchi o'rinda.</p>
+                <h4 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">Litsenziyalangan</h4>
+                <p class="text-gray-600 dark:text-gray-400">Davlat tomonidan berilgan barcha litsenziyalarga egamiz. Sizning xavfsizligingiz biz uchun birinchi o'rinda.</p>
             </div>
             <div
-                    class="text-center p-8 rounded-3xl bg-gray-50 hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-brand-gold">
+                    class="text-center p-8 rounded-3xl bg-white dark:bg-[#151C2C]/40 border border-gray-200 dark:border-gray-800/80 hover:bg-gray-50 dark:hover:bg-[#151C2C]/80 hover:border-brand-gold/30 shadow-sm dark:shadow-none hover:shadow-xl transition-all duration-300">
                 <div class="text-4xl mb-6">🕋</div>
-                <h4 class="text-xl font-bold mb-4 uppercase">Tajribali Jamoa</h4>
-                <p class="text-gray-600">Ko'p yillik tajribaga ega yo'lboshchilar va ilmli guruh rahbarlari sizga
-                    hamrohlik qiladi.</p>
+                <h4 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">Tajribali Jamoa</h4>
+                <p class="text-gray-600 dark:text-gray-400">Ko'p yillik tajribaga ega yo'lboshchilar va ilmli guruh rahbarlari sizga hamrohlik qiladi.</p>
             </div>
             <div
-                    class="text-center p-8 rounded-3xl bg-gray-50 hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-brand-gold">
+                    class="text-center p-8 rounded-3xl bg-white dark:bg-[#151C2C]/40 border border-gray-200 dark:border-gray-800/80 hover:bg-gray-50 dark:hover:bg-[#151C2C]/80 hover:border-brand-gold/30 shadow-sm dark:shadow-none hover:shadow-xl transition-all duration-300">
                 <div class="text-4xl mb-6">🛡️</div>
-                <h4 class="text-xl font-bold mb-4 uppercase">Xotirjamlik</h4>
-                <p class="text-gray-600">Siz faqat ibodat bilan band bo'lasiz, qolgan barcha tashkiliy ishlarni biz
-                    o'z zimmamizga olamiz.</p>
+                <h4 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">Xotirjamlik</h4>
+                <p class="text-gray-600 dark:text-gray-400">Siz faqat ibodat bilan band bo'lasiz, qolgan barcha tashkiliy ishlarni biz o'z zimmamizga olamiz.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Gallery Section -->
-<section id="gallery" class="py-24 bg-brand-dark text-white overflow-hidden">
+<section id="gallery" class="py-24 bg-white dark:bg-brand-dark text-gray-900 dark:text-white transition-colors duration-300 overflow-hidden">
     <div class="container mx-auto px-6 mb-12">
         <div class="flex flex-col md:flex-row justify-between items-end gap-6">
             <div>
                 <h2 class="text-4xl font-serif text-brand-gold mb-4">Ziyoratdan Lavhalar</h2>
-                <p class="text-gray-400 max-w-md">Biz bilan birga bo'lgan ziyoratchilarimizning unutilmas lahzalari.
-                </p>
+                <p class="text-gray-600 dark:text-gray-400 max-w-md">Biz bilan birga bo'lgan ziyoratchilarimizning unutilmas lahzalari.</p>
             </div>
             <a href="https://t.me/safomarvatour"
-               class="text-brand-gold border-b border-brand-gold pb-1 hover:text-white hover:border-white transition-all">Barchasini
+               class="text-brand-gold border-b border-brand-gold pb-1 hover:text-gray-900 dark:hover:text-white hover:border-gray-900 dark:hover:border-white transition-all">Barchasini
                 ko'rish →</a>
         </div>
     </div>
@@ -769,53 +759,48 @@
 
         <!-- Gradient Overlays for smooth edges -->
         <div
-                class="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-brand-dark to-transparent z-10 pointer-events-none">
+                class="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white dark:from-brand-dark to-transparent z-10 pointer-events-none transition-colors duration-300">
         </div>
         <div
-                class="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-brand-dark to-transparent z-10 pointer-events-none">
+                class="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white dark:from-brand-dark to-transparent z-10 pointer-events-none transition-colors duration-300">
         </div>
     </div>
 </section>
 
 <!-- CTA Section -->
-<section class="py-24 bg-white reveal">
+<section class="py-24 bg-white dark:bg-[#090D16] transition-colors duration-300 reveal">
     <div class="container mx-auto px-6">
-        <div class="bg-brand-gold rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden">
+        <div class="bg-gradient-to-br from-gray-100 to-gray-200 dark:from-[#121824] dark:to-[#1C253B] rounded-[3rem] p-8 md:p-20 text-center relative overflow-hidden border border-brand-gold/20 shadow-[0_0_50px_rgba(212,175,55,0.05)] dark:shadow-[0_0_50px_rgba(212,175,55,0.1)] transition-colors duration-300">
             <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
             <div class="absolute bottom-0 left-0 w-64 h-64 bg-brand-red/5 rounded-full -ml-32 -mb-32"></div>
-            <h3 class="text-brand-red text-4xl md:text-5xl font-serif mb-8 relative z-10">Sizning Muborak Safaringiz
-                Shuyerdan Boshlanadi</h3>
-            <p class="text-brand-red/80 text-xl mb-12 max-w-2xl mx-auto relative z-10">Hoziroq bog'laning va bepul
-                konsultatsiya oling. Joylar soni cheklangan!</p>
+            <h3 class="text-brand-gold text-4xl md:text-5xl font-serif mb-8 relative z-10">Sizning Muborak Safaringiz Shu Yerdan Boshlanadi</h3>
+            <p class="text-gray-700 dark:text-gray-300 text-xl mb-12 max-w-2xl mx-auto relative z-10">Hoziroq bog'laning va bepul konsulturalar oling. Joylar soni cheklangan!</p>
             <div class="flex flex-col sm:flex-row justify-center gap-6 relative z-10">
                 <a href="tel:+998555177373"
-                   class="bg-brand-red text-white px-12 py-5 rounded-2xl font-bold text-xl hover:shadow-2xl transition-all">QO'NG'IROQ
-                    QILISH</a>
+                   class="bg-brand-red text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-red-800 transition-all hover:scale-105 active:scale-95 shadow-lg">QO'NG'IROQ QILISH</a>
                 <a href="https://t.me/Safomarva_admin" target="_blank"
-                   class="bg-white text-brand-red px-12 py-5 rounded-2xl font-bold text-xl hover:shadow-2xl transition-all">TELEGRAMDAN
-                    YOZISH</a>
+                   class="bg-brand-gold text-brand-red px-12 py-5 rounded-2xl font-bold text-xl hover:bg-yellow-600 transition-all hover:scale-105 active:scale-95 shadow-lg">TELEGRAMDAN YOZISH</a>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Footer -->
-<footer class="bg-brand-dark text-white py-20">
+<footer class="bg-gray-100 dark:bg-brand-dark text-gray-900 dark:text-white transition-colors duration-300 py-20">
     <div
-            class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-800 pb-16 text-center md:text-left">
+            class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-200 dark:border-gray-800 pb-16 text-center md:text-left">
         <div class="col-span-1 md:col-span-2 flex flex-col items-center md:items-start">
             <img src="safo_marva.png" alt="Logo" class="h-20 mb-6 rounded-lg bg-white p-1">
-            <p class="text-gray-400 max-w-sm">SAFO MARVA TOUR — litsenziyalangan, xavfsiz va xotirjam ziyorat
-                xizmati. Bizning maqsadimiz — sizning ibodatingizni qulay va esda qolarli qilish.</p>
+            <p class="text-gray-600 dark:text-gray-400 max-w-sm">SAFO MARVA TOUR — litsenziyalangan, xavfsiz va xotirjam ziyorat xizmati. Bizning maqsadimiz — sizning ibodatingizni qulay va esda qolarli qilish.</p>
         </div>
         <div>
             <h4 class="text-brand-gold font-bold mb-6">ALOQA UCHUN</h4>
             <div class="space-y-4">
-                <p class="flex items-center justify-center md:justify-start text-gray-400"><span
+                <p class="flex items-center justify-center md:justify-start text-gray-600 dark:text-gray-400"><span
                         class="mr-3">📞</span> +998 55 517 73 73</p>
-                <p class="flex items-center justify-center md:justify-start text-gray-400"><span
+                <p class="flex items-center justify-center md:justify-start text-gray-600 dark:text-gray-400"><span
                         class="mr-3">📞</span> +998 94 625 77 72</p>
-                <p class="flex items-center justify-center md:justify-start text-gray-400"><span
+                <p class="flex items-center justify-center md:justify-start text-gray-600 dark:text-gray-400"><span
                         class="mr-3">📞</span> +998 90 484 99 91</p>
             </div>
         </div>
@@ -823,14 +808,14 @@
             <h4 class="text-brand-gold font-bold mb-6">IJTIMOIY TARMOQLAR</h4>
             <div class="flex space-x-4 justify-center md:justify-start">
                 <a href="https://t.me/safomarvatour"
-                   class="bg-gray-800 p-3 rounded-full hover:bg-brand-gold hover:text-brand-red transition-all group" title="Telegram">
+                   class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-transparent text-gray-700 dark:text-white p-3 rounded-full hover:bg-brand-gold hover:text-brand-red dark:hover:bg-brand-gold dark:hover:text-brand-red transition-all group" title="Telegram">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform">
                         <path d="m22 2-7 20-4-9-9-4Z"/>
                         <path d="M22 2 11 13"/>
                     </svg>
                 </a>
                 <a href="https://www.instagram.com/safomarva.tour"
-                   class="bg-gray-800 p-3 rounded-full hover:bg-brand-gold hover:text-brand-red transition-all group" title="Instagram">
+                   class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-transparent text-gray-700 dark:text-white p-3 rounded-full hover:bg-brand-gold hover:text-brand-red dark:hover:bg-brand-gold dark:hover:text-brand-red transition-all group" title="Instagram">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:scale-110 transition-transform">
                         <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
                         <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
@@ -851,7 +836,7 @@
             class="fixed bottom-8 right-8 bg-brand-gold text-brand-red p-4 rounded-full shadow-2xl z-[60] hover:scale-110 transition-transform">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
              stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
     </button>
 
@@ -860,21 +845,21 @@
 <!-- Booking Modal -->
 <div x-show="activeModal === 'booking'" x-cloak class="fixed inset-0 z-[250] overflow-y-auto">
     <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
-        <div @click="activeModal = null" class="fixed inset-0 transition-opacity bg-brand-dark/90 backdrop-blur-md"></div>
+        <div @click="activeModal = null" class="fixed inset-0 transition-opacity bg-[#04060B]/90 backdrop-blur-md"></div>
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
 
-        <div class="inline-block overflow-hidden text-left align-bottom transition-all transform bg-white rounded-[2.5rem] shadow-3xl sm:my-8 sm:align-middle sm:max-w-lg sm:w-full relative">
+        <div class="inline-block overflow-hidden text-left align-bottom transition-all transform bg-white dark:bg-[#121824] border border-gray-200 dark:border-gray-800 rounded-[2.5rem] shadow-[0_0_50px_rgba(0,0,0,0.3)] sm:my-8 sm:align-middle sm:max-w-lg sm:w-full relative text-gray-900 dark:text-white">
 
             <!-- Success State -->
-            <div x-show="showSuccess" x-transition class="absolute inset-0 bg-white z-10 flex flex-col items-center justify-center p-8 text-center">
-                <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
+            <div x-show="showSuccess" x-transition class="absolute inset-0 bg-white dark:bg-[#121824] z-10 flex flex-col items-center justify-center p-8 text-center">
+                <div class="w-20 h-20 bg-green-50 dark:bg-green-950 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center mb-6 border border-green-200 dark:border-green-800">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                 </div>
-                <h3 class="text-2xl font-bold text-gray-900 mb-2">Muvaffaqiyatli!</h3>
-                <p class="text-gray-600">Sizning so'rovingiz qabul qilindi. Tez orada mutaxassislarimiz siz bilan bog'lanishadi.</p>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Muvaffaqiyatli!</h3>
+                <p class="text-gray-600 dark:text-gray-300">Sizning so'rovingiz qabul qilindi. Tez orada mutaxassislarimiz siz bilan bog'lanishadi.</p>
             </div>
 
-            <div class="bg-brand-red p-8 text-white relative">
+            <div class="bg-brand-red/90 p-8 text-white relative border-b border-red-950/50">
                 <button @click="activeModal = null" class="absolute top-6 right-6 text-2xl hover:text-brand-gold">×</button>
                 <h3 class="text-2xl font-serif mb-2">Joyni Band Qilish</h3>
                 <p class="text-red-100 text-sm">Ma'lumotlaringizni qoldiring va biz sizga barcha tafsilotlarni tushuntiramiz.</p>
@@ -885,43 +870,43 @@
                 <input type="text" id="hp_field" style="display:none !important" tabindex="-1" autocomplete="off">
 
                 <div>
-                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">To'liq Ismingiz</label>
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2">To'liq Ismingiz</label>
                     <input type="text" x-model="bookingName" required placeholder="Masalan: Azizbek Karimov"
-                           class="w-full bg-gray-50 border border-gray-200 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none transition-all">
+                           class="w-full bg-gray-50 dark:bg-[#1B2436] border border-gray-200 dark:border-gray-800 rounded-2xl px-6 py-4 text-gray-900 dark:text-white focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Telefon Raqamingiz</label>
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2">Telefon Raqamingiz</label>
                     <input type="tel" x-model="bookingPhone" required placeholder="+998 90 123 45 67"
-                           class="w-full bg-gray-50 border border-gray-200 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none transition-all">
+                           class="w-full bg-gray-50 dark:bg-[#1B2436] border border-gray-200 dark:border-gray-800 rounded-2xl px-6 py-4 text-gray-900 dark:text-white focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500">
                 </div>
                 <div x-show="selectedPackage === '14 Kunlik Paket'">
-                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Xona turini tanlang</label>
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3">Xona turini tanlang</label>
                     <div class="grid grid-cols-3 gap-3">
                         <template x-for="room in ['2 kishilik', '3 kishilik', '4 kishilik']">
                             <button type="button" @click="bookingRoom = room"
-                                    :class="bookingRoom === room ? 'bg-brand-red text-white border-brand-red' : 'bg-gray-50 text-gray-600 border-gray-200'"
+                                    :class="bookingRoom === room ? 'bg-brand-gold text-brand-red border-brand-gold shadow-md' : 'bg-gray-50 dark:bg-[#1B2436] text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-800 hover:border-brand-gold/30'"
                                     class="py-3 rounded-xl text-xs font-bold border transition-all"
                                     x-text="room"></button>
                         </template>
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Operator jinsi</label>
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3">Operator jinsi</label>
                     <div class="grid grid-cols-2 gap-3">
                         <template x-for="op in ['Erkak', 'Ayol kishi']">
                             <button type="button" @click="bookingOperator = op"
-                                    :class="bookingOperator === op ? 'bg-brand-red text-white border-brand-red' : 'bg-gray-50 text-gray-600 border-gray-200'"
+                                    :class="bookingOperator === op ? 'bg-brand-gold text-brand-red border-brand-gold shadow-md' : 'bg-gray-50 dark:bg-[#1B2436] text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-800 hover:border-brand-gold/30'"
                                     class="py-3.5 rounded-2xl text-xs font-bold border transition-all active:scale-95"
                                     x-text="op"></button>
                         </template>
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">To'lov turi</label>
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3">To'lov turi</label>
                     <div class="grid grid-cols-2 gap-3">
                         <template x-for="pay in ['Naqd pul', 'Plastik karta']">
                             <button type="button" @click="bookingPayment = pay"
-                                    :class="bookingPayment === pay ? 'bg-brand-red text-white border-brand-red' : 'bg-gray-50 text-gray-600 border-gray-200'"
+                                    :class="bookingPayment === pay ? 'bg-brand-gold text-brand-red border-brand-gold shadow-md' : 'bg-gray-50 dark:bg-[#1B2436] text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-800 hover:border-brand-gold/30'"
                                     class="py-3.5 rounded-2xl text-xs font-bold border transition-all active:scale-95"
                                     x-text="pay"></button>
                         </template>
@@ -929,12 +914,12 @@
                 </div>
                 <button type="submit"
                         :disabled="isSubmitting"
-                        :class="isSubmitting ? 'bg-gray-400 cursor-not-allowed' : 'bg-brand-gold hover:shadow-2xl'"
-                        class="w-full text-brand-red py-5 rounded-2xl font-bold text-lg transition-all active:scale-95">
+                        :class="isSubmitting ? 'bg-gray-300 dark:bg-gray-700 text-gray-500 cursor-not-allowed' : 'bg-brand-gold text-brand-red hover:shadow-2xl hover:bg-yellow-600'"
+                        class="w-full py-5 rounded-2xl font-bold text-lg transition-all active:scale-95">
                     <span x-show="!isSubmitting">SO'ROV YUBORISH</span>
                     <span x-show="isSubmitting">YUBORILMOQDA...</span>
                 </button>
-                <p class="text-[10px] text-gray-400 text-center uppercase tracking-wider">Ma'lumotlaringiz xavfsiz saqlanadi</p>
+                <p class="text-[10px] text-gray-500 dark:text-gray-400 text-center uppercase tracking-wider">Ma'lumotlaringiz xavfsiz saqlanadi</p>
             </form>
         </div>
     </div>
@@ -1027,6 +1012,11 @@
 <script>
     function tourApp() {
         return {
+            isDark: localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches),
+            toggleTheme() {
+                this.isDark = !this.isDark;
+                localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+            },
             currentLang: localStorage.getItem('lang') || 'uz',
             translations: {
                 uz: {
