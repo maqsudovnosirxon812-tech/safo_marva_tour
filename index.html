@@ -209,81 +209,62 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 reveal">
+            <template x-for="pkg in packagesList.filter(p => !p.key_name.startsWith('special_'))" :key="pkg.id">
+                <div :class="pkg.key_name === 'comfort' 
+                        ? 'bg-white rounded-2xl border-2 border-brand-gold p-6 shadow-2xl transition-all flex flex-col relative scale-105 z-10' 
+                        : (pkg.key_name === 'lux_premium' 
+                            ? 'bg-brand-dark rounded-2xl border border-gray-800 p-6 shadow-lg hover:shadow-2xl transition-all flex flex-col text-white' 
+                            : 'bg-white rounded-2xl border border-gray-100 p-6 shadow-lg hover:shadow-2xl transition-all flex flex-col')"
+                >
+                    <!-- Featured ribbon for comfort -->
+                    <template x-if="pkg.key_name === 'comfort'">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-gold text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
+                            Ommabop
+                        </div>
+                    </template>
 
-            <!-- Standard Card -->
-            <div
-                    class="bg-white rounded-2xl border border-gray-100 p-6 shadow-lg hover:shadow-2xl transition-all flex flex-col">
-                <span class="text-brand-red font-bold text-xs tracking-widest uppercase mb-2">10 KECHALIK</span>
-                <h3 class="text-xl font-bold mb-4 uppercase">Standart Paket</h3>
-                <p class="text-gray-500 text-sm mb-6">Sifatli va hamyonbop tanlov.</p>
-                <div class="text-3xl font-bold text-brand-gold mb-6">$<span x-text="packagesData.standard?.price || '1150'"></span> <span
-                        class="text-sm text-gray-400 font-normal">/ dan</span></div>
-                <div class="mt-auto space-y-3">
-                    <button @click="activeModal = 'standard'"
-                            class="w-full bg-gray-100 text-gray-800 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors">Batafsil
-                        ma'lumot</button>
-                    <button @click="activeModal = 'booking'; selectedPackage = 'Standart Paket'"
-                            class="block w-full bg-brand-red text-white py-3 rounded-xl font-bold text-center hover:bg-red-800 shadow-md">Band
-                        qilish</button>
-                </div>
-            </div>
+                    <!-- Tag -->
+                    <span :class="pkg.key_name === 'lux_premium' ? 'text-brand-gold font-bold text-xs tracking-widest uppercase mb-2' : 'text-brand-red font-bold text-xs tracking-widest uppercase mb-2'"
+                          x-text="pkg.key_name === 'lux_premium' ? 'PREMIUM' : '10 KECHALIK'"></span>
 
-            <!-- Comfort Card -->
-            <div
-                    class="bg-white rounded-2xl border-2 border-brand-gold p-6 shadow-2xl transition-all flex flex-col relative scale-105 z-10">
-                <div
-                        class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-gold text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
-                    Ommabop</div>
-                <span class="text-brand-red font-bold text-xs tracking-widest uppercase mb-2">10 KECHALIK</span>
-                <h3 class="text-xl font-bold mb-4 uppercase">Komfort Paket</h3>
-                <p class="text-gray-500 text-sm mb-6">Qulay mehmonxona va yuqori darajadagi xizmat.</p>
-                <div class="text-3xl font-bold text-brand-gold mb-6">$<span x-text="packagesData.comfort?.price || '1300'"></span> <span
-                        class="text-sm text-gray-400 font-normal">/ dan</span></div>
-                <div class="mt-auto space-y-3">
-                    <button @click="activeModal = 'comfort'"
-                            class="w-full bg-gray-100 text-gray-800 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors">Batafsil
-                        ma'lumot</button>
-                    <button @click="activeModal = 'booking'; selectedPackage = 'Komfort Paket'"
-                            class="block w-full bg-brand-red text-white py-3 rounded-xl font-bold text-center hover:bg-red-800 shadow-md">Band
-                        qilish</button>
-                </div>
-            </div>
+                    <!-- Title -->
+                    <h3 class="text-xl font-bold mb-4 uppercase" x-text="pkg.display_name"></h3>
 
-            <!-- LUX Card -->
-            <div
-                    class="bg-white rounded-2xl border border-gray-100 p-6 shadow-lg hover:shadow-2xl transition-all flex flex-col">
-                <span class="text-brand-red font-bold text-xs tracking-widest uppercase mb-2">10 KECHALIK</span>
-                <h3 class="text-xl font-bold mb-4 uppercase">LUX Paket</h3>
-                <p class="text-gray-500 text-sm mb-6">Haramga yaqin va premium mehmonxonalar.</p>
-                <div class="text-3xl font-bold text-brand-gold mb-6">$<span x-text="packagesData.lux?.price || '1550'"></span> <span
-                        class="text-sm text-gray-400 font-normal">/ dan</span></div>
-                <div class="mt-auto space-y-3">
-                    <button @click="activeModal = 'lux'"
-                            class="w-full bg-gray-100 text-gray-800 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors">Batafsil
-                        ma'lumot</button>
-                    <button @click="activeModal = 'booking'; selectedPackage = 'LUX Paket'"
-                            class="block w-full bg-brand-red text-white py-3 rounded-xl font-bold text-center hover:bg-red-800 shadow-md">Band
-                        qilish</button>
-                </div>
-            </div>
+                    <!-- Description -->
+                    <p :class="pkg.key_name === 'lux_premium' ? 'text-gray-400 text-sm mb-6' : 'text-gray-500 text-sm mb-6'"
+                       x-text="pkg.description || 'Siz uchun qulay sayohat taklifi.'"></p>
 
-            <!-- LUX Premium Card -->
-            <div
-                    class="bg-brand-dark rounded-2xl border border-gray-800 p-6 shadow-lg hover:shadow-2xl transition-all flex flex-col text-white">
-                <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">PREMIUM</span>
-                <h3 class="text-xl font-bold mb-4 uppercase">LUX Premium</h3>
-                <p class="text-gray-400 text-sm mb-6">Eng yuqori darajadagi qulaylik va ibodat muhiti.</p>
-                <div class="text-3xl font-bold text-brand-gold mb-6">$<span x-text="packagesData.lux_premium?.price || '1650'"></span> <span
-                        class="text-sm text-gray-500 font-normal">/ dan</span></div>
-                <div class="mt-auto space-y-3">
-                    <button @click="activeModal = 'lux_premium'"
-                            class="w-full bg-gray-800 text-white py-3 rounded-xl font-semibold hover:bg-gray-700 transition-colors border border-gray-700">Batafsil
-                        ma'lumot</button>
-                    <button @click="activeModal = 'booking'; selectedPackage = 'LUX Premium'"
-                            class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md">Band
-                        qilish</button>
+                    <!-- Price -->
+                    <div class="text-3xl font-bold text-brand-gold mb-6">
+                        $<span x-text="pkg.price"></span>
+                        <span :class="pkg.key_name === 'lux_premium' ? 'text-sm text-gray-500 font-normal' : 'text-sm text-gray-400 font-normal'">/ dan</span>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="mt-auto space-y-3">
+                        <!-- Details Button: only if hardcoded modal exists, else generic dynamic modal -->
+                        <template x-if="['standard', 'comfort', 'lux', 'lux_premium'].includes(pkg.key_name)">
+                            <button @click="activeModal = pkg.key_name"
+                                    :class="pkg.key_name === 'lux_premium' ? 'w-full bg-gray-800 text-white py-3 rounded-xl font-semibold hover:bg-gray-700 transition-colors border border-gray-700' : 'w-full bg-gray-100 text-gray-800 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors'">
+                                Batafsil ma'lumot
+                            </button>
+                        </template>
+                        <template x-if="!['standard', 'comfort', 'lux', 'lux_premium'].includes(pkg.key_name)">
+                            <button @click="activeModal = 'generic_modal'; customPackageDetail = pkg"
+                                    class="w-full bg-gray-100 text-gray-800 py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors">
+                                Batafsil ma'lumot
+                            </button>
+                        </template>
+
+                        <!-- Booking Button -->
+                        <button @click="activeModal = 'booking'; selectedPackage = pkg.display_name"
+                                :class="pkg.key_name === 'lux_premium' ? 'block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md' : 'block w-full bg-brand-red text-white py-3 rounded-xl font-bold text-center hover:bg-red-800 shadow-md'">
+                            Band qilish
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </template>
+        </div>
 
         </div>
     </div>
@@ -657,6 +638,39 @@
                             class="w-full sm:w-auto bg-brand-red text-white px-10 py-4 rounded-2xl font-bold hover:bg-red-800 shadow-xl text-center">BOG'LANISH</button>
                 </div>
             </div>
+</div>
+
+<!-- Generic Modal for Custom Packages -->
+<div x-show="activeModal === 'generic_modal'" x-cloak class="fixed inset-0 z-[100] overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen px-4 sm:p-0">
+        <div @click="activeModal = null" class="fixed inset-0 bg-gray-900/75 backdrop-blur-sm"></div>
+        <div class="inline-block bg-white rounded-3xl shadow-3xl sm:max-w-lg sm:w-full z-10 overflow-hidden transform transition-all">
+            <div class="bg-brand-red px-8 py-6 flex justify-between items-center text-white">
+                <h3 class="text-xl font-bold uppercase tracking-wider" x-text="customPackageDetail?.display_name"></h3>
+                <button @click="activeModal = null" class="font-bold text-2xl">×</button>
+            </div>
+            <div class="px-8 py-8 space-y-6">
+                <div>
+                    <h4 class="font-bold text-brand-red mb-2 uppercase text-xs tracking-widest">Tavsif:</h4>
+                    <p class="text-gray-700" x-text="customPackageDetail?.description || 'Siz uchun qulay sayohat taklifi.'"></p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-brand-red mb-2 uppercase text-xs tracking-widest">Dasturda:</h4>
+                    <ul class="text-gray-600 space-y-1">
+                        <li>• Aviachiptalar (Borish-kelish)</li>
+                        <li>• Umra vizasi</li>
+                        <li>• Malakali yo'lboshchi xizmati</li>
+                        <li>• Tibbiy sug'urta</li>
+                        <li>• Makka va Madina ziyoratlari</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                    <p class="text-xs text-gray-500 uppercase mb-1">Boshlang'ich Narx:</p>
+                    <p class="text-3xl font-bold text-brand-gold">$<span x-text="customPackageDetail?.price"></span></p>
+                </div>
+                <button @click="activeModal = 'booking'; selectedPackage = customPackageDetail?.display_name"
+                        class="block w-full bg-brand-red text-white py-4 rounded-2xl font-bold text-center hover:bg-red-800 shadow-xl transition-all">HOZIR BAND QILISH</button>
+            </div>
         </div>
     </div>
 </div>
@@ -768,9 +782,9 @@
                 <a href="tel:+998555177373"
                    class="bg-brand-red text-white px-12 py-5 rounded-2xl font-bold text-xl hover:shadow-2xl transition-all">QO'NG'IROQ
                     QILISH</a>
-                <button @click="activeModal = 'booking'; selectedPackage = 'Konsultatsiya (Telegram)'"
-                        class="bg-white text-brand-red px-12 py-5 rounded-2xl font-bold text-xl hover:shadow-2xl transition-all">TELEGRAMDAN
-                    YOZISH</button>
+                <a href="https://t.me/Safomarva_admin" target="_blank"
+                   class="bg-white text-brand-red px-12 py-5 rounded-2xl font-bold text-xl hover:shadow-2xl transition-all">TELEGRAMDAN
+                    YOZISH</a>
             </div>
         </div>
     </div>
@@ -1060,14 +1074,18 @@
             selectedPackage: '',
             showSuccess: false,
             isSubmitting: false,
+            packagesList: [],
+            customPackageDetail: null,
             packagesData: {},
             async init() {
                 // Supabase ma'lumotlarini olish
                 const { data: packages, error } = await supabaseClient
                     .from('packages')
-                    .select('*');
+                    .select('*')
+                    .order('id', { ascending: true });
 
                 if (!error && packages) {
+                    this.packagesList = packages;
                     this.packagesData = packages.reduce((acc, pkg) => {
                         acc[pkg.key_name] = pkg;
                         return acc;
