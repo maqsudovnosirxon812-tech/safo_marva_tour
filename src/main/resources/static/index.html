@@ -767,6 +767,130 @@
     </div>
 </section>
 
+<!-- FAQ Section -->
+<section id="faq" class="py-24 bg-gray-50 dark:bg-[#0B0F19]/40 border-t border-b border-gray-100 dark:border-gray-900/60 transition-colors duration-300 reveal" x-data="{ activeFaq: null }">
+    <div class="container mx-auto px-6 max-w-4xl">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-serif text-brand-gold mb-4" x-text="t('section_faq')">Ko'p Beriladigan Savollar</h2>
+            <div class="w-24 h-1 bg-brand-gold mx-auto"></div>
+        </div>
+
+        <div class="space-y-4">
+            <!-- FAQ Item 1 -->
+            <div 
+                class="bg-white dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
+                :class="activeFaq === 1 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
+                @click="activeFaq = (activeFaq === 1) ? null : 1">
+                <div class="flex justify-between items-center gap-4">
+                    <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300"
+                        :class="activeFaq === 1 ? 'text-brand-gold' : ''"
+                        x-text="t('faq_q1')"></h4>
+                    <span class="text-brand-gold flex-shrink-0 transition-transform duration-300"
+                          :class="activeFaq === 1 ? 'rotate-180' : ''">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </span>
+                </div>
+                <div x-show="activeFaq === 1"
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0 max-h-0"
+                     x-transition:enter-end="opacity-100 max-h-[500px]"
+                     x-transition:leave="transition ease-in duration-200"
+                     x-transition:leave-start="opacity-100 max-h-[500px]"
+                     x-transition:leave-end="opacity-0 max-h-0"
+                     class="overflow-hidden mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-gray-100 dark:border-gray-800/60 pt-4">
+                    <p x-text="t('faq_a1')"></p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div 
+                class="bg-white dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
+                :class="activeFaq === 2 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
+                @click="activeFaq = (activeFaq === 2) ? null : 2">
+                <div class="flex justify-between items-center gap-4">
+                    <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300"
+                        :class="activeFaq === 2 ? 'text-brand-gold' : ''"
+                        x-text="t('faq_q2')"></h4>
+                    <span class="text-brand-gold flex-shrink-0 transition-transform duration-300"
+                          :class="activeFaq === 2 ? 'rotate-180' : ''">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </span>
+                </div>
+                <div x-show="activeFaq === 2"
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0 max-h-0"
+                     x-transition:enter-end="opacity-100 max-h-[500px]"
+                     x-transition:leave="transition ease-in duration-200"
+                     x-transition:leave-start="opacity-100 max-h-[500px]"
+                     x-transition:leave-end="opacity-0 max-h-0"
+                     class="overflow-hidden mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-gray-100 dark:border-gray-800/60 pt-4">
+                    <p x-text="t('faq_a2')"></p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div 
+                class="bg-white dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
+                :class="activeFaq === 3 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
+                @click="activeFaq = (activeFaq === 3) ? null : 3">
+                <div class="flex justify-between items-center gap-4">
+                    <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300"
+                        :class="activeFaq === 3 ? 'text-brand-gold' : ''"
+                        x-text="t('faq_q3')"></h4>
+                    <span class="text-brand-gold flex-shrink-0 transition-transform duration-300"
+                          :class="activeFaq === 3 ? 'rotate-180' : ''">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </span>
+                </div>
+                <div x-show="activeFaq === 3"
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0 max-h-0"
+                     x-transition:enter-end="opacity-100 max-h-[500px]"
+                     x-transition:leave="transition ease-in duration-200"
+                     x-transition:leave-start="opacity-100 max-h-[500px]"
+                     x-transition:leave-end="opacity-0 max-h-0"
+                     class="overflow-hidden mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-gray-100 dark:border-gray-800/60 pt-4">
+                    <p x-text="t('faq_a3')"></p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div 
+                class="bg-white dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
+                :class="activeFaq === 4 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
+                @click="activeFaq = (activeFaq === 4) ? null : 4">
+                <div class="flex justify-between items-center gap-4">
+                    <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300"
+                        :class="activeFaq === 4 ? 'text-brand-gold' : ''"
+                        x-text="t('faq_q4')"></h4>
+                    <span class="text-brand-gold flex-shrink-0 transition-transform duration-300"
+                          :class="activeFaq === 4 ? 'rotate-180' : ''">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </span>
+                </div>
+                <div x-show="activeFaq === 4"
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0 max-h-0"
+                     x-transition:enter-end="opacity-100 max-h-[500px]"
+                     x-transition:leave="transition ease-in duration-200"
+                     x-transition:leave-start="opacity-100 max-h-[500px]"
+                     x-transition:leave-end="opacity-0 max-h-0"
+                     class="overflow-hidden mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-gray-100 dark:border-gray-800/60 pt-4">
+                    <p x-text="t('faq_a4')"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- CTA Section -->
 <section class="py-24 bg-white dark:bg-[#090D16] transition-colors duration-300 reveal">
     <div class="container mx-auto px-6">
@@ -1036,7 +1160,16 @@
                     form_name: "Ismingiz",
                     form_phone: "Telefon raqamingiz",
                     success_msg: "Murojaatingiz muvaffaqiyatli yuborildi!",
-                    btn_send: "Yuborish"
+                    btn_send: "Yuborish",
+                    section_faq: "Ko'p Beriladigan Savollar",
+                    faq_q1: "Viza uchun qanday hujjatlar kerak?",
+                    faq_a1: "Umra vizasini olish uchun xorijga chiqish biometrik pasporti (qizil pasport, kamida 6 oy amal qilish muddati bo'lishi lozim) hamda 3x4 o'lchamdagi 2 dona oq fondagi rasm talab etiladi. Barcha viza rasmiylashtirish ishlarini bizning guruh o'z zimmamizga oladi.",
+                    faq_q2: "Paket narxiga hamma narsa kiradimi?",
+                    faq_a2: "Ha, bizning paketlarimizga (tanlovingizga ko'ra) borish-kelish aviachiptalari, viza xizmati, Makkada va Madinada mehmonxonalar, transport xizmatlari (tezyurar poezd va transferlar), malakali guruh rahbarlari va tibbiy sug'urta to'liq kiritilgan. Hech qanday yashirin to'lovlar mavjud emas.",
+                    faq_q3: "Tibbiy sug'urta qanday ishlaydi?",
+                    faq_a3: "Safaringiz davomida sizga Saudiya Arabistoni davlati va bizning kompaniya tomonidan taqdim etilgan maxsus tibbiy sug'urta hamrohlik qiladi. Sog'ligingizda muammo yuzaga kelsa, guruh shifokori yoki yo'lboshchisi sug'urta orqali bepul tibbiy xizmat olishingizni ta'minlaydi.",
+                    faq_q4: "Boshqa shaharlardan ziyoratchilarni qabul qilasizmi?",
+                    faq_a4: "Albatta! Biz O'zbekistonning barcha viloyatlaridan hamda qo'shni davlatlardan ham ziyoratchilarni qabul qilamiz. Ularni Toshkent xalqaro aeroportida kutib olish va guruhga qo'shish ishlarini to'liq tashkil qilib beramiz."
                 },
                 ru: {
                     menu_packages: "Пакеты",
@@ -1055,7 +1188,16 @@
                     form_name: "Ваше имя",
                     form_phone: "Ваш номер телефона",
                     success_msg: "Ваш запрос успешно отправлен!",
-                    btn_send: "Отправить"
+                    btn_send: "Отправить",
+                    section_faq: "Часто задаваемые вопросы",
+                    faq_q1: "Какие документы нужны для визы?",
+                    faq_a1: "Для получения визы Умры требуется биометрический заграничный паспорт (срок действия не менее 6 месяцев) и 2 цветные фотографии размером 3х4 на белом фоне. Все процедуры оформления визы наша команда берет на себя.",
+                    faq_q2: "Всё ли включено в стоимость пакета?",
+                    faq_a2: "Да, в наши пакеты (в зависимости от вашего выбора) полностью включены авиабилеты в обе стороны, визовая поддержка, проживание в отелях Мекки и Медины, транспортные услуги (скоростной поезд и трансферы), услуги опытных руководителей групп и медицинская страховка. Никаких скрытых платежей.",
+                    faq_q3: "Как работает медицинская страховка?",
+                    faq_a3: "Во время вашего путешествия вас сопровождает специальная медицинская страховка, предоставленная Саудовской Аравией и нашей компанией. При возникновении проблем со здоровьем врач или руководитель группы организуют бесплатную медицинскую помощь по страховке.",
+                    faq_q4: "Принимаете ли вы паломников из других городов?",
+                    faq_a4: "Конечно! Мы принимаем паломников из всех регионов Узбекистана, а также из соседних стран. Мы берем на себя полную организацию встречи в международном аэропорту Ташкента и сопровождение в группу."
                 },
                 en: {
                     menu_packages: "Packages",
@@ -1074,7 +1216,16 @@
                     form_name: "Your Name",
                     form_phone: "Your Phone Number",
                     success_msg: "Your request has been sent successfully!",
-                    btn_send: "Send"
+                    btn_send: "Send",
+                    section_faq: "Frequently Asked Questions",
+                    faq_q1: "What documents are required for a visa?",
+                    faq_a1: "To obtain an Umrah visa, a biometric passport for travel abroad (valid for at least 6 months) and 2 color photographs of 3x4 size on a white background are required. Our team will handle all visa processing procedures.",
+                    faq_q2: "Is everything included in the package price?",
+                    faq_a2: "Yes, our packages fully include round-trip flight tickets, visa processing, hotel accommodation in Makkah and Madinah, transportation (high-speed train and transfers), professional group guides, and medical insurance. There are no hidden fees.",
+                    faq_q3: "How does medical insurance work?",
+                    faq_a3: "During your journey, you are covered by a special medical insurance provided by the Kingdom of Saudi Arabia and our company. If any health issues arise, the group doctor or guide will ensure you receive free medical care through the insurance.",
+                    faq_q4: "Do you accept pilgrims from other cities/countries?",
+                    faq_a4: "Of course! We accept pilgrims from all regions of Uzbekistan as well as neighboring countries. We fully organize their arrival at Tashkent International Airport and coordinate their integration into the group."
                 }
             },
                 t(key) {
