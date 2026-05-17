@@ -8,7 +8,6 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Safo Marva Tour - Umra Ziyorati 2026</title>
-    <link rel="stylesheet" href="./src/input.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -1109,19 +1108,33 @@
                 if(!this.isSubmitting) {
                     this.isSubmitting = true;
                     try {
-                        // 1. Backend orqali Telegram xabar yuborish (XAVFSIZ)
-                        const response = await fetch('/api/bookings', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                name: cleanName,
-                                phone: cleanPhone,
-                                selectedPackage: this.selectedPackage,
-                                room: this.bookingRoom
-                            })
-                        });
+                        // 1. Telegram API orqali to'g'ridan-to'g'ri xabar yuborish
+                        const botToken = "8726481674:AAEqvxqyqLsvrN3vIuDXi-2jJRJkPVPp0sc";
+                        const adminIds = ["6448561095", "1809187274"];
+                        const now = new Date().toLocaleString("ru-RU", {timeZone: "Asia/Tashkent"});
+                        const roomInfo = this.selectedPackage === "14 Kunlik Paket" ? "\n🛏 Xona turi: " + this.bookingRoom : "";
+                        
+                        const message = `🌟 <b>YANGI MUROJAAT!</b> 🌟\n\n` +
+                                        `👤 <b>Mijoz:</b> ${cleanName}\n` +
+                                        `📞 <b>Telefon:</b> <code>${cleanPhone}</code>\n` +
+                                        `📦 <b>Tanlangan paket:</b> ${this.selectedPackage}${roomInfo}\n\n` +
+                                        `📅 <b>Vaqt:</b> ${now}\n` +
+                                        `🌐 <b>Manba:</b> Safo Marva Tour (Veb-sayt)\n\n` +
+                                        `📞 <b>Qo'ng'iroq uchun:</b> <a href="tel:${cleanPhone.replace(/\s/g, '')}">${cleanPhone}</a>`;
 
-                        if (!response.ok) throw new Error("Server error");
+                        for (const adminId of adminIds) {
+                            try {
+                                await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({
+                                        chat_id: adminId,
+                                        text: message,
+                                        parse_mode: 'HTML'
+                                    })
+                                });
+                            } catch (e) { console.error("Telegram send error", e); }
+                        }
 
                         // 2. Supabase (zaxira)
                         try {
