@@ -891,6 +891,99 @@
     </div>
 </section>
 
+<!-- Price Calculator Section -->
+<section id="calculator" class="py-24 bg-white dark:bg-[#090D16] transition-colors duration-300 reveal">
+    <div class="container mx-auto px-6 max-w-4xl">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-serif text-brand-gold mb-4" x-text="t('calc_title')">Narx Hisoblagich</h2>
+            <div class="w-24 h-1 bg-brand-gold mx-auto mb-6"></div>
+            <p class="text-gray-600 dark:text-gray-400 max-w-lg mx-auto" x-text="t('calc_subtitle')"></p>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-[#121824] rounded-[2.5rem] border border-gray-200 dark:border-gray-800/80 p-8 md:p-12 shadow-xl dark:shadow-[0_0_40px_rgba(0,0,0,0.3)] transition-colors duration-300">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+
+                <!-- Left: Controls -->
+                <div class="space-y-8">
+                    <!-- Package Selection -->
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-4" x-text="t('calc_package')"></label>
+                        <div class="space-y-3">
+                            <template x-for="(pkg, key) in calcPackages" :key="key">
+                                <button @click="calcPackage = key" type="button"
+                                    class="w-full flex items-center justify-between p-4 rounded-2xl border transition-all duration-300 text-left"
+                                    :class="calcPackage === key 
+                                        ? 'bg-brand-gold/10 dark:bg-brand-gold/5 border-brand-gold shadow-md' 
+                                        : 'bg-white dark:bg-[#1B2436] border-gray-200 dark:border-gray-800 hover:border-brand-gold/30'">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all"
+                                             :class="calcPackage === key ? 'border-brand-gold' : 'border-gray-300 dark:border-gray-600'">
+                                            <div class="w-2.5 h-2.5 rounded-full bg-brand-gold transition-all"
+                                                 :class="calcPackage === key ? 'scale-100' : 'scale-0'"></div>
+                                        </div>
+                                        <span class="font-bold text-sm text-gray-900 dark:text-white" x-text="pkg.name"></span>
+                                    </div>
+                                    <span class="text-brand-gold font-bold text-sm" x-text="'$' + pkg.price"></span>
+                                </button>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- Persons Counter -->
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-4" x-text="t('calc_persons')"></label>
+                        <div class="flex items-center gap-4">
+                            <button @click="calcPersons = Math.max(1, calcPersons - 1)" type="button"
+                                class="w-14 h-14 rounded-2xl bg-white dark:bg-[#1B2436] border border-gray-200 dark:border-gray-700 flex items-center justify-center text-2xl font-bold text-gray-600 dark:text-gray-300 hover:border-brand-gold/40 hover:text-brand-gold transition-all active:scale-90 select-none">
+                                −
+                            </button>
+                            <div class="flex-1 text-center">
+                                <span class="text-5xl font-bold text-gray-900 dark:text-white" x-text="calcPersons"></span>
+                                <p class="text-xs text-gray-500 dark:text-gray-400 mt-1" x-text="t('calc_person_word')"></p>
+                            </div>
+                            <button @click="calcPersons = Math.min(50, calcPersons + 1)" type="button"
+                                class="w-14 h-14 rounded-2xl bg-white dark:bg-[#1B2436] border border-gray-200 dark:border-gray-700 flex items-center justify-center text-2xl font-bold text-gray-600 dark:text-gray-300 hover:border-brand-gold/40 hover:text-brand-gold transition-all active:scale-90 select-none">
+                                +
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Result -->
+                <div class="flex flex-col justify-center items-center text-center">
+                    <div class="w-full bg-gradient-to-br from-brand-gold/5 to-brand-gold/10 dark:from-brand-gold/5 dark:to-brand-gold/10 border border-brand-gold/20 rounded-3xl p-8 md:p-10">
+                        <!-- Per Person -->
+                        <div class="mb-6">
+                            <p class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2" x-text="t('calc_per_person')"></p>
+                            <p class="text-2xl font-bold text-gray-800 dark:text-gray-200">$<span x-text="calcPricePerPerson.toLocaleString()"></span></p>
+                        </div>
+
+                        <!-- Divider -->
+                        <div class="w-16 h-px bg-brand-gold/30 mx-auto mb-6"></div>
+
+                        <!-- Total -->
+                        <div class="mb-8">
+                            <p class="text-xs font-bold text-brand-gold uppercase tracking-widest mb-2" x-text="t('calc_total')"></p>
+                            <p class="text-5xl md:text-6xl font-bold text-brand-gold leading-none">
+                                $<span x-text="calcTotalPrice.toLocaleString()"></span>
+                            </p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                                <span x-text="calcPersons"></span> × $<span x-text="calcPricePerPerson.toLocaleString()"></span>
+                            </p>
+                        </div>
+
+                        <!-- Book Button -->
+                        <button @click="bookFromCalc()" type="button"
+                            class="w-full bg-brand-gold text-brand-red py-4 rounded-2xl font-bold text-base hover:bg-yellow-600 transition-all hover:scale-[1.02] active:scale-95 shadow-lg"
+                            x-text="t('calc_book')">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- CTA Section -->
 <section class="py-24 bg-white dark:bg-[#090D16] transition-colors duration-300 reveal">
     <div class="container mx-auto px-6">
@@ -1169,7 +1262,15 @@
                     faq_q3: "Tibbiy sug'urta qanday ishlaydi?",
                     faq_a3: "Safaringiz davomida sizga Saudiya Arabistoni davlati va bizning kompaniya tomonidan taqdim etilgan maxsus tibbiy sug'urta hamrohlik qiladi. Sog'ligingizda muammo yuzaga kelsa, guruh shifokori yoki yo'lboshchisi sug'urta orqali bepul tibbiy xizmat olishingizni ta'minlaydi.",
                     faq_q4: "Boshqa shaharlardan ziyoratchilarni qabul qilasizmi?",
-                    faq_a4: "Albatta! Biz O'zbekistonning barcha viloyatlaridan hamda qo'shni davlatlardan ham ziyoratchilarni qabul qilamiz. Ularni Toshkent xalqaro aeroportida kutib olish va guruhga qo'shish ishlarini to'liq tashkil qilib beramiz."
+                    faq_a4: "Albatta! Biz O'zbekistonning barcha viloyatlaridan hamda qo'shni davlatlardan ham ziyoratchilarni qabul qilamiz. Ularni Toshkent xalqaro aeroportida kutib olish va guruhga qo'shish ishlarini to'liq tashkil qilib beramiz.",
+                    calc_title: "Narx Hisoblagich",
+                    calc_subtitle: "Paketni tanlang, ziyoratchilar sonini belgilang — narxni hoziroq bilib oling!",
+                    calc_package: "Paketni tanlang",
+                    calc_persons: "Ziyoratchilar soni",
+                    calc_per_person: "1 kishi uchun",
+                    calc_total: "Umumiy narx",
+                    calc_book: "SHU NARXDA BAND QILISH",
+                    calc_person_word: "kishi"
                 },
                 ru: {
                     menu_packages: "Пакеты",
@@ -1197,7 +1298,15 @@
                     faq_q3: "Как работает медицинская страховка?",
                     faq_a3: "Во время вашего путешествия вас сопровождает специальная медицинская страховка, предоставленная Саудовской Аравией и нашей компанией. При возникновении проблем со здоровьем врач или руководитель группы организуют бесплатную медицинскую помощь по страховке.",
                     faq_q4: "Принимаете ли вы паломников из других городов?",
-                    faq_a4: "Конечно! Мы принимаем паломников из всех регионов Узбекистана, а также из соседних стран. Мы берем на себя полную организацию встречи в международном аэропорту Ташкента и сопровождение в группу."
+                    faq_a4: "Конечно! Мы принимаем паломников из всех регионов Узбекистана, а также из соседних стран. Мы берем на себя полную организацию встречи в международном аэропорту Ташкента и сопровождение в группу.",
+                    calc_title: "Калькулятор цен",
+                    calc_subtitle: "Выберите пакет, укажите количество паломников — узнайте цену прямо сейчас!",
+                    calc_package: "Выберите пакет",
+                    calc_persons: "Количество паломников",
+                    calc_per_person: "За 1 человека",
+                    calc_total: "Общая стоимость",
+                    calc_book: "ЗАБРОНИРОВАТЬ ПО ЭТОЙ ЦЕНЕ",
+                    calc_person_word: "чел."
                 },
                 en: {
                     menu_packages: "Packages",
@@ -1225,7 +1334,15 @@
                     faq_q3: "How does medical insurance work?",
                     faq_a3: "During your journey, you are covered by a special medical insurance provided by the Kingdom of Saudi Arabia and our company. If any health issues arise, the group doctor or guide will ensure you receive free medical care through the insurance.",
                     faq_q4: "Do you accept pilgrims from other cities/countries?",
-                    faq_a4: "Of course! We accept pilgrims from all regions of Uzbekistan as well as neighboring countries. We fully organize their arrival at Tashkent International Airport and coordinate their integration into the group."
+                    faq_a4: "Of course! We accept pilgrims from all regions of Uzbekistan as well as neighboring countries. We fully organize their arrival at Tashkent International Airport and coordinate their integration into the group.",
+                    calc_title: "Price Calculator",
+                    calc_subtitle: "Choose a package, set the number of pilgrims — find out the price right now!",
+                    calc_package: "Select a package",
+                    calc_persons: "Number of pilgrims",
+                    calc_per_person: "Per person",
+                    calc_total: "Total price",
+                    calc_book: "BOOK AT THIS PRICE",
+                    calc_person_word: "persons"
                 }
             },
                 t(key) {
@@ -1246,6 +1363,25 @@
             bookingOperator: 'Erkak',
             bookingPayment: 'Naqd pul',
             selectedPackage: '',
+            calcPackage: 'comfort',
+            calcPersons: 1,
+            calcPackages: {
+                standard: { name: 'Standart Paket', price: 1150 },
+                comfort: { name: 'Komfort Paket', price: 1300 },
+                lux: { name: 'LUX Paket', price: 1550 },
+                lux_premium: { name: 'LUX Premium', price: 1650 },
+                special_14day: { name: '14 Kunlik Paket', price: 1390 }
+            },
+            get calcPricePerPerson() {
+                return this.calcPackages[this.calcPackage]?.price || 0;
+            },
+            get calcTotalPrice() {
+                return this.calcPricePerPerson * this.calcPersons;
+            },
+            bookFromCalc() {
+                this.selectedPackage = this.calcPackages[this.calcPackage]?.name || '';
+                this.activeModal = 'booking';
+            },
             showSuccess: false,
             isSubmitting: false,
             packagesData: {
