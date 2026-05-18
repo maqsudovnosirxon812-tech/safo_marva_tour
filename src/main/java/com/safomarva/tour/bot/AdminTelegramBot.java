@@ -693,11 +693,13 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
             String source = lead.getSource() != null ? lead.getSource() : "Veb-sayt";
             String operator = lead.getOperator() != null ? lead.getOperator() : "Erkak";
             String payment = lead.getPaymentMethod() != null ? lead.getPaymentMethod() : "Naqd pul";
+            int persons = lead.getPersons() != null ? lead.getPersons() : 1;
 
             String message = "👤 <b>Mijoz Ma'lumotlari:</b>\n\n" +
                     "👤 <b>Ismi:</b> " + lead.getName() + "\n" +
                     "📞 <b>Telefon:</b> <code>" + lead.getPhone() + "</code>\n" +
                     "📦 <b>Tanlangan paket:</b> " + lead.getPackageSelected() + "\n" +
+                    "👥 <b>Ziyoratchilar soni:</b> " + persons + " kishi\n" +
                     "🛏 <b>Xona turi:</b> " + room + "\n" +
                     "🎧 <b>Operator jinsi:</b> " + operator + "\n" +
                     "💳 <b>To'lov turi:</b> " + payment + "\n" +

@@ -32,13 +32,23 @@ public class LeadController {
 
     // Public API: Capture landing page lead registration form
     @PostMapping("/leads")
-    public ResponseEntity<?> createLead(@RequestBody Map<String, String> body) {
-        String name = body.get("name");
-        String phone = body.get("phone");
-        String selectedPackage = body.get("package");
-        String room = body.get("room");
-        String operator = body.get("operator");
-        String paymentMethod = body.get("paymentMethod");
+    public ResponseEntity<?> createLead(@RequestBody Map<String, Object> body) {
+        String name = body.get("name") != null ? String.valueOf(body.get("name")) : null;
+        String phone = body.get("phone") != null ? String.valueOf(body.get("phone")) : null;
+        String selectedPackage = body.get("package") != null ? String.valueOf(body.get("package")) : null;
+        String room = body.get("room") != null ? String.valueOf(body.get("room")) : null;
+        String operator = body.get("operator") != null ? String.valueOf(body.get("operator")) : null;
+        String paymentMethod = body.get("paymentMethod") != null ? String.valueOf(body.get("paymentMethod")) : null;
+        
+        // Safely extract persons count
+        int finalPersons = 1;
+        if (body.containsKey("persons") && body.get("persons") != null) {
+            try {
+                finalPersons = Integer.parseInt(String.valueOf(body.get("persons")));
+            } catch (NumberFormatException e) {
+                System.err.println("⚠️ Could not parse persons value: " + body.get("persons"));
+            }
+        }
 
         // Basic Validation
         if (name == null || phone == null || selectedPackage == null) {
@@ -61,6 +71,7 @@ public class LeadController {
             LeadEntity lead = new LeadEntity(cleanName, cleanPhone, selectedPackage, finalRoom, "web-site");
             lead.setOperator(finalOperator);
             lead.setPaymentMethod(finalPayment);
+            lead.setPersons(finalPersons);
             leadRepository.save(lead);
             dbSaved = true;
             System.out.println("✅ Lead successfully saved to PostgreSQL via Spring JPA: " + cleanName);
@@ -80,6 +91,7 @@ public class LeadController {
                     "👤 <b>Mijoz:</b> " + cleanName + "\n" +
                     "📞 <b>Telefon:</b> <code>" + cleanPhone + "</code>\n" +
                     "📦 <b>Tanlangan paket:</b> " + selectedPackage + roomInfo + "\n" +
+                    "👥 <b>Ziyoratchilar soni:</b> " + finalPersons + " kishi\n" +
                     "🎧 <b>Operator jinsi:</b> " + finalOperator + "\n" +
                     "💳 <b>To'lov turi:</b> " + finalPayment + "\n\n" +
                     "📅 <b>Vaqt:</b> " + now + "\n" +

@@ -33,6 +33,9 @@ public class LeadEntity {
     @Column(name = "payment_method", length = 50)
     private String paymentMethod = "Naqd pul";
 
+    @Column(name = "persons", nullable = false)
+    private Integer persons = 1;
+
     @Column(name = "created_at", insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
 
@@ -46,6 +49,7 @@ public class LeadEntity {
         this.packageSelected = packageSelected;
         this.room = room != null ? room : "Kiritilmagan";
         this.source = source != null ? source : "web-site";
+        this.persons = 1;
     }
 
     // Getters and Setters
@@ -111,6 +115,14 @@ public class LeadEntity {
 
     public void setPaymentMethod(String paymentMethod) {
         this.paymentMethod = paymentMethod != null ? paymentMethod : "Naqd pul";
+    }
+
+    public Integer getPersons() {
+        return persons;
+    }
+
+    public void setPersons(Integer persons) {
+        this.persons = persons != null ? persons : 1;
     }
 
     public LocalDateTime getCreatedAt() {
