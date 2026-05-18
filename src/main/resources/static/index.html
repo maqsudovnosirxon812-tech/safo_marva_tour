@@ -778,10 +778,10 @@
 
         <!-- Gradient Overlays for smooth edges -->
         <div
-                class="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-white dark:from-brand-dark to-transparent z-10 pointer-events-none transition-colors duration-300">
+                class="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-brand-cream dark:from-brand-dark to-transparent z-10 pointer-events-none transition-colors duration-300">
         </div>
         <div
-                class="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-white dark:from-brand-dark to-transparent z-10 pointer-events-none transition-colors duration-300">
+                class="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-brand-cream dark:from-brand-dark to-transparent z-10 pointer-events-none transition-colors duration-300">
         </div>
     </div>
 </section>
@@ -917,7 +917,7 @@
             <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
             <div class="absolute bottom-0 left-0 w-64 h-64 bg-brand-red/5 rounded-full -ml-32 -mb-32"></div>
             <h3 class="text-brand-gold text-4xl md:text-5xl font-serif mb-8 relative z-10">Sizning Muborak Safaringiz Shu Yerdan Boshlanadi</h3>
-            <p class="text-gray-700 dark:text-gray-300 text-xl mb-12 max-w-2xl mx-auto relative z-10">Hoziroq bog'laning va bepul konsulturalar oling. Joylar soni cheklangan!</p>
+            <p class="text-gray-700 dark:text-gray-300 text-xl mb-12 max-w-2xl mx-auto relative z-10">Hoziroq bog'laning va bepul konsultatsiya oling. Joylar soni cheklangan!</p>
             <div class="flex flex-col sm:flex-row justify-center gap-6 relative z-10">
                 <a href="tel:+998555177373"
                    class="bg-brand-red text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-red-800 transition-all hover:scale-105 active:scale-95 shadow-lg">QO'NG'IROQ QILISH</a>
@@ -1467,6 +1467,7 @@
                                 name: cleanName,
                                 phone: cleanPhone,
                                 package: this.selectedPackage,
+                                persons: this.calcPersons,
                                 room: this.selectedPackage === "14 Kunlik Paket" ? this.bookingRoom : "",
                                 operator: this.bookingOperator,
                                 paymentMethod: this.bookingPayment
@@ -1482,6 +1483,7 @@
                                 this.showSuccess = false;
                                 this.bookingName = '';
                                 this.bookingPhone = '';
+                                this.calcPersons = 1;
                                 this.bookingOperator = 'Erkak';
                                 this.bookingPayment = 'Naqd pul';
                             }, 3000);
