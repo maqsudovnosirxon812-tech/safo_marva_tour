@@ -76,14 +76,21 @@
             position: relative;
         }
 
-        /* Warm light mode body background */
+        /* Warm light mode - soften all white/gray backgrounds */
         body {
             background-color: #FAF8F5;
         }
 
-        .dark body,
         html.dark body {
             background-color: #0B0F19;
+        }
+
+        /* Override Tailwind whites to warm cream in light mode */
+        html:not(.dark) .bg-brand-cream {
+            background-color: #FAF8F5 !important;
+        }
+        html:not(.dark) .bg-brand-cream-dark {
+            background-color: #F3EFE9 !important;
         }
 
         /* Reveal Animations */
