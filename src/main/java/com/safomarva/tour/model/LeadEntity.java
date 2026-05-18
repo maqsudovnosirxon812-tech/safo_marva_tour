@@ -33,7 +33,7 @@ public class LeadEntity {
     @Column(name = "payment_method", length = 50)
     private String paymentMethod = "Naqd pul";
 
-    @Column(name = "persons", nullable = false)
+    @Column(name = "persons")
     private Integer persons = 1;
 
     @Column(name = "created_at", insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
