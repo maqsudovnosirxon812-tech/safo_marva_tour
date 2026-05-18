@@ -123,7 +123,7 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
 
         // Simple security clearance check
         if (!isAuthorized(chatId)) {
-            sendTextMessage(chatId, "⚠️ Siz ushbu botning administratorlari ro'yxatida yo'qsiz!");
+            sendTextMessage(chatId, "⚠️ Kechirasiz, siz adminlik huquqiga ega emassiz!");
             return;
         }
 
