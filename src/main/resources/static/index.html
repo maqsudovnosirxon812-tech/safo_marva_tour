@@ -322,8 +322,8 @@
         <div class="bg-gradient-to-br from-[#8B0000] to-[#550000] rounded-[2.5rem] shadow-3xl overflow-hidden flex flex-col lg:flex-row border border-red-900/50">
             <div class="lg:w-5/12 p-8 lg:p-16 text-white flex flex-col justify-center">
                 <h2 class="text-brand-gold font-bold tracking-[0.2em] mb-4 uppercase text-sm">Eksklyuziv Taklif</h2>
-                <h3 class="text-4xl md:text-5xl font-serif mb-8 leading-tight">14 Kunlik "Al Ebaa" Komfort Paketi</h3>
-                <p class="text-red-100 text-lg mb-10 leading-relaxed">Iyun va Iyul oylari uchun maxsus. Toshkentdan to'g'ridan-to'g'ri reyslar va barcha qulayliklar mujassam.</p>
+                <h3 class="text-4xl md:text-5xl font-serif mb-8 leading-tight" x-text="t('offer_title')">14 Kunlik "Al Ebaa" Komfort Paketi</h3>
+                <p class="text-red-100 text-lg mb-10 leading-relaxed" x-text="t('offer_desc')">Iyun va Iyul oylari uchun maxsus. Toshkentdan to'g'ridan-to'g'ri reyslar va barcha qulayliklar mujassam.</p>
 
                 <div class="grid grid-cols-2 gap-6 mb-8">
                     <div class="bg-black/40 p-4 rounded-2xl border border-brand-gold/20">
@@ -1202,6 +1202,8 @@
                     hero_subtitle: "Muborak Safarga Taklif Etamiz",
                     hero_title: "Yangi Mavsum — Iyun-Iyul Oylaridan!",
                     hero_desc: "SAFO MARVA TOUR bilan — litsenziyalangan, xavfsiz va xotirjam ziyorat!",
+                    offer_title: "14 Kunlik \"Al Ebaa\" Komfort Paketi",
+                    offer_desc: "Iyun va Iyul oylari uchun maxsus. Toshkentdan to'g'ridan-to'g'ri reyslar va barcha qulayliklar mujassam.",
                     hero_btn1: "PAKETLARNI TANLASH",
                     hero_btn2: "BEPUL KONSULTATSIYA",
                     btn_booking: "Band qilish",
@@ -1428,6 +1430,8 @@
                         if (settingsData.hero_subtitle) this.translations.uz.hero_subtitle = settingsData.hero_subtitle;
                         if (settingsData.hero_title) this.translations.uz.hero_title = settingsData.hero_title;
                         if (settingsData.hero_desc) this.translations.uz.hero_desc = settingsData.hero_desc;
+                        if (settingsData.offer_title) this.translations.uz.offer_title = settingsData.offer_title;
+                        if (settingsData.offer_desc) this.translations.uz.offer_desc = settingsData.offer_desc;
                     }
                 } catch (err) {
                     console.warn("Could not load settings", err);

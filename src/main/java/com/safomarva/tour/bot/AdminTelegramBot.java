@@ -623,7 +623,9 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
             deleteMessage(chatId, messageId);
             String label = settingKey.equals("hero_subtitle") ? "Kichik Sarlavha (Tepa qism)" :
                            settingKey.equals("hero_title") ? "Asosiy Sarlavha (Katta matn)" :
-                           "Tavsif (Description)";
+                           settingKey.equals("hero_desc") ? "Tavsif (Description)" :
+                           settingKey.equals("offer_title") ? "Taklif Sarlavhasi (14 Kunlik)" :
+                           "Taklif Tavsifi (14 Kunlik)";
             sendCustomKeyboardMessage(chatId, "⚙️ <b>" + label + "ni o'zgartirish</b>\n\n" +
                     "Yangi matnni yuboring:", cancelKeyboard);
             return;
@@ -804,11 +806,16 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
             String subtitle = settings.getOrDefault("hero_subtitle", "Muborak Safarga Taklif Etamiz");
             String title = settings.getOrDefault("hero_title", "Yangi Mavsum — Iyun-Iyul Oylaridan!");
             String desc = settings.getOrDefault("hero_desc", "SAFO MARVA TOUR bilan — litsenziyalangan, xavfsiz va xotirjam ziyorat!");
+            String offerTitle = settings.getOrDefault("offer_title", "14 Kunlik \"Al Ebaa\" Komfort Paketi");
+            String offerDesc = settings.getOrDefault("offer_desc", "Iyun va Iyul oylari uchun maxsus...");
 
             String msg = "⚙️ <b>Sayt Sozlamalari (Bosh sahifa matnlari)</b>\n\n" +
                          "1️⃣ <b>Kichik Sarlavha:</b> " + subtitle + "\n" +
                          "2️⃣ <b>Asosiy Sarlavha:</b> " + title + "\n" +
                          "3️⃣ <b>Tavsif:</b> " + desc + "\n\n" +
+                         "🎁 <b>Eksklyuziv Taklif (Qizil Fonli Banner)</b>\n" +
+                         "4️⃣ <b>Taklif Sarlavhasi:</b> " + offerTitle + "\n" +
+                         "5️⃣ <b>Taklif Tavsifi:</b> " + (offerDesc.length() > 50 ? offerDesc.substring(0, 50) + "..." : offerDesc) + "\n\n" +
                          "Qaysi birini o'zgartirmoqchisiz?";
 
             InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup();
@@ -825,6 +832,14 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
             List<InlineKeyboardButton> row3 = new ArrayList<>();
             row3.add(createInlineButton("3️⃣ Tavsifni tahrirlash", "edit_setting_hero_desc"));
             rows.add(row3);
+
+            List<InlineKeyboardButton> row4 = new ArrayList<>();
+            row4.add(createInlineButton("4️⃣ Taklif Sarlavhasini tahrirlash", "edit_setting_offer_title"));
+            rows.add(row4);
+
+            List<InlineKeyboardButton> row5 = new ArrayList<>();
+            row5.add(createInlineButton("5️⃣ Taklif Tavsifini tahrirlash", "edit_setting_offer_desc"));
+            rows.add(row5);
 
             inlineKeyboard.setKeyboard(rows);
 

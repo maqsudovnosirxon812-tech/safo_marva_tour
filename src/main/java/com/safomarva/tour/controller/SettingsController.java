@@ -31,6 +31,8 @@ public class SettingsController {
             settings.put("hero_subtitle", "Muborak Safarga Taklif Etamiz");
             settings.put("hero_title", "Yangi Mavsum — Iyun-Iyul Oylaridan!");
             settings.put("hero_desc", "SAFO MARVA TOUR bilan — litsenziyalangan, xavfsiz va xotirjam ziyorat!");
+            settings.put("offer_title", "14 Kunlik \"Al Ebaa\" Komfort Paketi");
+            settings.put("offer_desc", "Iyun va Iyul oylari uchun maxsus. Toshkentdan to'g'ridan-to'g'ri reyslar va barcha qulayliklar mujassam.");
         }
         return ResponseEntity.ok(settings);
     }
