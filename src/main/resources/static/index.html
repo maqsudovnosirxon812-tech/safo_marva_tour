@@ -1417,6 +1417,22 @@
                     console.warn("Could not load dynamic media, falling back to defaults", err);
                 }
 
+                // Sayt sozlamalarini olish (Hero text uchun)
+                try {
+                    const settingsApiHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:'
+                        ? 'http://localhost:3000/api/settings'
+                        : '/api/settings';
+                    const setRes = await fetch(settingsApiHost);
+                    if (setRes.ok) {
+                        const settingsData = await setRes.json();
+                        if (settingsData.hero_subtitle) this.translations.uz.hero_subtitle = settingsData.hero_subtitle;
+                        if (settingsData.hero_title) this.translations.uz.hero_title = settingsData.hero_title;
+                        if (settingsData.hero_desc) this.translations.uz.hero_desc = settingsData.hero_desc;
+                    }
+                } catch (err) {
+                    console.warn("Could not load settings", err);
+                }
+
                 this.$watch('activeModal', value => {
                     if (!value) {
                         document.querySelectorAll('video').forEach(v => {

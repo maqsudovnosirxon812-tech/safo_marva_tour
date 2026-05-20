@@ -53,6 +53,7 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
         Long pkgId;
         String pkgName;
         String pkgKey;
+        String settingKey;
     }
 
     public AdminTelegramBot(
@@ -87,8 +88,11 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
         KeyboardRow row2 = new KeyboardRow();
         row2.add("➕ Yangi Paket");
         row2.add("📊 Statistika");
+        KeyboardRow row3 = new KeyboardRow();
+        row3.add("⚙️ Sayt Sozlamalari");
         mainRows.add(row1);
         mainRows.add(row2);
+        mainRows.add(row3);
         mainMenuKeyboard.setKeyboard(mainRows);
 
         // Cancel menu
@@ -170,6 +174,8 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
                 sendLeadsList(chatId);
             } else if ("📊 Statistika".equals(text)) {
                 sendStatistics(chatId);
+            } else if ("⚙️ Sayt Sozlamalari".equals(text)) {
+                sendSettingsMenu(chatId);
             }
             return;
         }
@@ -389,6 +395,22 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
             }
 
             userStates.remove(chatId);
+            return;
+        }
+
+        // 10. STATE MACHINE - WAITING_FOR_SETTING_VALUE
+        if ("WAITING_FOR_SETTING_VALUE".equals(state.step)) {
+            if (text == null) return;
+
+            sendTextMessage(chatId, "⏳ Sozlama yangilanmoqda...");
+            try {
+                updateSettingValue(state.settingKey, text);
+                sendCustomKeyboardMessage(chatId, "✅ Sozlama muvaffaqiyatli yangilandi va saytda o'zgardi!", mainMenuKeyboard);
+            } catch (Exception e) {
+                sendCustomKeyboardMessage(chatId, "❌ Xatolik yuz berdi: " + e.getMessage(), mainMenuKeyboard);
+            }
+
+            userStates.remove(chatId);
         }
     }
 
@@ -587,6 +609,24 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
         if ("back_to_leads".equals(data)) {
             deleteMessage(chatId, messageId);
             sendLeadsList(chatId);
+            return;
+        }
+
+        // 13. Edit Setting Key
+        if (data.startsWith("edit_setting_")) {
+            String settingKey = data.replace("edit_setting_", "");
+            UserState state = new UserState();
+            state.step = "WAITING_FOR_SETTING_VALUE";
+            state.settingKey = settingKey;
+            userStates.put(chatId, state);
+
+            deleteMessage(chatId, messageId);
+            String label = settingKey.equals("hero_subtitle") ? "Kichik Sarlavha (Tepa qism)" :
+                           settingKey.equals("hero_title") ? "Asosiy Sarlavha (Katta matn)" :
+                           "Tavsif (Description)";
+            sendCustomKeyboardMessage(chatId, "⚙️ <b>" + label + "ni o'zgartirish</b>\n\n" +
+                    "Yangi matnni yuboring:", cancelKeyboard);
+            return;
         }
     }
 
@@ -751,6 +791,57 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
         } catch (Exception e) {
             sendCustomKeyboardMessage(chatId, "❌ Statistikani olishda xatolik: " + e.getMessage(), mainMenuKeyboard);
         }
+    }
+
+    private void sendSettingsMenu(Long chatId) {
+        try {
+            File file = new File("settings.json");
+            Map<String, String> settings = new HashMap<>();
+            if (file.exists()) {
+                settings = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
+            }
+
+            String subtitle = settings.getOrDefault("hero_subtitle", "Muborak Safarga Taklif Etamiz");
+            String title = settings.getOrDefault("hero_title", "Yangi Mavsum — Iyun-Iyul Oylaridan!");
+            String desc = settings.getOrDefault("hero_desc", "SAFO MARVA TOUR bilan — litsenziyalangan, xavfsiz va xotirjam ziyorat!");
+
+            String msg = "⚙️ <b>Sayt Sozlamalari (Bosh sahifa matnlari)</b>\n\n" +
+                         "1️⃣ <b>Kichik Sarlavha:</b> " + subtitle + "\n" +
+                         "2️⃣ <b>Asosiy Sarlavha:</b> " + title + "\n" +
+                         "3️⃣ <b>Tavsif:</b> " + desc + "\n\n" +
+                         "Qaysi birini o'zgartirmoqchisiz?";
+
+            InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup();
+            List<List<InlineKeyboardButton>> rows = new ArrayList<>();
+
+            List<InlineKeyboardButton> row1 = new ArrayList<>();
+            row1.add(createInlineButton("1️⃣ Kichik Sarlavhani tahrirlash", "edit_setting_hero_subtitle"));
+            rows.add(row1);
+
+            List<InlineKeyboardButton> row2 = new ArrayList<>();
+            row2.add(createInlineButton("2️⃣ Asosiy Sarlavhani tahrirlash", "edit_setting_hero_title"));
+            rows.add(row2);
+
+            List<InlineKeyboardButton> row3 = new ArrayList<>();
+            row3.add(createInlineButton("3️⃣ Tavsifni tahrirlash", "edit_setting_hero_desc"));
+            rows.add(row3);
+
+            inlineKeyboard.setKeyboard(rows);
+
+            sendInlineKeyboardMessage(chatId, msg, inlineKeyboard);
+        } catch (Exception e) {
+            sendTextMessage(chatId, "❌ Sozlamalarni olishda xatolik: " + e.getMessage());
+        }
+    }
+
+    private void updateSettingValue(String key, String value) throws IOException {
+        File file = new File("settings.json");
+        Map<String, String> settings = new HashMap<>();
+        if (file.exists()) {
+            settings = objectMapper.readValue(file, new TypeReference<Map<String, String>>() {});
+        }
+        settings.put(key, value);
+        objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, settings);
     }
 
     // --- BASE SEND WRAPPERS ---
