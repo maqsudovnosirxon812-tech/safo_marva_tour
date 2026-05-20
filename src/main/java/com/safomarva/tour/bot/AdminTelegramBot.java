@@ -69,6 +69,10 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
         this.adminsStr = adminsStr;
 
         initializeKeyboards();
+        System.out.println("🤖 [DIAGNOSTIC] AdminTelegramBot loaded parameters successfully:");
+        System.out.println("   -> Token: " + botToken);
+        System.out.println("   -> Username: " + botUsername);
+        System.out.println("   -> Admins: " + adminsStr);
     }
 
     private void initializeKeyboards() {
