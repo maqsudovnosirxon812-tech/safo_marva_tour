@@ -6,7 +6,10 @@ import org.springframework.context.annotation.Configuration;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
-import jakarta.annotation.PostConstruct;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
+
+import java.util.concurrent.CompletableFuture;
 
 @Configuration
 public class BotConfig {
@@ -19,18 +22,21 @@ public class BotConfig {
         this.leadTelegramBot = leadTelegramBot;
     }
 
-    @PostConstruct
-    public void registerBot() {
-        try {
-            System.out.println("⏳ Registering Telegram Bot explicitly...");
-            TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
-            botsApi.registerBot(adminTelegramBot);
-            System.out.println("🚀 [SUCCESS] Telegram Bot '@" + adminTelegramBot.getBotUsername() + "' registered successfully and is now active!");
-            
-            botsApi.registerBot(leadTelegramBot);
-            System.out.println("🚀 [SUCCESS] Telegram Bot '@" + leadTelegramBot.getBotUsername() + "' registered successfully and is now active!");
-        } catch (TelegramApiException e) {
-            System.err.println("❌ [ERROR] Failed to register Telegram Bot: " + e.getMessage());
-        }
+    /** Botni sayt ishga tushgandan keyin fon rejimida ulash — Render "loading" da qolmasin */
+    @EventListener(ApplicationReadyEvent.class)
+    public void registerBotAsync() {
+        CompletableFuture.runAsync(() -> {
+            try {
+                System.out.println("⏳ Registering Telegram Bot explicitly...");
+                TelegramBotsApi botsApi = new TelegramBotsApi(DefaultBotSession.class);
+                botsApi.registerBot(adminTelegramBot);
+                System.out.println("🚀 [SUCCESS] Telegram Bot '@" + adminTelegramBot.getBotUsername() + "' registered successfully and is now active!");
+
+                botsApi.registerBot(leadTelegramBot);
+                System.out.println("🚀 [SUCCESS] Telegram Bot '@" + leadTelegramBot.getBotUsername() + "' registered successfully and is now active!");
+            } catch (TelegramApiException e) {
+                System.err.println("❌ [ERROR] Failed to register Telegram Bot: " + e.getMessage());
+            }
+        });
     }
 }

@@ -19,6 +19,7 @@ COPY --from=build /app/target/tour-1.0.0.jar ./app.jar
 # Copy static configuration files needed at runtime
 COPY packages_media.json .
 COPY settings.json .
+COPY galereya ./galereya/
 
 # Expose port (Render sets PORT env variable automatically, defaults to 3000 in our properties)
 EXPOSE 3000
