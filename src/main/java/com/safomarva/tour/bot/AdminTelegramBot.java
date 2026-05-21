@@ -17,6 +17,7 @@ import org.telegram.telegrambots.meta.api.objects.PhotoSize;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardRemove;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
@@ -131,7 +132,7 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
 
         // Simple security clearance check
         if (!isAuthorized(chatId)) {
-            sendTextMessage(chatId, "⚠️ Kechirasiz, siz adminlik huquqiga ega emassiz!");
+            sendRemoveKeyboardMessage(chatId, "👋 <b>Assalomu alaykum!</b>\n\n⚠️ Kechirasiz, siz admin emassiz yoki sizda boshqarish huquqi yo'q!");
             return;
         }
 
@@ -870,6 +871,21 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
             execute(message);
         } catch (TelegramApiException e) {
             System.err.println("❌ SendMessage error: " + e.getMessage());
+        }
+    }
+
+    private void sendRemoveKeyboardMessage(Long chatId, String htmlText) {
+        try {
+            SendMessage message = new SendMessage();
+            message.setChatId(String.valueOf(chatId));
+            message.setText(htmlText);
+            message.setParseMode("HTML");
+            ReplyKeyboardRemove keyboardRemove = new ReplyKeyboardRemove();
+            keyboardRemove.setRemoveKeyboard(true);
+            message.setReplyMarkup(keyboardRemove);
+            execute(message);
+        } catch (TelegramApiException e) {
+            System.err.println("❌ SendMessage remove keyboard error: " + e.getMessage());
         }
     }
 
