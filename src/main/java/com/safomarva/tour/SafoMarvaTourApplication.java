@@ -16,7 +16,7 @@ public class SafoMarvaTourApplication {
         SpringApplication.run(SafoMarvaTourApplication.class, eloquenceArgs);
     }
 
-    private static final Set<String> ACTIVE_PACKAGE_KEYS = Set.of("standard", "comfort", "lux", "special_14day");
+    private static final Set<String> ACTIVE_PACKAGE_KEYS = Set.of("standard", "comfort", "lux", "special_14day", "lux_jumeirah");
     private static final Set<String> RETIRED_PACKAGE_KEYS = Set.of("lux_premium");
 
     @Bean
@@ -32,6 +32,8 @@ public class SafoMarvaTourApplication {
                     "10 kechalik lyuks paket. ANJUM mehmonxonasi (Haramga ~150 m). Premium xizmat va viza.");
             upsertPackage(packageRepository, "special_14day", "14 Kunlik Paket", "1390",
                     "14 kunlik maxsus paket. Madina: Mehrob Toiba (7 kecha), Makka: Al Ebaa (7 kecha). To'liq xizmat va hadiyalar.");
+            upsertPackage(packageRepository, "lux_jumeirah", "LUX Jumeirah Paket", "1690",
+                    "10 kunlik LUX Jumeirah premium. Madina: Waqf As Safi (3 kecha), Makka: Jumeirah Jabal Omar (6 kecha). Iyun-Iyul maxsus.");
 
             packageRepository.findAll().stream()
                     .filter(pkg -> RETIRED_PACKAGE_KEYS.contains(pkg.getKeyName()))

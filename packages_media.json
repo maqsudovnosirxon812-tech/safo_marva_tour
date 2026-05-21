@@ -14,5 +14,9 @@
   "special_14day": {
     "image_url": "galereya/komfort.png",
     "video_url": ""
+  },
+  "lux_jumeirah": {
+    "image_url": "galereya/jumeirah.png",
+    "video_url": ""
   }
 }
