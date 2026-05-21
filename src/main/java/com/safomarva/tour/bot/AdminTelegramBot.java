@@ -84,9 +84,16 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
         mainMenuKeyboard.setOneTimeKeyboard(false);
         List<KeyboardRow> mainRows = new ArrayList<>();
         KeyboardRow row1 = new KeyboardRow();
+        row1.add("📦 Paketlar");
         row1.add("👥 Murojaatlar");
-        row1.add("❓ Yordam");
+        KeyboardRow row2 = new KeyboardRow();
+        row2.add("➕ Yangi Paket");
+        row2.add("📊 Statistika");
+        KeyboardRow row3 = new KeyboardRow();
+        row3.add("⚙️ Sayt Sozlamalari");
         mainRows.add(row1);
+        mainRows.add(row2);
+        mainRows.add(row3);
         mainMenuKeyboard.setKeyboard(mainRows);
 
         // Cancel menu
@@ -142,7 +149,12 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
         if ("/start".equals(text)) {
             userStates.remove(chatId);
             String welcome = "👋 <b>Assalomu alaykum, Safo Marva Tour Admin Tizimiga Xush Kelibsiz!</b>\n\n" +
-                    "Ushbu bot yordamida siz veb-saytingizdan kelgan yangi arizalarni ko'rishingiz va boshqarishingiz mumkin.\n\n" +
+                    "Ushbu bot yordamida siz veb-saytingizdagi ziyorat paketlarini va murojaatlarni boshqara olasiz:\n\n" +
+                    "📦 <b>Paketlar:</b> Narxlarni va tavsiflarni tahrirlash\n" +
+                    "➕ <b>Yangi Paket:</b> Saytga yangi paket qo'shish\n" +
+                    "👥 <b>Murojaatlar:</b> Saytdan kelgan so'rovlar\n" +
+                    "📊 <b>Statistika:</b> Umumiy ma'lumotlar\n" +
+                    "⚙️ <b>Sayt Sozlamalari:</b> Bosh sahifa matnlari va narxlar\n\n" +
                     "👇 Boshlash uchun quyidagi menyudan foydalaning:";
             sendCustomKeyboardMessage(chatId, welcome, mainMenuKeyboard);
             return;
@@ -150,16 +162,22 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
 
         // 1. STATE MACHINE - NOT IN ANY STATE (Main Keyboard Routing)
         if (state.step == null) {
-            if ("👥 Murojaatlar".equals(text)) {
+            if ("📦 Paketlar".equals(text)) {
+                sendPackagesCatalog(chatId);
+            } else if ("➕ Yangi Paket".equals(text)) {
+                UserState newState = new UserState();
+                newState.step = "WAITING_FOR_KEY_NAME";
+                userStates.put(chatId, newState);
+                String msg = "📝 <b>Yangi Paket Yaratish (1/4)</b>\n\n" +
+                        "Paket uchun inglizcha kalit so'z kiriting.\n" +
+                        "<i>(Faqat kichik harflar va pastki chiziq, masalan: comfort_plus, premium_15):</i>";
+                sendCustomKeyboardMessage(chatId, msg, cancelKeyboard);
+            } else if ("👥 Murojaatlar".equals(text)) {
                 sendLeadsList(chatId);
-            } else if ("❓ Yordam".equals(text)) {
-                String helpMsg = "❓ <b>Yordam bo'limi</b>\n\n" +
-                        "Ushbu bot Safo Marva Tour veb-saytidan keladigan arizalar va murojaatlarni (leads) boshqarish uchun mo'ljallangan.\n\n" +
-                        "📍 <b>Imkoniyatlar:</b>\n" +
-                        "• 👥 <b>Murojaatlar:</b> Sayt orqali buyurtma qoldirgan oxirgi 10 ta mijoz ro'yxatini ko'rish, batafsil ma'lumot olish va ularni o'chirish.\n" +
-                        "• 🔔 <b>Avtomatik bildirishnoma:</b> Saytda har safar yangi ariza qoldirilganda, bot sizga darhol mijoz ma'lumotlarini yuboradi.\n\n" +
-                        "Yaxshi va samarali ish kunini tilaymiz!";
-                sendCustomKeyboardMessage(chatId, helpMsg, mainMenuKeyboard);
+            } else if ("📊 Statistika".equals(text)) {
+                sendStatistics(chatId);
+            } else if ("⚙️ Sayt Sozlamalari".equals(text)) {
+                sendSettingsMenu(chatId);
             }
             return;
         }
