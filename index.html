@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: blob: 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://hddpzctigsjqljtooogq.supabase.co https://*.supabase.co https://api.telegram.org http://localhost:* http://127.0.0.1:*; ">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: blob: 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://hddpzctigsjqljtooogq.supabase.co https://*.supabase.co https://api.telegram.org https://www.facebook.com https://connect.facebook.net https://graph.facebook.com http://localhost:* http://127.0.0.1:*; img-src 'self' https: data: blob: https://www.facebook.com;">
+    <!-- Meta Pixel: Events Manager → Manbalar → Veb-sayt → Pixel ID ni quyiga yozing -->
+    <script>window.META_PIXEL_ID = '';</script>
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="google-site-verification" content="33P92EN1Am0odA5qGKx4rTTEi2qxplxk30qiOjpzPqo" />
@@ -1025,6 +1027,21 @@
 </div>
 
 <script>
+    function initMetaPixel(pixelId) {
+        if (!pixelId || window._metaPixelReady) return;
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+        document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', pixelId);
+        fbq('track', 'PageView');
+        window._metaPixelReady = true;
+    }
+    function trackMetaEvent(eventName, params) {
+        if (typeof fbq === 'function') fbq('track', eventName, params || {});
+    }
+
     // Simple Intersection Observer for reveal animations
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -1280,9 +1297,14 @@
                         if (settingsData.offer_price_4) this.translations.uz.offer_price_4 = settingsData.offer_price_4;
                         if (settingsData.offer_price_3) this.translations.uz.offer_price_3 = settingsData.offer_price_3;
                         if (settingsData.offer_price_2) this.translations.uz.offer_price_2 = settingsData.offer_price_2;
+
+                        const pixelId = (settingsData.meta_pixel_id || window.META_PIXEL_ID || '').trim();
+                        if (pixelId) initMetaPixel(pixelId);
                     }
                 } catch (err) {
                     console.warn("Could not load settings", err);
+                    const pixelId = (window.META_PIXEL_ID || '').trim();
+                    if (pixelId) initMetaPixel(pixelId);
                 }
 
                 this.$watch('activeModal', value => {
@@ -1290,6 +1312,12 @@
                         document.querySelectorAll('video').forEach(v => {
                             v.pause();
                             v.currentTime = 0;
+                        });
+                    } else if (value === 'booking') {
+                        trackMetaEvent('InitiateCheckout', {
+                            content_name: this.selectedPackage,
+                            value: this.calcTotalPrice,
+                            currency: 'USD'
                         });
                     }
                 });
@@ -1343,6 +1371,11 @@
                         const result = await response.json();
 
                         if (response.ok && result.success) {
+                            trackMetaEvent('Lead', {
+                                content_name: this.selectedPackage,
+                                value: this.calcTotalPrice,
+                                currency: 'USD'
+                            });
                             this.showSuccess = true;
                             setTimeout(() => {
                                 this.activeModal = null;

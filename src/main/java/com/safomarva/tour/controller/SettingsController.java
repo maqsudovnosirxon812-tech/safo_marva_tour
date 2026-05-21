@@ -28,6 +28,7 @@ public class SettingsController {
                 e.printStackTrace();
             }
         } else {
+            settings.put("meta_pixel_id", "");
             settings.put("hero_subtitle", "Muborak Safarga Taklif Etamiz");
             settings.put("hero_title", "Yangi Mavsum — Iyun-Iyul Oylaridan!");
             settings.put("hero_desc", "SAFO MARVA TOUR bilan — litsenziyalangan, xavfsiz va xotirjam ziyorat!");
