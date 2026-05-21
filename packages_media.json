@@ -10,5 +10,9 @@
   "lux": {
     "image_url": "galereya/lux.png",
     "video_url": ""
+  },
+  "special_14day": {
+    "image_url": "galereya/komfort.png",
+    "video_url": ""
   }
 }

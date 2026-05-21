@@ -312,7 +312,7 @@
             <p class="text-gray-400 max-w-2xl mx-auto">Siz va yaqinlaringiz uchun maxsus ishlab chiqilgan, barcha qulayliklarga ega takliflar.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 reveal">
 
             <!-- Standard Card -->
             <div
@@ -380,7 +380,26 @@
                 </div>
             </div>
 
-
+            <!-- 14 Kunlik Card -->
+            <div
+                    class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-brand-red/30 dark:border-brand-red/40 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(139,0,0,0.15)] hover:border-brand-red/50 transition-all duration-300 flex flex-col overflow-hidden">
+                <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 cursor-pointer" @click="activeModal = '14day'">
+                    <img :src="packagesData.special_14day?.image_url || 'galereya/komfort.png'" alt="14 kunlik Umra paketi" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
+                </div>
+                <span class="text-brand-red font-bold text-xs tracking-widest uppercase mb-2">14 KECHALIK · IYUN-IYUL</span>
+                <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">14 Kunlik Paket</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Mehrob Toiba (Madina) + Al Ebaa (Makka)</p>
+                <div class="text-3xl font-bold text-brand-gold mb-6">$<span x-text="packagesData.special_14day?.price || '1390'"></span> <span
+                        class="text-sm text-gray-500 font-normal">/ dan</span></div>
+                <div class="mt-auto space-y-3">
+                    <button @click="activeModal = '14day'"
+                            class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors">Batafsil
+                        ma'lumot</button>
+                    <button @click="activeModal = 'booking'; selectedPackage = '14 Kunlik Paket'"
+                            class="block w-full bg-brand-red text-white py-3 rounded-xl font-bold text-center hover:bg-red-800 shadow-md transition-all active:scale-95">Band
+                        qilish</button>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -545,7 +564,7 @@
                 </div>
                 <div class="bg-brand-cream-dark dark:bg-[#1B2436] p-4 rounded-2xl border border-gray-200 dark:border-gray-800">
                     <p class="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1">Boshlang'ich Narx:</p>
-                    <p class="text-3xl font-bold text-brand-gold">$1550</p>
+                    <p class="text-3xl font-bold text-brand-gold">$<span x-text="packagesData.lux?.price || '1550'"></span></p>
                 </div>
                 <button @click="activeModal = 'booking'; selectedPackage = 'LUX Paket'"
                         class="block w-full bg-brand-gold text-brand-red py-4 rounded-2xl font-bold text-center hover:bg-yellow-600 shadow-xl transition-all">HOZIR BAND QILISH</button>
@@ -623,7 +642,7 @@
                         class="bg-brand-cream-dark dark:bg-[#1B2436] p-6 rounded-3xl border border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
                     <div class="text-center sm:text-left">
                         <p class="text-xs text-gray-500 dark:text-gray-400 uppercase">Narx (4 kishilik xonada):</p>
-                        <p class="text-4xl font-bold text-brand-gold">$<span x-text="translations[currentLang].offer_price_4 || '1390'"></span></p>
+                        <p class="text-4xl font-bold text-brand-gold">$<span x-text="packagesData.special_14day?.price || translations[currentLang].offer_price_4 || '1390'"></span></p>
                     </div>
                     <button @click="activeModal = 'booking'; selectedPackage = '14 Kunlik Paket'"
                             class="w-full sm:w-auto bg-brand-gold text-brand-red px-10 py-4 rounded-2xl font-bold hover:bg-yellow-600 shadow-xl text-center">BOG'LANISH</button>
@@ -1311,7 +1330,8 @@
             calcPackages: {
                 standard: { name: 'Standart Paket', price: 1150 },
                 comfort: { name: 'Komfort Paket', price: 1300 },
-                lux: { name: 'LUX Paket', price: 1550 }
+                lux: { name: 'LUX Paket', price: 1550 },
+                special_14day: { name: '14 Kunlik Paket', price: 1390 }
             },
             get calcPricePerPerson() {
                 return this.calcPackages[this.calcPackage]?.price || 0;
@@ -1339,6 +1359,11 @@
                 lux: {
                     price: '1550',
                     image_url: 'galereya/lux.png',
+                    video_url: ''
+                },
+                special_14day: {
+                    price: '1390',
+                    image_url: 'galereya/komfort.png',
                     video_url: ''
                 }
             },
@@ -1412,6 +1437,10 @@
                         if (settingsData.offer_price_4) this.translations.uz.offer_price_4 = settingsData.offer_price_4;
                         if (settingsData.offer_price_3) this.translations.uz.offer_price_3 = settingsData.offer_price_3;
                         if (settingsData.offer_price_2) this.translations.uz.offer_price_2 = settingsData.offer_price_2;
+                        if (settingsData.offer_price_4) {
+                            this.packagesData.special_14day.price = String(settingsData.offer_price_4);
+                            this.calcPackages.special_14day.price = parseInt(settingsData.offer_price_4, 10) || 1390;
+                        }
 
                         const pixelId = (settingsData.meta_pixel_id || window.META_PIXEL_ID || '').trim();
                         if (pixelId) initMetaPixel(pixelId);
