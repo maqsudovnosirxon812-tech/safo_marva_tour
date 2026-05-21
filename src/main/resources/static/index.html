@@ -52,6 +52,67 @@
     <link rel="icon" type="image/jpeg" href="/safo_marva.png" sizes="48x48">
     <link rel="icon" type="image/jpeg" href="/safo_marva.png" sizes="192x192">
     <link rel="apple-touch-icon" href="/safo_marva.png">
+    <link rel="canonical" href="https://safomarvaumra.uz/">
+    <link rel="alternate" hreflang="uz" href="https://safomarvaumra.uz/">
+    <link rel="alternate" hreflang="ru" href="https://safomarvaumra.uz/">
+    <link rel="alternate" hreflang="en" href="https://safomarvaumra.uz/">
+    <link rel="alternate" hreflang="x-default" href="https://safomarvaumra.uz/">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "TravelAgency",
+          "@id": "https://safomarvaumra.uz/#organization",
+          "name": "Safo Marva Tour",
+          "url": "https://safomarvaumra.uz/",
+          "logo": "https://safomarvaumra.uz/safo_marva.png",
+          "image": "https://safomarvaumra.uz/safo_marva.png",
+          "telephone": ["+998555177373", "+998700190373"],
+          "priceRange": "$1150 - $1550",
+          "address": { "@type": "PostalAddress", "addressCountry": "UZ", "addressLocality": "Toshkent" },
+          "sameAs": [
+            "https://t.me/safomarwa_umra",
+            "https://www.instagram.com/safomarva_umra"
+          ],
+          "description": "O'zbekistondagi ishonchli Umra va Haj sayohat agentligi. 10 kechalik Standart, Komfort va LUX paketlar."
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://safomarvaumra.uz/#website",
+          "url": "https://safomarvaumra.uz/",
+          "name": "Safo Marva Tour",
+          "publisher": { "@id": "https://safomarvaumra.uz/#organization" },
+          "inLanguage": ["uz", "ru", "en"]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Viza uchun qanday hujjatlar kerak?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Biometrik pasport (kamida 6 oy) va 3x4 o'lchamdagi 2 ta rasm. Viza rasmiylashtirishni biz o'z zimmamizga olamiz." }
+            },
+            {
+              "@type": "Question",
+              "name": "Paket narxiga hamma narsa kiradimi?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Ha: aviachipta, viza, mehmonxona, transport, guruh rahbari va tibbiy sug'urta. Yashirin to'lovlar yo'q." }
+            },
+            {
+              "@type": "Question",
+              "name": "Tibbiy sug'urta qanday ishlaydi?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Saudiya va kompaniya sug'urtasi safar davomida amal qiladi. Guruh shifokori tibbiy yordamni tashkil qiladi." }
+            },
+            {
+              "@type": "Question",
+              "name": "Boshqa shaharlardan ziyoratchilarni qabul qilasizmi?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Ha, O'zbekistonning barcha viloyatlari va qo'shni davlatlardan. Toshkent aeroportida kutib olinasiz." }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
     <style>
         .glass {
             background: rgba(255, 255, 255, 0.1);
@@ -137,6 +198,12 @@
 
 <body class="bg-brand-cream-dark dark:bg-[#0B0F19] font-sans text-gray-900 dark:text-gray-100 transition-colors duration-300" @scroll.window="scrolled = (window.pageYOffset > 50)">
 
+<!-- Toast xabarlari -->
+<div x-show="toastMessage" x-cloak x-transition
+     class="fixed top-24 left-1/2 -translate-x-1/2 z-[300] max-w-md w-[90%] px-5 py-4 rounded-2xl shadow-2xl text-sm font-medium text-center"
+     :class="toastType === 'success' ? 'bg-green-600 text-white' : 'bg-brand-red text-white'"
+     x-text="toastMessage"></div>
+
 <!-- Navbar -->
 <nav class="fixed w-full z-50 py-4 transition-all duration-300"
      :class="scrolled ? 'bg-brand-cream/95 dark:bg-[#0B0F19]/95 border-b border-gray-200 dark:border-brand-gold/20 shadow-xl py-2 backdrop-blur-md' : 'glass py-4'">
@@ -155,6 +222,8 @@
                class="text-gray-800 dark:text-white hover:text-brand-gold transition-colors text-sm font-medium uppercase tracking-widest" x-text="t('menu_why_us')"></a>
             <a href="#gallery"
                class="text-gray-800 dark:text-white hover:text-brand-gold transition-colors text-sm font-medium uppercase tracking-widest" x-text="t('menu_gallery')"></a>
+            <a href="#faq"
+               class="text-gray-800 dark:text-white hover:text-brand-gold transition-colors text-sm font-medium uppercase tracking-widest" x-text="t('menu_faq')"></a>
         </div>
 
         <div class="flex items-center space-x-4 md:space-x-6">
@@ -209,6 +278,7 @@
             <a @click="mobileMenu = false" href="#packages" class="block text-gray-900 dark:text-white text-lg font-medium" x-text="t('menu_packages')"></a>
             <a @click="mobileMenu = false" href="#why-choose" class="block text-gray-900 dark:text-white text-lg font-medium" x-text="t('menu_why_us')"></a>
             <a @click="mobileMenu = false" href="#gallery" class="block text-gray-900 dark:text-white text-lg font-medium" x-text="t('menu_gallery')"></a>
+            <a @click="mobileMenu = false" href="#faq" class="block text-gray-900 dark:text-white text-lg font-medium" x-text="t('menu_faq')"></a>
         </div>
         <div class="pt-6 mt-6 border-t border-gray-200 dark:border-gray-800">
             <a href="tel:+998555177373" class="block text-brand-gold font-bold mb-4 text-xl">+998 55 517 73 73</a>
@@ -246,7 +316,10 @@
 
             <!-- Standard Card -->
             <div
-                    class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col">
+                    class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden">
+                <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 cursor-pointer" @click="activeModal = 'standard'">
+                    <img :src="packagesData.standard?.image_url || 'galereya/standart.png'" alt="Standart Umra paketi" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
+                </div>
                 <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">10 KECHALIK</span>
                 <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">Standart Paket</h3>
                 <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Ramada Zad Al Tayser (Haramga: 1 km)</p>
@@ -264,7 +337,10 @@
 
             <!-- Comfort Card -->
             <div
-                    class="bg-brand-cream dark:bg-[#1C263B]/80 backdrop-blur-md rounded-3xl border-2 border-brand-gold p-6 shadow-xl dark:shadow-[0_0_35px_rgba(212,175,55,0.2)] transition-all duration-300 flex flex-col relative scale-105 z-10">
+                    class="bg-brand-cream dark:bg-[#1C263B]/80 backdrop-blur-md rounded-3xl border-2 border-brand-gold p-6 shadow-xl dark:shadow-[0_0_35px_rgba(212,175,55,0.2)] transition-all duration-300 flex flex-col relative md:scale-105 z-10 overflow-hidden">
+                <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 cursor-pointer" @click="activeModal = 'comfort'">
+                    <img :src="packagesData.comfort?.image_url || 'galereya/komfort.png'" alt="Komfort Umra paketi" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
+                </div>
                 <div
                         class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-gold text-brand-red px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg">
                     Ommabop</div>
@@ -285,7 +361,10 @@
 
             <!-- LUX Card -->
             <div
-                    class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col">
+                    class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden">
+                <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 cursor-pointer" @click="activeModal = 'lux'">
+                    <img :src="packagesData.lux?.image_url || 'galereya/lux.png'" alt="LUX Umra paketi" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
+                </div>
                 <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">10 KECHALIK</span>
                 <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">LUX Paket</h3>
                 <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">ANJUM mehmonxonasi (Haramga: 150 metr)</p>
@@ -826,19 +905,37 @@
     <div class="container mx-auto px-6 pt-10 text-center text-gray-500 text-xs tracking-widest uppercase">
         <p>&copy; 2026 SAFO MARVA TOUR. Barchasi litsenziyalangan.</p>
     </div>
-    <!-- Back to Top -->
-    <button @click="window.scrollTo({top: 0, behavior: 'smooth'})" x-show="scrolled"
-            x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-10"
-            x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-300"
-            x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 translate-y-10"
-            class="fixed bottom-8 right-8 bg-brand-gold text-brand-red p-4 rounded-full shadow-2xl z-[60] hover:scale-110 transition-transform">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-             stroke="currentColor">
-             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+</footer>
+
+<!-- Pastki o'ng: WhatsApp, Qo'ng'iroq, Yuqoriga -->
+<div class="fixed bottom-5 right-4 sm:right-6 z-[70] flex flex-col gap-3 items-center" aria-label="Tezkor aloqa">
+    <button @click="window.scrollTo({top: 0, behavior: 'smooth'})" x-show="scrolled" x-cloak
+            x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4"
+            x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+            class="bg-brand-gold text-brand-red p-3.5 sm:p-4 rounded-full shadow-2xl hover:scale-110 transition-transform"
+            title="Yuqoriga">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
     </button>
-
-</footer>
+    <a href="tel:+998555177373"
+       class="bg-brand-gold text-brand-red p-3.5 sm:p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center"
+       title="Qo'ng'iroq qilish">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+    </a>
+    <a href="https://wa.me/998555177373?text=Assalomu%20alaykum!%20Safo%20Marva%20Tour%20saytidan%20yozdim.%20Umra%20paketi%20haqida%20ma%27lumot%20olmoqchiman."
+       target="_blank" rel="noopener noreferrer"
+       class="relative bg-[#25D366] text-white p-3.5 sm:p-4 rounded-full shadow-2xl hover:scale-110 hover:bg-[#20bd5a] transition-all flex items-center justify-center"
+       title="WhatsApp orqali yozish">
+        <span class="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-30"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 relative" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+</div>
 
 <!-- Booking Modal -->
 <div x-show="activeModal === 'booking'" x-cloak class="fixed inset-0 z-[250] overflow-y-auto">
@@ -1071,6 +1168,7 @@
                     menu_packages: "Paketlar",
                     menu_why_us: "Nega biz?",
                     menu_gallery: "Galereya",
+                    menu_faq: "Savollar",
                     hero_subtitle: "Muborak Safarga Taklif Etamiz",
                     hero_title: "Yangi Mavsum — Iyun-Iyul Oylaridan!",
                     hero_desc: "SAFO MARVA TOUR bilan — litsenziyalangan, xavfsiz va xotirjam ziyorat!",
@@ -1109,6 +1207,7 @@
                     menu_packages: "Пакеты",
                     menu_why_us: "Почему мы?",
                     menu_gallery: "Галерея",
+                    menu_faq: "Вопросы",
                     hero_subtitle: "Приглашаем в Священное Путешествие",
                     hero_title: "Новый Сезон — с Июня-Июля!",
                     hero_desc: "С SAFO MARVA TOUR — лицензированное, безопасное и спокойное паломничество!",
@@ -1145,6 +1244,7 @@
                     menu_packages: "Packages",
                     menu_why_us: "Why us?",
                     menu_gallery: "Gallery",
+                    menu_faq: "FAQ",
                     hero_subtitle: "Invite to Sacred Journey",
                     hero_title: "New Season — from June-July!",
                     hero_desc: "With SAFO MARVA TOUR — licensed, safe and peaceful pilgrimage!",
@@ -1184,6 +1284,15 @@
             setLang(lang) {
                 this.currentLang = lang;
                 localStorage.setItem('lang', lang);
+                document.documentElement.lang = lang;
+            },
+            toastMessage: '',
+            toastType: 'error',
+            showToast(message, type = 'error') {
+                this.toastMessage = message;
+                this.toastType = type;
+                clearTimeout(this._toastTimer);
+                this._toastTimer = setTimeout(() => { this.toastMessage = ''; }, 4500);
             },
             activeModal: null,
             scrolled: false,
@@ -1233,6 +1342,7 @@
                 }
             },
             async init() {
+                document.documentElement.lang = this.currentLang;
                 // Backend API orqali paketlarni olish
                 try {
                     const packagesApiHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:'
@@ -1338,13 +1448,13 @@
 
                 // Validatsiya
                 if (cleanName.length < 3) {
-                    alert("Iltimos, ismingizni kiriting.");
+                    this.showToast("Iltimos, ismingizni kiriting.");
                     return;
                 }
                 if (!cleanPhone.startsWith('+')) cleanPhone = '+' + cleanPhone;
                 const phoneRegex = /^\+998[0-9]{9}$/;
                 if (!phoneRegex.test(cleanPhone.replace(/\s/g, ''))) {
-                    alert("Iltimos, telefon raqamingizni to'g'ri kiriting (+998XXXXXXXXX)");
+                    this.showToast("Telefon raqamini to'g'ri kiriting: +998XXXXXXXXX");
                     return;
                 }
 
@@ -1395,7 +1505,7 @@
                         }
                     } catch (err) {
                         console.error("Booking error:", err);
-                        alert("Xatolik yuz berdi. Iltimos qaytadan urinib ko'ring yoki qo'ng'iroq qiling.");
+                        this.showToast("Xatolik yuz berdi. Qayta urinib ko'ring yoki qo'ng'iroq qiling.");
                     } finally {
                         this.isSubmitting = false;
                     }
@@ -1404,30 +1514,6 @@
         }
     }
 </script>
-    <!-- Protection Script -->
-    <script>
-        // Disable Right Click
-        document.addEventListener('contextmenu', event => event.preventDefault());
-
-        // Disable Common Shortcuts
-        document.onkeydown = function(e) {
-            if (e.keyCode == 123) { // F12
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) { // Ctrl+Shift+I
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) { // Ctrl+Shift+C
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) { // Ctrl+Shift+J
-                return false;
-            }
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { // Ctrl+U
-                return false;
-            }
-        };
-    </script>
 </body>
 
 </html>
