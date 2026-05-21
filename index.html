@@ -7,6 +7,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: blob: 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://hddpzctigsjqljtooogq.supabase.co https://*.supabase.co https://api.telegram.org http://localhost:* http://127.0.0.1:*; ">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="google-site-verification" content="33P92EN1Am0odA5qGKx4rTTEi2qxplxk30qiOjpzPqo" />
     <title>Safo Marva Tour - Umra Ziyorati 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -235,14 +236,14 @@
             <p class="text-gray-400 max-w-2xl mx-auto">Siz va yaqinlaringiz uchun maxsus ishlab chiqilgan, barcha qulayliklarga ega takliflar.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 reveal">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
 
             <!-- Standard Card -->
             <div
                     class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col">
                 <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">10 KECHALIK</span>
                 <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">Standart Paket</h3>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Sifatli va hamyonbop tanlov.</p>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Ramada Zad Al Tayser (Haramga: 1 km)</p>
                 <div class="text-3xl font-bold text-brand-gold mb-6">$<span x-text="packagesData.standard?.price || '1150'"></span> <span
                         class="text-sm text-gray-500 font-normal">/ dan</span></div>
                 <div class="mt-auto space-y-3">
@@ -263,7 +264,7 @@
                     Ommabop</div>
                 <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">10 KECHALIK</span>
                 <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">Komfort Paket</h3>
-                <p class="text-gray-600 dark:text-gray-300 text-sm mb-6">Qulay mehmonxona va yuqori darajadagi xizmat.</p>
+                <p class="text-gray-600 dark:text-gray-300 text-sm mb-6">AL EBAA mehmonxonasi (Haramga: 500 metr)</p>
                 <div class="text-3xl font-bold text-brand-gold mb-6">$<span x-text="packagesData.comfort?.price || '1300'"></span> <span
                         class="text-sm text-gray-500 dark:text-gray-400 font-normal">/ dan</span></div>
                 <div class="mt-auto space-y-3">
@@ -281,7 +282,7 @@
                     class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col">
                 <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">10 KECHALIK</span>
                 <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">LUX Paket</h3>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Haramga yaqin va premium mehmonxonalar.</p>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">ANJUM mehmonxonasi (Haramga: 150 metr)</p>
                 <div class="text-3xl font-bold text-brand-gold mb-6">$<span x-text="packagesData.lux?.price || '1550'"></span> <span
                         class="text-sm text-gray-500 font-normal">/ dan</span></div>
                 <div class="mt-auto space-y-3">
@@ -294,98 +295,18 @@
                 </div>
             </div>
 
-            <!-- LUX Premium Card -->
-            <div
-                    class="bg-brand-cream dark:bg-[#1C263B]/60 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-brand-gold/30 p-6 shadow-xl hover:shadow-[0_0_30px_rgba(212,175,55,0.2)] dark:hover:border-brand-gold transition-all duration-300 flex flex-col">
-                <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">PREMIUM</span>
-                <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">LUX Premium</h3>
-                <p class="text-gray-600 dark:text-gray-300 text-sm mb-6">Eng yuqori darajadagi qulaylik va ibodat muhiti.</p>
-                <div class="text-3xl font-bold text-brand-gold mb-6">$<span x-text="packagesData.lux_premium?.price || '1650'"></span> <span
-                        class="text-sm text-gray-500 dark:text-gray-400 font-normal">/ dan</span></div>
-                <div class="mt-auto space-y-3">
-                    <button @click="activeModal = 'lux_premium'"
-                            class="w-full bg-gray-100 dark:bg-[#25324D] text-gray-800 dark:text-gray-100 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#2F3F60] transition-colors border border-transparent dark:border-gray-700">Batafsil
-                        ma'lumot</button>
-                    <button @click="activeModal = 'booking'; selectedPackage = 'LUX Premium'"
-                            class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95">Band
-                        qilish</button>
-                </div>
-            </div>
+
 
         </div>
     </div>
 </section>
 
 <!-- 14-Day Special Section -->
+<!-- 14-Day Special Section Commented Out 
 <section class="py-24 bg-brand-cream dark:bg-[#090D16] transition-colors duration-300 reveal">
-    <div class="container mx-auto px-6">
-        <div class="bg-gradient-to-br from-[#8B0000] to-[#550000] rounded-[2.5rem] shadow-3xl overflow-hidden flex flex-col lg:flex-row border border-red-900/50">
-            <div class="lg:w-5/12 p-8 lg:p-16 text-white flex flex-col justify-center">
-                <h2 class="text-brand-gold font-bold tracking-[0.2em] mb-4 uppercase text-sm">Eksklyuziv Taklif</h2>
-                <h3 class="text-4xl md:text-5xl font-serif mb-8 leading-tight">14 Kunlik "Al Ebaa" Komfort Paketi</h3>
-                <p class="text-red-100 text-lg mb-10 leading-relaxed">Iyun va Iyul oylari uchun maxsus. Toshkentdan to'g'ridan-to'g'ri reyslar va barcha qulayliklar mujassam.</p>
-
-                <div class="grid grid-cols-2 gap-6 mb-8">
-                    <div class="bg-black/40 p-4 rounded-2xl border border-brand-gold/20">
-                        <p class="text-xs text-red-200 uppercase mb-1">Makkada</p>
-                        <p class="font-bold">7 KECHA</p>
-                    </div>
-                    <div class="bg-black/40 p-4 rounded-2xl border border-brand-gold/20">
-                        <p class="text-xs text-red-200 uppercase mb-1">Madinada</p>
-                        <p class="font-bold">7 KECHA</p>
-                    </div>
-                </div>
-
-                <button @click="activeModal = '14day'"
-                        class="bg-brand-gold text-brand-red py-4 rounded-2xl font-bold text-lg hover:bg-yellow-600 hover:text-brand-red transition-all shadow-xl">Barchasini bilish</button>
-            </div>
-            <div class="lg:w-7/12 bg-brand-cream-dark dark:bg-[#121824] p-8 lg:p-16 border-t lg:border-t-0 lg:border-l border-brand-gold/10 transition-colors duration-300">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                    <div class="space-y-6">
-                        <h4 class="text-2xl font-serif text-brand-gold border-b border-gray-200 dark:border-gray-800 pb-4">Xizmatlarimiz</h4>
-                        <ul class="space-y-4 text-gray-700 dark:text-gray-300">
-                            <li class="flex items-center"><span
-                                    class="w-6 h-6 bg-gray-200 dark:bg-[#1B2538] text-brand-gold border border-brand-gold/20 rounded-full flex items-center justify-center text-xs mr-3 font-bold">✓</span>
-                                Aviachiptalar (Borish-kelish)</li>
-                            <li class="flex items-center"><span
-                                    class="w-6 h-6 bg-gray-200 dark:bg-[#1B2538] text-brand-gold border border-brand-gold/20 rounded-full flex items-center justify-center text-xs mr-3 font-bold">✓</span>
-                                Viza xizmati</li>
-                            <li class="flex items-center"><span
-                                    class="w-6 h-6 bg-gray-200 dark:bg-[#1B2538] text-brand-gold border border-brand-gold/20 rounded-full flex items-center justify-center text-xs mr-3 font-bold">✓</span>
-                                Madina-Makka Tezyurar poezd</li>
-                            <li class="flex items-center"><span
-                                    class="w-6 h-6 bg-gray-200 dark:bg-[#1B2538] text-brand-gold border border-brand-gold/20 rounded-full flex items-center justify-center text-xs mr-3 font-bold">✓</span>
-                                2 mahal mazali taomlar</li>
-                            <li class="flex items-center"><span
-                                    class="w-6 h-6 bg-gray-200 dark:bg-[#1B2538] text-brand-gold border border-brand-gold/20 rounded-full flex items-center justify-center text-xs mr-3 font-bold">✓</span>
-                                Malakali yo'lboshchi va shifokor</li>
-                        </ul>
-                    </div>
-                    <div class="space-y-6">
-                        <h4 class="text-2xl font-serif text-brand-gold border-b border-gray-200 dark:border-gray-800 pb-4">Narxlar</h4>
-                        <div class="space-y-4">
-                            <div @click="activeModal = 'booking'; selectedPackage = '14 Kunlik Paket'; bookingRoom = '4 kishilik'"
-                                 class="flex justify-between items-center bg-brand-cream dark:bg-[#1B2436] p-4 rounded-xl cursor-pointer hover:bg-brand-gold/10 transition-all border border-gray-200 dark:border-transparent hover:border-brand-gold shadow-sm dark:shadow-none">
-                                <span class="text-gray-700 dark:text-gray-300">4 kishilik xona</span>
-                                <span class="font-bold text-brand-gold text-xl">$<span x-text="packagesData.special_14day?.price || '1390'"></span></span>
-                            </div>
-                            <div @click="activeModal = 'booking'; selectedPackage = '14 Kunlik Paket'; bookingRoom = '3 kishilik'"
-                                 class="flex justify-between items-center bg-brand-cream dark:bg-[#1B2436] p-4 rounded-xl cursor-pointer hover:bg-brand-gold/10 transition-all border border-gray-200 dark:border-transparent hover:border-brand-gold shadow-sm dark:shadow-none">
-                                <span class="text-gray-700 dark:text-gray-300">3 kishilik xona</span>
-                                <span class="font-bold text-brand-gold text-xl">$1490</span>
-                            </div>
-                            <div @click="activeModal = 'booking'; selectedPackage = '14 Kunlik Paket'; bookingRoom = '2 kishilik'"
-                                 class="flex justify-between items-center bg-brand-cream dark:bg-[#1B2436] p-4 rounded-xl border-2 border-brand-gold cursor-pointer hover:bg-brand-gold/10 transition-all shadow-sm dark:shadow-none">
-                                <span class="text-gray-700 dark:text-gray-300">2 kishilik xona</span>
-                                <span class="font-bold text-brand-gold text-xl">$1650</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+...
 </section>
+-->
 
 <!-- Modals -->
 <!-- Standard Modal -->
@@ -408,8 +329,8 @@
                     <video x-show="packagesData.standard?.video_url" :src="packagesData.standard?.video_url" controls class="w-full h-full object-cover"></video>
                     <!-- Agar video bo'lmasa rasm ko'rsatiladi -->
                     <img x-show="!packagesData.standard?.video_url" 
-                         @click="openLightbox([packagesData.standard?.image_url || 'galereya/Ramada Zad Al Tayser/5c5da9610fe3dd282a6797478642cd9e.jpg'], 0)"
-                         :src="packagesData.standard?.image_url || 'galereya/Ramada Zad Al Tayser/5c5da9610fe3dd282a6797478642cd9e.jpg'"
+                         @click="openLightbox([packagesData.standard?.image_url || 'galereya/standart.png'], 0)"
+                         :src="packagesData.standard?.image_url || 'galereya/standart.png'"
                          class="w-full h-full object-cover hover:scale-105 transition-all">
                 </div>
                 <div>
@@ -417,18 +338,19 @@
                     <p class="font-semibold text-gray-900 dark:text-white">Ramada Zad Al Tayser</p>
                 </div>
                 <div>
-                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Transport:</h4>
+                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Qulayliklar (Ichiga kiritilgan):</h4>
                     <ul class="text-gray-700 dark:text-gray-300 space-y-1">
-                        <li>• Madinadan Makkaga tezyurar poezd</li>
-                        <li>• Borish-kelish aviachiptalari</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Xizmatlar:</h4>
-                    <ul class="text-gray-700 dark:text-gray-300 space-y-1">
-                        <li>• Umra vizasi</li>
-                        <li>• Malakali ellikboshi (yo'lboshchi)</li>
-                        <li>• Tibbiy sug'urta</li>
+                        <li>• 3 kecha Madinada, 7 kecha Makkada</li>
+                        <li>• Aviabilet (Borish-kelish)</li>
+                        <li>• Mehmonxona (Haramgacha: 1 km)</li>
+                        <li>• Visa (sug'urta)</li>
+                        <li>• Transfer xizmati</li>
+                        <li>• Madinadan-Makkaga poyezd</li>
+                        <li>• 2 mahal shvedskiy stol</li>
+                        <li>• Ekskursiya-ziyoratlar</li>
+                        <li>• Qizil dengizga sayohat</li>
+                        <li>• Malakali ellik boshi xizmati</li>
+                        <li>• Ravzaga kirish imkoniyati</li>
                     </ul>
                 </div>
                 <div class="bg-brand-cream-dark dark:bg-[#1B2436] p-4 rounded-2xl border border-gray-200 dark:border-gray-800">
@@ -455,14 +377,12 @@
             <div class="px-8 py-8 space-y-6">
                 <!-- Dynamic Comfort Hotel Image/Video -->
                 <div class="rounded-2xl overflow-hidden shadow-lg bg-black aspect-video mb-6">
-                    <!-- Agar video bo'lsa (yoki custom video yuklangan bo'lsa) -->
-                    <video x-show="packagesData.comfort?.video_url || !packagesData.comfort?.image_url" 
-                           :src="packagesData.comfort?.video_url || 'galereya/Al%20EBAA/IMG_6465.MP4'" 
+                    <video x-show="packagesData.comfort?.video_url" 
+                           :src="packagesData.comfort?.video_url" 
                            controls class="w-full h-full object-cover"></video>
-                    <!-- Agar rasm yuklangan bo'lsa -->
-                    <img x-show="packagesData.comfort?.image_url && !packagesData.comfort?.video_url" 
-                          @click="openLightbox([packagesData.comfort?.image_url], 0)"
-                          :src="packagesData.comfort?.image_url" 
+                    <img x-show="!packagesData.comfort?.video_url" 
+                          @click="openLightbox([packagesData.comfort?.image_url || 'galereya/komfort.png'], 0)"
+                          :src="packagesData.comfort?.image_url || 'galereya/komfort.png'" 
                           class="w-full h-full object-cover hover:scale-105 transition-all">
                 </div>
                 <div>
@@ -470,16 +390,20 @@
                     <p class="font-semibold italic text-gray-900 dark:text-white">AL EBAA mehmonxonasi</p>
                 </div>
                 <div>
-                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Dasturda:</h4>
+                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Qulayliklar (Ichiga kiritilgan):</h4>
                     <ul class="text-gray-700 dark:text-gray-300 space-y-1">
-                        <li>• Madinadan Makkaga tezyurar poezd</li>
-                        <li>• 2 mahal mazali taomlar</li>
-                        <li>• Makka va Madina bo'ylab ekskursiyalar</li>
+                        <li>• 3 kecha Madinada, 7 kecha Makkada</li>
+                        <li>• Aviabilet (Borish-kelish)</li>
+                        <li>• Mehmonxona (Haramgacha: 500 metr)</li>
+                        <li>• Visa (sug'urta)</li>
+                        <li>• Transfer xizmati</li>
+                        <li>• Madinadan-Makkaga poyezd</li>
+                        <li>• 2 mahal shvedskiy stol</li>
+                        <li>• Ekskursiya-ziyoratlar</li>
+                        <li>• Qizil dengizga sayohat</li>
+                        <li>• Malakali ellik boshi xizmati</li>
+                        <li>• Ravzaga kirish imkoniyati</li>
                     </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Qulayliklar:</h4>
-                    <p class="text-gray-700 dark:text-gray-300">Juma namozlarini Haram masjidlarida ado etish imkoniyati.</p>
                 </div>
                 <div class="bg-brand-cream-dark dark:bg-[#1B2436] p-4 rounded-2xl border border-gray-200 dark:border-brand-gold/30">
                     <p class="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1">Boshlang'ich Narx:</p>
@@ -509,8 +433,8 @@
                     <video x-show="packagesData.lux?.video_url" :src="packagesData.lux?.video_url" controls class="w-full h-full object-cover"></video>
                     <!-- Agar video bo'lmasa rasm ko'rsatiladi -->
                     <img x-show="!packagesData.lux?.video_url" 
-                          @click="openLightbox([packagesData.lux?.image_url || 'galereya/ANJUM mehmonxonasi/7621835549ae5f328e2b2a1ba87a74e1.jpg'], 0)"
-                          :src="packagesData.lux?.image_url || 'galereya/ANJUM mehmonxonasi/7621835549ae5f328e2b2a1ba87a74e1.jpg'"
+                          @click="openLightbox([packagesData.lux?.image_url || 'galereya/lux.png'], 0)"
+                          :src="packagesData.lux?.image_url || 'galereya/lux.png'"
                           class="w-full h-full object-cover hover:scale-105 transition-all">
                 </div>
                 <div>
@@ -519,11 +443,19 @@
                     <p class="text-sm text-gray-600 dark:text-gray-400">Makkada Haramga juda yaqin masofada.</p>
                 </div>
                 <div>
-                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Premium Xizmatlar:</h4>
+                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Qulayliklar (Ichiga kiritilgan):</h4>
                     <ul class="text-gray-700 dark:text-gray-300 space-y-1">
-                        <li>• Haramain tezyurar poezdi</li>
-                        <li>• Yuqori sifatli transfer xizmatlari</li>
-                        <li>• Maxsus guruh rahbarlari</li>
+                        <li>• 3 kecha Madinada, 7 kecha Makkada</li>
+                        <li>• Aviabilet (Borish-kelish)</li>
+                        <li>• Mehmonxona (Haramgacha: 150 metr)</li>
+                        <li>• Visa (sug'urta)</li>
+                        <li>• Transfer xizmati</li>
+                        <li>• Madinadan-Makkaga poyezd</li>
+                        <li>• 2 mahal shvedskiy stol</li>
+                        <li>• Ekskursiya-ziyoratlar</li>
+                        <li>• Qizil dengizga sayohat</li>
+                        <li>• Malakali ellik boshi xizmati</li>
+                        <li>• Ravzaga kirish imkoniyati</li>
                     </ul>
                 </div>
                 <div class="bg-brand-cream-dark dark:bg-[#1B2436] p-4 rounded-2xl border border-gray-200 dark:border-gray-800">
@@ -532,87 +464,6 @@
                 </div>
                 <button @click="activeModal = 'booking'; selectedPackage = 'LUX Paket'"
                         class="block w-full bg-brand-gold text-brand-red py-4 rounded-2xl font-bold text-center hover:bg-yellow-600 shadow-xl transition-all">HOZIR BAND QILISH</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- LUX Premium Modal -->
-<div x-show="activeModal === 'lux_premium'" x-cloak class="fixed inset-0 z-[100] overflow-y-auto">
-    <div class="flex items-center justify-center min-h-screen px-4 sm:p-0">
-        <div @click="activeModal = null" class="fixed inset-0 bg-[#04060B] bg-opacity-80 backdrop-blur-md"></div>
-        <div
-                class="inline-block bg-brand-cream dark:bg-[#121824] rounded-3xl shadow-3xl sm:max-w-lg sm:w-full z-10 overflow-hidden border border-gray-200 dark:border-brand-gold/30 transform transition-all text-gray-900 dark:text-white">
-            <div class="bg-brand-gold px-8 py-6 flex justify-between items-center text-brand-red border-b border-brand-gold/10">
-                <h3 class="text-xl font-bold uppercase tracking-wider">LUX Premium Tafsilotlari</h3>
-                <button @click="activeModal = null" class="font-bold">X</button>
-            </div>
-            <div class="px-8 py-8 space-y-6">
-                <!-- Custom Dynamic Image/Video (If set by admin) -->
-                <div x-show="packagesData.lux_premium?.image_url || packagesData.lux_premium?.video_url" class="rounded-2xl overflow-hidden shadow-lg aspect-video cursor-pointer bg-black mb-6">
-                    <video x-show="packagesData.lux_premium?.video_url" :src="packagesData.lux_premium?.video_url" controls class="w-full h-full object-cover"></video>
-                    <img x-show="packagesData.lux_premium?.image_url && !packagesData.lux_premium?.video_url" 
-                          @click="openLightbox([packagesData.lux_premium?.image_url], 0)"
-                          :src="packagesData.lux_premium?.image_url" 
-                          class="w-full h-full object-cover hover:scale-105 transition-all">
-                </div>
-                <!-- Waqf Al Safi Gallery (Only show if NO custom media is set) -->
-                <div x-show="!packagesData.lux_premium?.image_url && !packagesData.lux_premium?.video_url" class="grid grid-cols-3 gap-2 mb-6" x-data="{
-                        waqfImages: [
-                            'galereya/Waqf%20al%20safi/photo_2026-04-26_21-09-15.jpg',
-                            'galereya/Waqf%20al%20safi/photo_2026-04-26_21-08-50.jpg',
-                            'galereya/Waqf%20al%20safi/photo_2026-04-26_21-08-58.jpg',
-                            'galereya/Waqf%20al%20safi/photo_2026-04-26_21-08-01.jpg',
-                            'galereya/Waqf%20al%20safi/photo_2025-08-10_19-22-30.jpg',
-                            'galereya/Waqf%20al%20safi/photo_2025-08-10_19-22-31%20(2).jpg',
-                            'galereya/Waqf%20al%20safi/photo_2025-08-10_19-22-31.jpg',
-                            'galereya/Waqf%20al%20safi/photo_2026-04-26_21-07-41.jpg',
-                            'galereya/Waqf%20al%20safi/photo_2026-04-26_21-07-58.jpg',
-                            'galereya/Waqf%20al%20safi/photo_2026-04-26_21-08-23.jpg',
-                            'galereya/Waqf%20al%20safi/photo_2026-04-26_21-08-54.jpg',
-                            'galereya/Waqf%20al%20safi/photo_2026-04-26_21-09-02.jpg',
-                            'galereya/Waqf%20al%20safi/photo_2026-04-26_21-09-12.jpg'
-                        ]
-                    }">
-                    <div class="col-span-3 h-48 rounded-2xl overflow-hidden shadow-md cursor-pointer">
-                        <img @click="openLightbox(waqfImages, 0)" src="galereya/Waqf%20al%20safi/photo_2026-04-26_21-09-15.jpg" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="h-20 rounded-xl overflow-hidden shadow-sm cursor-pointer">
-                        <img @click="openLightbox(waqfImages, 1)" src="galereya/Waqf%20al%20safi/photo_2026-04-26_21-08-50.jpg" class="w-full h-full object-cover">
-                    </div>
-                    <div class="h-20 rounded-xl overflow-hidden shadow-sm cursor-pointer">
-                        <img @click="openLightbox(waqfImages, 2)" src="galereya/Waqf%20al%20safi/photo_2026-04-26_21-08-58.jpg" class="w-full h-full object-cover">
-                    </div>
-                    <div class="h-20 rounded-xl overflow-hidden shadow-sm relative cursor-pointer group" @click="activeModal = 'waqf_gallery'">
-                        <img src="galereya/Waqf%20al%20safi/photo_2026-04-26_21-08-01.jpg" class="w-full h-full object-cover blur-[1px] group-hover:blur-0 transition-all">
-                        <div class="absolute inset-0 flex items-center justify-center bg-black/40 text-white text-xs font-bold">+10 rasm</div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="bg-brand-cream-dark dark:bg-[#1B2436] p-4 rounded-2xl border border-gray-200 dark:border-gray-800">
-                        <h4 class="font-bold text-brand-gold mb-1 uppercase text-[10px]">Madina (3 kecha)</h4>
-                        <p class="text-gray-900 dark:text-white text-sm">Bosphorus Waqf Al Safi</p>
-                    </div>
-                    <div class="bg-brand-cream-dark dark:bg-[#1B2436] p-4 rounded-2xl border border-gray-200 dark:border-gray-800">
-                        <h4 class="font-bold text-brand-gold mb-1 uppercase text-[10px]">Makka (4 kecha)</h4>
-                        <p class="text-gray-900 dark:text-white text-sm">Jumeirah Jabal Omar</p>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Imtiyozlar:</h4>
-                    <ul class="text-gray-700 dark:text-gray-300 space-y-2 text-sm">
-                        <li class="flex items-start"><span class="text-brand-gold mr-2">✦</span> Haramga eng yaqin masofadagi 5 yulduzli mehmonxonalar.</li>
-                        <li class="flex items-start"><span class="text-brand-gold mr-2">✦</span> Haramain tezyurar poyezdida VIP sayohat.</li>
-                        <li class="flex items-start"><span class="text-brand-gold mr-2">✦</span> Shaxsiy xizmat ko'rsatish va sokinlik.</li>
-                    </ul>
-                </div>
-                <div class="bg-brand-cream-dark dark:bg-[#1B2436] p-4 rounded-2xl border border-gray-200 dark:border-gray-800">
-                    <p class="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1">Paket Narxi:</p>
-                    <p class="text-3xl font-bold text-brand-gold">$1650</p>
-                </div>
-                <button @click="activeModal = 'booking'; selectedPackage = 'LUX Premium'"
-                        class="block w-full bg-brand-gold text-brand-red py-4 rounded-2xl font-bold text-center hover:bg-yellow-500 shadow-xl transition-all">PREMIUM BAND QILISH</button>
             </div>
         </div>
     </div>
@@ -687,7 +538,7 @@
                         class="bg-brand-cream-dark dark:bg-[#1B2436] p-6 rounded-3xl border border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
                     <div class="text-center sm:text-left">
                         <p class="text-xs text-gray-500 dark:text-gray-400 uppercase">Narx (4 kishilik xonada):</p>
-                        <p class="text-4xl font-bold text-brand-gold">$1390</p>
+                        <p class="text-4xl font-bold text-brand-gold">$<span x-text="translations[currentLang].offer_price_4 || '1390'"></span></p>
                     </div>
                     <button @click="activeModal = 'booking'; selectedPackage = '14 Kunlik Paket'"
                             class="w-full sm:w-auto bg-brand-gold text-brand-red px-10 py-4 rounded-2xl font-bold hover:bg-yellow-600 shadow-xl text-center">BOG'LANISH</button>
@@ -1202,6 +1053,8 @@
                     hero_subtitle: "Muborak Safarga Taklif Etamiz",
                     hero_title: "Yangi Mavsum — Iyun-Iyul Oylaridan!",
                     hero_desc: "SAFO MARVA TOUR bilan — litsenziyalangan, xavfsiz va xotirjam ziyorat!",
+                    offer_title: "14 Kunlik \"Al Ebaa\" Komfort Paketi",
+                    offer_desc: "Iyun va Iyul oylari uchun maxsus. Toshkentdan to'g'ridan-to'g'ri reyslar va barcha qulayliklar mujassam.",
                     hero_btn1: "PAKETLARNI TANLASH",
                     hero_btn2: "BEPUL KONSULTATSIYA",
                     btn_booking: "Band qilish",
@@ -1327,9 +1180,7 @@
             calcPackages: {
                 standard: { name: 'Standart Paket', price: 1150 },
                 comfort: { name: 'Komfort Paket', price: 1300 },
-                lux: { name: 'LUX Paket', price: 1550 },
-                lux_premium: { name: 'LUX Premium', price: 1650 },
-                special_14day: { name: '14 Kunlik Paket', price: 1390 }
+                lux: { name: 'LUX Paket', price: 1550 }
             },
             get calcPricePerPerson() {
                 return this.calcPackages[this.calcPackage]?.price || 0;
@@ -1346,27 +1197,17 @@
             packagesData: {
                 standard: {
                     price: '1150',
-                    image_url: 'galereya/Ramada Zad Al Tayser/5c5da9610fe3dd282a6797478642cd9e.jpg',
+                    image_url: 'galereya/standart.png',
                     video_url: ''
                 },
                 comfort: {
                     price: '1300',
-                    image_url: '',
-                    video_url: 'galereya/Al%20EBAA/IMG_6465.MP4'
+                    image_url: 'galereya/komfort.png',
+                    video_url: ''
                 },
                 lux: {
                     price: '1550',
-                    image_url: 'galereya/ANJUM mehmonxonasi/7621835549ae5f328e2b2a1ba87a74e1.jpg',
-                    video_url: ''
-                },
-                lux_premium: {
-                    price: '1650',
-                    image_url: '',
-                    video_url: ''
-                },
-                special_14day: {
-                    price: '1390',
-                    image_url: '',
+                    image_url: 'galereya/lux.png',
                     video_url: ''
                 }
             },
@@ -1380,15 +1221,19 @@
                     if (res.ok) {
                         const packages = await res.json();
                         const dbPackages = packages.reduce((acc, pkg) => {
-                            acc[pkg.key_name] = pkg;
+                            const key = pkg.keyName || pkg.key_name;
+                            if (key) acc[key] = pkg;
                             return acc;
                         }, {});
-                        
+
                         // Merge dbPackages into our default packagesData to preserve static fallbacks
                         Object.keys(dbPackages).forEach(key => {
+                            const pkg = dbPackages[key];
                             this.packagesData[key] = {
                                 ...this.packagesData[key],
-                                ...dbPackages[key]
+                                price: pkg.price,
+                                display_name: pkg.displayName || pkg.display_name,
+                                description: pkg.description
                             };
                         });
                     }
@@ -1415,6 +1260,29 @@
                     }
                 } catch (err) {
                     console.warn("Could not load dynamic media, falling back to defaults", err);
+                }
+
+                // Sayt sozlamalarini olish (Hero text uchun)
+                try {
+                    const settingsApiHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:'
+                        ? 'http://localhost:3000/api/settings'
+                        : '/api/settings';
+                    const setRes = await fetch(settingsApiHost);
+                    if (setRes.ok) {
+                        const settingsData = await setRes.json();
+                        if (settingsData.hero_subtitle) this.translations.uz.hero_subtitle = settingsData.hero_subtitle;
+                        if (settingsData.hero_title) this.translations.uz.hero_title = settingsData.hero_title;
+                        if (settingsData.hero_desc) this.translations.uz.hero_desc = settingsData.hero_desc;
+                        if (settingsData.offer_title) this.translations.uz.offer_title = settingsData.offer_title;
+                        if (settingsData.offer_desc) this.translations.uz.offer_desc = settingsData.offer_desc;
+                        if (settingsData.offer_makka_days) this.translations.uz.offer_makka_days = settingsData.offer_makka_days;
+                        if (settingsData.offer_madina_days) this.translations.uz.offer_madina_days = settingsData.offer_madina_days;
+                        if (settingsData.offer_price_4) this.translations.uz.offer_price_4 = settingsData.offer_price_4;
+                        if (settingsData.offer_price_3) this.translations.uz.offer_price_3 = settingsData.offer_price_3;
+                        if (settingsData.offer_price_2) this.translations.uz.offer_price_2 = settingsData.offer_price_2;
+                    }
+                } catch (err) {
+                    console.warn("Could not load settings", err);
                 }
 
                 this.$watch('activeModal', value => {
