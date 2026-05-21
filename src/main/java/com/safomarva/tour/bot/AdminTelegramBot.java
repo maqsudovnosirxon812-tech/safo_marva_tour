@@ -626,7 +626,12 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
                            settingKey.equals("hero_title") ? "Asosiy Sarlavha (Katta matn)" :
                            settingKey.equals("hero_desc") ? "Tavsif (Description)" :
                            settingKey.equals("offer_title") ? "Taklif Sarlavhasi (14 Kunlik)" :
-                           "Taklif Tavsifi (14 Kunlik)";
+                           settingKey.equals("offer_desc") ? "Taklif Tavsifi (14 Kunlik)" :
+                           settingKey.equals("offer_makka_days") ? "Makka kunlari soni (Makkada necha kecha)" :
+                           settingKey.equals("offer_madina_days") ? "Madina kunlari soni (Madinada necha kecha)" :
+                           settingKey.equals("offer_price_4") ? "Narx (4 kishilik xona uchun)" :
+                           settingKey.equals("offer_price_3") ? "Narx (3 kishilik xona uchun)" :
+                           "Narx (2 kishilik xona uchun)";
             sendCustomKeyboardMessage(chatId, "⚙️ <b>" + label + "ni o'zgartirish</b>\n\n" +
                     "Yangi matnni yuboring:", cancelKeyboard);
             return;
@@ -809,37 +814,52 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
             String desc = settings.getOrDefault("hero_desc", "SAFO MARVA TOUR bilan — litsenziyalangan, xavfsiz va xotirjam ziyorat!");
             String offerTitle = settings.getOrDefault("offer_title", "14 Kunlik \"Al Ebaa\" Komfort Paketi");
             String offerDesc = settings.getOrDefault("offer_desc", "Iyun va Iyul oylari uchun maxsus...");
+            String makkaDays = settings.getOrDefault("offer_makka_days", "7");
+            String madinaDays = settings.getOrDefault("offer_madina_days", "7");
+            String price4 = settings.getOrDefault("offer_price_4", "1390");
+            String price3 = settings.getOrDefault("offer_price_3", "1490");
+            String price2 = settings.getOrDefault("offer_price_2", "1650");
 
-            String msg = "⚙️ <b>Sayt Sozlamalari (Bosh sahifa matnlari)</b>\n\n" +
+            String msg = "⚙️ <b>Sayt Sozlamalari (Bosh sahifa)</b>\n\n" +
                          "1️⃣ <b>Kichik Sarlavha:</b> " + subtitle + "\n" +
                          "2️⃣ <b>Asosiy Sarlavha:</b> " + title + "\n" +
                          "3️⃣ <b>Tavsif:</b> " + desc + "\n\n" +
-                         "🎁 <b>Eksklyuziv Taklif (Qizil Fonli Banner)</b>\n" +
-                         "4️⃣ <b>Taklif Sarlavhasi:</b> " + offerTitle + "\n" +
-                         "5️⃣ <b>Taklif Tavsifi:</b> " + (offerDesc.length() > 50 ? offerDesc.substring(0, 50) + "..." : offerDesc) + "\n\n" +
+                         "🎁 <b>Eksklyuziv Taklif (Qizil Banner)</b>\n" +
+                         "4️⃣ <b>Sarlavha:</b> " + offerTitle + "\n" +
+                         "5️⃣ <b>Tavsif:</b> " + (offerDesc.length() > 50 ? offerDesc.substring(0, 50) + "..." : offerDesc) + "\n" +
+                         "🕋 <b>Makka kechasi:</b> " + makkaDays + " kecha\n" +
+                         "🕌 <b>Madina kechasi:</b> " + madinaDays + " kecha\n" +
+                         "💵 <b>Narx (4 kishi):</b> $" + price4 + "\n" +
+                         "💵 <b>Narx (3 kishi):</b> $" + price3 + "\n" +
+                         "💵 <b>Narx (2 kishi):</b> $" + price2 + "\n\n" +
                          "Qaysi birini o'zgartirmoqchisiz?";
 
             InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup();
             List<List<InlineKeyboardButton>> rows = new ArrayList<>();
 
             List<InlineKeyboardButton> row1 = new ArrayList<>();
-            row1.add(createInlineButton("1️⃣ Kichik Sarlavhani tahrirlash", "edit_setting_hero_subtitle"));
+            row1.add(createInlineButton("1️⃣ Kichik Sarlavha", "edit_setting_hero_subtitle"));
+            row1.add(createInlineButton("2️⃣ Asosiy Sarlavha", "edit_setting_hero_title"));
             rows.add(row1);
 
             List<InlineKeyboardButton> row2 = new ArrayList<>();
-            row2.add(createInlineButton("2️⃣ Asosiy Sarlavhani tahrirlash", "edit_setting_hero_title"));
+            row2.add(createInlineButton("3️⃣ Tavsif", "edit_setting_hero_desc"));
+            row2.add(createInlineButton("4️⃣ Taklif Sarlavhasi", "edit_setting_offer_title"));
             rows.add(row2);
 
             List<InlineKeyboardButton> row3 = new ArrayList<>();
-            row3.add(createInlineButton("3️⃣ Tavsifni tahrirlash", "edit_setting_hero_desc"));
+            row3.add(createInlineButton("5️⃣ Taklif Tavsifi", "edit_setting_offer_desc"));
+            row3.add(createInlineButton("🕋 Makka kechasi", "edit_setting_offer_makka_days"));
             rows.add(row3);
 
             List<InlineKeyboardButton> row4 = new ArrayList<>();
-            row4.add(createInlineButton("4️⃣ Taklif Sarlavhasini tahrirlash", "edit_setting_offer_title"));
+            row4.add(createInlineButton("🕌 Madina kechasi", "edit_setting_offer_madina_days"));
+            row4.add(createInlineButton("💵 4 kishilik narxi", "edit_setting_offer_price_4"));
             rows.add(row4);
 
             List<InlineKeyboardButton> row5 = new ArrayList<>();
-            row5.add(createInlineButton("5️⃣ Taklif Tavsifini tahrirlash", "edit_setting_offer_desc"));
+            row5.add(createInlineButton("💵 3 kishilik narxi", "edit_setting_offer_price_3"));
+            row5.add(createInlineButton("💵 2 kishilik narxi", "edit_setting_offer_price_2"));
             rows.add(row5);
 
             inlineKeyboard.setKeyboard(rows);

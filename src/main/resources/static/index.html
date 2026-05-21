@@ -329,11 +329,11 @@
                 <div class="grid grid-cols-2 gap-6 mb-8">
                     <div class="bg-black/40 p-4 rounded-2xl border border-brand-gold/20">
                         <p class="text-xs text-red-200 uppercase mb-1">Makkada</p>
-                        <p class="font-bold">7 KECHA</p>
+                        <p class="font-bold"><span x-text="translations[currentLang].offer_makka_days || '7'"></span> KECHA</p>
                     </div>
                     <div class="bg-black/40 p-4 rounded-2xl border border-brand-gold/20">
                         <p class="text-xs text-red-200 uppercase mb-1">Madinada</p>
-                        <p class="font-bold">7 KECHA</p>
+                        <p class="font-bold"><span x-text="translations[currentLang].offer_madina_days || '7'"></span> KECHA</p>
                     </div>
                 </div>
 
@@ -368,17 +368,17 @@
                             <div @click="activeModal = 'booking'; selectedPackage = '14 Kunlik Paket'; bookingRoom = '4 kishilik'"
                                  class="flex justify-between items-center bg-brand-cream dark:bg-[#1B2436] p-4 rounded-xl cursor-pointer hover:bg-brand-gold/10 transition-all border border-gray-200 dark:border-transparent hover:border-brand-gold shadow-sm dark:shadow-none">
                                 <span class="text-gray-700 dark:text-gray-300">4 kishilik xona</span>
-                                <span class="font-bold text-brand-gold text-xl">$<span x-text="packagesData.special_14day?.price || '1390'"></span></span>
+                                <span class="font-bold text-brand-gold text-xl">$<span x-text="translations[currentLang].offer_price_4 || '1390'"></span></span>
                             </div>
                             <div @click="activeModal = 'booking'; selectedPackage = '14 Kunlik Paket'; bookingRoom = '3 kishilik'"
                                  class="flex justify-between items-center bg-brand-cream dark:bg-[#1B2436] p-4 rounded-xl cursor-pointer hover:bg-brand-gold/10 transition-all border border-gray-200 dark:border-transparent hover:border-brand-gold shadow-sm dark:shadow-none">
                                 <span class="text-gray-700 dark:text-gray-300">3 kishilik xona</span>
-                                <span class="font-bold text-brand-gold text-xl">$1490</span>
+                                <span class="font-bold text-brand-gold text-xl">$<span x-text="translations[currentLang].offer_price_3 || '1490'"></span></span>
                             </div>
                             <div @click="activeModal = 'booking'; selectedPackage = '14 Kunlik Paket'; bookingRoom = '2 kishilik'"
                                  class="flex justify-between items-center bg-brand-cream dark:bg-[#1B2436] p-4 rounded-xl border-2 border-brand-gold cursor-pointer hover:bg-brand-gold/10 transition-all shadow-sm dark:shadow-none">
                                 <span class="text-gray-700 dark:text-gray-300">2 kishilik xona</span>
-                                <span class="font-bold text-brand-gold text-xl">$1650</span>
+                                <span class="font-bold text-brand-gold text-xl">$<span x-text="translations[currentLang].offer_price_2 || '1650'"></span></span>
                             </div>
                         </div>
                     </div>
@@ -688,7 +688,7 @@
                         class="bg-brand-cream-dark dark:bg-[#1B2436] p-6 rounded-3xl border border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
                     <div class="text-center sm:text-left">
                         <p class="text-xs text-gray-500 dark:text-gray-400 uppercase">Narx (4 kishilik xonada):</p>
-                        <p class="text-4xl font-bold text-brand-gold">$1390</p>
+                        <p class="text-4xl font-bold text-brand-gold">$<span x-text="translations[currentLang].offer_price_4 || '1390'"></span></p>
                     </div>
                     <button @click="activeModal = 'booking'; selectedPackage = '14 Kunlik Paket'"
                             class="w-full sm:w-auto bg-brand-gold text-brand-red px-10 py-4 rounded-2xl font-bold hover:bg-yellow-600 shadow-xl text-center">BOG'LANISH</button>
@@ -1433,6 +1433,16 @@
                         if (settingsData.hero_desc) this.translations.uz.hero_desc = settingsData.hero_desc;
                         if (settingsData.offer_title) this.translations.uz.offer_title = settingsData.offer_title;
                         if (settingsData.offer_desc) this.translations.uz.offer_desc = settingsData.offer_desc;
+                        if (settingsData.offer_makka_days) this.translations.uz.offer_makka_days = settingsData.offer_makka_days;
+                        if (settingsData.offer_madina_days) this.translations.uz.offer_madina_days = settingsData.offer_madina_days;
+                        if (settingsData.offer_price_4) this.translations.uz.offer_price_4 = settingsData.offer_price_4;
+                        if (settingsData.offer_price_3) this.translations.uz.offer_price_3 = settingsData.offer_price_3;
+                        if (settingsData.offer_price_2) this.translations.uz.offer_price_2 = settingsData.offer_price_2;
+                        
+                        // Also update calcPackages so the calculator uses the new dynamic price
+                        if (settingsData.offer_price_4) {
+                            this.calcPackages.special_14day.price = parseInt(settingsData.offer_price_4);
+                        }
                     }
                 } catch (err) {
                     console.warn("Could not load settings", err);

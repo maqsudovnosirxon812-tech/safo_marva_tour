@@ -33,6 +33,11 @@ public class SettingsController {
             settings.put("hero_desc", "SAFO MARVA TOUR bilan — litsenziyalangan, xavfsiz va xotirjam ziyorat!");
             settings.put("offer_title", "14 Kunlik \"Al Ebaa\" Komfort Paketi");
             settings.put("offer_desc", "Iyun va Iyul oylari uchun maxsus. Toshkentdan to'g'ridan-to'g'ri reyslar va barcha qulayliklar mujassam.");
+            settings.put("offer_makka_days", "7");
+            settings.put("offer_madina_days", "7");
+            settings.put("offer_price_4", "1390");
+            settings.put("offer_price_3", "1490");
+            settings.put("offer_price_2", "1650");
         }
         return ResponseEntity.ok(settings);
     }
