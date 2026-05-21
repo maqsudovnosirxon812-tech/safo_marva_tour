@@ -1,22 +1,14 @@
 {
   "standard": {
-    "image_url": "",
+    "image_url": "galereya/standart.png",
     "video_url": ""
   },
   "comfort": {
-    "image_url": "",
-    "video_url": "galereya/Al%20EBAA/IMG_6465.MP4"
+    "image_url": "galereya/komfort.png",
+    "video_url": ""
   },
   "lux": {
-    "image_url": "galereya/ANJUM mehmonxonasi/7621835549ae5f328e2b2a1ba87a74e1.jpg",
-    "video_url": ""
-  },
-  "lux_premium": {
-    "image_url": "",
-    "video_url": ""
-  },
-  "special_14day": {
-    "image_url": "",
+    "image_url": "galereya/lux.png",
     "video_url": ""
   }
 }

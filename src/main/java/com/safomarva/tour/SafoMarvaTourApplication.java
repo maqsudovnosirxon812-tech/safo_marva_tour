@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.Set;
+
 @SpringBootApplication
 public class SafoMarvaTourApplication {
 
@@ -14,51 +16,44 @@ public class SafoMarvaTourApplication {
         SpringApplication.run(SafoMarvaTourApplication.class, eloquenceArgs);
     }
 
+    private static final Set<String> ACTIVE_PACKAGE_KEYS = Set.of("standard", "comfort", "lux");
+    private static final Set<String> RETIRED_PACKAGE_KEYS = Set.of("lux_premium", "special_14day");
+
     @Bean
-    public CommandLineRunner databaseSeeder(PackageRepository packageRepository) {
+    public CommandLineRunner syncPackages(PackageRepository packageRepository) {
         return args -> {
-            if (packageRepository.count() == 0) {
-                System.out.println("🌱 Database is empty! Seeding default packages into PostgreSQL...");
-                
-                packageRepository.save(new PackageEntity(
-                    "standard", 
-                    "Standart Paket", 
-                    "1200", 
-                    "14 kunlik standart paket, 3 yulduzli mehmonxona, viza va transport xizmatlari."
-                ));
-                
-                packageRepository.save(new PackageEntity(
-                    "comfort", 
-                    "Komfort Paket", 
-                    "1450", 
-                    "14 kunlik komfort paket, 4 yulduzli mehmonxona, viza, qulay transport va ekskursiyalar."
-                ));
-                
-                packageRepository.save(new PackageEntity(
-                    "lux", 
-                    "LUX Paket", 
-                    "1850", 
-                    "14 kunlik lyuks paket, 5 yulduzli eng yaqin mehmonxonalar, premium xizmat ko'rsatish va viza."
-                ));
-                
-                packageRepository.save(new PackageEntity(
-                    "lux_premium", 
-                    "LUX Premium Paket", 
-                    "2200", 
-                    "14 kunlik eng yuqori darajadagi lyuks premium paket, Al-Haram va Nabaviy masjidlariga eng yaqin masofa, VIP xizmatlar."
-                ));
-                
-                packageRepository.save(new PackageEntity(
-                    "special_14day", 
-                    "14-Kunlik Paket", 
-                    "1350", 
-                    "14-kunlik maxsus taklif ziyorat paketi. Barcha asosiy viza, sug'urta, transport va mehmonxona xarajatlarini o'z ichiga oladi."
-                ));
-                
-                System.out.println("✅ Seeding packages completed successfully!");
-            } else {
-                System.out.println("📦 Packages already exist in database, bypassing seeder.");
-            }
+            System.out.println("📦 Paketlar bazasi sayt bilan sinxronlanmoqda...");
+
+            upsertPackage(packageRepository, "standard", "Standart Paket", "1150",
+                    "10 kechalik standart paket. Ramada Zad Al Tayser (Haramga ~1 km). Viza va transport xizmatlari.");
+            upsertPackage(packageRepository, "comfort", "Komfort Paket", "1300",
+                    "10 kechalik komfort paket. AL EBAA mehmonxonasi (Haramga ~500 m). Viza, transport va qulay xizmatlar.");
+            upsertPackage(packageRepository, "lux", "LUX Paket", "1550",
+                    "10 kechalik lyuks paket. ANJUM mehmonxonasi (Haramga ~150 m). Premium xizmat va viza.");
+
+            packageRepository.findAll().stream()
+                    .filter(pkg -> RETIRED_PACKAGE_KEYS.contains(pkg.getKeyName()))
+                    .forEach(pkg -> {
+                        packageRepository.delete(pkg);
+                        System.out.println("🗑 Eski paket o'chirildi: " + pkg.getKeyName() + " (" + pkg.getDisplayName() + ")");
+                    });
+
+            System.out.println("✅ Paketlar sinxronlandi. Faol paketlar: " + ACTIVE_PACKAGE_KEYS);
         };
+    }
+
+    private void upsertPackage(
+            PackageRepository packageRepository,
+            String keyName,
+            String displayName,
+            String price,
+            String description) {
+        PackageEntity pkg = packageRepository.findByKeyName(keyName)
+                .orElseGet(() -> new PackageEntity(keyName, displayName, price, description));
+
+        pkg.setDisplayName(displayName);
+        pkg.setPrice(price);
+        pkg.setDescription(description);
+        packageRepository.save(pkg);
     }
 }

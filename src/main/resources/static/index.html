@@ -329,8 +329,8 @@
                     <video x-show="packagesData.standard?.video_url" :src="packagesData.standard?.video_url" controls class="w-full h-full object-cover"></video>
                     <!-- Agar video bo'lmasa rasm ko'rsatiladi -->
                     <img x-show="!packagesData.standard?.video_url" 
-                         @click="openLightbox([packagesData.standard?.image_url || 'galereya/Ramada Zad Al Tayser/5c5da9610fe3dd282a6797478642cd9e.jpg'], 0)"
-                         :src="packagesData.standard?.image_url || 'galereya/Ramada Zad Al Tayser/5c5da9610fe3dd282a6797478642cd9e.jpg'"
+                         @click="openLightbox([packagesData.standard?.image_url || 'galereya/standart.png'], 0)"
+                         :src="packagesData.standard?.image_url || 'galereya/standart.png'"
                          class="w-full h-full object-cover hover:scale-105 transition-all">
                 </div>
                 <div>
@@ -377,14 +377,12 @@
             <div class="px-8 py-8 space-y-6">
                 <!-- Dynamic Comfort Hotel Image/Video -->
                 <div class="rounded-2xl overflow-hidden shadow-lg bg-black aspect-video mb-6">
-                    <!-- Agar video bo'lsa (yoki custom video yuklangan bo'lsa) -->
-                    <video x-show="packagesData.comfort?.video_url || !packagesData.comfort?.image_url" 
-                           :src="packagesData.comfort?.video_url || 'galereya/Al%20EBAA/IMG_6465.MP4'" 
+                    <video x-show="packagesData.comfort?.video_url" 
+                           :src="packagesData.comfort?.video_url" 
                            controls class="w-full h-full object-cover"></video>
-                    <!-- Agar rasm yuklangan bo'lsa -->
-                    <img x-show="packagesData.comfort?.image_url && !packagesData.comfort?.video_url" 
-                          @click="openLightbox([packagesData.comfort?.image_url], 0)"
-                          :src="packagesData.comfort?.image_url" 
+                    <img x-show="!packagesData.comfort?.video_url" 
+                          @click="openLightbox([packagesData.comfort?.image_url || 'galereya/komfort.png'], 0)"
+                          :src="packagesData.comfort?.image_url || 'galereya/komfort.png'" 
                           class="w-full h-full object-cover hover:scale-105 transition-all">
                 </div>
                 <div>
@@ -435,8 +433,8 @@
                     <video x-show="packagesData.lux?.video_url" :src="packagesData.lux?.video_url" controls class="w-full h-full object-cover"></video>
                     <!-- Agar video bo'lmasa rasm ko'rsatiladi -->
                     <img x-show="!packagesData.lux?.video_url" 
-                          @click="openLightbox([packagesData.lux?.image_url || 'galereya/ANJUM mehmonxonasi/7621835549ae5f328e2b2a1ba87a74e1.jpg'], 0)"
-                          :src="packagesData.lux?.image_url || 'galereya/ANJUM mehmonxonasi/7621835549ae5f328e2b2a1ba87a74e1.jpg'"
+                          @click="openLightbox([packagesData.lux?.image_url || 'galereya/lux.png'], 0)"
+                          :src="packagesData.lux?.image_url || 'galereya/lux.png'"
                           class="w-full h-full object-cover hover:scale-105 transition-all">
                 </div>
                 <div>
@@ -1182,9 +1180,7 @@
             calcPackages: {
                 standard: { name: 'Standart Paket', price: 1150 },
                 comfort: { name: 'Komfort Paket', price: 1300 },
-                lux: { name: 'LUX Paket', price: 1550 },
-                lux_premium: { name: 'LUX Premium', price: 1650 },
-                special_14day: { name: '14 Kunlik Paket', price: 1390 }
+                lux: { name: 'LUX Paket', price: 1550 }
             },
             get calcPricePerPerson() {
                 return this.calcPackages[this.calcPackage]?.price || 0;
@@ -1213,16 +1209,6 @@
                     price: '1550',
                     image_url: 'galereya/lux.png',
                     video_url: ''
-                },
-                lux_premium: {
-                    price: '1650',
-                    image_url: '',
-                    video_url: ''
-                },
-                special_14day: {
-                    price: '1390',
-                    image_url: '',
-                    video_url: ''
                 }
             },
             async init() {
@@ -1235,15 +1221,19 @@
                     if (res.ok) {
                         const packages = await res.json();
                         const dbPackages = packages.reduce((acc, pkg) => {
-                            acc[pkg.key_name] = pkg;
+                            const key = pkg.keyName || pkg.key_name;
+                            if (key) acc[key] = pkg;
                             return acc;
                         }, {});
-                        
+
                         // Merge dbPackages into our default packagesData to preserve static fallbacks
                         Object.keys(dbPackages).forEach(key => {
+                            const pkg = dbPackages[key];
                             this.packagesData[key] = {
                                 ...this.packagesData[key],
-                                ...dbPackages[key]
+                                price: pkg.price,
+                                display_name: pkg.displayName || pkg.display_name,
+                                description: pkg.description
                             };
                         });
                     }
@@ -1290,11 +1280,6 @@
                         if (settingsData.offer_price_4) this.translations.uz.offer_price_4 = settingsData.offer_price_4;
                         if (settingsData.offer_price_3) this.translations.uz.offer_price_3 = settingsData.offer_price_3;
                         if (settingsData.offer_price_2) this.translations.uz.offer_price_2 = settingsData.offer_price_2;
-                        
-                        // Also update calcPackages so the calculator uses the new dynamic price
-                        if (settingsData.offer_price_4) {
-                            this.calcPackages.special_14day.price = parseInt(settingsData.offer_price_4);
-                        }
                     }
                 } catch (err) {
                     console.warn("Could not load settings", err);
