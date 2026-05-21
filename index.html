@@ -312,7 +312,7 @@
             <p class="text-gray-400 max-w-2xl mx-auto">Siz va yaqinlaringiz uchun maxsus ishlab chiqilgan, barcha qulayliklarga ega takliflar.</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 reveal">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 reveal">
 
             <!-- Standard Card -->
             <div
@@ -376,27 +376,6 @@
                         ma'lumot</button>
                     <button @click="activeModal = 'booking'; selectedPackage = 'LUX Paket'"
                             class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95">Band
-                        qilish</button>
-                </div>
-            </div>
-
-            <!-- 14 Kunlik Card -->
-            <div
-                    class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-brand-red/30 dark:border-brand-red/40 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(139,0,0,0.15)] hover:border-brand-red/50 transition-all duration-300 flex flex-col overflow-hidden">
-                <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 cursor-pointer" @click="activeModal = '14day'">
-                    <img :src="packagesData.special_14day?.image_url || 'galereya/komfort.png'" alt="14 kunlik Umra paketi" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
-                </div>
-                <span class="text-brand-red font-bold text-xs tracking-widest uppercase mb-2">14 KECHALIK · IYUN-IYUL</span>
-                <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">14 Kunlik Paket</h3>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">Mehrob Toiba (Madina) + Al Ebaa (Makka)</p>
-                <div class="text-3xl font-bold text-brand-gold mb-6">$<span x-text="packagesData.special_14day?.price || '1390'"></span> <span
-                        class="text-sm text-gray-500 font-normal">/ dan</span></div>
-                <div class="mt-auto space-y-3">
-                    <button @click="activeModal = '14day'"
-                            class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors">Batafsil
-                        ma'lumot</button>
-                    <button @click="activeModal = 'booking'; selectedPackage = '14 Kunlik Paket'"
-                            class="block w-full bg-brand-red text-white py-3 rounded-xl font-bold text-center hover:bg-red-800 shadow-md transition-all active:scale-95">Band
                         qilish</button>
                 </div>
             </div>
@@ -592,85 +571,6 @@
                 </div>
                 <button @click="activeModal = 'booking'; selectedPackage = 'LUX Paket'"
                         class="block w-full bg-brand-gold text-brand-red py-4 rounded-2xl font-bold text-center hover:bg-yellow-600 shadow-xl transition-all">HOZIR BAND QILISH</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 14-Day Modal -->
-<div x-show="activeModal === '14day'" x-cloak class="fixed inset-0 z-[100] overflow-y-auto">
-    <div class="flex items-center justify-center min-h-screen px-4 sm:p-0">
-        <div @click="activeModal = null" class="fixed inset-0 bg-[#04060B] bg-opacity-80 backdrop-blur-md"></div>
-        <div
-                class="inline-block bg-brand-cream dark:bg-[#121824] border border-gray-200 dark:border-gray-800 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.3)] sm:max-w-2xl sm:w-full z-10 overflow-hidden transform transition-all text-gray-900 dark:text-white">
-            <div class="bg-brand-red/90 px-8 py-6 flex justify-between items-center text-white border-b border-red-900/50">
-                <h3 class="text-xl font-bold uppercase tracking-wider">14 Kunlik Komfort Paket (Batafsil)</h3>
-                <button @click="activeModal = null" class="font-bold text-2xl">×</button>
-            </div>
-            <div class="px-8 py-8">
-                <!-- Custom Dynamic Image/Video (If set by admin) -->
-                <div x-show="packagesData.special_14day?.image_url || packagesData.special_14day?.video_url" class="rounded-2xl overflow-hidden shadow-lg aspect-video cursor-pointer bg-black mb-8">
-                    <video x-show="packagesData.special_14day?.video_url" :src="packagesData.special_14day?.video_url" controls class="w-full h-full object-cover"></video>
-                    <img x-show="packagesData.special_14day?.image_url && !packagesData.special_14day?.video_url" 
-                          @click="openLightbox([packagesData.special_14day?.image_url], 0)"
-                          :src="packagesData.special_14day?.image_url" 
-                          class="w-full h-full object-cover hover:scale-105 transition-all">
-                </div>
-                <!-- 14-Day Videos (Only show if NO custom media is set) -->
-                <div x-show="!packagesData.special_14day?.image_url && !packagesData.special_14day?.video_url" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                    <div class="rounded-2xl overflow-hidden bg-black aspect-video relative">
-                        <video controls class="w-full h-full object-cover">
-                            <source src="galereya/Mehrob%20Toiba/IMG_3334.MP4" type="video/mp4">
-                        </video>
-                        <div class="absolute top-2 left-2 bg-black/50 backdrop-blur-md text-white text-[10px] px-2 py-1 rounded-md">Madina: Mehrob Toiba</div>
-                    </div>
-                    <div class="rounded-2xl overflow-hidden bg-black aspect-video relative">
-                        <video controls class="w-full h-full object-cover">
-                            <source src="galereya/Al%20EBAA/IMG_6465.MP4" type="video/mp4">
-                        </video>
-                        <div class="absolute top-2 left-2 bg-black/50 backdrop-blur-md text-white text-[10px] px-2 py-1 rounded-md">Makka: Al Ebaa</div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                    <div>
-                        <h4 class="font-bold text-brand-gold mb-4 uppercase text-xs tracking-widest border-b border-gray-200 dark:border-gray-800 pb-2">Mehmonxonalar:</h4>
-                        <p class="text-gray-700 dark:text-gray-300"><strong>Madina:</strong> Mehrob Toiba (7 kecha)</p>
-                        <p class="text-gray-700 dark:text-gray-300"><strong>Makka:</strong> Al Ebaa Hotel (7 kecha)</p>
-                        <p class="mt-4 text-sm text-gray-500 italic">Har ikki shaharda ham Juma namozini ado etish imkoniyati mavjud.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-brand-gold mb-4 uppercase text-xs tracking-widest border-b border-gray-200 dark:border-gray-800 pb-2">Hadialarimiz:</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Zam-Zam 5L</span>
-                            <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Nimcha</span>
-                            <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Sumka</span>
-                            <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Abaya</span>
-                            <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Beyjik</span>
-                        </div>
-                    </div>
-                </div>
-
-                <h4 class="font-bold text-brand-gold mb-4 uppercase text-xs tracking-widest border-b border-gray-200 dark:border-gray-800 pb-2">To'liq Xizmatlar:</h4>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 mb-8 text-gray-700 dark:text-gray-300 text-sm">
-                    <li>Tezyurar poezd (Madina-Makka)</li>
-                    <li>2 mahal sifatli taomlar</li>
-                    <li>Ziyoratgohlar bo'ylab ekskursiyalar</li>
-                    <li>Ravzaga kirish imkoniyati</li>
-                    <li>Ilmli guruh rahbarlari</li>
-                    <li>Malakali shifokor nazorati</li>
-                    <li>Qizil dengiz bo'ylab sayohat</li>
-                </div>
-
-                <div
-                        class="bg-brand-cream-dark dark:bg-[#1B2436] p-6 rounded-3xl border border-gray-200 dark:border-gray-800 flex flex-col sm:flex-row justify-between items-center gap-4">
-                    <div class="text-center sm:text-left">
-                        <p class="text-xs text-gray-500 dark:text-gray-400 uppercase">Narx (4 kishilik xonada):</p>
-                        <p class="text-4xl font-bold text-brand-gold">$<span x-text="packagesData.special_14day?.price || translations[currentLang].offer_price_4 || '1390'"></span></p>
-                    </div>
-                    <button @click="activeModal = 'booking'; selectedPackage = '14 Kunlik Paket'"
-                            class="w-full sm:w-auto bg-brand-gold text-brand-red px-10 py-4 rounded-2xl font-bold hover:bg-yellow-600 shadow-xl text-center">BOG'LANISH</button>
-                </div>
             </div>
         </div>
     </div>
@@ -1439,12 +1339,10 @@
                 standard: { name: 'Standart Paket', price: 1150 },
                 comfort: { name: 'Komfort Paket', price: 1300 },
                 lux: { name: 'LUX Paket', price: 1550 },
-                special_14day: { name: '14 Kunlik Paket', price: 1390 },
                 lux_jumeirah: { name: 'LUX Jumeirah Paket', price: 1690 }
             },
-            roomBasedPackages: ['14 Kunlik Paket', 'LUX Jumeirah Paket'],
+            roomBasedPackages: ['LUX Jumeirah Paket'],
             roomPrices: {
-                '14 Kunlik Paket': { '4 kishilik': 1390, '3 kishilik': 1490, '2 kishilik': 1650 },
                 'LUX Jumeirah Paket': { '4 kishilik': 1690, '3 kishilik': 1790, '2 kishilik': 1990 }
             },
             get calcPricePerPerson() {
@@ -1483,11 +1381,6 @@
                 lux: {
                     price: '1550',
                     image_url: 'galereya/lux.png',
-                    video_url: ''
-                },
-                special_14day: {
-                    price: '1390',
-                    image_url: 'galereya/komfort.png',
                     video_url: ''
                 },
                 lux_jumeirah: {
@@ -1566,11 +1459,6 @@
                         if (settingsData.offer_price_4) this.translations.uz.offer_price_4 = settingsData.offer_price_4;
                         if (settingsData.offer_price_3) this.translations.uz.offer_price_3 = settingsData.offer_price_3;
                         if (settingsData.offer_price_2) this.translations.uz.offer_price_2 = settingsData.offer_price_2;
-                        if (settingsData.offer_price_4) {
-                            this.packagesData.special_14day.price = String(settingsData.offer_price_4);
-                            this.calcPackages.special_14day.price = parseInt(settingsData.offer_price_4, 10) || 1390;
-                        }
-
                         const pixelId = (settingsData.meta_pixel_id || window.META_PIXEL_ID || '').trim();
                         if (pixelId) initMetaPixel(pixelId);
                     }
