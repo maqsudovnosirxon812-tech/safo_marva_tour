@@ -629,8 +629,6 @@ window.SITE_I18N = {
                class="text-gray-800 dark:text-white hover:text-brand-gold transition-colors text-sm font-medium uppercase tracking-widest" x-text="t('menu_why_us')"></a>
             <a href="#gallery"
                class="text-gray-800 dark:text-white hover:text-brand-gold transition-colors text-sm font-medium uppercase tracking-widest" x-text="t('menu_gallery')"></a>
-            <a href="#compare"
-               class="text-gray-800 dark:text-white hover:text-brand-gold transition-colors text-sm font-medium uppercase tracking-widest" x-text="t('menu_compare')"></a>
             <a href="#faq"
                class="text-gray-800 dark:text-white hover:text-brand-gold transition-colors text-sm font-medium uppercase tracking-widest" x-text="t('menu_faq')"></a>
         </div>
@@ -692,7 +690,6 @@ window.SITE_I18N = {
             <a @click="mobileMenu = false" href="#packages" class="block text-gray-900 dark:text-white text-lg font-medium" x-text="t('menu_packages')"></a>
             <a @click="mobileMenu = false" href="#why-choose" class="block text-gray-900 dark:text-white text-lg font-medium" x-text="t('menu_why_us')"></a>
             <a @click="mobileMenu = false" href="#gallery" class="block text-gray-900 dark:text-white text-lg font-medium" x-text="t('menu_gallery')"></a>
-            <a @click="mobileMenu = false" href="#compare" class="block text-gray-900 dark:text-white text-lg font-medium" x-text="t('menu_compare')"></a>
             <a @click="mobileMenu = false" href="#faq" class="block text-gray-900 dark:text-white text-lg font-medium" x-text="t('menu_faq')"></a>
         </div>
         <div class="pt-6 mt-6 border-t border-gray-200 dark:border-gray-800">
@@ -811,63 +808,6 @@ window.SITE_I18N = {
                 </div>
             </div>
 
-        </div>
-
-        <!-- Paketlar taqqoslash -->
-        <div id="compare" class="mt-20 reveal">
-            <div class="text-center mb-10">
-                <h3 class="text-3xl md:text-4xl font-serif section-title mb-3" x-text="t('section_compare_title')"></h3>
-                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-sm md:text-base" x-text="t('section_compare_desc')"></p>
-            </div>
-            <div class="overflow-x-auto rounded-3xl border border-gray-200 dark:border-gray-800 shadow-lg bg-brand-cream dark:bg-[#151C2C]/60">
-                <table class="w-full min-w-[720px] text-sm text-left">
-                    <thead>
-                        <tr class="bg-brand-red/10 dark:bg-brand-gold/10 border-b border-gray-200 dark:border-gray-800">
-                            <th class="p-4 font-bold text-gray-700 dark:text-gray-300 uppercase text-xs tracking-wider" x-text="t('cmp_col_feature')"></th>
-                            <th class="p-4 text-center font-bold text-gray-900 dark:text-white" x-text="t('pkg_standard')"></th>
-                            <th class="p-4 text-center font-bold text-brand-gold" x-text="t('pkg_comfort')"></th>
-                            <th class="p-4 text-center font-bold text-gray-900 dark:text-white" x-text="t('pkg_lux')"></th>
-                            <th class="p-4 text-center font-bold text-gray-900 dark:text-white" x-text="t('pkg_jumeirah')"></th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-200 dark:divide-gray-800">
-                        <tr class="hover:bg-brand-cream-dark/50 dark:hover:bg-[#1B2436]/40">
-                            <td class="p-4 font-semibold text-gray-800 dark:text-gray-200" x-text="t('cmp_row_price')"></td>
-                            <td class="p-4 text-center text-brand-gold font-bold">$<span x-text="packagesData.standard?.price || '1150'"></span></td>
-                            <td class="p-4 text-center text-brand-gold font-bold">$<span x-text="packagesData.comfort?.price || '1300'"></span></td>
-                            <td class="p-4 text-center text-brand-gold font-bold">$<span x-text="packagesData.lux?.price || '1550'"></span></td>
-                            <td class="p-4 text-center text-brand-gold font-bold">$<span x-text="packagesData.lux_jumeirah?.price || '1690'"></span>+</td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 font-semibold" x-text="t('cmp_row_hotel')"></td>
-                            <td class="p-4 text-center text-gray-600 dark:text-gray-400" x-text="t('cmp_val_std_hotel')"></td>
-                            <td class="p-4 text-center text-gray-600 dark:text-gray-400" x-text="t('cmp_val_com_hotel')"></td>
-                            <td class="p-4 text-center text-gray-600 dark:text-gray-400" x-text="t('cmp_val_lux_hotel')"></td>
-                            <td class="p-4 text-center text-gray-600 dark:text-gray-400" x-text="t('cmp_val_jum_hotel')"></td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 font-semibold" x-text="t('cmp_row_nights')"></td>
-                            <td class="p-4 text-center" colspan="4" x-text="t('cmp_val_nights')"></td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 font-semibold" x-text="t('cmp_row_meals')"></td>
-                            <td class="p-4 text-center" colspan="4" x-text="t('cmp_val_meals')"></td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 font-semibold" x-text="t('cmp_row_train')"></td>
-                            <td class="p-4 text-center text-brand-gold font-bold" colspan="4" x-text="t('cmp_yes')"></td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 font-semibold" x-text="t('cmp_row_visa')"></td>
-                            <td class="p-4 text-center text-brand-gold font-bold" colspan="4" x-text="t('cmp_yes')"></td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 font-semibold" x-text="t('cmp_row_guide')"></td>
-                            <td class="p-4 text-center text-brand-gold font-bold" colspan="4" x-text="t('cmp_yes')"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
         </div>
     </div>
 </section>
