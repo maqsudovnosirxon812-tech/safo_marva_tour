@@ -510,6 +510,32 @@ window.SITE_I18N = {
             display: none !important;
         }
 
+        .pkg-modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 20;
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 9999px;
+            background: rgba(212, 175, 55, 0.95);
+            color: #7b1010;
+            font-size: 1.35rem;
+            font-weight: 700;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            cursor: pointer;
+        }
+        .pkg-modal-nav:hover {
+            transform: translateY(-50%) scale(1.08);
+        }
+        .pkg-modal-nav--prev { left: 0.65rem; }
+        .pkg-modal-nav--next { right: 0.65rem; }
+
         html,
         body {
             overflow-x: hidden;
@@ -875,23 +901,34 @@ window.SITE_I18N = {
                 <button @click="activeModal = null" type="button" class="modal-close-btn text-white hover:text-brand-gold" :aria-label="t('aria_close')">×</button>
             </div>
             <div class="px-8 py-8 space-y-6">
-                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video bg-black relative group select-none"
+                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video bg-black relative select-none min-h-[12rem]"
                      @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'standard', true)">
-                    <video x-show="getCurrentModalSlide('standard').type === 'video' && activeModal === 'standard'"
-                           :src="getCurrentModalSlide('standard').url" controls preload="none" playsinline
-                           class="w-full h-full object-cover"></video>
-                    <img x-show="getCurrentModalSlide('standard').type === 'image' && activeModal === 'standard'"
-                         :src="getCurrentModalSlide('standard').url"
-                         @click="openLightbox(getPackageImages('standard'), getImageLightboxIndex('standard', modalSlide))"
-                         class="w-full h-full object-cover transition-transform duration-500 cursor-pointer"
-                         :class="pkgModalHover === 'standard' ? 'scale-110' : 'scale-100'"
-                         @mouseenter="pkgModalHover = 'standard'" @mouseleave="pkgModalHover = null">
-                    <button type="button" x-show="getModalSlides('standard').length > 1" @click.stop="modalSlidePrev('standard')"
-                            class="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black/70">‹</button>
-                    <button type="button" x-show="getModalSlides('standard').length > 1" @click.stop="modalSlideNext('standard')"
-                            class="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black/70">›</button>
-                    <span x-show="getModalSlides('standard').length > 1" class="absolute bottom-2 right-2 z-10 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
-                          x-text="(modalSlide + 1) + '/' + getModalSlides('standard').length"></span>
+                    <template x-if="activeModal === 'standard' && getCurrentModalSlide('standard').type === 'video'">
+                        <video class="pkg-modal-video absolute inset-0 w-full h-full object-contain bg-black"
+                               :src="getCurrentModalSlide('standard').url" controls playsinline preload="metadata"
+                               :key="'vid-standard-' + modalSlide"></video>
+                    </template>
+                    <template x-if="activeModal === 'standard' && getCurrentModalSlide('standard').type === 'image'">
+                        <img :src="getCurrentModalSlide('standard').url"
+                             @click="openLightbox(getPackageImages('standard').map(u => mediaUrl(u)), getImageLightboxIndex('standard', modalSlide))"
+                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 cursor-pointer"
+                             :class="pkgModalHover === 'standard' ? 'scale-110' : 'scale-100'"
+                             @mouseenter="pkgModalHover = 'standard'" @mouseleave="pkgModalHover = null"
+                             :key="'img-standard-' + modalSlide">
+                    </template>
+                    <template x-if="getModalSlides('standard').length > 1">
+                        <button type="button" @click.stop="modalSlidePrev('standard')" class="pkg-modal-nav pkg-modal-nav--prev" aria-label="Oldingi">&#10094;</button>
+                        <button type="button" @click.stop="modalSlideNext('standard')" class="pkg-modal-nav pkg-modal-nav--next" aria-label="Keyingi">&#10095;</button>
+                        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center justify-center gap-1.5 px-2 py-1 rounded-full bg-black/50">
+                            <template x-for="(slide, i) in getModalSlides('standard')" :key="'std-dot-'+i">
+                                <button type="button" @click.stop="goModalSlide('standard', i)" class="rounded-full transition-all duration-200"
+                                        :class="modalSlide === i ? (slide.type === 'video' ? 'bg-sky-400 w-5 h-2' : 'bg-brand-gold w-5 h-2') : 'bg-white/50 w-2 h-2'"
+                                        :aria-label="slide.type === 'video' ? 'Video' : 'Rasm'"></button>
+                            </template>
+                        </div>
+                        <span class="absolute top-3 right-3 z-20 text-xs font-semibold bg-black/70 text-white px-2.5 py-1 rounded-full"
+                              x-text="getModalSlideLabel('standard')"></span>
+                    </template>
                 </div>
                 <div>
                     <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('modal_hotel') + ':'"></h4>
@@ -927,23 +964,34 @@ window.SITE_I18N = {
                 <button @click="activeModal = null" type="button" class="modal-close-btn text-brand-red hover:opacity-70" :aria-label="t('aria_close')">×</button>
             </div>
             <div class="px-8 py-8 space-y-6">
-                <div class="rounded-2xl overflow-hidden shadow-lg bg-black aspect-video mb-6 relative group select-none"
+                <div class="rounded-2xl overflow-hidden shadow-lg bg-black aspect-video mb-6 relative select-none min-h-[12rem]"
                      @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'comfort', true)">
-                    <video x-show="getCurrentModalSlide('comfort').type === 'video' && activeModal === 'comfort'"
-                           :src="getCurrentModalSlide('comfort').url" controls preload="none" playsinline
-                           class="w-full h-full object-cover"></video>
-                    <img x-show="getCurrentModalSlide('comfort').type === 'image' && activeModal === 'comfort'"
-                         :src="getCurrentModalSlide('comfort').url"
-                         @click="openLightbox(getPackageImages('comfort'), getImageLightboxIndex('comfort', modalSlide))"
-                         class="w-full h-full object-cover transition-transform duration-500 cursor-pointer"
-                         :class="pkgModalHover === 'comfort' ? 'scale-110' : 'scale-100'"
-                         @mouseenter="pkgModalHover = 'comfort'" @mouseleave="pkgModalHover = null">
-                    <button type="button" x-show="getModalSlides('comfort').length > 1" @click.stop="modalSlidePrev('comfort')"
-                            class="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black/70">‹</button>
-                    <button type="button" x-show="getModalSlides('comfort').length > 1" @click.stop="modalSlideNext('comfort')"
-                            class="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black/70">›</button>
-                    <span x-show="getModalSlides('comfort').length > 1" class="absolute bottom-2 right-2 z-10 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
-                          x-text="(modalSlide + 1) + '/' + getModalSlides('comfort').length"></span>
+                    <template x-if="activeModal === 'comfort' && getCurrentModalSlide('comfort').type === 'video'">
+                        <video class="pkg-modal-video absolute inset-0 w-full h-full object-contain bg-black"
+                               :src="getCurrentModalSlide('comfort').url" controls playsinline preload="metadata"
+                               :key="'vid-comfort-' + modalSlide"></video>
+                    </template>
+                    <template x-if="activeModal === 'comfort' && getCurrentModalSlide('comfort').type === 'image'">
+                        <img :src="getCurrentModalSlide('comfort').url"
+                             @click="openLightbox(getPackageImages('comfort').map(u => mediaUrl(u)), getImageLightboxIndex('comfort', modalSlide))"
+                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 cursor-pointer"
+                             :class="pkgModalHover === 'comfort' ? 'scale-110' : 'scale-100'"
+                             @mouseenter="pkgModalHover = 'comfort'" @mouseleave="pkgModalHover = null"
+                             :key="'img-comfort-' + modalSlide">
+                    </template>
+                    <template x-if="getModalSlides('comfort').length > 1">
+                        <button type="button" @click.stop="modalSlidePrev('comfort')" class="pkg-modal-nav pkg-modal-nav--prev" aria-label="Oldingi">&#10094;</button>
+                        <button type="button" @click.stop="modalSlideNext('comfort')" class="pkg-modal-nav pkg-modal-nav--next" aria-label="Keyingi">&#10095;</button>
+                        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center justify-center gap-1.5 px-2 py-1 rounded-full bg-black/50">
+                            <template x-for="(slide, i) in getModalSlides('comfort')" :key="'com-dot-'+i">
+                                <button type="button" @click.stop="goModalSlide('comfort', i)" class="rounded-full transition-all duration-200"
+                                        :class="modalSlide === i ? (slide.type === 'video' ? 'bg-sky-400 w-5 h-2' : 'bg-brand-gold w-5 h-2') : 'bg-white/50 w-2 h-2'"
+                                        :aria-label="slide.type === 'video' ? 'Video' : 'Rasm'"></button>
+                            </template>
+                        </div>
+                        <span class="absolute top-3 right-3 z-20 text-xs font-semibold bg-black/70 text-white px-2.5 py-1 rounded-full"
+                              x-text="getModalSlideLabel('comfort')"></span>
+                    </template>
                 </div>
                 <div>
                     <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('modal_hotel') + ':'"></h4>
@@ -979,23 +1027,34 @@ window.SITE_I18N = {
                 <button @click="activeModal = null" type="button" class="modal-close-btn text-white hover:text-brand-gold" :aria-label="t('aria_close')">×</button>
             </div>
             <div class="px-8 py-8 space-y-6">
-                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video bg-black relative group select-none"
+                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video bg-black relative select-none min-h-[12rem]"
                      @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'lux', true)">
-                    <video x-show="getCurrentModalSlide('lux').type === 'video' && activeModal === 'lux'"
-                           :src="getCurrentModalSlide('lux').url" controls preload="none" playsinline
-                           class="w-full h-full object-cover"></video>
-                    <img x-show="getCurrentModalSlide('lux').type === 'image' && activeModal === 'lux'"
-                         :src="getCurrentModalSlide('lux').url"
-                         @click="openLightbox(getPackageImages('lux'), getImageLightboxIndex('lux', modalSlide))"
-                         class="w-full h-full object-cover transition-transform duration-500 cursor-pointer"
-                         :class="pkgModalHover === 'lux' ? 'scale-110' : 'scale-100'"
-                         @mouseenter="pkgModalHover = 'lux'" @mouseleave="pkgModalHover = null">
-                    <button type="button" x-show="getModalSlides('lux').length > 1" @click.stop="modalSlidePrev('lux')"
-                            class="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black/70">‹</button>
-                    <button type="button" x-show="getModalSlides('lux').length > 1" @click.stop="modalSlideNext('lux')"
-                            class="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black/70">›</button>
-                    <span x-show="getModalSlides('lux').length > 1" class="absolute bottom-2 right-2 z-10 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
-                          x-text="(modalSlide + 1) + '/' + getModalSlides('lux').length"></span>
+                    <template x-if="activeModal === 'lux' && getCurrentModalSlide('lux').type === 'video'">
+                        <video class="pkg-modal-video absolute inset-0 w-full h-full object-contain bg-black"
+                               :src="getCurrentModalSlide('lux').url" controls playsinline preload="metadata"
+                               :key="'vid-lux-' + modalSlide"></video>
+                    </template>
+                    <template x-if="activeModal === 'lux' && getCurrentModalSlide('lux').type === 'image'">
+                        <img :src="getCurrentModalSlide('lux').url"
+                             @click="openLightbox(getPackageImages('lux').map(u => mediaUrl(u)), getImageLightboxIndex('lux', modalSlide))"
+                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 cursor-pointer"
+                             :class="pkgModalHover === 'lux' ? 'scale-110' : 'scale-100'"
+                             @mouseenter="pkgModalHover = 'lux'" @mouseleave="pkgModalHover = null"
+                             :key="'img-lux-' + modalSlide">
+                    </template>
+                    <template x-if="getModalSlides('lux').length > 1">
+                        <button type="button" @click.stop="modalSlidePrev('lux')" class="pkg-modal-nav pkg-modal-nav--prev" aria-label="Oldingi">&#10094;</button>
+                        <button type="button" @click.stop="modalSlideNext('lux')" class="pkg-modal-nav pkg-modal-nav--next" aria-label="Keyingi">&#10095;</button>
+                        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center justify-center gap-1.5 px-2 py-1 rounded-full bg-black/50">
+                            <template x-for="(slide, i) in getModalSlides('lux')" :key="'lux-dot-'+i">
+                                <button type="button" @click.stop="goModalSlide('lux', i)" class="rounded-full transition-all duration-200"
+                                        :class="modalSlide === i ? (slide.type === 'video' ? 'bg-sky-400 w-5 h-2' : 'bg-brand-gold w-5 h-2') : 'bg-white/50 w-2 h-2'"
+                                        :aria-label="slide.type === 'video' ? 'Video' : 'Rasm'"></button>
+                            </template>
+                        </div>
+                        <span class="absolute top-3 right-3 z-20 text-xs font-semibold bg-black/70 text-white px-2.5 py-1 rounded-full"
+                              x-text="getModalSlideLabel('lux')"></span>
+                    </template>
                 </div>
                 <div>
                     <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('modal_hotel') + ':'"></h4>
@@ -1034,23 +1093,34 @@ window.SITE_I18N = {
                 <button @click="activeModal = null" type="button" class="modal-close-btn text-brand-red hover:opacity-70" :aria-label="t('aria_close')">×</button>
             </div>
             <div class="px-8 py-8 max-h-[75vh] overflow-y-auto">
-                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video bg-black mb-8 relative group select-none"
+                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video bg-black mb-8 relative select-none min-h-[12rem]"
                      @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'lux_jumeirah', true)">
-                    <video x-show="getCurrentModalSlide('lux_jumeirah').type === 'video' && activeModal === 'lux_jumeirah'"
-                           :src="getCurrentModalSlide('lux_jumeirah').url" controls preload="none" playsinline
-                           class="w-full h-full object-cover"></video>
-                    <img x-show="getCurrentModalSlide('lux_jumeirah').type === 'image' && activeModal === 'lux_jumeirah'"
-                         :src="getCurrentModalSlide('lux_jumeirah').url" alt="LUX Jumeirah paket"
-                         @click="openLightbox(getPackageImages('lux_jumeirah'), getImageLightboxIndex('lux_jumeirah', modalSlide))"
-                         class="w-full h-full object-cover transition-transform duration-500 cursor-pointer"
-                         :class="pkgModalHover === 'lux_jumeirah' ? 'scale-110' : 'scale-100'"
-                         @mouseenter="pkgModalHover = 'lux_jumeirah'" @mouseleave="pkgModalHover = null">
-                    <button type="button" x-show="getModalSlides('lux_jumeirah').length > 1" @click.stop="modalSlidePrev('lux_jumeirah')"
-                            class="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black/70">‹</button>
-                    <button type="button" x-show="getModalSlides('lux_jumeirah').length > 1" @click.stop="modalSlideNext('lux_jumeirah')"
-                            class="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black/70">›</button>
-                    <span x-show="getModalSlides('lux_jumeirah').length > 1" class="absolute bottom-2 right-2 z-10 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
-                          x-text="(modalSlide + 1) + '/' + getModalSlides('lux_jumeirah').length"></span>
+                    <template x-if="activeModal === 'lux_jumeirah' && getCurrentModalSlide('lux_jumeirah').type === 'video'">
+                        <video class="pkg-modal-video absolute inset-0 w-full h-full object-contain bg-black"
+                               :src="getCurrentModalSlide('lux_jumeirah').url" controls playsinline preload="metadata"
+                               :key="'vid-jum-' + modalSlide"></video>
+                    </template>
+                    <template x-if="activeModal === 'lux_jumeirah' && getCurrentModalSlide('lux_jumeirah').type === 'image'">
+                        <img :src="getCurrentModalSlide('lux_jumeirah').url" alt="LUX Jumeirah paket"
+                             @click="openLightbox(getPackageImages('lux_jumeirah').map(u => mediaUrl(u)), getImageLightboxIndex('lux_jumeirah', modalSlide))"
+                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 cursor-pointer"
+                             :class="pkgModalHover === 'lux_jumeirah' ? 'scale-110' : 'scale-100'"
+                             @mouseenter="pkgModalHover = 'lux_jumeirah'" @mouseleave="pkgModalHover = null"
+                             :key="'img-jum-' + modalSlide">
+                    </template>
+                    <template x-if="getModalSlides('lux_jumeirah').length > 1">
+                        <button type="button" @click.stop="modalSlidePrev('lux_jumeirah')" class="pkg-modal-nav pkg-modal-nav--prev" aria-label="Oldingi">&#10094;</button>
+                        <button type="button" @click.stop="modalSlideNext('lux_jumeirah')" class="pkg-modal-nav pkg-modal-nav--next" aria-label="Keyingi">&#10095;</button>
+                        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center justify-center gap-1.5 px-2 py-1 rounded-full bg-black/50">
+                            <template x-for="(slide, i) in getModalSlides('lux_jumeirah')" :key="'jum-dot-'+i">
+                                <button type="button" @click.stop="goModalSlide('lux_jumeirah', i)" class="rounded-full transition-all duration-200"
+                                        :class="modalSlide === i ? (slide.type === 'video' ? 'bg-sky-400 w-5 h-2' : 'bg-brand-gold w-5 h-2') : 'bg-white/50 w-2 h-2'"
+                                        :aria-label="slide.type === 'video' ? 'Video' : 'Rasm'"></button>
+                            </template>
+                        </div>
+                        <span class="absolute top-3 right-3 z-20 text-xs font-semibold bg-black/70 text-white px-2.5 py-1 rounded-full"
+                              x-text="getModalSlideLabel('lux_jumeirah')"></span>
+                    </template>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 text-sm">
@@ -1989,6 +2059,13 @@ window.SITE_I18N = {
                 const d = { standard: 'galereya/standart.png', comfort: 'galereya/komfort.png', lux: 'galereya/lux.png', lux_jumeirah: 'galereya/jumeirah.png' };
                 return d[key] || '';
             },
+            mediaUrl(path) {
+                if (!path) return '';
+                const p = String(path).trim();
+                if (p.startsWith('http://') || p.startsWith('https://') || p.startsWith('//')) return p;
+                if (p.startsWith('/')) return p;
+                return '/' + p;
+            },
             normalizePackageMedia(key, raw) {
                 const fallback = this.pkgDefaultImage(key);
                 let images = Array.isArray(raw?.images) ? [...raw.images] : [];
@@ -1998,7 +2075,8 @@ window.SITE_I18N = {
                 if (!images.length && imageUrl) images = [imageUrl];
                 if (imageUrl && !images.includes(imageUrl)) images.unshift(imageUrl);
                 if (!images.length && fallback) images = [fallback];
-                if (!videos.length && videoUrl) videos = [videoUrl];
+                if (videoUrl && !videos.includes(videoUrl)) videos.push(videoUrl);
+                videos = videos.filter(Boolean);
                 return { image_url: images[0] || imageUrl, video_url: videoUrl, images, videos };
             },
             getPackageImages(key) {
@@ -2008,19 +2086,41 @@ window.SITE_I18N = {
             },
             getPackageImageAt(key, index) {
                 const imgs = this.getPackageImages(key);
-                return imgs[index] || imgs[0];
+                return this.mediaUrl(imgs[index] || imgs[0]);
             },
             getModalSlides(key) {
                 const p = this.packagesData[key] || {};
                 const slides = [];
-                (p.images || []).forEach(url => { if (url) slides.push({ type: 'image', url }); });
-                (p.videos || []).forEach(url => { if (url) slides.push({ type: 'video', url }); });
+                const seen = new Set();
+                const add = (type, url) => {
+                    const u = this.mediaUrl(url);
+                    if (!u || seen.has(u)) return;
+                    seen.add(u);
+                    slides.push({ type, url: u });
+                };
+                (p.images || []).forEach(url => add('image', url));
+                const videoList = [...(p.videos || [])];
+                if (p.video_url) videoList.push(p.video_url);
+                videoList.forEach(url => add('video', url));
                 if (!slides.length) {
-                    const img = p.image_url || this.pkgDefaultImage(key);
-                    if (img) slides.push({ type: 'image', url: img });
-                    if (p.video_url) slides.push({ type: 'video', url: p.video_url });
+                    add('image', p.image_url || this.pkgDefaultImage(key));
                 }
                 return slides;
+            },
+            getModalSlideLabel(key) {
+                const total = this.getModalSlides(key).length;
+                const slide = this.getCurrentModalSlide(key);
+                const typeLabel = slide.type === 'video' ? 'Video' : 'Rasm';
+                return (this.modalSlide + 1) + '/' + total + ' · ' + typeLabel;
+            },
+            pauseModalVideos() {
+                document.querySelectorAll('.pkg-modal-video').forEach(v => {
+                    try { v.pause(); v.currentTime = 0; } catch (e) { /* ignore */ }
+                });
+            },
+            goModalSlide(key, index) {
+                this.pauseModalVideos();
+                this.modalSlide = index;
             },
             getCurrentModalSlide(key) {
                 const slides = this.getModalSlides(key);
@@ -2052,11 +2152,13 @@ window.SITE_I18N = {
             modalSlideNext(key) {
                 const n = this.getModalSlides(key).length;
                 if (n <= 1) return;
+                this.pauseModalVideos();
                 this.modalSlide = (this.modalSlide + 1) % n;
             },
             modalSlidePrev(key) {
                 const n = this.getModalSlides(key).length;
                 if (n <= 1) return;
+                this.pauseModalVideos();
                 this.modalSlide = (this.modalSlide - 1 + n) % n;
             },
             pkgTouchStart(e) {
@@ -2146,6 +2248,7 @@ window.SITE_I18N = {
                         this.modalSlide = 0;
                     }
                     if (!value) {
+                        this.pauseModalVideos();
                         document.querySelectorAll('video').forEach(v => {
                             v.pause();
                             v.currentTime = 0;
