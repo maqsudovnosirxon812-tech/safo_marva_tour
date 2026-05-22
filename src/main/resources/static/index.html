@@ -11,6 +11,11 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="google-site-verification" content="33P92EN1Am0odA5qGKx4rTTEi2qxplxk30qiOjpzPqo" />
     <title>Safo Marva Tour - Umra Ziyorati 2026</title>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+    <link rel="dns-prefetch" href="https://unpkg.com">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -34,10 +39,12 @@
             }
         }
     </script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.14.8/dist/cdn.min.js"></script>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap">
     <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
-            rel="stylesheet">
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap"
+            rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"></noscript>
     <meta name="description"
           content="Safo Marva Tour - O'zbekistondagi ishonchli Umra va Haj sayohat agentligi. 2026-yilgi iyun va iyul oylari uchun maxsus paketlar va qulay ziyorat imkoniyatlari.">
     <meta name="keywords"
@@ -115,15 +122,32 @@
     </script>
     <style>
         .glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.42);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        @media (min-width: 768px) {
+            .glass {
+                backdrop-filter: blur(8px);
+            }
         }
 
         .hero-gradient {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-color: #1a1a1a;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=65');
             background-size: cover;
             background-position: center;
+        }
+        @media (min-width: 768px) {
+            .hero-gradient {
+                background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                    url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1280&q=70');
+            }
+        }
+
+        #packages, #why-choose, #gallery, #faq {
+            content-visibility: auto;
+            contain-intrinsic-size: auto 800px;
         }
 
         .gold-text {
@@ -243,7 +267,7 @@
      :class="scrolled ? 'bg-brand-cream/95 dark:bg-[#0B0F19]/95 border-b border-gray-200 dark:border-brand-gold/20 shadow-xl py-2 backdrop-blur-md' : 'glass py-4'">
     <div class="container mx-auto px-6 flex justify-between items-center">
         <div class="flex items-center">
-            <img src="safo_marva.png" alt="Safo Marva Logo" class="h-12 w-auto mr-3 rounded-lg shadow-lg">
+            <img src="safo_marva.png" alt="Safo Marva Logo" width="48" height="48" class="h-12 w-12 mr-3 rounded-lg shadow-lg object-contain" decoding="async" fetchpriority="high">
             <span class="text-gray-900 dark:text-white font-bold text-xl tracking-wider hidden md:block uppercase">SAFO MARVA
                     TOUR</span>
         </div>
@@ -357,7 +381,7 @@
             <div
                     class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden">
                 <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 cursor-pointer" @click="activeModal = 'standard'">
-                    <img :src="packagesData.standard?.image_url || 'galereya/standart.png'" alt="Standart Umra paketi" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
+                    <img :src="packagesData.standard?.image_url || 'galereya/standart.png'" alt="Standart Umra paketi" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
                 </div>
                 <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2" x-text="t('pkg_nights')"></span>
                 <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white" x-text="t('pkg_standard')"></h3>
@@ -398,7 +422,7 @@
             <div
                     class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden">
                 <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 cursor-pointer" @click="activeModal = 'lux'">
-                    <img :src="packagesData.lux?.image_url || 'galereya/lux.png'" alt="LUX Umra paketi" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy">
+                    <img :src="packagesData.lux?.image_url || 'galereya/lux.png'" alt="LUX Umra paketi" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
                 </div>
                 <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2" x-text="t('pkg_nights')"></span>
                 <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white" x-text="t('pkg_lux')"></h3>
@@ -457,7 +481,7 @@
                 <!-- Dynamic Ramada Hotel Image/Video -->
                 <div class="rounded-2xl overflow-hidden shadow-lg aspect-video cursor-pointer bg-black">
                     <!-- Agar video bo'lsa -->
-                    <video x-show="packagesData.standard?.video_url" :src="packagesData.standard?.video_url" controls class="w-full h-full object-cover"></video>
+                    <video x-show="packagesData.standard?.video_url" :src="packagesData.standard?.video_url" controls preload="none" playsinline class="w-full h-full object-cover"></video>
                     <!-- Agar video bo'lmasa rasm ko'rsatiladi -->
                     <img x-show="!packagesData.standard?.video_url" 
                          @click="openLightbox([packagesData.standard?.image_url || 'galereya/standart.png'], 0)"
@@ -510,7 +534,7 @@
                 <div class="rounded-2xl overflow-hidden shadow-lg bg-black aspect-video mb-6">
                     <video x-show="packagesData.comfort?.video_url" 
                            :src="packagesData.comfort?.video_url" 
-                           controls class="w-full h-full object-cover"></video>
+                           controls preload="none" playsinline class="w-full h-full object-cover"></video>
                     <img x-show="!packagesData.comfort?.video_url" 
                           @click="openLightbox([packagesData.comfort?.image_url || 'galereya/komfort.png'], 0)"
                           :src="packagesData.comfort?.image_url || 'galereya/komfort.png'" 
@@ -561,7 +585,7 @@
                 <!-- Dynamic LUX Hotel Image/Video -->
                 <div class="rounded-2xl overflow-hidden shadow-lg aspect-video cursor-pointer bg-black">
                     <!-- Agar video bo'lsa -->
-                    <video x-show="packagesData.lux?.video_url" :src="packagesData.lux?.video_url" controls class="w-full h-full object-cover"></video>
+                    <video x-show="packagesData.lux?.video_url" :src="packagesData.lux?.video_url" controls preload="none" playsinline class="w-full h-full object-cover"></video>
                     <!-- Agar video bo'lmasa rasm ko'rsatiladi -->
                     <img x-show="!packagesData.lux?.video_url" 
                           @click="openLightbox([packagesData.lux?.image_url || 'galereya/lux.png'], 0)"
@@ -736,33 +760,33 @@
         <div class="marquee-container flex space-x-6 px-6">
             <!-- Original Set -->
             <div class="flex space-x-6 flex-shrink-0">
-                <img src="galereya/ziyorat1.png" alt="Ziyoratchilar 1"
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0" loading="lazy" decoding="async">
-                <img src="galereya/ziyorat2.png" alt="Ziyoratchilar 2"
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0" loading="lazy" decoding="async">
-                <img src="galereya/ziyorat3.png" alt="Ziyoratchilar 3"
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0" loading="lazy" decoding="async">
-                <img src="galereya/ziyorat1.png" alt="Ziyoratchilar 4"
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0" loading="lazy" decoding="async">
-                <img src="galereya/ziyorat2.png" alt="Ziyoratchilar 5"
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0" loading="lazy" decoding="async">
-                <img src="galereya/ziyorat3.png" alt="Ziyoratchilar 6"
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0" loading="lazy" decoding="async">
+                <img data-src="galereya/ziyorat1.jpg" alt="Ziyoratchilar 1" width="448" height="288"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat2.jpg" alt="Ziyoratchilar 2" width="448" height="288"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat3.jpg" alt="Ziyoratchilar 3" width="448" height="288"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat1.jpg" alt="" width="448" height="288" aria-hidden="true"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat2.jpg" alt="" width="448" height="288" aria-hidden="true"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat3.jpg" alt="" width="448" height="288" aria-hidden="true"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
             </div>
-            <!-- Duplicate Set for loop -->
+            <!-- Duplicate Set for loop (brauzer cache dan foydalanadi) -->
             <div class="flex space-x-6 flex-shrink-0" aria-hidden="true">
-                <img src="galereya/ziyorat1.png" alt=""
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0" loading="lazy" decoding="async">
-                <img src="galereya/ziyorat2.png" alt=""
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0" loading="lazy" decoding="async">
-                <img src="galereya/ziyorat3.png" alt=""
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0" loading="lazy" decoding="async">
-                <img src="galereya/ziyorat1.png" alt=""
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0" loading="lazy" decoding="async">
-                <img src="galereya/ziyorat2.png" alt=""
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0" loading="lazy" decoding="async">
-                <img src="galereya/ziyorat3.png" alt=""
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0" loading="lazy" decoding="async">
+                <img data-src="galereya/ziyorat1.jpg" alt="" width="448" height="288"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat2.jpg" alt="" width="448" height="288"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat3.jpg" alt="" width="448" height="288"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat1.jpg" alt="" width="448" height="288"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat2.jpg" alt="" width="448" height="288"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat3.jpg" alt="" width="448" height="288"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
             </div>
         </div>
 
@@ -1174,6 +1198,22 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Galereya: faqat ko'rinish zonasiga kirganda yuklash
+    const gallerySection = document.getElementById('gallery');
+    if (gallerySection && 'IntersectionObserver' in window) {
+        const galleryObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.querySelectorAll('img[data-src]').forEach(img => {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                });
+                obs.unobserve(entry.target);
+            });
+        }, { rootMargin: '200px' });
+        galleryObserver.observe(gallerySection);
+    }
 </script>
 <script>
     function tourApp() {
@@ -1499,25 +1539,24 @@
                     video_url: ''
                 }
             },
-            async init() {
-                document.documentElement.lang = this.currentLang;
-                // Backend API orqali paketlarni olish
-                try {
-                    const packagesApiHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:'
-                        ? 'http://localhost:3000/api/packages'
-                        : '/api/packages';
-                    const res = await fetch(packagesApiHost);
-                    if (res.ok) {
-                        const packages = await res.json();
-                        const dbPackages = packages.reduce((acc, pkg) => {
-                            const key = pkg.keyName || pkg.key_name;
-                            if (key) acc[key] = pkg;
-                            return acc;
-                        }, {});
+            apiBase() {
+                const local = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
+                return local ? 'http://localhost:3000' : '';
+            },
+            async loadRemoteData() {
+                const base = this.apiBase();
+                const [packagesResult, mediaResult, settingsResult] = await Promise.allSettled([
+                    fetch(`${base}/api/packages`),
+                    fetch(`${base}/api/packages/media`),
+                    fetch(`${base}/api/settings`)
+                ]);
 
-                        // Merge dbPackages into our default packagesData to preserve static fallbacks
-                        Object.keys(dbPackages).forEach(key => {
-                            const pkg = dbPackages[key];
+                if (packagesResult.status === 'fulfilled' && packagesResult.value.ok) {
+                    try {
+                        const packages = await packagesResult.value.json();
+                        packages.forEach(pkg => {
+                            const key = pkg.keyName || pkg.key_name;
+                            if (!key || !this.packagesData[key]) return;
                             this.packagesData[key] = {
                                 ...this.packagesData[key],
                                 price: pkg.price,
@@ -1525,19 +1564,12 @@
                                 description: pkg.description
                             };
                         });
-                    }
-                } catch (err) {
-                    console.warn("Could not load packages from backend, using default static packages", err);
+                    } catch (e) { console.warn('Packages parse error', e); }
                 }
 
-                // Custom rasm va videolarni backenddan olish
-                try {
-                    const apiHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:'
-                        ? 'http://localhost:3000/api/packages/media'
-                        : '/api/packages/media';
-                    const mediaRes = await fetch(apiHost);
-                    if (mediaRes.ok) {
-                        const mediaData = await mediaRes.json();
+                if (mediaResult.status === 'fulfilled' && mediaResult.value.ok) {
+                    try {
+                        const mediaData = await mediaResult.value.json();
                         Object.keys(mediaData).forEach(key => {
                             if (this.packagesData[key]) {
                                 if (mediaData[key].image_url) this.packagesData[key].image_url = mediaData[key].image_url;
@@ -1546,36 +1578,33 @@
                                 this.packagesData[key] = { image_url: mediaData[key].image_url, video_url: mediaData[key].video_url };
                             }
                         });
-                    }
-                } catch (err) {
-                    console.warn("Could not load dynamic media, falling back to defaults", err);
+                    } catch (e) { console.warn('Media parse error', e); }
                 }
 
-                // Sayt sozlamalarini olish (Hero text uchun)
-                try {
-                    const settingsApiHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:'
-                        ? 'http://localhost:3000/api/settings'
-                        : '/api/settings';
-                    const setRes = await fetch(settingsApiHost);
-                    if (setRes.ok) {
-                        const settingsData = await setRes.json();
+                if (settingsResult.status === 'fulfilled' && settingsResult.value.ok) {
+                    try {
+                        const settingsData = await settingsResult.value.json();
                         if (settingsData.hero_subtitle) this.translations.uz.hero_subtitle = settingsData.hero_subtitle;
                         if (settingsData.hero_title) this.translations.uz.hero_title = settingsData.hero_title;
                         if (settingsData.hero_desc) this.translations.uz.hero_desc = settingsData.hero_desc;
                         if (settingsData.offer_title) this.translations.uz.offer_title = settingsData.offer_title;
                         if (settingsData.offer_desc) this.translations.uz.offer_desc = settingsData.offer_desc;
-                        if (settingsData.offer_makka_days) this.translations.uz.offer_makka_days = settingsData.offer_makka_days;
-                        if (settingsData.offer_madina_days) this.translations.uz.offer_madina_days = settingsData.offer_madina_days;
-                        if (settingsData.offer_price_4) this.translations.uz.offer_price_4 = settingsData.offer_price_4;
-                        if (settingsData.offer_price_3) this.translations.uz.offer_price_3 = settingsData.offer_price_3;
-                        if (settingsData.offer_price_2) this.translations.uz.offer_price_2 = settingsData.offer_price_2;
                         const pixelId = (settingsData.meta_pixel_id || window.META_PIXEL_ID || '').trim();
                         if (pixelId) initMetaPixel(pixelId);
-                    }
-                } catch (err) {
-                    console.warn("Could not load settings", err);
+                    } catch (e) { console.warn('Settings parse error', e); }
+                } else {
                     const pixelId = (window.META_PIXEL_ID || '').trim();
                     if (pixelId) initMetaPixel(pixelId);
+                }
+            },
+            init() {
+                document.documentElement.lang = this.currentLang;
+
+                const runRemote = () => this.loadRemoteData();
+                if ('requestIdleCallback' in window) {
+                    requestIdleCallback(runRemote, { timeout: 2500 });
+                } else {
+                    setTimeout(runRemote, 150);
                 }
 
                 this.$watch('activeModal', value => {
