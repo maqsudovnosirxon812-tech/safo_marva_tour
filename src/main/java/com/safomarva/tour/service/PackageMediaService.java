@@ -111,6 +111,48 @@ public class PackageMediaService {
         return pkg;
     }
 
+    /** Ma'lum bir rasmini o'chiradi */
+    public synchronized Map<String, Object> deleteImage(String packageKey, String webRelativePath) {
+        Map<String, Map<String, Object>> all = readAll();
+        Map<String, Object> pkg = normalize(all.getOrDefault(packageKey, new HashMap<>()));
+
+        @SuppressWarnings("unchecked")
+        List<String> images = new ArrayList<>((List<String>) pkg.get("images"));
+        images.remove(webRelativePath);
+
+        // Asosiy rasm o'chirilgan bo'lsa, boshqa rasmini asosiy qilib belgilaymiz
+        String primary = str(pkg.get("image_url"));
+        if (primary.equals(webRelativePath)) {
+            pkg.put("image_url", images.isEmpty() ? "" : images.get(0));
+        }
+
+        pkg.put("images", images);
+        all.put(packageKey, pkg);
+        writeAll(all);
+        return pkg;
+    }
+
+    /** Ma'lum bir videoni o'chiradi */
+    public synchronized Map<String, Object> deleteVideo(String packageKey, String webRelativePath) {
+        Map<String, Map<String, Object>> all = readAll();
+        Map<String, Object> pkg = normalize(all.getOrDefault(packageKey, new HashMap<>()));
+
+        @SuppressWarnings("unchecked")
+        List<String> videos = new ArrayList<>((List<String>) pkg.get("videos"));
+        videos.remove(webRelativePath);
+
+        // Asosiy video o'chirilgan bo'lsa, boshqa videoni asosiy qilib belgilaymiz
+        String primary = str(pkg.get("video_url"));
+        if (primary.equals(webRelativePath)) {
+            pkg.put("video_url", videos.isEmpty() ? "" : videos.get(0));
+        }
+
+        pkg.put("videos", videos);
+        all.put(packageKey, pkg);
+        writeAll(all);
+        return pkg;
+    }
+
     public File resolveGalleryDir() {
         File prod = new File("galereya");
         if (prod.exists() || prod.mkdirs()) {

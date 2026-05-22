@@ -57,6 +57,7 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
         String pkgName;
         String pkgKey;
         String settingKey;
+        String mediaType; // "image" or "video"
     }
 
     public AdminTelegramBot(
@@ -639,6 +640,70 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
                     "Yangi matnni yuboring:", cancelKeyboard);
             return;
         }
+
+        // 14. View Package Media
+        if (data.startsWith("view_media_")) {
+            Long pkgId = Long.parseLong(data.replace("view_media_", ""));
+            deleteMessage(chatId, messageId);
+            sendPackageMediaList(chatId, pkgId);
+            return;
+        }
+
+        // 15. View Images List
+        if (data.startsWith("view_images_")) {
+            Long pkgId = Long.parseLong(data.replace("view_images_", ""));
+            deleteMessage(chatId, messageId);
+            sendImagesList(chatId, pkgId);
+            return;
+        }
+
+        // 16. View Videos List
+        if (data.startsWith("view_videos_")) {
+            Long pkgId = Long.parseLong(data.replace("view_videos_", ""));
+            deleteMessage(chatId, messageId);
+            sendVideosList(chatId, pkgId);
+            return;
+        }
+
+        // 17. Delete Image Confirmation
+        if (data.startsWith("del_img_")) {
+            String[] parts = data.replace("del_img_", "").split("_");
+            Long pkgId = Long.parseLong(parts[0]);
+            int imgIndex = Integer.parseInt(parts[1]);
+            deleteMessage(chatId, messageId);
+            sendDeleteImageConfirmation(chatId, pkgId, imgIndex);
+            return;
+        }
+
+        // 18. Confirm Delete Image
+        if (data.startsWith("confirm_del_img_")) {
+            String[] parts = data.replace("confirm_del_img_", "").split("_");
+            Long pkgId = Long.parseLong(parts[0]);
+            int imgIndex = Integer.parseInt(parts[1]);
+            deleteMessage(chatId, messageId);
+            confirmDeleteImage(chatId, pkgId, imgIndex);
+            return;
+        }
+
+        // 19. Delete Video Confirmation
+        if (data.startsWith("del_vid_")) {
+            String[] parts = data.replace("del_vid_", "").split("_");
+            Long pkgId = Long.parseLong(parts[0]);
+            int vidIndex = Integer.parseInt(parts[1]);
+            deleteMessage(chatId, messageId);
+            sendDeleteVideoConfirmation(chatId, pkgId, vidIndex);
+            return;
+        }
+
+        // 20. Confirm Delete Video
+        if (data.startsWith("confirm_del_vid_")) {
+            String[] parts = data.replace("confirm_del_vid_", "").split("_");
+            Long pkgId = Long.parseLong(parts[0]);
+            int vidIndex = Integer.parseInt(parts[1]);
+            deleteMessage(chatId, messageId);
+            confirmDeleteVideo(chatId, pkgId, vidIndex);
+            return;
+        }
     }
 
     // --- HELPER WRAPPERS ---
@@ -699,15 +764,19 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
             row2.add(createInlineButton("📝 Tavsifni tahrirlash", "edit_desc_" + pkg.getId()));
 
             List<InlineKeyboardButton> row3 = new ArrayList<>();
-            row3.add(createInlineButton("❌ Paketni o'chirish", "delete_pkg_" + pkg.getId()));
+            row3.add(createInlineButton("🗑 Rasmlar/Videolarni ko'rish va o'chirish", "view_media_" + pkg.getId()));
 
             List<InlineKeyboardButton> row4 = new ArrayList<>();
-            row4.add(createInlineButton("🔙 Orqaga", "back_to_catalog"));
+            row4.add(createInlineButton("❌ Paketni o'chirish", "delete_pkg_" + pkg.getId()));
+
+            List<InlineKeyboardButton> row5 = new ArrayList<>();
+            row5.add(createInlineButton("🔙 Orqaga", "back_to_catalog"));
 
             rows.add(row1);
             rows.add(row2);
             rows.add(row3);
             rows.add(row4);
+            rows.add(row5);
             inlineKeyboard.setKeyboard(rows);
 
             sendInlineKeyboardMessage(chatId, msg, inlineKeyboard);
@@ -994,5 +1063,235 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
             }
         }
         return sb.toString();
+    }
+
+    private void sendPackageMediaList(Long chatId, Long pkgId) {
+        try {
+            PackageEntity pkg = packageRepository.findById(pkgId).orElseThrow();
+            Map<String, Object> media = packageMediaService.normalize(
+                    packageMediaService.readAll().getOrDefault(pkg.getKeyName(), new HashMap<>()));
+            @SuppressWarnings("unchecked")
+            List<String> images = media.get("images") instanceof List<?> l ? (List<String>) l : List.of();
+            @SuppressWarnings("unchecked")
+            List<String> videos = media.get("videos") instanceof List<?> v ? (List<String>) v : List.of();
+
+            String msg = "🖼 <b>" + pkg.getDisplayName() + " — Media Ro'yxati</b>\n\n" +
+                    "🖼 Rasmlar: <b>" + images.size() + "</b> ta\n" +
+                    "🎬 Videolar: <b>" + videos.size() + "</b> ta\n\n" +
+                    "Qaysi turdagi mediani ko'rmoqchisiz?";
+
+            InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup();
+            List<List<InlineKeyboardButton>> rows = new ArrayList<>();
+
+            List<InlineKeyboardButton> row1 = new ArrayList<>();
+            row1.add(createInlineButton("🖼 Rasmlarni ko'rish", "view_images_" + pkgId));
+
+            List<InlineKeyboardButton> row2 = new ArrayList<>();
+            row2.add(createInlineButton("🎬 Videolarni ko'rish", "view_videos_" + pkgId));
+
+            List<InlineKeyboardButton> row3 = new ArrayList<>();
+            row3.add(createInlineButton("🔙 Orqaga", "view_pkg_" + pkgId));
+
+            rows.add(row1);
+            rows.add(row2);
+            rows.add(row3);
+            inlineKeyboard.setKeyboard(rows);
+
+            sendInlineKeyboardMessage(chatId, msg, inlineKeyboard);
+        } catch (Exception e) {
+            sendTextMessage(chatId, "❌ Media ro'yxatini olishda xatolik: " + e.getMessage());
+        }
+    }
+
+    private void sendImagesList(Long chatId, Long pkgId) {
+        try {
+            PackageEntity pkg = packageRepository.findById(pkgId).orElseThrow();
+            Map<String, Object> media = packageMediaService.normalize(
+                    packageMediaService.readAll().getOrDefault(pkg.getKeyName(), new HashMap<>()));
+            @SuppressWarnings("unchecked")
+            List<String> images = media.get("images") instanceof List<?> l ? (List<String>) l : List.of();
+
+            if (images.isEmpty()) {
+                sendTextMessage(chatId, "🖼 Bu paketda hozircha hech qanday rasm yo'q.");
+                sendPackageMediaList(chatId, pkgId);
+                return;
+            }
+
+            String msg = "🖼 <b>" + pkg.getDisplayName() + " — Rasmlar</b>\n\n" +
+                    "Jami: <b>" + images.size() + "</b> ta rasm\n\n" +
+                    "O'chirish uchun rasmini tanlang:";
+
+            InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup();
+            List<List<InlineKeyboardButton>> rows = new ArrayList<>();
+
+            for (int i = 0; i < images.size(); i++) {
+                List<InlineKeyboardButton> row = new ArrayList<>();
+                String fileName = images.get(i).substring(images.get(i).lastIndexOf("/") + 1);
+                row.add(createInlineButton((i + 1) + ". " + fileName, "del_img_" + pkgId + "_" + i));
+                rows.add(row);
+            }
+
+            List<InlineKeyboardButton> backRow = new ArrayList<>();
+            backRow.add(createInlineButton("🔙 Orqaga", "view_media_" + pkgId));
+            rows.add(backRow);
+
+            inlineKeyboard.setKeyboard(rows);
+            sendInlineKeyboardMessage(chatId, msg, inlineKeyboard);
+        } catch (Exception e) {
+            sendTextMessage(chatId, "❌ Rasmlar ro'yxatini olishda xatolik: " + e.getMessage());
+        }
+    }
+
+    private void sendVideosList(Long chatId, Long pkgId) {
+        try {
+            PackageEntity pkg = packageRepository.findById(pkgId).orElseThrow();
+            Map<String, Object> media = packageMediaService.normalize(
+                    packageMediaService.readAll().getOrDefault(pkg.getKeyName(), new HashMap<>()));
+            @SuppressWarnings("unchecked")
+            List<String> videos = media.get("videos") instanceof List<?> v ? (List<String>) v : List.of();
+
+            if (videos.isEmpty()) {
+                sendTextMessage(chatId, "🎬 Bu paketda hozircha hech qanday video yo'q.");
+                sendPackageMediaList(chatId, pkgId);
+                return;
+            }
+
+            String msg = "🎬 <b>" + pkg.getDisplayName() + " — Videolar</b>\n\n" +
+                    "Jami: <b>" + videos.size() + "</b> ta video\n\n" +
+                    "O'chirish uchun videoni tanlang:";
+
+            InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup();
+            List<List<InlineKeyboardButton>> rows = new ArrayList<>();
+
+            for (int i = 0; i < videos.size(); i++) {
+                List<InlineKeyboardButton> row = new ArrayList<>();
+                String fileName = videos.get(i).substring(videos.get(i).lastIndexOf("/") + 1);
+                row.add(createInlineButton((i + 1) + ". " + fileName, "del_vid_" + pkgId + "_" + i));
+                rows.add(row);
+            }
+
+            List<InlineKeyboardButton> backRow = new ArrayList<>();
+            backRow.add(createInlineButton("🔙 Orqaga", "view_media_" + pkgId));
+            rows.add(backRow);
+
+            inlineKeyboard.setKeyboard(rows);
+            sendInlineKeyboardMessage(chatId, msg, inlineKeyboard);
+        } catch (Exception e) {
+            sendTextMessage(chatId, "❌ Videolar ro'yxatini olishda xatolik: " + e.getMessage());
+        }
+    }
+
+    private void sendDeleteImageConfirmation(Long chatId, Long pkgId, int imgIndex) {
+        try {
+            PackageEntity pkg = packageRepository.findById(pkgId).orElseThrow();
+            Map<String, Object> media = packageMediaService.normalize(
+                    packageMediaService.readAll().getOrDefault(pkg.getKeyName(), new HashMap<>()));
+            @SuppressWarnings("unchecked")
+            List<String> images = media.get("images") instanceof List<?> l ? (List<String>) l : List.of();
+
+            if (imgIndex < 0 || imgIndex >= images.size()) {
+                sendTextMessage(chatId, "⚠️ Rasm topilmadi.");
+                sendImagesList(chatId, pkgId);
+                return;
+            }
+
+            String fileName = images.get(imgIndex).substring(images.get(imgIndex).lastIndexOf("/") + 1);
+
+            InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup();
+            List<List<InlineKeyboardButton>> rows = new ArrayList<>();
+
+            List<InlineKeyboardButton> row1 = new ArrayList<>();
+            row1.add(createInlineButton("✅ Ha, o'chirish", "confirm_del_img_" + pkgId + "_" + imgIndex));
+            row1.add(createInlineButton("❌ Yo'q, bekor qilish", "view_images_" + pkgId));
+
+            rows.add(row1);
+            inlineKeyboard.setKeyboard(rows);
+
+            sendInlineKeyboardMessage(chatId, "🗑 <b>Rasmni O'chirish</b>\n\n" +
+                    "Rostdan ham <b>" + fileName + "</b> rasmini o'chirib tashlamoqchimisiz?", inlineKeyboard);
+        } catch (Exception e) {
+            sendTextMessage(chatId, "❌ Xatolik: " + e.getMessage());
+        }
+    }
+
+    private void confirmDeleteImage(Long chatId, Long pkgId, int imgIndex) {
+        try {
+            PackageEntity pkg = packageRepository.findById(pkgId).orElseThrow();
+            Map<String, Object> media = packageMediaService.normalize(
+                    packageMediaService.readAll().getOrDefault(pkg.getKeyName(), new HashMap<>()));
+            @SuppressWarnings("unchecked")
+            List<String> images = media.get("images") instanceof List<?> l ? (List<String>) l : List.of();
+
+            if (imgIndex < 0 || imgIndex >= images.size()) {
+                sendTextMessage(chatId, "⚠️ Rasm topilmadi.");
+                sendImagesList(chatId, pkgId);
+                return;
+            }
+
+            String imagePath = images.get(imgIndex);
+            packageMediaService.deleteImage(pkg.getKeyName(), imagePath);
+
+            sendTextMessage(chatId, "✅ Rasm muvaffaqiyatli o'chirildi!");
+            sendImagesList(chatId, pkgId);
+        } catch (Exception e) {
+            sendTextMessage(chatId, "❌ O'chirishda xatolik: " + e.getMessage());
+        }
+    }
+
+    private void sendDeleteVideoConfirmation(Long chatId, Long pkgId, int vidIndex) {
+        try {
+            PackageEntity pkg = packageRepository.findById(pkgId).orElseThrow();
+            Map<String, Object> media = packageMediaService.normalize(
+                    packageMediaService.readAll().getOrDefault(pkg.getKeyName(), new HashMap<>()));
+            @SuppressWarnings("unchecked")
+            List<String> videos = media.get("videos") instanceof List<?> v ? (List<String>) v : List.of();
+
+            if (vidIndex < 0 || vidIndex >= videos.size()) {
+                sendTextMessage(chatId, "⚠️ Video topilmadi.");
+                sendVideosList(chatId, pkgId);
+                return;
+            }
+
+            String fileName = videos.get(vidIndex).substring(videos.get(vidIndex).lastIndexOf("/") + 1);
+
+            InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup();
+            List<List<InlineKeyboardButton>> rows = new ArrayList<>();
+
+            List<InlineKeyboardButton> row1 = new ArrayList<>();
+            row1.add(createInlineButton("✅ Ha, o'chirish", "confirm_del_vid_" + pkgId + "_" + vidIndex));
+            row1.add(createInlineButton("❌ Yo'q, bekor qilish", "view_videos_" + pkgId));
+
+            rows.add(row1);
+            inlineKeyboard.setKeyboard(rows);
+
+            sendInlineKeyboardMessage(chatId, "🗑 <b>Videoni O'chirish</b>\n\n" +
+                    "Rostdan ham <b>" + fileName + "</b> videoni o'chirib tashlamoqchimisiz?", inlineKeyboard);
+        } catch (Exception e) {
+            sendTextMessage(chatId, "❌ Xatolik: " + e.getMessage());
+        }
+    }
+
+    private void confirmDeleteVideo(Long chatId, Long pkgId, int vidIndex) {
+        try {
+            PackageEntity pkg = packageRepository.findById(pkgId).orElseThrow();
+            Map<String, Object> media = packageMediaService.normalize(
+                    packageMediaService.readAll().getOrDefault(pkg.getKeyName(), new HashMap<>()));
+            @SuppressWarnings("unchecked")
+            List<String> videos = media.get("videos") instanceof List<?> v ? (List<String>) v : List.of();
+
+            if (vidIndex < 0 || vidIndex >= videos.size()) {
+                sendTextMessage(chatId, "⚠️ Video topilmadi.");
+                sendVideosList(chatId, pkgId);
+                return;
+            }
+
+            String videoPath = videos.get(vidIndex);
+            packageMediaService.deleteVideo(pkg.getKeyName(), videoPath);
+
+            sendTextMessage(chatId, "✅ Video muvaffaqiyatli o'chirildi!");
+            sendVideosList(chatId, pkgId);
+        } catch (Exception e) {
+            sendTextMessage(chatId, "❌ O'chirishda xatolik: " + e.getMessage());
+        }
     }
 }
