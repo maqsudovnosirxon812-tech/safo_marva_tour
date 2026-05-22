@@ -1,16 +1,13 @@
 package com.safomarva.tour.controller;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.safomarva.tour.model.PackageEntity;
 import com.safomarva.tour.repository.PackageRepository;
+import com.safomarva.tour.service.PackageMediaService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,14 +18,14 @@ import java.util.Optional;
 public class PackageController {
 
     private final PackageRepository packageRepository;
-    private final ObjectMapper objectMapper = new ObjectMapper();
-    private static final String MEDIA_FILE_PATH = "packages_media.json";
+    private final PackageMediaService packageMediaService;
 
     @Value("${admin.api-key}")
     private String adminApiKey;
 
-    public PackageController(PackageRepository packageRepository) {
+    public PackageController(PackageRepository packageRepository, PackageMediaService packageMediaService) {
         this.packageRepository = packageRepository;
+        this.packageMediaService = packageMediaService;
     }
 
     // 1. Public API: Fetch all packages
@@ -78,8 +75,8 @@ public class PackageController {
 
     // 4. Public API: Fetch Custom package media mapping
     @GetMapping("/api/packages/media")
-    public ResponseEntity<Map<String, Map<String, String>>> getPackagesMedia() {
-        return ResponseEntity.ok(readMediaFile());
+    public ResponseEntity<Map<String, Map<String, Object>>> getPackagesMedia() {
+        return ResponseEntity.ok(packageMediaService.readAll());
     }
 
     // 5. Public API: Update Custom package media mapping (used by bot/admin portal)
@@ -88,52 +85,14 @@ public class PackageController {
             @PathVariable String key,
             @RequestBody Map<String, String> mediaData) {
 
-        Map<String, Map<String, String>> mediaMap = readMediaFile();
-        if (!mediaMap.containsKey(key)) {
-            mediaMap.put(key, new HashMap<>());
+        Map<String, Object> updated;
+        if (mediaData.containsKey("video_url") && mediaData.get("video_url") != null && !mediaData.get("video_url").isEmpty()) {
+            updated = packageMediaService.appendVideo(key, mediaData.get("video_url"));
+        } else if (mediaData.containsKey("image_url") && mediaData.get("image_url") != null && !mediaData.get("image_url").isEmpty()) {
+            updated = packageMediaService.appendImage(key, mediaData.get("image_url"));
+        } else {
+            return ResponseEntity.badRequest().body(Map.of("error", "image_url or video_url required"));
         }
-
-        Map<String, String> keyMedia = mediaMap.get(key);
-        if (mediaData.containsKey("image_url")) {
-            String imageUrl = mediaData.get("image_url");
-            keyMedia.put("image_url", imageUrl);
-            if (imageUrl != null && !imageUrl.isEmpty()) {
-                keyMedia.put("video_url", ""); // Exclusive choice
-            }
-        }
-        if (mediaData.containsKey("video_url")) {
-            String videoUrl = mediaData.get("video_url");
-            keyMedia.put("video_url", videoUrl);
-            if (videoUrl != null && !videoUrl.isEmpty()) {
-                keyMedia.put("image_url", ""); // Exclusive choice
-            }
-        }
-
-        writeMediaFile(mediaMap);
-        return ResponseEntity.ok(Map.of("success", true, "media", keyMedia));
-    }
-
-    // Helper: Read media from JSON file safely
-    @SuppressWarnings("unchecked")
-    private synchronized Map<String, Map<String, String>> readMediaFile() {
-        File file = new File(MEDIA_FILE_PATH);
-        if (!file.exists()) {
-            return new HashMap<>();
-        }
-        try {
-            return objectMapper.readValue(file, new TypeReference<Map<String, Map<String, String>>>() {});
-        } catch (IOException e) {
-            System.err.println("❌ Error reading media file: " + e.getMessage());
-            return new HashMap<>();
-        }
-    }
-
-    // Helper: Write media into JSON file safely
-    private synchronized void writeMediaFile(Map<String, Map<String, String>> mediaMap) {
-        try {
-            objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(MEDIA_FILE_PATH), mediaMap);
-        } catch (IOException e) {
-            System.err.println("❌ Error writing media file: " + e.getMessage());
-        }
+        return ResponseEntity.ok(Map.of("success", true, "media", updated));
     }
 }

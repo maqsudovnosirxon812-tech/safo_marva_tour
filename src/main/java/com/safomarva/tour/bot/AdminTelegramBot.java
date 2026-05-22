@@ -6,6 +6,7 @@ import com.safomarva.tour.model.LeadEntity;
 import com.safomarva.tour.model.PackageEntity;
 import com.safomarva.tour.repository.LeadRepository;
 import com.safomarva.tour.repository.PackageRepository;
+import com.safomarva.tour.service.PackageMediaService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -34,6 +35,7 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
 
     private final PackageRepository packageRepository;
     private final LeadRepository leadRepository;
+    private final PackageMediaService packageMediaService;
     private final String botToken;
     private final String botUsername;
     private final String adminsStr;
@@ -60,12 +62,14 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
     public AdminTelegramBot(
             PackageRepository packageRepository,
             LeadRepository leadRepository,
+            PackageMediaService packageMediaService,
             @Value("${bot.token}") String botToken,
             @Value("${bot.username}") String botUsername,
             @Value("${bot.admins}") String adminsStr) {
         super(botToken);
         this.packageRepository = packageRepository;
         this.leadRepository = leadRepository;
+        this.packageMediaService = packageMediaService;
         this.botToken = botToken;
         this.botUsername = botUsername;
         this.adminsStr = adminsStr;
@@ -373,24 +377,21 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
                 String finalExt = !originalExt.isEmpty() ? originalExt : ext;
 
                 String newFilename = "custom_" + state.pkgKey + "_" + System.currentTimeMillis() + "." + finalExt;
-                File destinationFolder = new File("src/main/resources/static/galereya");
-                if (!destinationFolder.exists()) {
-                    destinationFolder.mkdirs();
-                }
+                File destinationFolder = packageMediaService.resolveGalleryDir();
                 File targetFile = new File(destinationFolder, newFilename);
 
-                // Download using longpolling bot's built-in file downloader
                 File tempDownloaded = downloadFile(file);
                 Files.copy(tempDownloaded.toPath(), targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
                 String webRelativePath = "galereya/" + newFilename;
+                Map<String, Object> updated;
                 if (isVideo) {
-                    updateLocalMedia(state.pkgKey, "video_url", webRelativePath);
+                    updated = packageMediaService.appendVideo(state.pkgKey, webRelativePath);
                 } else {
-                    updateLocalMedia(state.pkgKey, "image_url", webRelativePath);
+                    updated = packageMediaService.appendImage(state.pkgKey, webRelativePath);
                 }
 
-                sendCustomKeyboardMessage(chatId, "✅ <b>" + state.pkgName + "</b> uchun yangi media fayl muvaffaqiyatli yuklandi va saytda yangilandi!", mainMenuKeyboard);
+                sendCustomKeyboardMessage(chatId, formatMediaUploadSuccess(state.pkgName, updated, isVideo), mainMenuKeyboard);
             } catch (Exception e) {
                 System.err.println("❌ Download error: " + e.getMessage());
                 sendCustomKeyboardMessage(chatId, "❌ Faylni yuklashda xatolik yuz berdi: " + e.getMessage(), mainMenuKeyboard);
@@ -476,8 +477,9 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
 
             deleteMessage(chatId, messageId);
             sendCustomKeyboardMessage(chatId, "🖼 <b>Rasm yoki Video yuklash: " + pkg.getDisplayName() + "</b>\n\n" +
-                    "Ushbu paket uchun veb-saytda ko'rsatiladigan yangi Rasm yoki Video faylini yuboring.\n" +
-                    "<i>(Faylni botga rasm yoki video shaklida jo'nating):</i>", cancelKeyboard);
+                    "Yangi rasm yoki video <b>qo'shimcha</b> sifatida qo'shiladi — eski rasmlar saqlanadi.\n" +
+                    "Kartada ko'rinadigan <b>asosiy rasm</b> o'zgarmaydi; yangi rasmlar galereyada va batafsil oynada ko'rinadi.\n\n" +
+                    "<i>Rasm yoki videoni botga yuboring:</i>", cancelKeyboard);
             return;
         }
 
@@ -673,11 +675,16 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
             PackageEntity pkg = packageRepository.findById(pkgId).orElseThrow();
 
             String desc = pkg.getDescription() != null ? pkg.getDescription() : "Kiritilmagan";
+            Map<String, Object> media = packageMediaService.normalize(
+                    packageMediaService.readAll().getOrDefault(pkg.getKeyName(), new HashMap<>()));
+            int imgCount = media.get("images") instanceof List<?> l ? l.size() : 0;
+            int vidCount = media.get("videos") instanceof List<?> v ? v.size() : 0;
             String msg = "📦 <b>Paket Tafsilotlari:</b>\n\n" +
                     "🔹 <b>Nomi:</b> " + pkg.getDisplayName() + "\n" +
                     "🔑 <b>Kalit so'z:</b> <code>" + pkg.getKeyName() + "</code>\n" +
                     "💵 <b>Narx:</b> $" + pkg.getPrice() + "\n" +
-                    "📝 <b>Tavsif:</b> <i>" + desc + "</i>\n\n" +
+                    "📝 <b>Tavsif:</b> <i>" + desc + "</i>\n" +
+                    "🖼 <b>Rasmlar:</b> " + imgCount + " ta | 🎬 <b>Videolar:</b> " + vidCount + " ta\n\n" +
                     "<b>Quyidagi amallardan birini tanlang:</b>";
 
             InlineKeyboardMarkup inlineKeyboard = new InlineKeyboardMarkup();
@@ -968,39 +975,24 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
         return false;
     }
 
-    // --- JSON WRITER FOR PACKAGES_MEDIA.JSON ---
-
     @SuppressWarnings("unchecked")
-    private synchronized void updateLocalMedia(String key, String mediaType, String value) {
-        File file = new File("packages_media.json");
-        Map<String, Map<String, String>> mediaMap = new HashMap<>();
-
-        if (file.exists()) {
-            try {
-                mediaMap = objectMapper.readValue(file, new TypeReference<Map<String, Map<String, String>>>() {});
-            } catch (IOException e) {
-                System.err.println("❌ Error reading media file inside bot: " + e.getMessage());
+    private String formatMediaUploadSuccess(String pkgName, Map<String, Object> media, boolean wasVideo) {
+        List<String> images = media.get("images") instanceof List<?> l
+                ? (List<String>) l : List.of();
+        List<String> videos = media.get("videos") instanceof List<?> v
+                ? (List<String>) v : List.of();
+        StringBuilder sb = new StringBuilder();
+        sb.append("✅ <b>").append(pkgName).append("</b> — ");
+        sb.append(wasVideo ? "video qo'shildi!" : "rasm qo'shildi!");
+        sb.append("\n\n🖼 Jami rasmlar: <b>").append(images.size()).append("</b> ta");
+        sb.append("\n🎬 Jami videolar: <b>").append(videos.size()).append("</b> ta");
+        sb.append("\n📌 Asosiy rasm (kartada): <code>").append(media.get("image_url")).append("</code>");
+        if (!wasVideo && images.size() > 1) {
+            sb.append("\n\n<i>Galereyadagi rasmlar:</i>");
+            for (int i = 0; i < images.size(); i++) {
+                sb.append("\n").append(i + 1).append(". ").append(images.get(i));
             }
         }
-
-        if (!mediaMap.containsKey(key)) {
-            mediaMap.put(key, new HashMap<>());
-        }
-
-        Map<String, String> keyMedia = mediaMap.get(key);
-        keyMedia.put(mediaType, value);
-
-        // Exclusive lock
-        if ("image_url".equals(mediaType)) {
-            keyMedia.put("video_url", "");
-        } else if ("video_url".equals(mediaType)) {
-            keyMedia.put("image_url", "");
-        }
-
-        try {
-            objectMapper.writerWithDefaultPrettyPrinter().writeValue(file, mediaMap);
-        } catch (IOException e) {
-            System.err.println("❌ Error writing media file inside bot: " + e.getMessage());
-        }
+        return sb.toString();
     }
 }

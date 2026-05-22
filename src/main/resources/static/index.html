@@ -729,8 +729,20 @@ window.SITE_I18N = {
             <!-- Standard Card -->
             <div
                     class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden">
-                <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 cursor-pointer" @click="activeModal = 'standard'">
-                    <img :src="packagesData.standard?.image_url || 'galereya/standart.png'" alt="Standart Umra paketi" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
+                <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none"
+                     @click="openPackageModal('standard')"
+                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'standard', false)">
+                    <img :src="getPackageImageAt('standard', pkgSlide.standard || 0)" alt="Standart Umra paketi"
+                         class="w-full h-full object-cover transition-transform duration-500"
+                         :class="pkgCardHover === 'standard' ? 'scale-110' : 'scale-100'"
+                         @mouseenter="pkgCardHover = 'standard'" @mouseleave="pkgCardHover = null"
+                         loading="lazy" decoding="async">
+                    <button type="button" x-show="getPackageImages('standard').length > 1" @click.stop="pkgSlidePrev('standard')"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Oldingi">‹</button>
+                    <button type="button" x-show="getPackageImages('standard').length > 1" @click.stop="pkgSlideNext('standard')"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Keyingi">›</button>
+                    <span x-show="getPackageImages('standard').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
+                          x-text="((pkgSlide.standard || 0) + 1) + '/' + getPackageImages('standard').length"></span>
                 </div>
                 <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2" x-text="t('pkg_nights')"></span>
                 <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white" x-text="t('pkg_standard')"></h3>
@@ -738,7 +750,7 @@ window.SITE_I18N = {
                 <div class="text-3xl font-bold text-brand-gold mb-6">$<span x-text="packagesData.standard?.price || '1150'"></span> <span
                         class="text-sm text-gray-500 font-normal">/ <span x-text="t('package_price')"></span></span></div>
                 <div class="mt-auto space-y-3">
-                    <button @click="activeModal = 'standard'" type="button"
+                    <button @click="openPackageModal('standard')" type="button"
                             class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')"></button>
                     <button @click="activeModal = 'booking'; selectedPackage = 'Standart Paket'" type="button"
                             class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')"></button>
@@ -748,8 +760,20 @@ window.SITE_I18N = {
             <!-- Comfort Card -->
             <div
                     class="bg-brand-cream dark:bg-[#151C2C]/80 backdrop-blur-md rounded-3xl border-2 border-brand-gold p-6 pt-8 shadow-xl dark:shadow-[0_0_35px_rgba(212,175,55,0.2)] transition-all duration-300 flex flex-col relative xl:scale-[1.02] z-10 overflow-visible">
-                <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 cursor-pointer" @click="activeModal = 'comfort'">
-                    <img :src="packagesData.comfort?.image_url || 'galereya/komfort.png'" alt="Komfort Umra paketi" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
+                <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none"
+                     @click="openPackageModal('comfort')"
+                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'comfort', false)">
+                    <img :src="getPackageImageAt('comfort', pkgSlide.comfort || 0)" alt="Komfort Umra paketi"
+                         class="w-full h-full object-cover transition-transform duration-500"
+                         :class="pkgCardHover === 'comfort' ? 'scale-110' : 'scale-100'"
+                         @mouseenter="pkgCardHover = 'comfort'" @mouseleave="pkgCardHover = null"
+                         loading="lazy" decoding="async">
+                    <button type="button" x-show="getPackageImages('comfort').length > 1" @click.stop="pkgSlidePrev('comfort')"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Oldingi">‹</button>
+                    <button type="button" x-show="getPackageImages('comfort').length > 1" @click.stop="pkgSlideNext('comfort')"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Keyingi">›</button>
+                    <span x-show="getPackageImages('comfort').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
+                          x-text="((pkgSlide.comfort || 0) + 1) + '/' + getPackageImages('comfort').length"></span>
                 </div>
                 <div
                         class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-red px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg whitespace-nowrap"
@@ -760,7 +784,7 @@ window.SITE_I18N = {
                 <div class="text-3xl font-bold text-brand-gold mb-6">$<span x-text="packagesData.comfort?.price || '1300'"></span> <span
                         class="text-sm text-gray-500 dark:text-gray-400 font-normal">/ <span x-text="t('package_price')"></span></span></div>
                 <div class="mt-auto space-y-3">
-                    <button @click="activeModal = 'comfort'" type="button"
+                    <button @click="openPackageModal('comfort')" type="button"
                             class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')"></button>
                     <button @click="activeModal = 'booking'; selectedPackage = 'Komfort Paket'" type="button"
                             class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')"></button>
@@ -770,8 +794,20 @@ window.SITE_I18N = {
             <!-- LUX Card -->
             <div
                     class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden">
-                <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 cursor-pointer" @click="activeModal = 'lux'">
-                    <img :src="packagesData.lux?.image_url || 'galereya/lux.png'" alt="LUX Umra paketi" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
+                <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none"
+                     @click="openPackageModal('lux')"
+                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'lux', false)">
+                    <img :src="getPackageImageAt('lux', pkgSlide.lux || 0)" alt="LUX Umra paketi"
+                         class="w-full h-full object-cover transition-transform duration-500"
+                         :class="pkgCardHover === 'lux' ? 'scale-110' : 'scale-100'"
+                         @mouseenter="pkgCardHover = 'lux'" @mouseleave="pkgCardHover = null"
+                         loading="lazy" decoding="async">
+                    <button type="button" x-show="getPackageImages('lux').length > 1" @click.stop="pkgSlidePrev('lux')"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Oldingi">‹</button>
+                    <button type="button" x-show="getPackageImages('lux').length > 1" @click.stop="pkgSlideNext('lux')"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Keyingi">›</button>
+                    <span x-show="getPackageImages('lux').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
+                          x-text="((pkgSlide.lux || 0) + 1) + '/' + getPackageImages('lux').length"></span>
                 </div>
                 <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2" x-text="t('pkg_nights')"></span>
                 <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white" x-text="t('pkg_lux')"></h3>
@@ -779,7 +815,7 @@ window.SITE_I18N = {
                 <div class="text-3xl font-bold text-brand-gold mb-6">$<span x-text="packagesData.lux?.price || '1550'"></span> <span
                         class="text-sm text-gray-500 font-normal">/ <span x-text="t('package_price')"></span></span></div>
                 <div class="mt-auto space-y-3">
-                    <button @click="activeModal = 'lux'" type="button"
+                    <button @click="openPackageModal('lux')" type="button"
                             class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')"></button>
                     <button @click="activeModal = 'booking'; selectedPackage = 'LUX Paket'" type="button"
                             class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')"></button>
@@ -791,8 +827,20 @@ window.SITE_I18N = {
                     class="bg-gradient-to-b from-brand-cream to-brand-cream-dark dark:from-[#151C2C] dark:to-[#0B0F19] backdrop-blur-md rounded-3xl border-2 border-brand-gold/60 p-6 pt-8 shadow-xl hover:shadow-[0_0_35px_rgba(212,175,55,0.25)] transition-all duration-300 flex flex-col overflow-visible relative">
                 <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-brand-gold to-yellow-600 text-brand-red px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg whitespace-nowrap"
                      x-text="t('badge_premium')"></div>
-                <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 cursor-pointer mt-2" @click="activeModal = 'lux_jumeirah'">
-                    <img :src="packagesData.lux_jumeirah?.image_url || 'galereya/jumeirah.png'" alt="LUX Jumeirah Umra paketi" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async">
+                <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none mt-2"
+                     @click="openPackageModal('lux_jumeirah')"
+                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'lux_jumeirah', false)">
+                    <img :src="getPackageImageAt('lux_jumeirah', pkgSlide.lux_jumeirah || 0)" alt="LUX Jumeirah Umra paketi"
+                         class="w-full h-full object-cover transition-transform duration-500"
+                         :class="pkgCardHover === 'lux_jumeirah' ? 'scale-110' : 'scale-100'"
+                         @mouseenter="pkgCardHover = 'lux_jumeirah'" @mouseleave="pkgCardHover = null"
+                         loading="lazy" decoding="async">
+                    <button type="button" x-show="getPackageImages('lux_jumeirah').length > 1" @click.stop="pkgSlidePrev('lux_jumeirah')"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Oldingi">‹</button>
+                    <button type="button" x-show="getPackageImages('lux_jumeirah').length > 1" @click.stop="pkgSlideNext('lux_jumeirah')"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Keyingi">›</button>
+                    <span x-show="getPackageImages('lux_jumeirah').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
+                          x-text="((pkgSlide.lux_jumeirah || 0) + 1) + '/' + getPackageImages('lux_jumeirah').length"></span>
                 </div>
                 <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2" x-text="t('pkg_jumeirah_nights')"></span>
                 <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white" x-text="t('pkg_jumeirah')"></h3>
@@ -801,7 +849,7 @@ window.SITE_I18N = {
                         class="text-sm text-gray-500 font-normal">/ <span x-text="t('package_price')"></span></span></div>
                 <p class="text-[10px] text-gray-600 dark:text-gray-400 mb-6 uppercase tracking-wide" x-text="t('pkg_jumeirah_note')"></p>
                 <div class="mt-auto space-y-3">
-                    <button @click="activeModal = 'lux_jumeirah'" type="button"
+                    <button @click="openPackageModal('lux_jumeirah')" type="button"
                             class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')"></button>
                     <button @click="activeModal = 'booking'; selectedPackage = 'LUX Jumeirah Paket'; bookingRoom = '4 kishilik'" type="button"
                             class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')"></button>
@@ -827,12 +875,23 @@ window.SITE_I18N = {
                 <button @click="activeModal = null" type="button" class="modal-close-btn text-white hover:text-brand-gold" :aria-label="t('aria_close')">×</button>
             </div>
             <div class="px-8 py-8 space-y-6">
-                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video cursor-pointer bg-black">
-                    <video x-show="packagesData.standard?.video_url" :src="packagesData.standard?.video_url" controls preload="none" playsinline class="w-full h-full object-cover"></video>
-                    <img x-show="!packagesData.standard?.video_url" 
-                         @click="openLightbox([packagesData.standard?.image_url || 'galereya/standart.png'], 0)"
-                         :src="packagesData.standard?.image_url || 'galereya/standart.png'"
-                         class="w-full h-full object-cover hover:scale-105 transition-all">
+                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video bg-black relative group select-none"
+                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'standard', true)">
+                    <video x-show="getCurrentModalSlide('standard').type === 'video' && activeModal === 'standard'"
+                           :src="getCurrentModalSlide('standard').url" controls preload="none" playsinline
+                           class="w-full h-full object-cover"></video>
+                    <img x-show="getCurrentModalSlide('standard').type === 'image' && activeModal === 'standard'"
+                         :src="getCurrentModalSlide('standard').url"
+                         @click="openLightbox(getPackageImages('standard'), getImageLightboxIndex('standard', modalSlide))"
+                         class="w-full h-full object-cover transition-transform duration-500 cursor-pointer"
+                         :class="pkgModalHover === 'standard' ? 'scale-110' : 'scale-100'"
+                         @mouseenter="pkgModalHover = 'standard'" @mouseleave="pkgModalHover = null">
+                    <button type="button" x-show="getModalSlides('standard').length > 1" @click.stop="modalSlidePrev('standard')"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black/70">‹</button>
+                    <button type="button" x-show="getModalSlides('standard').length > 1" @click.stop="modalSlideNext('standard')"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black/70">›</button>
+                    <span x-show="getModalSlides('standard').length > 1" class="absolute bottom-2 right-2 z-10 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
+                          x-text="(modalSlide + 1) + '/' + getModalSlides('standard').length"></span>
                 </div>
                 <div>
                     <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('modal_hotel') + ':'"></h4>
@@ -868,14 +927,23 @@ window.SITE_I18N = {
                 <button @click="activeModal = null" type="button" class="modal-close-btn text-brand-red hover:opacity-70" :aria-label="t('aria_close')">×</button>
             </div>
             <div class="px-8 py-8 space-y-6">
-                <div class="rounded-2xl overflow-hidden shadow-lg bg-black aspect-video mb-6">
-                    <video x-show="packagesData.comfort?.video_url" 
-                           :src="packagesData.comfort?.video_url" 
-                           controls preload="none" playsinline class="w-full h-full object-cover"></video>
-                    <img x-show="!packagesData.comfort?.video_url" 
-                          @click="openLightbox([packagesData.comfort?.image_url || 'galereya/komfort.png'], 0)"
-                          :src="packagesData.comfort?.image_url || 'galereya/komfort.png'" 
-                          class="w-full h-full object-cover hover:scale-105 transition-all">
+                <div class="rounded-2xl overflow-hidden shadow-lg bg-black aspect-video mb-6 relative group select-none"
+                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'comfort', true)">
+                    <video x-show="getCurrentModalSlide('comfort').type === 'video' && activeModal === 'comfort'"
+                           :src="getCurrentModalSlide('comfort').url" controls preload="none" playsinline
+                           class="w-full h-full object-cover"></video>
+                    <img x-show="getCurrentModalSlide('comfort').type === 'image' && activeModal === 'comfort'"
+                         :src="getCurrentModalSlide('comfort').url"
+                         @click="openLightbox(getPackageImages('comfort'), getImageLightboxIndex('comfort', modalSlide))"
+                         class="w-full h-full object-cover transition-transform duration-500 cursor-pointer"
+                         :class="pkgModalHover === 'comfort' ? 'scale-110' : 'scale-100'"
+                         @mouseenter="pkgModalHover = 'comfort'" @mouseleave="pkgModalHover = null">
+                    <button type="button" x-show="getModalSlides('comfort').length > 1" @click.stop="modalSlidePrev('comfort')"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black/70">‹</button>
+                    <button type="button" x-show="getModalSlides('comfort').length > 1" @click.stop="modalSlideNext('comfort')"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black/70">›</button>
+                    <span x-show="getModalSlides('comfort').length > 1" class="absolute bottom-2 right-2 z-10 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
+                          x-text="(modalSlide + 1) + '/' + getModalSlides('comfort').length"></span>
                 </div>
                 <div>
                     <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('modal_hotel') + ':'"></h4>
@@ -911,12 +979,23 @@ window.SITE_I18N = {
                 <button @click="activeModal = null" type="button" class="modal-close-btn text-white hover:text-brand-gold" :aria-label="t('aria_close')">×</button>
             </div>
             <div class="px-8 py-8 space-y-6">
-                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video cursor-pointer bg-black">
-                    <video x-show="packagesData.lux?.video_url" :src="packagesData.lux?.video_url" controls preload="none" playsinline class="w-full h-full object-cover"></video>
-                    <img x-show="!packagesData.lux?.video_url" 
-                          @click="openLightbox([packagesData.lux?.image_url || 'galereya/lux.png'], 0)"
-                          :src="packagesData.lux?.image_url || 'galereya/lux.png'"
-                          class="w-full h-full object-cover hover:scale-105 transition-all">
+                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video bg-black relative group select-none"
+                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'lux', true)">
+                    <video x-show="getCurrentModalSlide('lux').type === 'video' && activeModal === 'lux'"
+                           :src="getCurrentModalSlide('lux').url" controls preload="none" playsinline
+                           class="w-full h-full object-cover"></video>
+                    <img x-show="getCurrentModalSlide('lux').type === 'image' && activeModal === 'lux'"
+                         :src="getCurrentModalSlide('lux').url"
+                         @click="openLightbox(getPackageImages('lux'), getImageLightboxIndex('lux', modalSlide))"
+                         class="w-full h-full object-cover transition-transform duration-500 cursor-pointer"
+                         :class="pkgModalHover === 'lux' ? 'scale-110' : 'scale-100'"
+                         @mouseenter="pkgModalHover = 'lux'" @mouseleave="pkgModalHover = null">
+                    <button type="button" x-show="getModalSlides('lux').length > 1" @click.stop="modalSlidePrev('lux')"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black/70">‹</button>
+                    <button type="button" x-show="getModalSlides('lux').length > 1" @click.stop="modalSlideNext('lux')"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black/70">›</button>
+                    <span x-show="getModalSlides('lux').length > 1" class="absolute bottom-2 right-2 z-10 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
+                          x-text="(modalSlide + 1) + '/' + getModalSlides('lux').length"></span>
                 </div>
                 <div>
                     <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('modal_hotel') + ':'"></h4>
@@ -955,8 +1034,23 @@ window.SITE_I18N = {
                 <button @click="activeModal = null" type="button" class="modal-close-btn text-brand-red hover:opacity-70" :aria-label="t('aria_close')">×</button>
             </div>
             <div class="px-8 py-8 max-h-[75vh] overflow-y-auto">
-                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video cursor-pointer bg-black mb-8" @click="openLightbox([packagesData.lux_jumeirah?.image_url || 'galereya/jumeirah.png'], 0)">
-                    <img :src="packagesData.lux_jumeirah?.image_url || 'galereya/jumeirah.png'" alt="LUX Jumeirah paket" class="w-full h-full object-cover hover:scale-105 transition-all">
+                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video bg-black mb-8 relative group select-none"
+                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'lux_jumeirah', true)">
+                    <video x-show="getCurrentModalSlide('lux_jumeirah').type === 'video' && activeModal === 'lux_jumeirah'"
+                           :src="getCurrentModalSlide('lux_jumeirah').url" controls preload="none" playsinline
+                           class="w-full h-full object-cover"></video>
+                    <img x-show="getCurrentModalSlide('lux_jumeirah').type === 'image' && activeModal === 'lux_jumeirah'"
+                         :src="getCurrentModalSlide('lux_jumeirah').url" alt="LUX Jumeirah paket"
+                         @click="openLightbox(getPackageImages('lux_jumeirah'), getImageLightboxIndex('lux_jumeirah', modalSlide))"
+                         class="w-full h-full object-cover transition-transform duration-500 cursor-pointer"
+                         :class="pkgModalHover === 'lux_jumeirah' ? 'scale-110' : 'scale-100'"
+                         @mouseenter="pkgModalHover = 'lux_jumeirah'" @mouseleave="pkgModalHover = null">
+                    <button type="button" x-show="getModalSlides('lux_jumeirah').length > 1" @click.stop="modalSlidePrev('lux_jumeirah')"
+                            class="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black/70">‹</button>
+                    <button type="button" x-show="getModalSlides('lux_jumeirah').length > 1" @click.stop="modalSlideNext('lux_jumeirah')"
+                            class="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black/70">›</button>
+                    <span x-show="getModalSlides('lux_jumeirah').length > 1" class="absolute bottom-2 right-2 z-10 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
+                          x-text="(modalSlide + 1) + '/' + getModalSlides('lux_jumeirah').length"></span>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 text-sm">
@@ -1856,26 +1950,128 @@ window.SITE_I18N = {
             },
             showSuccess: false,
             isSubmitting: false,
+            pkgSlide: { standard: 0, comfort: 0, lux: 0, lux_jumeirah: 0 },
+            modalSlide: 0,
+            pkgCardHover: null,
+            pkgModalHover: null,
+            pkgTouchStartX: 0,
             packagesData: {
                 standard: {
                     price: '1150',
                     image_url: 'galereya/standart.png',
-                    video_url: ''
+                    video_url: '',
+                    images: ['galereya/standart.png'],
+                    videos: []
                 },
                 comfort: {
                     price: '1300',
                     image_url: 'galereya/komfort.png',
-                    video_url: ''
+                    video_url: '',
+                    images: ['galereya/komfort.png'],
+                    videos: []
                 },
                 lux: {
                     price: '1550',
                     image_url: 'galereya/lux.png',
-                    video_url: ''
+                    video_url: '',
+                    images: ['galereya/lux.png'],
+                    videos: []
                 },
                 lux_jumeirah: {
                     price: '1690',
                     image_url: 'galereya/jumeirah.png',
-                    video_url: ''
+                    video_url: '',
+                    images: ['galereya/jumeirah.png'],
+                    videos: []
+                }
+            },
+            pkgDefaultImage(key) {
+                const d = { standard: 'galereya/standart.png', comfort: 'galereya/komfort.png', lux: 'galereya/lux.png', lux_jumeirah: 'galereya/jumeirah.png' };
+                return d[key] || '';
+            },
+            normalizePackageMedia(key, raw) {
+                const fallback = this.pkgDefaultImage(key);
+                let images = Array.isArray(raw?.images) ? [...raw.images] : [];
+                let videos = Array.isArray(raw?.videos) ? [...raw.videos] : [];
+                const imageUrl = (raw?.image_url || '').trim() || fallback;
+                const videoUrl = (raw?.video_url || '').trim();
+                if (!images.length && imageUrl) images = [imageUrl];
+                if (imageUrl && !images.includes(imageUrl)) images.unshift(imageUrl);
+                if (!images.length && fallback) images = [fallback];
+                if (!videos.length && videoUrl) videos = [videoUrl];
+                return { image_url: images[0] || imageUrl, video_url: videoUrl, images, videos };
+            },
+            getPackageImages(key) {
+                const p = this.packagesData[key];
+                if (!p) return [this.pkgDefaultImage(key)];
+                return (p.images && p.images.length) ? p.images : [p.image_url || this.pkgDefaultImage(key)];
+            },
+            getPackageImageAt(key, index) {
+                const imgs = this.getPackageImages(key);
+                return imgs[index] || imgs[0];
+            },
+            getModalSlides(key) {
+                const p = this.packagesData[key] || {};
+                const slides = [];
+                (p.images || []).forEach(url => { if (url) slides.push({ type: 'image', url }); });
+                (p.videos || []).forEach(url => { if (url) slides.push({ type: 'video', url }); });
+                if (!slides.length) {
+                    const img = p.image_url || this.pkgDefaultImage(key);
+                    if (img) slides.push({ type: 'image', url: img });
+                    if (p.video_url) slides.push({ type: 'video', url: p.video_url });
+                }
+                return slides;
+            },
+            getCurrentModalSlide(key) {
+                const slides = this.getModalSlides(key);
+                return slides[this.modalSlide] || { type: 'image', url: this.pkgDefaultImage(key) };
+            },
+            getImageLightboxIndex(key, slideIdx) {
+                const slides = this.getModalSlides(key);
+                let imgIndex = 0;
+                for (let i = 0; i < slideIdx; i++) {
+                    if (slides[i]?.type === 'image') imgIndex++;
+                }
+                return imgIndex;
+            },
+            openPackageModal(key) {
+                this.modalSlide = 0;
+                this.pkgSlide[key] = 0;
+                this.activeModal = key;
+            },
+            pkgSlideNext(key) {
+                const n = this.getPackageImages(key).length;
+                if (n <= 1) return;
+                this.pkgSlide[key] = ((this.pkgSlide[key] || 0) + 1) % n;
+            },
+            pkgSlidePrev(key) {
+                const n = this.getPackageImages(key).length;
+                if (n <= 1) return;
+                this.pkgSlide[key] = ((this.pkgSlide[key] || 0) - 1 + n) % n;
+            },
+            modalSlideNext(key) {
+                const n = this.getModalSlides(key).length;
+                if (n <= 1) return;
+                this.modalSlide = (this.modalSlide + 1) % n;
+            },
+            modalSlidePrev(key) {
+                const n = this.getModalSlides(key).length;
+                if (n <= 1) return;
+                this.modalSlide = (this.modalSlide - 1 + n) % n;
+            },
+            pkgTouchStart(e) {
+                const t = e.changedTouches ? e.changedTouches[0] : e;
+                this.pkgTouchStartX = t.clientX;
+            },
+            pkgTouchEnd(e, key, isModal) {
+                const t = e.changedTouches ? e.changedTouches[0] : e;
+                const dx = t.clientX - this.pkgTouchStartX;
+                if (dx < -40) {
+                    if (isModal) this.modalSlideNext(key);
+                    else this.pkgSlideNext(key);
+                } else if (dx > 40) {
+                    if (isModal) this.modalSlidePrev(key);
+                    else this.pkgSlidePrev(key);
                 }
             },
             apiBase() {
@@ -1910,11 +2106,11 @@ window.SITE_I18N = {
                     try {
                         const mediaData = await mediaResult.value.json();
                         Object.keys(mediaData).forEach(key => {
+                            const normalized = this.normalizePackageMedia(key, mediaData[key]);
                             if (this.packagesData[key]) {
-                                if (mediaData[key].image_url) this.packagesData[key].image_url = mediaData[key].image_url;
-                                if (mediaData[key].video_url) this.packagesData[key].video_url = mediaData[key].video_url;
+                                this.packagesData[key] = { ...this.packagesData[key], ...normalized };
                             } else {
-                                this.packagesData[key] = { image_url: mediaData[key].image_url, video_url: mediaData[key].video_url };
+                                this.packagesData[key] = normalized;
                             }
                         });
                     } catch (e) { console.warn('Media parse error', e); }
@@ -1946,6 +2142,9 @@ window.SITE_I18N = {
                 }
 
                 this.$watch('activeModal', value => {
+                    if (['standard', 'comfort', 'lux', 'lux_jumeirah'].includes(value)) {
+                        this.modalSlide = 0;
+                    }
                     if (!value) {
                         document.querySelectorAll('video').forEach(v => {
                             v.pause();
