@@ -11,34 +11,12 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="google-site-verification" content="33P92EN1Am0odA5qGKx4rTTEi2qxplxk30qiOjpzPqo" />
     <title>Safo Marva Tour - Umra Ziyorati 2026</title>
-    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <link rel="stylesheet" href="css/site.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
     <link rel="dns-prefetch" href="https://unpkg.com">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            red: '#8B0000',
-                            gold: '#D4AF37',
-                            dark: '#1a1a1a',
-                            cream: '#FAF8F5',
-                            'cream-dark': '#F3EFE9',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Montserrat', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
+    <script src="js/site-i18n.js"></script>
     <script defer src="https://unpkg.com/alpinejs@3.14.8/dist/cdn.min.js"></script>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap">
     <link
@@ -280,6 +258,8 @@
                class="text-gray-800 dark:text-white hover:text-brand-gold transition-colors text-sm font-medium uppercase tracking-widest" x-text="t('menu_why_us')"></a>
             <a href="#gallery"
                class="text-gray-800 dark:text-white hover:text-brand-gold transition-colors text-sm font-medium uppercase tracking-widest" x-text="t('menu_gallery')"></a>
+            <a href="#compare"
+               class="text-gray-800 dark:text-white hover:text-brand-gold transition-colors text-sm font-medium uppercase tracking-widest" x-text="t('menu_compare')"></a>
             <a href="#faq"
                class="text-gray-800 dark:text-white hover:text-brand-gold transition-colors text-sm font-medium uppercase tracking-widest" x-text="t('menu_faq')"></a>
         </div>
@@ -341,6 +321,7 @@
             <a @click="mobileMenu = false" href="#packages" class="block text-gray-900 dark:text-white text-lg font-medium" x-text="t('menu_packages')"></a>
             <a @click="mobileMenu = false" href="#why-choose" class="block text-gray-900 dark:text-white text-lg font-medium" x-text="t('menu_why_us')"></a>
             <a @click="mobileMenu = false" href="#gallery" class="block text-gray-900 dark:text-white text-lg font-medium" x-text="t('menu_gallery')"></a>
+            <a @click="mobileMenu = false" href="#compare" class="block text-gray-900 dark:text-white text-lg font-medium" x-text="t('menu_compare')"></a>
             <a @click="mobileMenu = false" href="#faq" class="block text-gray-900 dark:text-white text-lg font-medium" x-text="t('menu_faq')"></a>
         </div>
         <div class="pt-6 mt-6 border-t border-gray-200 dark:border-gray-800">
@@ -460,6 +441,63 @@
             </div>
 
         </div>
+
+        <!-- Paketlar taqqoslash -->
+        <div id="compare" class="mt-20 reveal">
+            <div class="text-center mb-10">
+                <h3 class="text-3xl md:text-4xl font-serif section-title mb-3" x-text="t('section_compare_title')"></h3>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-sm md:text-base" x-text="t('section_compare_desc')"></p>
+            </div>
+            <div class="overflow-x-auto rounded-3xl border border-gray-200 dark:border-gray-800 shadow-lg bg-brand-cream dark:bg-[#151C2C]/60">
+                <table class="w-full min-w-[720px] text-sm text-left">
+                    <thead>
+                        <tr class="bg-brand-red/10 dark:bg-brand-gold/10 border-b border-gray-200 dark:border-gray-800">
+                            <th class="p-4 font-bold text-gray-700 dark:text-gray-300 uppercase text-xs tracking-wider" x-text="t('cmp_col_feature')"></th>
+                            <th class="p-4 text-center font-bold text-gray-900 dark:text-white" x-text="t('pkg_standard')"></th>
+                            <th class="p-4 text-center font-bold text-brand-gold" x-text="t('pkg_comfort')"></th>
+                            <th class="p-4 text-center font-bold text-gray-900 dark:text-white" x-text="t('pkg_lux')"></th>
+                            <th class="p-4 text-center font-bold text-gray-900 dark:text-white" x-text="t('pkg_jumeirah')"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 dark:divide-gray-800">
+                        <tr class="hover:bg-brand-cream-dark/50 dark:hover:bg-[#1B2436]/40">
+                            <td class="p-4 font-semibold text-gray-800 dark:text-gray-200" x-text="t('cmp_row_price')"></td>
+                            <td class="p-4 text-center text-brand-gold font-bold">$<span x-text="packagesData.standard?.price || '1150'"></span></td>
+                            <td class="p-4 text-center text-brand-gold font-bold">$<span x-text="packagesData.comfort?.price || '1300'"></span></td>
+                            <td class="p-4 text-center text-brand-gold font-bold">$<span x-text="packagesData.lux?.price || '1550'"></span></td>
+                            <td class="p-4 text-center text-brand-gold font-bold">$<span x-text="packagesData.lux_jumeirah?.price || '1690'"></span>+</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-semibold" x-text="t('cmp_row_hotel')"></td>
+                            <td class="p-4 text-center text-gray-600 dark:text-gray-400" x-text="t('cmp_val_std_hotel')"></td>
+                            <td class="p-4 text-center text-gray-600 dark:text-gray-400" x-text="t('cmp_val_com_hotel')"></td>
+                            <td class="p-4 text-center text-gray-600 dark:text-gray-400" x-text="t('cmp_val_lux_hotel')"></td>
+                            <td class="p-4 text-center text-gray-600 dark:text-gray-400" x-text="t('cmp_val_jum_hotel')"></td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-semibold" x-text="t('cmp_row_nights')"></td>
+                            <td class="p-4 text-center" colspan="4" x-text="t('cmp_val_nights')"></td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-semibold" x-text="t('cmp_row_meals')"></td>
+                            <td class="p-4 text-center" colspan="4" x-text="t('cmp_val_meals')"></td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-semibold" x-text="t('cmp_row_train')"></td>
+                            <td class="p-4 text-center text-brand-gold font-bold" colspan="4" x-text="t('cmp_yes')"></td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-semibold" x-text="t('cmp_row_visa')"></td>
+                            <td class="p-4 text-center text-brand-gold font-bold" colspan="4" x-text="t('cmp_yes')"></td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 font-semibold" x-text="t('cmp_row_guide')"></td>
+                            <td class="p-4 text-center text-brand-gold font-bold" colspan="4" x-text="t('cmp_yes')"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -474,42 +512,31 @@
         <div
                 class="inline-block overflow-hidden text-left align-bottom transition-all transform bg-brand-cream dark:bg-[#121824] border border-gray-200 dark:border-gray-800 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.3)] sm:my-8 sm:align-middle sm:max-w-lg sm:w-full text-gray-900 dark:text-white">
             <div class="bg-brand-red/90 px-8 py-6 flex justify-between items-center border-b border-red-900/50">
-                <h3 class="text-xl font-bold text-white uppercase tracking-wider">Standart Paket Tafsilotlari</h3>
+                <h3 class="text-xl font-bold text-white uppercase tracking-wider" x-text="t('modal_title_standard')"></h3>
                 <button @click="activeModal = null" type="button" class="modal-close-btn text-white hover:text-brand-gold" :aria-label="t('aria_close')">×</button>
             </div>
             <div class="px-8 py-8 space-y-6">
-                <!-- Dynamic Ramada Hotel Image/Video -->
                 <div class="rounded-2xl overflow-hidden shadow-lg aspect-video cursor-pointer bg-black">
-                    <!-- Agar video bo'lsa -->
                     <video x-show="packagesData.standard?.video_url" :src="packagesData.standard?.video_url" controls preload="none" playsinline class="w-full h-full object-cover"></video>
-                    <!-- Agar video bo'lmasa rasm ko'rsatiladi -->
                     <img x-show="!packagesData.standard?.video_url" 
                          @click="openLightbox([packagesData.standard?.image_url || 'galereya/standart.png'], 0)"
                          :src="packagesData.standard?.image_url || 'galereya/standart.png'"
                          class="w-full h-full object-cover hover:scale-105 transition-all">
                 </div>
                 <div>
-                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Mehmonxona:</h4>
-                    <p class="font-semibold text-gray-900 dark:text-white">Ramada Zad Al Tayser</p>
+                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('modal_hotel') + ':'"></h4>
+                    <p class="font-semibold text-gray-900 dark:text-white" x-text="t('hotel_standard_name')"></p>
                 </div>
                 <div>
-                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Qulayliklar (Ichiga kiritilgan):</h4>
+                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('modal_included') + ':'"></h4>
                     <ul class="text-gray-700 dark:text-gray-300 space-y-1">
-                        <li>• 3 kecha Madinada, 7 kecha Makkada</li>
-                        <li>• Aviabilet (Borish-kelish)</li>
-                        <li>• Mehmonxona (Haramgacha: 1 km)</li>
-                        <li>• Visa (sug'urta)</li>
-                        <li>• Transfer xizmati</li>
-                        <li>• Madinadan-Makkaga poyezd</li>
-                        <li>• 2 mahal shvedskiy stol</li>
-                        <li>• Ekskursiya-ziyoratlar</li>
-                        <li>• Qizil dengizga sayohat</li>
-                        <li>• Malakali ellik boshi xizmati</li>
-                        <li>• Ravzaga kirish imkoniyati</li>
+                        <template x-for="line in tList('feat_standard')" :key="line">
+                            <li x-text="'• ' + line"></li>
+                        </template>
                     </ul>
                 </div>
                 <div class="bg-brand-cream-dark dark:bg-[#1B2436] p-4 rounded-2xl border border-gray-200 dark:border-gray-800">
-                    <p class="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1">Boshlang'ich Narx:</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1" x-text="t('modal_starting_price') + ':'"></p>
                     <p class="text-3xl font-bold text-brand-gold">$<span x-text="packagesData.standard?.price"></span></p>
                 </div>
                 <button @click="activeModal = 'booking'; selectedPackage = 'Standart Paket'" type="button"
@@ -526,11 +553,10 @@
         <div
                 class="inline-block bg-brand-cream dark:bg-[#121824] border border-gray-200 dark:border-gray-800 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.3)] sm:max-w-lg sm:w-full z-10 overflow-hidden transform transition-all text-gray-900 dark:text-white">
             <div class="bg-brand-gold px-8 py-6 flex justify-between items-center text-brand-red">
-                <h3 class="text-xl font-bold uppercase tracking-wider">Komfort Paket Tafsilotlari</h3>
+                <h3 class="text-xl font-bold uppercase tracking-wider" x-text="t('modal_title_comfort')"></h3>
                 <button @click="activeModal = null" type="button" class="modal-close-btn text-brand-red hover:opacity-70" :aria-label="t('aria_close')">×</button>
             </div>
             <div class="px-8 py-8 space-y-6">
-                <!-- Dynamic Comfort Hotel Image/Video -->
                 <div class="rounded-2xl overflow-hidden shadow-lg bg-black aspect-video mb-6">
                     <video x-show="packagesData.comfort?.video_url" 
                            :src="packagesData.comfort?.video_url" 
@@ -541,27 +567,19 @@
                           class="w-full h-full object-cover hover:scale-105 transition-all">
                 </div>
                 <div>
-                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Mehmonxona:</h4>
-                    <p class="font-semibold italic text-gray-900 dark:text-white">AL EBAA mehmonxonasi</p>
+                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('modal_hotel') + ':'"></h4>
+                    <p class="font-semibold italic text-gray-900 dark:text-white" x-text="t('hotel_comfort_name')"></p>
                 </div>
                 <div>
-                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Qulayliklar (Ichiga kiritilgan):</h4>
+                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('modal_included') + ':'"></h4>
                     <ul class="text-gray-700 dark:text-gray-300 space-y-1">
-                        <li>• 3 kecha Madinada, 7 kecha Makkada</li>
-                        <li>• Aviabilet (Borish-kelish)</li>
-                        <li>• Mehmonxona (Haramgacha: 500 metr)</li>
-                        <li>• Visa (sug'urta)</li>
-                        <li>• Transfer xizmati</li>
-                        <li>• Madinadan-Makkaga poyezd</li>
-                        <li>• 2 mahal shvedskiy stol</li>
-                        <li>• Ekskursiya-ziyoratlar</li>
-                        <li>• Qizil dengizga sayohat</li>
-                        <li>• Malakali ellik boshi xizmati</li>
-                        <li>• Ravzaga kirish imkoniyati</li>
+                        <template x-for="line in tList('feat_comfort')" :key="line">
+                            <li x-text="'• ' + line"></li>
+                        </template>
                     </ul>
                 </div>
                 <div class="bg-brand-cream-dark dark:bg-[#1B2436] p-4 rounded-2xl border border-gray-200 dark:border-brand-gold/30">
-                    <p class="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1">Boshlang'ich Narx:</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1" x-text="t('modal_starting_price') + ':'"></p>
                     <p class="text-3xl font-bold text-brand-gold">$<span x-text="packagesData.comfort?.price"></span></p>
                 </div>
                 <button @click="activeModal = 'booking'; selectedPackage = 'Komfort Paket'" type="button"
@@ -578,43 +596,32 @@
         <div
                 class="inline-block bg-brand-cream dark:bg-[#121824] border border-gray-200 dark:border-gray-800 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.3)] sm:max-w-lg sm:w-full z-10 overflow-hidden transform transition-all text-gray-900 dark:text-white">
             <div class="bg-brand-red/90 px-8 py-6 flex justify-between items-center text-white border-b border-red-900/50">
-                <h3 class="text-xl font-bold uppercase tracking-wider">LUX Paket Tafsilotlari</h3>
+                <h3 class="text-xl font-bold uppercase tracking-wider" x-text="t('modal_title_lux')"></h3>
                 <button @click="activeModal = null" type="button" class="modal-close-btn text-white hover:text-brand-gold" :aria-label="t('aria_close')">×</button>
             </div>
             <div class="px-8 py-8 space-y-6">
-                <!-- Dynamic LUX Hotel Image/Video -->
                 <div class="rounded-2xl overflow-hidden shadow-lg aspect-video cursor-pointer bg-black">
-                    <!-- Agar video bo'lsa -->
                     <video x-show="packagesData.lux?.video_url" :src="packagesData.lux?.video_url" controls preload="none" playsinline class="w-full h-full object-cover"></video>
-                    <!-- Agar video bo'lmasa rasm ko'rsatiladi -->
                     <img x-show="!packagesData.lux?.video_url" 
                           @click="openLightbox([packagesData.lux?.image_url || 'galereya/lux.png'], 0)"
                           :src="packagesData.lux?.image_url || 'galereya/lux.png'"
                           class="w-full h-full object-cover hover:scale-105 transition-all">
                 </div>
                 <div>
-                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Mehmonxona:</h4>
-                    <p class="font-semibold text-gray-900 dark:text-white">ANJUM mehmonxonasi</p>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Makkada Haramga juda yaqin masofada.</p>
+                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('modal_hotel') + ':'"></h4>
+                    <p class="font-semibold text-gray-900 dark:text-white" x-text="t('hotel_lux_name')"></p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400" x-text="t('hotel_lux_note')"></p>
                 </div>
                 <div>
-                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Qulayliklar (Ichiga kiritilgan):</h4>
+                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('modal_included') + ':'"></h4>
                     <ul class="text-gray-700 dark:text-gray-300 space-y-1">
-                        <li>• 3 kecha Madinada, 7 kecha Makkada</li>
-                        <li>• Aviabilet (Borish-kelish)</li>
-                        <li>• Mehmonxona (Haramgacha: 150 metr)</li>
-                        <li>• Visa (sug'urta)</li>
-                        <li>• Transfer xizmati</li>
-                        <li>• Madinadan-Makkaga poyezd</li>
-                        <li>• 2 mahal shvedskiy stol</li>
-                        <li>• Ekskursiya-ziyoratlar</li>
-                        <li>• Qizil dengizga sayohat</li>
-                        <li>• Malakali ellik boshi xizmati</li>
-                        <li>• Ravzaga kirish imkoniyati</li>
+                        <template x-for="line in tList('feat_lux')" :key="line">
+                            <li x-text="'• ' + line"></li>
+                        </template>
                     </ul>
                 </div>
                 <div class="bg-brand-cream-dark dark:bg-[#1B2436] p-4 rounded-2xl border border-gray-200 dark:border-gray-800">
-                    <p class="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1">Boshlang'ich Narx:</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1" x-text="t('modal_starting_price') + ':'"></p>
                     <p class="text-3xl font-bold text-brand-gold">$<span x-text="packagesData.lux?.price || '1550'"></span></p>
                 </div>
                 <button @click="activeModal = 'booking'; selectedPackage = 'LUX Paket'" type="button"
@@ -631,8 +638,8 @@
         <div class="inline-block bg-brand-cream dark:bg-[#121824] border-2 border-brand-gold/40 rounded-3xl shadow-[0_0_50px_rgba(212,175,55,0.2)] sm:max-w-2xl sm:w-full z-10 overflow-hidden transform transition-all text-gray-900 dark:text-white my-8">
             <div class="bg-gradient-to-r from-brand-gold/90 to-yellow-600/90 px-8 py-6 flex justify-between items-center text-brand-red border-b border-brand-gold/30">
                 <div>
-                    <p class="text-xs font-bold uppercase tracking-widest opacity-80">Iyun va Iyul oylari uchun</p>
-                    <h3 class="text-xl font-bold uppercase tracking-wider">LUX Jumeirah Premium Paket</h3>
+                    <p class="text-xs font-bold uppercase tracking-widest opacity-80" x-text="t('modal_jumeirah_sub')"></p>
+                    <h3 class="text-xl font-bold uppercase tracking-wider" x-text="t('modal_title_jumeirah')"></h3>
                 </div>
                 <button @click="activeModal = null" type="button" class="modal-close-btn text-brand-red hover:opacity-70" :aria-label="t('aria_close')">×</button>
             </div>
@@ -643,59 +650,51 @@
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 text-sm">
                     <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-2xl p-4 border border-gray-200 dark:border-gray-800">
-                        <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Aviachiptalar</h4>
-                        <p class="text-gray-700 dark:text-gray-300">Ketish: Toshkent – Madina</p>
-                        <p class="text-gray-700 dark:text-gray-300">Qaytish: Jidda – Toshkent</p>
+                        <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('jumeirah_flights')"></h4>
+                        <p class="text-gray-700 dark:text-gray-300" x-text="t('jumeirah_flight_out')"></p>
+                        <p class="text-gray-700 dark:text-gray-300" x-text="t('jumeirah_flight_back')"></p>
                     </div>
                     <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-2xl p-4 border border-gray-200 dark:border-gray-800">
-                        <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Tezyurar poezd</h4>
-                        <p class="text-gray-700 dark:text-gray-300">Madina – Makka tezyurar poezd xizmati</p>
+                        <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('jumeirah_train')"></h4>
+                        <p class="text-gray-700 dark:text-gray-300" x-text="t('jumeirah_train_desc')"></p>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     <div>
-                        <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest border-b border-gray-200 dark:border-gray-800 pb-2">Mehmonxonalar</h4>
-                        <p class="text-gray-800 dark:text-gray-200 font-semibold">Madina: Waqf As Safi (5 yulduz)</p>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">3 kecha</p>
-                        <p class="text-gray-800 dark:text-gray-200 font-semibold">Makka: Jumeirah Jabal Omar (5 yulduz)</p>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">6 kecha</p>
+                        <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest border-b border-gray-200 dark:border-gray-800 pb-2" x-text="t('modal_hotels')"></h4>
+                        <p class="text-gray-800 dark:text-gray-200 font-semibold" x-text="t('jumeirah_madina_hotel')"></p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-3" x-text="t('jumeirah_madina_nights')"></p>
+                        <p class="text-gray-800 dark:text-gray-200 font-semibold" x-text="t('jumeirah_makka_hotel')"></p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm" x-text="t('jumeirah_makka_nights')"></p>
                     </div>
                     <div>
-                        <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest border-b border-gray-200 dark:border-gray-800 pb-2">Xona narxlari</h4>
+                        <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest border-b border-gray-200 dark:border-gray-800 pb-2" x-text="t('jumeirah_room_prices')"></h4>
                         <ul class="text-gray-700 dark:text-gray-300 space-y-2 text-sm">
-                            <li class="flex justify-between"><span>4 kishilik xona</span><strong class="text-brand-gold">$1690</strong></li>
-                            <li class="flex justify-between"><span>3 kishilik xona</span><strong class="text-brand-gold">$1790</strong></li>
-                            <li class="flex justify-between"><span>2 kishilik xona</span><strong class="text-brand-gold">$1990</strong></li>
+                            <li class="flex justify-between"><span x-text="t('room_4')"></span><strong class="text-brand-gold">$1690</strong></li>
+                            <li class="flex justify-between"><span x-text="t('room_3')"></span><strong class="text-brand-gold">$1790</strong></li>
+                            <li class="flex justify-between"><span x-text="t('room_2')"></span><strong class="text-brand-gold">$1990</strong></li>
                         </ul>
                     </div>
                 </div>
 
-                <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest">Paket ichiga kiritilgan xizmatlar</h4>
+                <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest" x-text="t('jumeirah_services_title')"></h4>
                 <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 mb-6 text-gray-700 dark:text-gray-300 text-sm">
-                    <li>Tezyurar poezd xizmati</li>
-                    <li>2 mahal taom (Madina)</li>
-                    <li>2 mahal taom (Makka)</li>
-                    <li>Makka va Madina bo'ylab ekskursiyalar</li>
-                    <li>Ravzaga kirish imkoniyati</li>
-                    <li>Ilmiy guruh rahbarlari</li>
-                    <li>Malakali shifokor xizmati</li>
-                    <li>Qizil dengiz bo'ylab sayohat</li>
-                    <li>Viza, aviachipta va transferlar</li>
+                    <template x-for="line in tList('feat_jumeirah')" :key="line">
+                        <li x-text="line"></li>
+                    </template>
                 </ul>
 
-                <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest">Hadiyalar</h4>
+                <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest" x-text="t('jumeirah_gifts_title')"></h4>
                 <div class="flex flex-wrap gap-2 mb-8">
-                    <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Zam-Zam 5L</span>
-                    <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Nimcha</span>
-                    <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Sumka</span>
-                    <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Beyjik</span>
-                    <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Abaya (ayollar uchun)</span>
+                    <template x-for="gift in tList('gifts_jumeirah')" :key="gift">
+                        <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20" x-text="gift"></span>
+                    </template>
                 </div>
 
                 <div class="bg-brand-cream-dark dark:bg-[#1B2436] p-6 rounded-3xl border border-brand-gold/30 flex flex-col sm:flex-row justify-between items-center gap-4">
                     <div>
-                        <p class="text-xs text-gray-500 dark:text-gray-400 uppercase">Boshlang'ich narx (4 kishilik xona):</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 uppercase" x-text="t('modal_starting_price_room') + ':'"></p>
                         <p class="text-4xl font-bold text-brand-gold">$<span x-text="packagesData.lux_jumeirah?.price || '1690'"></span></p>
                     </div>
                     <button @click="activeModal = 'booking'; selectedPackage = 'LUX Jumeirah Paket'; bookingRoom = '4 kishilik'" type="button"
@@ -1029,14 +1028,14 @@
                 <div class="w-20 h-20 bg-green-50 dark:bg-green-950 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center mb-6 border border-green-200 dark:border-green-800">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                 </div>
-                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Muvaffaqiyatli!</h3>
-                <p class="text-gray-600 dark:text-gray-300">Sizning so'rovingiz qabul qilindi. Tez orada mutaxassislarimiz siz bilan bog'lanishadi.</p>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" x-text="t('booking_success_title')"></h3>
+                <p class="text-gray-600 dark:text-gray-300" x-text="t('booking_success_desc')"></p>
             </div>
 
             <div class="bg-brand-red/90 p-6 md:p-8 text-white relative border-b border-red-950/50">
                 <button @click="activeModal = null" type="button" class="modal-close-btn absolute top-5 right-5 text-white hover:text-brand-gold" :aria-label="t('aria_close')">×</button>
-                <h3 class="text-2xl font-serif mb-1">Joyni Band Qilish</h3>
-                <p class="text-red-100 text-sm">Ma'lumotlaringizni qoldiring va biz sizga barcha tafsilotlarni tushuntiramiz.</p>
+                <h3 class="text-2xl font-serif mb-1" x-text="t('booking_title')"></h3>
+                <p class="text-red-100 text-sm" x-text="t('booking_subtitle')"></p>
             </div>
 
             <form @submit.prevent="submitBooking()" class="p-6 md:p-8 space-y-5">
@@ -1047,16 +1046,16 @@
                 <div class="bg-gradient-to-br from-brand-gold/5 to-brand-gold/10 dark:from-brand-gold/5 dark:to-brand-gold/10 border border-brand-gold/20 rounded-2xl p-5">
                     <div class="flex items-center justify-between mb-4">
                         <div>
-                            <p class="text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest">Tanlangan paket</p>
-                            <p class="text-base font-bold text-gray-900 dark:text-white mt-1" x-text="selectedPackage"></p>
+                            <p class="text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest" x-text="t('booking_selected_pkg')"></p>
+                            <p class="text-base font-bold text-gray-900 dark:text-white mt-1" x-text="displayPackageName()"></p>
                         </div>
                         <div class="text-right">
-                            <p class="text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest">1 kishi</p>
+                            <p class="text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest" x-text="t('booking_per_person')"></p>
                             <p class="text-lg font-bold text-brand-gold" x-text="'$' + getBookingPricePerPerson()"></p>
                         </div>
                     </div>
                     <div class="border-t border-brand-gold/15 pt-4">
-                        <label class="block text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3">Ziyoratchilar soni</label>
+                        <label class="block text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3" x-text="t('booking_persons')"></label>
                         <div class="flex items-center gap-3">
                             <button @click="calcPersons = Math.max(1, calcPersons - 1)" type="button"
                                 class="w-11 h-11 rounded-xl bg-brand-cream dark:bg-[#1B2436] border border-gray-200 dark:border-gray-700 flex items-center justify-center text-xl font-bold text-gray-600 dark:text-gray-300 hover:border-brand-gold/40 hover:text-brand-gold transition-all active:scale-90 select-none">
@@ -1064,7 +1063,7 @@
                             </button>
                             <div class="flex-1 text-center">
                                 <span class="text-3xl font-bold text-gray-900 dark:text-white" x-text="calcPersons"></span>
-                                <span class="text-xs text-gray-500 dark:text-gray-400 ml-1">kishi</span>
+                                <span class="text-xs text-gray-500 dark:text-gray-400 ml-1" x-text="t('calc_person_word')"></span>
                             </div>
                             <button @click="calcPersons = Math.min(50, calcPersons + 1)" type="button"
                                 class="w-11 h-11 rounded-xl bg-brand-cream dark:bg-[#1B2436] border border-gray-200 dark:border-gray-700 flex items-center justify-center text-xl font-bold text-gray-600 dark:text-gray-300 hover:border-brand-gold/40 hover:text-brand-gold transition-all active:scale-90 select-none">
@@ -1072,54 +1071,54 @@
                             </button>
                         </div>
                         <div class="mt-4 flex items-center justify-between bg-white/60 dark:bg-[#1B2436]/60 rounded-xl px-4 py-3 border border-brand-gold/10">
-                            <span class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Umumiy narx:</span>
+                            <span class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider" x-text="t('booking_total') + ':'"></span>
                             <span class="text-2xl font-bold text-brand-gold" x-text="'$' + getBookingTotal().toLocaleString()"></span>
                         </div>
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2">To'liq Ismingiz</label>
-                    <input type="text" x-model="bookingName" required placeholder="Masalan: Azizbek Karimov"
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2" x-text="t('booking_name')"></label>
+                    <input type="text" x-model="bookingName" required :placeholder="t('placeholder_name')"
                            class="w-full bg-brand-cream-dark dark:bg-[#1B2436] border border-gray-200 dark:border-gray-800 rounded-2xl px-6 py-4 text-gray-900 dark:text-white focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2">Telefon Raqamingiz</label>
-                    <input type="tel" x-model="bookingPhone" required placeholder="+998 90 123 45 67"
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2" x-text="t('booking_phone')"></label>
+                    <input type="tel" x-model="bookingPhone" required :placeholder="t('placeholder_phone')"
                            class="w-full bg-brand-cream-dark dark:bg-[#1B2436] border border-gray-200 dark:border-gray-800 rounded-2xl px-6 py-4 text-gray-900 dark:text-white focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500">
                 </div>
                 <div x-show="roomBasedPackages.includes(selectedPackage)">
-                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3">Xona turini tanlang</label>
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3" x-text="t('booking_room')"></label>
                     <div class="grid grid-cols-3 gap-3">
-                        <template x-for="room in ['4 kishilik', '3 kishilik', '2 kishilik']">
-                            <button type="button" @click="bookingRoom = room"
-                                    :class="bookingRoom === room ? 'bg-brand-gold text-brand-red border-brand-gold shadow-md' : 'bg-brand-cream-dark dark:bg-[#1B2436] text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-800 hover:border-brand-gold/30'"
+                        <template x-for="room in roomOptions" :key="room.value">
+                            <button type="button" @click="bookingRoom = room.value"
+                                    :class="bookingRoom === room.value ? 'bg-brand-gold text-brand-red border-brand-gold shadow-md' : 'bg-brand-cream-dark dark:bg-[#1B2436] text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-800 hover:border-brand-gold/30'"
                                     class="py-3 rounded-xl text-xs font-bold border transition-all flex flex-col items-center gap-1">
-                                <span x-text="room"></span>
-                                <span class="text-brand-gold" x-text="'$' + (roomPrices[selectedPackage]?.[room] || '')"></span>
+                                <span x-text="t(room.labelKey)"></span>
+                                <span class="text-brand-gold" x-text="'$' + (roomPrices[selectedPackage]?.[room.value] || '')"></span>
                             </button>
                         </template>
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3">Operator jinsi</label>
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3" x-text="t('booking_operator')"></label>
                     <div class="grid grid-cols-2 gap-3">
-                        <template x-for="op in ['Erkak', 'Ayol kishi']">
-                            <button type="button" @click="bookingOperator = op"
-                                    :class="bookingOperator === op ? 'bg-brand-gold text-brand-red border-brand-gold shadow-md' : 'bg-brand-cream-dark dark:bg-[#1B2436] text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-800 hover:border-brand-gold/30'"
+                        <template x-for="op in operatorOptions" :key="op.value">
+                            <button type="button" @click="bookingOperator = op.value"
+                                    :class="bookingOperator === op.value ? 'bg-brand-gold text-brand-red border-brand-gold shadow-md' : 'bg-brand-cream-dark dark:bg-[#1B2436] text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-800 hover:border-brand-gold/30'"
                                     class="py-3.5 rounded-2xl text-xs font-bold border transition-all active:scale-95"
-                                    x-text="op"></button>
+                                    x-text="t(op.labelKey)"></button>
                         </template>
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3">To'lov turi</label>
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3" x-text="t('booking_payment')"></label>
                     <div class="grid grid-cols-2 gap-3">
-                        <template x-for="pay in ['Naqd pul', 'Plastik karta']">
-                            <button type="button" @click="bookingPayment = pay"
-                                    :class="bookingPayment === pay ? 'bg-brand-gold text-brand-red border-brand-gold shadow-md' : 'bg-brand-cream-dark dark:bg-[#1B2436] text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-800 hover:border-brand-gold/30'"
+                        <template x-for="pay in paymentOptions" :key="pay.value">
+                            <button type="button" @click="bookingPayment = pay.value"
+                                    :class="bookingPayment === pay.value ? 'bg-brand-gold text-brand-red border-brand-gold shadow-md' : 'bg-brand-cream-dark dark:bg-[#1B2436] text-gray-700 dark:text-gray-300 border-gray-200 dark:border-gray-800 hover:border-brand-gold/30'"
                                     class="py-3.5 rounded-2xl text-xs font-bold border transition-all active:scale-95"
-                                    x-text="pay"></button>
+                                    x-text="t(pay.labelKey)"></button>
                         </template>
                     </div>
                 </div>
@@ -1127,10 +1126,10 @@
                         :disabled="isSubmitting"
                         :class="isSubmitting ? 'bg-gray-300 dark:bg-gray-700 text-gray-500 cursor-not-allowed' : 'bg-brand-gold text-brand-red hover:shadow-2xl hover:bg-yellow-600'"
                         class="w-full py-5 rounded-2xl font-bold text-lg transition-all active:scale-95">
-                    <span x-show="!isSubmitting">SO'ROV YUBORISH</span>
-                    <span x-show="isSubmitting">YUBORILMOQDA...</span>
+                    <span x-show="!isSubmitting" x-text="t('booking_submit')"></span>
+                    <span x-show="isSubmitting" x-text="t('booking_submitting')"></span>
                 </button>
-                <p class="text-[10px] text-gray-500 dark:text-gray-400 text-center uppercase tracking-wider">Ma'lumotlaringiz xavfsiz saqlanadi</p>
+                <p class="text-[10px] text-gray-500 dark:text-gray-400 text-center uppercase tracking-wider" x-text="t('booking_privacy')"></p>
             </form>
         </div>
     </div>
@@ -1461,6 +1460,33 @@
                 t(key) {
                 return this.translations[this.currentLang][key] || key;
             },
+            tList(key) {
+                const v = this.translations[this.currentLang][key];
+                return Array.isArray(v) ? v : [];
+            },
+            packageNameKeys: {
+                'Standart Paket': 'pkg_standard',
+                'Komfort Paket': 'pkg_comfort',
+                'LUX Paket': 'pkg_lux',
+                'LUX Jumeirah Paket': 'pkg_jumeirah'
+            },
+            displayPackageName() {
+                const k = this.packageNameKeys[this.selectedPackage];
+                return k ? this.t(k) : this.selectedPackage;
+            },
+            roomOptions: [
+                { value: '4 kishilik', labelKey: 'room_4' },
+                { value: '3 kishilik', labelKey: 'room_3' },
+                { value: '2 kishilik', labelKey: 'room_2' }
+            ],
+            operatorOptions: [
+                { value: 'Erkak', labelKey: 'op_male' },
+                { value: 'Ayol kishi', labelKey: 'op_female' }
+            ],
+            paymentOptions: [
+                { value: 'Naqd pul', labelKey: 'pay_cash' },
+                { value: 'Plastik karta', labelKey: 'pay_card' }
+            ],
             setLang(lang) {
                 this.currentLang = lang;
                 localStorage.setItem('lang', lang);
@@ -1601,6 +1627,11 @@
             },
             init() {
                 document.documentElement.lang = this.currentLang;
+                if (window.SITE_I18N) {
+                    ['uz', 'ru', 'en'].forEach((lang) => {
+                        Object.assign(this.translations[lang], window.SITE_I18N[lang] || {});
+                    });
+                }
 
                 const runRemote = () => this.loadRemoteData();
                 if ('requestIdleCallback' in window) {
