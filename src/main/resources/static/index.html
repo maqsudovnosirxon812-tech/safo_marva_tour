@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="uz" class="scroll-smooth" :class="{ 'dark': isDark }" x-data="tourApp()">
+<html lang="uz" class="scroll-smooth" :class="{ 'dark': isDark }" x-data="tourApp()"
+      xmlns:x-transition="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: blob: 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://hddpzctigsjqljtooogq.supabase.co https://*.supabase.co https://api.telegram.org https://www.facebook.com https://connect.facebook.net https://graph.facebook.com http://localhost:* http://127.0.0.1:*; img-src 'self' https: data: blob: https://www.facebook.com;">
     <!-- Meta Pixel: Events Manager → Manbalar → Veb-sayt → Pixel ID ni quyiga yozing -->
-    <script>window.META_PIXEL_ID = '';</script>
+    <script>window.META_PIXEL_ID = '1474056530709388';</script>
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="google-site-verification" content="33P92EN1Am0odA5qGKx4rTTEi2qxplxk30qiOjpzPqo" />
@@ -387,7 +388,7 @@ window.SITE_I18N = {
   }
 };
 
-</script>
+    </script>
     <script defer src="https://unpkg.com/alpinejs@3.14.8/dist/cdn.min.js"></script>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap">
     <link
@@ -630,7 +631,9 @@ window.SITE_I18N = {
 </head>
 
 <body class="bg-brand-cream-dark dark:bg-[#0B0F19] font-sans text-gray-900 dark:text-gray-100 transition-colors duration-300" @scroll.window="scrolled = (window.pageYOffset > 50)">
-
+<noscript><img height="1" width="1" style="display:none"
+               src="https://www.facebook.com/tr?id=1474056530709388&ev=PageView&noscript=1"
+/></noscript>
 <!-- Toast xabarlari -->
 <div x-show="toastMessage" x-cloak x-transition
      class="fixed top-24 left-1/2 -translate-x-1/2 z-[300] max-w-md w-[90%] px-5 py-4 rounded-2xl shadow-2xl text-sm font-medium text-center"
@@ -1089,9 +1092,9 @@ window.SITE_I18N = {
                 <div>
                     <p class="text-xs font-bold uppercase tracking-widest opacity-80" x-text="t('modal_jumeirah_sub')"></p>
                     <h3 class="text-xl font-bold uppercase tracking-wider" x-text="t('modal_title_jumeirah')"></h3>
-                </div>
-                <button @click="activeModal = null" type="button" class="modal-close-btn text-brand-red hover:opacity-70" :aria-label="t('aria_close')">×</button>
             </div>
+                <button @click="activeModal = null" type="button" class="modal-close-btn text-brand-red hover:opacity-70" :aria-label="t('aria_close')">×</button>
+                </div>
             <div class="px-8 py-8 max-h-[75vh] overflow-y-auto">
                 <div class="rounded-2xl overflow-hidden shadow-lg aspect-video bg-black mb-8 relative select-none min-h-[12rem]"
                      @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'lux_jumeirah', true)">
@@ -1117,7 +1120,7 @@ window.SITE_I18N = {
                                         :class="modalSlide === i ? (slide.type === 'video' ? 'bg-sky-400 w-5 h-2' : 'bg-brand-gold w-5 h-2') : 'bg-white/50 w-2 h-2'"
                                         :aria-label="slide.type === 'video' ? 'Video' : 'Rasm'"></button>
                             </template>
-                        </div>
+                    </div>
                         <span class="absolute top-3 right-3 z-20 text-xs font-semibold bg-black/70 text-white px-2.5 py-1 rounded-full"
                               x-text="getModalSlideLabel('lux_jumeirah')"></span>
                     </template>
@@ -1468,7 +1471,7 @@ window.SITE_I18N = {
             class="bg-brand-red text-white p-3.5 sm:p-4 rounded-full shadow-2xl hover:scale-110 hover:bg-red-800 transition-all"
             :title="t('fab_scroll')" :aria-label="t('fab_scroll')">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
     </button>
     <a href="tel:+998555177373"
@@ -2343,7 +2346,7 @@ window.SITE_I18N = {
         }
         return app;
     }
-</script>
+    </script>
 </body>
 
 </html>
