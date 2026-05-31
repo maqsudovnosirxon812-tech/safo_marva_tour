@@ -1071,15 +1071,24 @@
 
 <!-- Comfort Plus 14 Kunlik Modal -->
 <div x-show="activeModal === 'special_14day'" x-cloak class="fixed inset-0 z-[100] overflow-y-auto">
-    <div class="flex items-center justify-center min-h-screen px-4 sm:p-0">
+    <div class="flex items-center justify-center min-h-screen px-4 py-8 sm:p-8">
         <div @click="activeModal = null" class="fixed inset-0 bg-[#04060B] bg-opacity-80 backdrop-blur-md"></div>
         <div
-                class="inline-block bg-brand-cream dark:bg-[#121824] border border-gray-200 dark:border-gray-800 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.3)] sm:max-w-lg sm:w-full z-10 overflow-hidden transform transition-all text-gray-900 dark:text-white">
-            <div class="bg-brand-red/90 px-8 py-6 flex justify-between items-center text-white border-b border-red-900/50">
-                <h3 class="text-xl font-bold uppercase tracking-wider" x-text="t('pkg_special_14day')"></h3>
+                class="inline-block bg-brand-cream dark:bg-[#121824] border border-gray-200 dark:border-gray-800 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.3)] sm:max-w-3xl sm:w-full z-10 overflow-hidden transform transition-all text-gray-900 dark:text-white">
+            <div class="bg-brand-red/90 px-6 md:px-8 py-6 flex justify-between items-start gap-4 text-white border-b border-red-900/50">
+                <div>
+                    <p class="text-xs md:text-sm font-bold uppercase tracking-[0.25em] text-brand-gold mb-2">SAFO MARVA TOUR</p>
+                    <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wider">
+                        Comfort Plus — 14 кунлик пакет
+                    </h3>
+                    <p class="text-sm text-red-100 mt-2">
+                        Июн, Июл ва Август ойлари учун
+                    </p>
+                </div>
                 <button @click="activeModal = null" type="button" class="modal-close-btn text-white hover:text-brand-gold" :aria-label="t('aria_close')">×</button>
             </div>
-            <div class="px-8 py-8 space-y-6">
+
+            <div class="px-6 md:px-8 py-8 space-y-7 max-h-[78vh] overflow-y-auto">
                 <div class="rounded-2xl overflow-hidden shadow-lg aspect-video bg-black relative select-none min-h-[12rem]"
                      @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'special_14day', true)">
                     <template x-if="activeModal === 'special_14day' && getCurrentModalSlide('special_14day').type === 'video'">
@@ -1109,25 +1118,101 @@
                               x-text="getModalSlideLabel('special_14day')"></span>
                     </template>
                 </div>
-                <div>
-                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('modal_hotel') + ':'"></h4>
-                    <p class="font-semibold text-gray-900 dark:text-white" x-text="'Al Ebaa hotel 4★ + Mehrob Toiba 4★'"></p>
-                    <p class="text-sm text-gray-600 dark:text-gray-400" x-text="t('pkg_special_14day_hotel')"></p>
+
+                <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-3xl p-5 md:p-6 border border-gray-200 dark:border-gray-800">
+                    <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest">Пакет ҳақида</h4>
+                    <p class="text-lg md:text-xl font-bold text-gray-900 dark:text-white leading-relaxed">
+                        Июн, Июл ва Август ойлари учун SAFO MARVA TOUR нинг “Comfort Plus” 14 кунлик пакети
+                    </p>
+                    <p class="text-gray-700 dark:text-gray-300 mt-3">
+                        SAFO MARVA TOUR билан — лицензияланган, хавфсиз, хотиржам
+                    </p>
                 </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-3xl p-5 border border-gray-200 dark:border-gray-800">
+                        <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest">✈️ Йўналиш</h4>
+                        <p class="text-gray-900 dark:text-white font-semibold">Тошкент – Мадина – Тошкент</p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mt-2">Ҳафтанинг ҳар пайшанба кунлари</p>
+                    </div>
+
+                    <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-3xl p-5 border border-gray-200 dark:border-gray-800">
+                        <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest">🕌 Жума кунлари</h4>
+                        <p class="text-gray-900 dark:text-white font-semibold">1-жума Мадинада</p>
+                        <p class="text-gray-900 dark:text-white font-semibold mt-1">1-жума Маккада</p>
+                    </div>
+                </div>
+
                 <div>
-                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('modal_included') + ':'"></h4>
-                    <ul class="text-gray-700 dark:text-gray-300 space-y-1">
-                        <template x-for="line in tList('feat_comfort')" :key="line">
-                            <li x-text="'• ' + line"></li>
-                        </template>
+                    <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest">📆 Кетиш саналари</h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm">
+                        <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-xl px-3 py-2 border border-gray-200 dark:border-gray-800">📆 02.07.2026</div>
+                        <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-xl px-3 py-2 border border-gray-200 dark:border-gray-800">📆 09.07.2026</div>
+                        <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-xl px-3 py-2 border border-gray-200 dark:border-gray-800">📆 16.07.2026</div>
+                        <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-xl px-3 py-2 border border-gray-200 dark:border-gray-800">📆 23.07.2026</div>
+                        <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-xl px-3 py-2 border border-gray-200 dark:border-gray-800">📆 30.07.2026</div>
+                        <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-xl px-3 py-2 border border-gray-200 dark:border-gray-800">📆 06.08.2026</div>
+                        <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-xl px-3 py-2 border border-gray-200 dark:border-gray-800">📆 13.08.2026</div>
+                        <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-xl px-3 py-2 border border-gray-200 dark:border-gray-800">📆 20.08.2026</div>
+                        <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-xl px-3 py-2 border border-gray-200 dark:border-gray-800">📆 27.08.2026</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div>
+                        <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest">🏨 Меҳмонхоналар</h4>
+                        <div class="space-y-3 text-gray-800 dark:text-gray-200">
+                            <p class="font-semibold">🏨 Мадинада: Mehrob Toiba 4★</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">7 кеча</p>
+                            <p class="font-semibold">🏨 Маккада: Al Ebaa hotel 4★</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">7 кеча</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest">‼️ Хона жойлашувлари</h4>
+                        <ul class="text-gray-700 dark:text-gray-300 space-y-2">
+                            <li class="flex justify-between gap-4"><span>🛏 4 кишилик</span><strong class="text-brand-gold">$1500</strong></li>
+                            <li class="flex justify-between gap-4"><span>🛏 3 кишилик</span><strong class="text-brand-gold">$1600</strong></li>
+                            <li class="flex justify-between gap-4"><span>🛏 2 кишилик</span><strong class="text-brand-gold">$1750</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest">🎁 Пакетимиз ичига кирувчи хизматлар</h4>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 text-gray-700 dark:text-gray-300 text-sm">
+                        <li>🚄 Тезюрар поезд хизмати</li>
+                        <li>🍽 2 маҳал таом — Мадинада</li>
+                        <li>🍽 2 маҳал таом — Маккада</li>
+                        <li>🕌 Макка ва Мадинада экскурсиялар</li>
+                        <li>🕌 Равзага кириш имконияти</li>
+                        <li>📖 Илмли гуруҳ раҳбарлари хизматлари</li>
+                        <li>⚕️ Малакали шифокор хизматлари</li>
+                        <li>🐳 Қизил денгиз саёхати</li>
                     </ul>
                 </div>
-                <div class="bg-brand-cream-dark dark:bg-[#1B2436] p-4 rounded-2xl border border-gray-200 dark:border-gray-800">
-                    <p class="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1" x-text="t('modal_starting_price') + ':'"></p>
-                    <p class="text-3xl font-bold text-brand-gold">$<span x-text="packagesData.special_14day?.price || '1500'"></span></p>
+
+                <div>
+                    <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest">🎁 Ҳадиялар</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">🧊 Зам-Зам 5 л</span>
+                        <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">🧥 Нимча</span>
+                        <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">🎒 Сумка</span>
+                        <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">🪪 Бейжик</span>
+                        <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">👗 Абая — аёллар учун</span>
+                    </div>
                 </div>
-                <button @click="activeModal = 'booking'; selectedPackage = 'Comfort Plus 14 Kunlik'" type="button"
-                        class="block w-full bg-brand-gold text-brand-red py-4 rounded-2xl font-bold text-center hover:bg-yellow-600 shadow-xl transition-all" x-text="t('btn_book_now')"></button>
+
+                <div class="bg-brand-red/95 p-5 md:p-6 rounded-3xl border border-red-900/40 text-white flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div>
+                        <p class="text-xs text-red-100 uppercase tracking-widest mb-1">Бошланғич нарх</p>
+                        <p class="text-4xl font-bold text-brand-gold">$<span x-text="packagesData.special_14day?.price || '1500'"></span></p>
+                        <p class="text-sm text-red-100 mt-2">👨‍💻 Мурожаат учун: <a href="tel:+998555177373" class="font-bold text-brand-gold">555177373</a></p>
+                    </div>
+                    <button @click="activeModal = 'booking'; selectedPackage = 'Comfort Plus 14 Kunlik'" type="button"
+                            class="w-full sm:w-auto bg-brand-gold text-brand-red px-8 py-4 rounded-2xl font-bold text-center hover:bg-yellow-600 shadow-xl transition-all" x-text="t('btn_book_now')"></button>
+                </div>
             </div>
         </div>
     </div>
