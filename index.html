@@ -18,377 +18,377 @@
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
     <link rel="dns-prefetch" href="https://unpkg.com">
     <script>
-/** Qo‘shimcha tarjimalar — modallar, taqqoslash, forma */
-window.SITE_I18N = {
-  uz: {
-    menu_compare: "Taqqoslash",
-    section_compare_title: "Paketlarni taqqoslash",
-    section_compare_desc: "Barcha paketlarni bir jadvalda ko‘ring va o‘zingizga mosini tanlang.",
-    cmp_col_feature: "Xususiyat",
-    cmp_row_price: "Narx (1 kishi)",
-    cmp_row_hotel: "Haramgacha masofa",
-    cmp_row_nights: "Davomiyligi",
-    cmp_row_meals: "Ovqatlanish",
-    cmp_row_train: "Tezyurar poezd",
-    cmp_row_visa: "Viza va sug‘urta",
-    cmp_row_guide: "Guruh rahbari",
-    cmp_val_std_hotel: "1 km",
-    cmp_val_com_hotel: "500 m",
-    cmp_val_lux_hotel: "150 m",
-    cmp_val_jum_hotel: "5★ premium",
-    cmp_val_nights: "10 kecha",
-    cmp_val_meals: "2 mahal",
-    cmp_yes: "Ha",
-    modal_title_standard: "Standart paket tafsilotlari",
-    modal_title_comfort: "Komfort paket tafsilotlari",
-    modal_title_lux: "LUX paket tafsilotlari",
-    modal_title_jumeirah: "LUX Jumeirah Premium paket",
-    modal_jumeirah_sub: "Iyun va iyul oylari uchun",
-    modal_hotel: "Mehmonxona",
-    modal_hotels: "Mehmonxonalar",
-    modal_included: "Qulayliklar (ichiga kiritilgan)",
-    modal_starting_price: "Boshlang‘ich narx",
-    modal_starting_price_room: "Boshlang‘ich narx (4 kishilik xona)",
-    hotel_standard_name: "Ramada Zad Al Tayser",
-    hotel_comfort_name: "AL EBAA mehmonxonasi",
-    hotel_lux_name: "ANJUM mehmonxonasi",
-    hotel_lux_note: "Makkada Haramga juda yaqin masofada.",
-    jumeirah_flights: "Aviachiptalar",
-    jumeirah_flight_out: "Ketish: Toshkent – Madina",
-    jumeirah_flight_back: "Qaytish: Jidda – Toshkent",
-    jumeirah_train: "Tezyurar poezd",
-    jumeirah_train_desc: "Madina – Makka tezyurar poezd xizmati",
-    jumeirah_room_prices: "Xona narxlari",
-    jumeirah_services_title: "Paket ichiga kiritilgan xizmatlar",
-    jumeirah_gifts_title: "Hadiyalar",
-    jumeirah_madina_hotel: "Madina: Waqf As Safi (5 yulduz)",
-    jumeirah_madina_nights: "3 kecha",
-    jumeirah_makka_hotel: "Makka: Jumeirah Jabal Omar (5 yulduz)",
-    jumeirah_makka_nights: "6 kecha",
-    feat_standard: [
-      "3 kecha Madinada, 7 kecha Makkada",
-      "Aviabilet (borish-kelish)",
-      "Mehmonxona (Haramgacha: 1 km)",
-      "Viza (sug‘urta)",
-      "Transfer xizmati",
-      "Madinadan-Makkaga poyezd",
-      "2 mahal shved stol",
-      "Ekskursiya-ziyoratlar",
-      "Qizil dengizga sayohat",
-      "Malakali ellik boshi xizmati",
-      "Ravzaga kirish imkoniyati"
-    ],
-    feat_comfort: [
-      "3 kecha Madinada, 7 kecha Makkada",
-      "Aviabilet (borish-kelish)",
-      "Mehmonxona (Haramgacha: 500 metr)",
-      "Viza (sug‘urta)",
-      "Transfer xizmati",
-      "Madinadan-Makkaga poyezd",
-      "2 mahal shved stol",
-      "Ekskursiya-ziyoratlar",
-      "Qizil dengizga sayohat",
-      "Malakali ellik boshi xizmati",
-      "Ravzaga kirish imkoniyati"
-    ],
-    feat_lux: [
-      "3 kecha Madinada, 7 kecha Makkada",
-      "Aviabilet (borish-kelish)",
-      "Mehmonxona (Haramgacha: 150 metr)",
-      "Viza (sug‘urta)",
-      "Transfer xizmati",
-      "Madinadan-Makkaga poyezd",
-      "2 mahal shved stol",
-      "Ekskursiya-ziyoratlar",
-      "Qizil dengizga sayohat",
-      "Malakali ellik boshi xizmati",
-      "Ravzaga kirish imkoniyati"
-    ],
-    feat_jumeirah: [
-      "Tezyurar poezd xizmati",
-      "2 mahal taom (Madina)",
-      "2 mahal taom (Makka)",
-      "Makka va Madina bo‘ylab ekskursiyalar",
-      "Ravzaga kirish imkoniyati",
-      "Ilmiy guruh rahbarlari",
-      "Malakali shifokor xizmati",
-      "Qizil dengiz bo‘ylab sayohat",
-      "Viza, aviachipta va transferlar"
-    ],
-    gifts_jumeirah: ["Zam-Zam 5L", "Nimcha", "Sumka", "Beyjik", "Abaya (ayollar uchun)"],
-    booking_title: "Joyni band qilish",
-    booking_subtitle: "Ma’lumotlaringizni qoldiring — barcha tafsilotlarni tushuntiramiz.",
-    booking_success_title: "Muvaffaqiyatli!",
-    booking_success_desc: "So‘rovingiz qabul qilindi. Tez orada mutaxassislarimiz bog‘lanadi.",
-    booking_selected_pkg: "Tanlangan paket",
-    booking_per_person: "1 kishi",
-    booking_persons: "Ziyoratchilar soni",
-    booking_total: "Umumiy narx",
-    booking_name: "To‘liq ismingiz",
-    booking_phone: "Telefon raqamingiz",
-    booking_room: "Xona turini tanlang",
-    booking_operator: "Operator jinsi",
-    booking_payment: "To‘lov turi",
-    booking_submit: "SO‘ROV YUBORISH",
-    booking_submitting: "Yuborilmoqda...",
-    booking_privacy: "Ma’lumotlaringiz xavfsiz saqlanadi",
-    placeholder_name: "Masalan: Azizbek Karimov",
-    placeholder_phone: "+998 90 123 45 67",
-    room_4: "4 kishilik",
-    room_3: "3 kishilik",
-    room_2: "2 kishilik",
-    op_male: "Erkak",
-    op_female: "Ayol",
-    pay_cash: "Naqd pul",
-    pay_card: "Plastik karta"
-  },
-  ru: {
-    menu_compare: "Сравнение",
-    section_compare_title: "Сравнение пакетов",
-    section_compare_desc: "Сравните все пакеты в одной таблице и выберите подходящий.",
-    cmp_col_feature: "Параметр",
-    cmp_row_price: "Цена (1 чел.)",
-    cmp_row_hotel: "Расстояние до Харама",
-    cmp_row_nights: "Длительность",
-    cmp_row_meals: "Питание",
-    cmp_row_train: "Скоростной поезд",
-    cmp_row_visa: "Виза и страховка",
-    cmp_row_guide: "Руководитель группы",
-    cmp_val_std_hotel: "1 км",
-    cmp_val_com_hotel: "500 м",
-    cmp_val_lux_hotel: "150 м",
-    cmp_val_jum_hotel: "5★ premium",
-    cmp_val_nights: "10 ночей",
-    cmp_val_meals: "2 раза",
-    cmp_yes: "Да",
-    modal_title_standard: "Детали стандартного пакета",
-    modal_title_comfort: "Детали комфорт пакета",
-    modal_title_lux: "Детали LUX пакета",
-    modal_title_jumeirah: "LUX Jumeirah Premium пакет",
-    modal_jumeirah_sub: "На июнь и июль",
-    modal_hotel: "Отель",
-    modal_hotels: "Отели",
-    modal_included: "Включено в пакет",
-    modal_starting_price: "Цена от",
-    modal_starting_price_room: "Цена от (4-местный номер)",
-    hotel_standard_name: "Ramada Zad Al Tayser",
-    hotel_comfort_name: "Отель AL EBAA",
-    hotel_lux_name: "Отель ANJUM",
-    hotel_lux_note: "Очень близко к Хараму в Мекке.",
-    jumeirah_flights: "Авиабилеты",
-    jumeirah_flight_out: "Вылет: Ташкент – Медина",
-    jumeirah_flight_back: "Возврат: Джидда – Ташкент",
-    jumeirah_train: "Скоростной поезд",
-    jumeirah_train_desc: "Медина – Мекка на скоростном поезде",
-    jumeirah_room_prices: "Цены по номерам",
-    jumeirah_services_title: "Услуги в пакете",
-    jumeirah_gifts_title: "Подарки",
-    jumeirah_madina_hotel: "Медина: Waqf As Safi (5 зв.)",
-    jumeirah_madina_nights: "3 ночи",
-    jumeirah_makka_hotel: "Мекка: Jumeirah Jabal Omar (5 зв.)",
-    jumeirah_makka_nights: "6 ночей",
-    feat_standard: [
-      "3 ночи в Медине, 7 ночей в Мекке",
-      "Авиабилеты (туда-обратно)",
-      "Отель (до Харама: 1 км)",
-      "Виза (страховка)",
-      "Трансферы",
-      "Поезд Медина–Мекка",
-      "Шведский стол 2 раза",
-      "Экскурсии",
-      "Поездка к Красному морю",
-      "Опытный гид",
-      "Вход в Равду"
-    ],
-    feat_comfort: [
-      "3 ночи в Медине, 7 ночей в Мекке",
-      "Авиабилеты (туда-обратно)",
-      "Отель (до Харама: 500 м)",
-      "Виза (страховка)",
-      "Трансферы",
-      "Поезд Медина–Мекка",
-      "Шведский стол 2 раза",
-      "Экскурсии",
-      "Поездка к Красному морю",
-      "Опытный гид",
-      "Вход в Равду"
-    ],
-    feat_lux: [
-      "3 ночи в Медине, 7 ночей в Мекке",
-      "Авиабилеты (туда-обратно)",
-      "Отель (до Харама: 150 м)",
-      "Виза (страховка)",
-      "Трансферы",
-      "Поезд Медина–Мекка",
-      "Шведский стол 2 раза",
-      "Экскурсии",
-      "Поездка к Красному морю",
-      "Опытный гид",
-      "Вход в Равду"
-    ],
-    feat_jumeirah: [
-      "Скоростной поезд",
-      "2 приёма пищи (Медина)",
-      "2 приёма пищи (Мекка)",
-      "Экскурсии по Мекке и Медине",
-      "Вход в Равду",
-      "Научные руководители",
-      "Врач в группе",
-      "Поездка к Красному морю",
-      "Виза, билеты и трансферы"
-    ],
-    gifts_jumeirah: ["Zam-Zam 5L", "Нимча", "Сумка", "Бейдж", "Абая (для женщин)"],
-    booking_title: "Бронирование",
-    booking_subtitle: "Оставьте данные — мы объясним все детали.",
-    booking_success_title: "Успешно!",
-    booking_success_desc: "Заявка принята. Скоро с вами свяжутся.",
-    booking_selected_pkg: "Выбранный пакет",
-    booking_per_person: "За 1 чел.",
-    booking_persons: "Количество паломников",
-    booking_total: "Итого",
-    booking_name: "Ваше имя",
-    booking_phone: "Телефон",
-    booking_room: "Тип номера",
-    booking_operator: "Пол оператора",
-    booking_payment: "Способ оплаты",
-    booking_submit: "ОТПРАВИТЬ ЗАЯВКУ",
-    booking_submitting: "Отправка...",
-    booking_privacy: "Данные защищены",
-    placeholder_name: "Например: Azizbek Karimov",
-    placeholder_phone: "+998 90 123 45 67",
-    room_4: "4-местный",
-    room_3: "3-местный",
-    room_2: "2-местный",
-    op_male: "Мужчина",
-    op_female: "Женщина",
-    pay_cash: "Наличные",
-    pay_card: "Карта"
-  },
-  en: {
-    menu_compare: "Compare",
-    section_compare_title: "Compare packages",
-    section_compare_desc: "See all packages in one table and pick what fits you best.",
-    cmp_col_feature: "Feature",
-    cmp_row_price: "Price (per person)",
-    cmp_row_hotel: "Distance to Haram",
-    cmp_row_nights: "Duration",
-    cmp_row_meals: "Meals",
-    cmp_row_train: "High-speed train",
-    cmp_row_visa: "Visa & insurance",
-    cmp_row_guide: "Group guide",
-    cmp_val_std_hotel: "1 km",
-    cmp_val_com_hotel: "500 m",
-    cmp_val_lux_hotel: "150 m",
-    cmp_val_jum_hotel: "5★ premium",
-    cmp_val_nights: "10 nights",
-    cmp_val_meals: "2 meals",
-    cmp_yes: "Yes",
-    modal_title_standard: "Standard package details",
-    modal_title_comfort: "Comfort package details",
-    modal_title_lux: "LUX package details",
-    modal_title_jumeirah: "LUX Jumeirah Premium package",
-    modal_jumeirah_sub: "For June and July",
-    modal_hotel: "Hotel",
-    modal_hotels: "Hotels",
-    modal_included: "Included in package",
-    modal_starting_price: "Starting price",
-    modal_starting_price_room: "Starting price (4-bed room)",
-    hotel_standard_name: "Ramada Zad Al Tayser",
-    hotel_comfort_name: "AL EBAA Hotel",
-    hotel_lux_name: "ANJUM Hotel",
-    hotel_lux_note: "Very close to Haram in Makkah.",
-    jumeirah_flights: "Flights",
-    jumeirah_flight_out: "Outbound: Tashkent – Madinah",
-    jumeirah_flight_back: "Return: Jeddah – Tashkent",
-    jumeirah_train: "High-speed train",
-    jumeirah_train_desc: "Madinah – Makkah high-speed train",
-    jumeirah_room_prices: "Room prices",
-    jumeirah_services_title: "Services included",
-    jumeirah_gifts_title: "Gifts",
-    jumeirah_madina_hotel: "Madinah: Waqf As Safi (5 star)",
-    jumeirah_madina_nights: "3 nights",
-    jumeirah_makka_hotel: "Makkah: Jumeirah Jabal Omar (5 star)",
-    jumeirah_makka_nights: "6 nights",
-    feat_standard: [
-      "3 nights Madinah, 7 nights Makkah",
-      "Round-trip flights",
-      "Hotel (1 km to Haram)",
-      "Visa (insurance)",
-      "Transfers",
-      "Madinah–Makkah train",
-      "Buffet 2 meals",
-      "Guided tours",
-      "Red Sea trip",
-      "Experienced guide",
-      "Rawdah access"
-    ],
-    feat_comfort: [
-      "3 nights Madinah, 7 nights Makkah",
-      "Round-trip flights",
-      "Hotel (500 m to Haram)",
-      "Visa (insurance)",
-      "Transfers",
-      "Madinah–Makkah train",
-      "Buffet 2 meals",
-      "Guided tours",
-      "Red Sea trip",
-      "Experienced guide",
-      "Rawdah access"
-    ],
-    feat_lux: [
-      "3 nights Madinah, 7 nights Makkah",
-      "Round-trip flights",
-      "Hotel (150 m to Haram)",
-      "Visa (insurance)",
-      "Transfers",
-      "Madinah–Makkah train",
-      "Buffet 2 meals",
-      "Guided tours",
-      "Red Sea trip",
-      "Experienced guide",
-      "Rawdah access"
-    ],
-    feat_jumeirah: [
-      "High-speed train",
-      "2 meals (Madinah)",
-      "2 meals (Makkah)",
-      "Tours in Makkah & Madinah",
-      "Rawdah access",
-      "Scholarly group leaders",
-      "Doctor on trip",
-      "Red Sea excursion",
-      "Visa, flights & transfers"
-    ],
-    gifts_jumeirah: ["Zam-Zam 5L", "Prayer cap", "Bag", "Badge", "Abaya (women)"],
-    booking_title: "Book your spot",
-    booking_subtitle: "Leave your details and we will explain everything.",
-    booking_success_title: "Success!",
-    booking_success_desc: "Your request was received. We will contact you soon.",
-    booking_selected_pkg: "Selected package",
-    booking_per_person: "Per person",
-    booking_persons: "Number of pilgrims",
-    booking_total: "Total price",
-    booking_name: "Full name",
-    booking_phone: "Phone number",
-    booking_room: "Room type",
-    booking_operator: "Operator gender",
-    booking_payment: "Payment method",
-    booking_submit: "SUBMIT REQUEST",
-    booking_submitting: "Sending...",
-    booking_privacy: "Your data is kept secure",
-    placeholder_name: "e.g. Azizbek Karimov",
-    placeholder_phone: "+998 90 123 45 67",
-    room_4: "4-bed room",
-    room_3: "3-bed room",
-    room_2: "2-bed room",
-    op_male: "Male",
-    op_female: "Female",
-    pay_cash: "Cash",
-    pay_card: "Card"
-  }
-};
+        /** Qo‘shimcha tarjimalar — modallar, taqqoslash, forma */
+        window.SITE_I18N = {
+          uz: {
+            menu_compare: "Taqqoslash",
+            section_compare_title: "Paketlarni taqqoslash",
+            section_compare_desc: "Barcha paketlarni bir jadvalda ko‘ring va o‘zingizga mosini tanlang.",
+            cmp_col_feature: "Xususiyat",
+            cmp_row_price: "Narx (1 kishi)",
+            cmp_row_hotel: "Haramgacha masofa",
+            cmp_row_nights: "Davomiyligi",
+            cmp_row_meals: "Ovqatlanish",
+            cmp_row_train: "Tezyurar poezd",
+            cmp_row_visa: "Viza va sug‘urta",
+            cmp_row_guide: "Guruh rahbari",
+            cmp_val_std_hotel: "1 km",
+            cmp_val_com_hotel: "500 m",
+            cmp_val_lux_hotel: "150 m",
+            cmp_val_jum_hotel: "5★ premium",
+            cmp_val_nights: "10 kecha",
+            cmp_val_meals: "2 mahal",
+            cmp_yes: "Ha",
+            modal_title_standard: "Standart paket tafsilotlari",
+            modal_title_comfort: "Komfort paket tafsilotlari",
+            modal_title_lux: "LUX paket tafsilotlari",
+            modal_title_jumeirah: "LUX Jumeirah Premium paket",
+            modal_jumeirah_sub: "Iyun va iyul oylari uchun",
+            modal_hotel: "Mehmonxona",
+            modal_hotels: "Mehmonxonalar",
+            modal_included: "Qulayliklar (ichiga kiritilgan)",
+            modal_starting_price: "Boshlang‘ich narx",
+            modal_starting_price_room: "Boshlang‘ich narx (4 kishilik xona)",
+            hotel_standard_name: "Ramada Zad Al Tayser",
+            hotel_comfort_name: "AL EBAA mehmonxonasi",
+            hotel_lux_name: "ANJUM mehmonxonasi",
+            hotel_lux_note: "Makkada Haramga juda yaqin masofada.",
+            jumeirah_flights: "Aviachiptalar",
+            jumeirah_flight_out: "Ketish: Toshkent – Madina",
+            jumeirah_flight_back: "Qaytish: Jidda – Toshkent",
+            jumeirah_train: "Tezyurar poezd",
+            jumeirah_train_desc: "Madina – Makka tezyurar poezd xizmati",
+            jumeirah_room_prices: "Xona narxlari",
+            jumeirah_services_title: "Paket ichiga kiritilgan xizmatlar",
+            jumeirah_gifts_title: "Hadiyalar",
+            jumeirah_madina_hotel: "Madina: Waqf As Safi (5 yulduz)",
+            jumeirah_madina_nights: "3 kecha",
+            jumeirah_makka_hotel: "Makka: Jumeirah Jabal Omar (5 yulduz)",
+            jumeirah_makka_nights: "6 kecha",
+            feat_standard: [
+              "3 kecha Madinada, 7 kecha Makkada",
+              "Aviabilet (borish-kelish)",
+              "Mehmonxona (Haramgacha: 1 km)",
+              "Viza (sug‘urta)",
+              "Transfer xizmati",
+              "Madinadan-Makkaga poyezd",
+              "2 mahal shved stol",
+              "Ekskursiya-ziyoratlar",
+              "Qizil dengizga sayohat",
+              "Malakali ellik boshi xizmati",
+              "Ravzaga kirish imkoniyati"
+            ],
+            feat_comfort: [
+              "3 kecha Madinada, 7 kecha Makkada",
+              "Aviabilet (borish-kelish)",
+              "Mehmonxona (Haramgacha: 500 metr)",
+              "Viza (sug‘urta)",
+              "Transfer xizmati",
+              "Madinadan-Makkaga poyezd",
+              "2 mahal shved stol",
+              "Ekskursiya-ziyoratlar",
+              "Qizil dengizga sayohat",
+              "Malakali ellik boshi xizmati",
+              "Ravzaga kirish imkoniyati"
+            ],
+            feat_lux: [
+              "3 kecha Madinada, 7 kecha Makkada",
+              "Aviabilet (borish-kelish)",
+              "Mehmonxona (Haramgacha: 150 metr)",
+              "Viza (sug‘urta)",
+              "Transfer xizmati",
+              "Madinadan-Makkaga poyezd",
+              "2 mahal shved stol",
+              "Ekskursiya-ziyoratlar",
+              "Qizil dengizga sayohat",
+              "Malakali ellik boshi xizmati",
+              "Ravzaga kirish imkoniyati"
+            ],
+            feat_jumeirah: [
+              "Tezyurar poezd xizmati",
+              "2 mahal taom (Madina)",
+              "2 mahal taom (Makka)",
+              "Makka va Madina bo‘ylab ekskursiyalar",
+              "Ravzaga kirish imkoniyati",
+              "Ilmiy guruh rahbarlari",
+              "Malakali shifokor xizmati",
+              "Qizil dengiz bo‘ylab sayohat",
+              "Viza, aviachipta va transferlar"
+            ],
+            gifts_jumeirah: ["Zam-Zam 5L", "Nimcha", "Sumka", "Beyjik", "Abaya (ayollar uchun)"],
+            booking_title: "Joyni band qilish",
+            booking_subtitle: "Ma’lumotlaringizni qoldiring — barcha tafsilotlarni tushuntiramiz.",
+            booking_success_title: "Muvaffaqiyatli!",
+            booking_success_desc: "So‘rovingiz qabul qilindi. Tez orada mutaxassislarimiz bog‘lanadi.",
+            booking_selected_pkg: "Tanlangan paket",
+            booking_per_person: "1 kishi",
+            booking_persons: "Ziyoratchilar soni",
+            booking_total: "Umumiy narx",
+            booking_name: "To‘liq ismingiz",
+            booking_phone: "Telefon raqamingiz",
+            booking_room: "Xona turini tanlang",
+            booking_operator: "Operator jinsi",
+            booking_payment: "To‘lov turi",
+            booking_submit: "SO‘ROV YUBORISH",
+            booking_submitting: "Yuborilmoqda...",
+            booking_privacy: "Ma’lumotlaringiz xavfsiz saqlanadi",
+            placeholder_name: "Masalan: Azizbek Karimov",
+            placeholder_phone: "+998 90 123 45 67",
+            room_4: "4 kishilik",
+            room_3: "3 kishilik",
+            room_2: "2 kishilik",
+            op_male: "Erkak",
+            op_female: "Ayol",
+            pay_cash: "Naqd pul",
+            pay_card: "Plastik karta"
+          },
+          ru: {
+            menu_compare: "Сравнение",
+            section_compare_title: "Сравнение пакетов",
+            section_compare_desc: "Сравните все пакеты в одной таблице и выберите подходящий.",
+            cmp_col_feature: "Параметр",
+            cmp_row_price: "Цена (1 чел.)",
+            cmp_row_hotel: "Расстояние до Харама",
+            cmp_row_nights: "Длительность",
+            cmp_row_meals: "Питание",
+            cmp_row_train: "Скоростной поезд",
+            cmp_row_visa: "Виза и страховка",
+            cmp_row_guide: "Руководитель группы",
+            cmp_val_std_hotel: "1 км",
+            cmp_val_com_hotel: "500 м",
+            cmp_val_lux_hotel: "150 м",
+            cmp_val_jum_hotel: "5★ premium",
+            cmp_val_nights: "10 ночей",
+            cmp_val_meals: "2 раза",
+            cmp_yes: "Да",
+            modal_title_standard: "Детали стандартного пакета",
+            modal_title_comfort: "Детали комфорт пакета",
+            modal_title_lux: "Детали LUX пакета",
+            modal_title_jumeirah: "LUX Jumeirah Premium пакет",
+            modal_jumeirah_sub: "На июнь и июль",
+            modal_hotel: "Отель",
+            modal_hotels: "Отели",
+            modal_included: "Включено в пакет",
+            modal_starting_price: "Цена от",
+            modal_starting_price_room: "Цена от (4-местный номер)",
+            hotel_standard_name: "Ramada Zad Al Tayser",
+            hotel_comfort_name: "Отель AL EBAA",
+            hotel_lux_name: "Отель ANJUM",
+            hotel_lux_note: "Очень близко к Хараму в Мекке.",
+            jumeirah_flights: "Авиабилеты",
+            jumeirah_flight_out: "Вылет: Ташкент – Медина",
+            jumeirah_flight_back: "Возврат: Джидда – Ташкент",
+            jumeirah_train: "Скоростной поезд",
+            jumeirah_train_desc: "Медина – Мекка на скоростном поезде",
+            jumeirah_room_prices: "Цены по номерам",
+            jumeirah_services_title: "Услуги в пакете",
+            jumeirah_gifts_title: "Подарки",
+            jumeirah_madina_hotel: "Медина: Waqf As Safi (5 зв.)",
+            jumeirah_madina_nights: "3 ночи",
+            jumeirah_makka_hotel: "Мекка: Jumeirah Jabal Omar (5 зв.)",
+            jumeirah_makka_nights: "6 ночей",
+            feat_standard: [
+              "3 ночи в Медине, 7 ночей в Мекке",
+              "Авиабилеты (туда-обратно)",
+              "Отель (до Харама: 1 км)",
+              "Виза (страховка)",
+              "Трансферы",
+              "Поезд Медина–Мекка",
+              "Шведский стол 2 раза",
+              "Экскурсии",
+              "Поездка к Красному морю",
+              "Опытный гид",
+              "Вход в Равду"
+            ],
+            feat_comfort: [
+              "3 ночи в Медине, 7 ночей в Мекке",
+              "Авиабилеты (туда-обратно)",
+              "Отель (до Харама: 500 м)",
+              "Виза (страховка)",
+              "Трансферы",
+              "Поезд Медина–Мекка",
+              "Шведский стол 2 раза",
+              "Экскурсии",
+              "Поездка к Красному морю",
+              "Опытный гид",
+              "Вход в Равду"
+            ],
+            feat_lux: [
+              "3 ночи в Медине, 7 ночей в Мекке",
+              "Авиабилеты (туда-обратно)",
+              "Отель (до Харама: 150 м)",
+              "Виза (страховка)",
+              "Трансферы",
+              "Поезд Медина–Мекка",
+              "Шведский стол 2 раза",
+              "Экскурсии",
+              "Поездка к Красному морю",
+              "Опытный гид",
+              "Вход в Равду"
+            ],
+            feat_jumeirah: [
+              "Скоростной поезд",
+              "2 приёма пищи (Медина)",
+              "2 приёма пищи (Мекка)",
+              "Экскурсии по Мекке и Медине",
+              "Вход в Равду",
+              "Научные руководители",
+              "Врач в группе",
+              "Поездка к Красному морю",
+              "Виза, билеты и трансферы"
+            ],
+            gifts_jumeirah: ["Zam-Zam 5L", "Нимча", "Сумка", "Бейдж", "Абая (для женщин)"],
+            booking_title: "Бронирование",
+            booking_subtitle: "Оставьте данные — мы объясним все детали.",
+            booking_success_title: "Успешно!",
+            booking_success_desc: "Заявка принята. Скоро с вами свяжутся.",
+            booking_selected_pkg: "Выбранный пакет",
+            booking_per_person: "За 1 чел.",
+            booking_persons: "Количество паломников",
+            booking_total: "Итого",
+            booking_name: "Ваше имя",
+            booking_phone: "Телефон",
+            booking_room: "Тип номера",
+            booking_operator: "Пол оператора",
+            booking_payment: "Способ оплаты",
+            booking_submit: "ОТПРАВИТЬ ЗАЯВКУ",
+            booking_submitting: "Отправка...",
+            booking_privacy: "Данные защищены",
+            placeholder_name: "Например: Azizbek Karimov",
+            placeholder_phone: "+998 90 123 45 67",
+            room_4: "4-местный",
+            room_3: "3-местный",
+            room_2: "2-местный",
+            op_male: "Мужчина",
+            op_female: "Женщина",
+            pay_cash: "Наличные",
+            pay_card: "Карта"
+          },
+          en: {
+            menu_compare: "Compare",
+            section_compare_title: "Compare packages",
+            section_compare_desc: "See all packages in one table and pick what fits you best.",
+            cmp_col_feature: "Feature",
+            cmp_row_price: "Price (per person)",
+            cmp_row_hotel: "Distance to Haram",
+            cmp_row_nights: "Duration",
+            cmp_row_meals: "Meals",
+            cmp_row_train: "High-speed train",
+            cmp_row_visa: "Visa & insurance",
+            cmp_row_guide: "Group guide",
+            cmp_val_std_hotel: "1 km",
+            cmp_val_com_hotel: "500 m",
+            cmp_val_lux_hotel: "150 m",
+            cmp_val_jum_hotel: "5★ premium",
+            cmp_val_nights: "10 nights",
+            cmp_val_meals: "2 meals",
+            cmp_yes: "Yes",
+            modal_title_standard: "Standard package details",
+            modal_title_comfort: "Comfort package details",
+            modal_title_lux: "LUX package details",
+            modal_title_jumeirah: "LUX Jumeirah Premium package",
+            modal_jumeirah_sub: "For June and July",
+            modal_hotel: "Hotel",
+            modal_hotels: "Hotels",
+            modal_included: "Included in package",
+            modal_starting_price: "Starting price",
+            modal_starting_price_room: "Starting price (4-bed room)",
+            hotel_standard_name: "Ramada Zad Al Tayser",
+            hotel_comfort_name: "AL EBAA Hotel",
+            hotel_lux_name: "ANJUM Hotel",
+            hotel_lux_note: "Very close to Haram in Makkah.",
+            jumeirah_flights: "Flights",
+            jumeirah_flight_out: "Outbound: Tashkent – Madinah",
+            jumeirah_flight_back: "Return: Jeddah – Tashkent",
+            jumeirah_train: "High-speed train",
+            jumeirah_train_desc: "Madinah – Makkah high-speed train",
+            jumeirah_room_prices: "Room prices",
+            jumeirah_services_title: "Services included",
+            jumeirah_gifts_title: "Gifts",
+            jumeirah_madina_hotel: "Madinah: Waqf As Safi (5 star)",
+            jumeirah_madina_nights: "3 nights",
+            jumeirah_makka_hotel: "Makkah: Jumeirah Jabal Omar (5 star)",
+            jumeirah_makka_nights: "6 nights",
+            feat_standard: [
+              "3 nights Madinah, 7 nights Makkah",
+              "Round-trip flights",
+              "Hotel (1 km to Haram)",
+              "Visa (insurance)",
+              "Transfers",
+              "Madinah–Makkah train",
+              "Buffet 2 meals",
+              "Guided tours",
+              "Red Sea trip",
+              "Experienced guide",
+              "Rawdah access"
+            ],
+            feat_comfort: [
+              "3 nights Madinah, 7 nights Makkah",
+              "Round-trip flights",
+              "Hotel (500 m to Haram)",
+              "Visa (insurance)",
+              "Transfers",
+              "Madinah–Makkah train",
+              "Buffet 2 meals",
+              "Guided tours",
+              "Red Sea trip",
+              "Experienced guide",
+              "Rawdah access"
+            ],
+            feat_lux: [
+              "3 nights Madinah, 7 nights Makkah",
+              "Round-trip flights",
+              "Hotel (150 m to Haram)",
+              "Visa (insurance)",
+              "Transfers",
+              "Madinah–Makkah train",
+              "Buffet 2 meals",
+              "Guided tours",
+              "Red Sea trip",
+              "Experienced guide",
+              "Rawdah access"
+            ],
+            feat_jumeirah: [
+              "High-speed train",
+              "2 meals (Madinah)",
+              "2 meals (Makkah)",
+              "Tours in Makkah & Madinah",
+              "Rawdah access",
+              "Scholarly group leaders",
+              "Doctor on trip",
+              "Red Sea excursion",
+              "Visa, flights & transfers"
+            ],
+            gifts_jumeirah: ["Zam-Zam 5L", "Prayer cap", "Bag", "Badge", "Abaya (women)"],
+            booking_title: "Book your spot",
+            booking_subtitle: "Leave your details and we will explain everything.",
+            booking_success_title: "Success!",
+            booking_success_desc: "Your request was received. We will contact you soon.",
+            booking_selected_pkg: "Selected package",
+            booking_per_person: "Per person",
+            booking_persons: "Number of pilgrims",
+            booking_total: "Total price",
+            booking_name: "Full name",
+            booking_phone: "Phone number",
+            booking_room: "Room type",
+            booking_operator: "Operator gender",
+            booking_payment: "Payment method",
+            booking_submit: "SUBMIT REQUEST",
+            booking_submitting: "Sending...",
+            booking_privacy: "Your data is kept secure",
+            placeholder_name: "e.g. Azizbek Karimov",
+            placeholder_phone: "+998 90 123 45 67",
+            room_4: "4-bed room",
+            room_3: "3-bed room",
+            room_2: "2-bed room",
+            op_male: "Male",
+            op_female: "Female",
+            pay_cash: "Cash",
+            pay_card: "Card"
+          }
+        };
 
-</script>
+    </script>
     <script defer src="https://unpkg.com/alpinejs@3.14.8/dist/cdn.min.js"></script>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap">
     <link
@@ -415,60 +415,60 @@ window.SITE_I18N = {
     <link rel="alternate" hreflang="en" href="https://safomarvaumra.uz/">
     <link rel="alternate" hreflang="x-default" href="https://safomarvaumra.uz/">
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
         {
-          "@type": "TravelAgency",
-          "@id": "https://safomarvaumra.uz/#organization",
-          "name": "Safo Marva Tour",
-          "url": "https://safomarvaumra.uz/",
-          "logo": "https://safomarvaumra.uz/safo_marva.png",
-          "image": "https://safomarvaumra.uz/safo_marva.png",
-          "telephone": ["+998555177373", "+998700190373"],
-          "priceRange": "$1150 - $1990",
-          "address": { "@type": "PostalAddress", "addressCountry": "UZ", "addressLocality": "Toshkent" },
-          "sameAs": [
-            "https://t.me/safomarwa_umra",
-            "https://www.instagram.com/safomarva_umra"
-          ],
-          "description": "O'zbekistondagi ishonchli Umra va Haj sayohat agentligi. 10 kechalik Standart, Komfort va LUX paketlar."
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://safomarvaumra.uz/#website",
-          "url": "https://safomarvaumra.uz/",
-          "name": "Safo Marva Tour",
-          "publisher": { "@id": "https://safomarvaumra.uz/#organization" },
-          "inLanguage": ["uz", "ru", "en"]
-        },
-        {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Viza uchun qanday hujjatlar kerak?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Biometrik pasport (kamida 6 oy) va 3x4 o'lchamdagi 2 ta rasm. Viza rasmiylashtirishni biz o'z zimmamizga olamiz." }
-            },
-            {
-              "@type": "Question",
-              "name": "Paket narxiga hamma narsa kiradimi?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Ha: aviachipta, viza, mehmonxona, transport, guruh rahbari va tibbiy sug'urta. Yashirin to'lovlar yo'q." }
-            },
-            {
-              "@type": "Question",
-              "name": "Tibbiy sug'urta qanday ishlaydi?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Saudiya va kompaniya sug'urtasi safar davomida amal qiladi. Guruh shifokori tibbiy yordamni tashkil qiladi." }
-            },
-            {
-              "@type": "Question",
-              "name": "Boshqa shaharlardan ziyoratchilarni qabul qilasizmi?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Ha, O'zbekistonning barcha viloyatlari va qo'shni davlatlardan. Toshkent aeroportida kutib olinasiz." }
-            }
-          ]
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "TravelAgency",
+                    "@id": "https://safomarvaumra.uz/#organization",
+                    "name": "Safo Marva Tour",
+                    "url": "https://safomarvaumra.uz/",
+                    "logo": "https://safomarvaumra.uz/safo_marva.png",
+                    "image": "https://safomarvaumra.uz/safo_marva.png",
+                    "telephone": ["+998555177373", "+998700190373"],
+                    "priceRange": "$1250 - $1500",
+                    "address": { "@type": "PostalAddress", "addressCountry": "UZ", "addressLocality": "Toshkent" },
+                    "sameAs": [
+                        "https://t.me/safomarwa_umra",
+                        "https://www.instagram.com/safomarva_umra"
+                    ],
+                    "description": "O'zbekistondagi ishonchli Umra va Haj sayohat agentligi. 13 kunlik Standard Plus, 10 kunlik Comfort Plus va 14 kunlik Comfort Plus paketlar."
+                },
+                {
+                    "@type": "WebSite",
+                    "@id": "https://safomarvaumra.uz/#website",
+                    "url": "https://safomarvaumra.uz/",
+                    "name": "Safo Marva Tour",
+                    "publisher": { "@id": "https://safomarvaumra.uz/#organization" },
+                    "inLanguage": ["uz", "ru", "en"]
+                },
+                {
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": "Viza uchun qanday hujjatlar kerak?",
+                            "acceptedAnswer": { "@type": "Answer", "text": "Biometrik pasport (kamida 6 oy) va 3x4 o'lchamdagi 2 ta rasm. Viza rasmiylashtirishni biz o'z zimmamizga olamiz." }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Paket narxiga hamma narsa kiradimi?",
+                            "acceptedAnswer": { "@type": "Answer", "text": "Ha: aviachipta, viza, mehmonxona, transport, guruh rahbari va tibbiy sug'urta. Yashirin to'lovlar yo'q." }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Tibbiy sug'urta qanday ishlaydi?",
+                            "acceptedAnswer": { "@type": "Answer", "text": "Saudiya va kompaniya sug'urtasi safar davomida amal qiladi. Guruh shifokori tibbiy yordamni tashkil qiladi." }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Boshqa shaharlardan ziyoratchilarni qabul qilasizmi?",
+                            "acceptedAnswer": { "@type": "Answer", "text": "Ha, O'zbekistonning barcha viloyatlari va qo'shni davlatlardan. Toshkent aeroportida kutib olinasiz." }
+                        }
+                    ]
+                }
+            ]
         }
-      ]
-    }
     </script>
     <style>
         .glass {
@@ -484,14 +484,14 @@ window.SITE_I18N = {
         .hero-gradient {
             background-color: #1a1a1a;
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=65');
+            url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=65');
             background-size: cover;
             background-position: center;
         }
         @media (min-width: 768px) {
             .hero-gradient {
                 background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                    url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1280&q=70');
+                url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1280&q=70');
             }
         }
 
@@ -687,8 +687,8 @@ window.SITE_I18N = {
             <button @click="mobileMenu = !mobileMenu" class="lg:hidden text-gray-900 dark:text-white p-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor">
-                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                           d="M4 6h16M4 12h16M4 18h16" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
         </div>
@@ -751,26 +751,26 @@ window.SITE_I18N = {
             <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto" x-text="t('section_packages_desc')"></p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 reveal items-stretch">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 reveal items-stretch">
 
             <!-- Standard Card -->
             <div class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden">
 
                 <!-- Paket Rasmlari Slider qismi -->
                 <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none"
-                     @click="openPackageModal('standard_plus')"
-                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'standard_plus', false)">
-                    <img :src="getPackageImageAt('standard_plus', pkgSlide.standard_plus || 0)" alt="Standard Plus Umra paketi"
+                     @click="openPackageModal('standard')"
+                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'standard', false)">
+                    <img :src="getPackageImageAt('standard', pkgSlide.standard || 0)" alt="Standard Plus Umra paketi"
                          class="w-full h-full object-cover transition-transform duration-500"
-                         :class="pkgCardHover === 'standard_plus' ? 'scale-110' : 'scale-100'"
-                         @mouseenter="pkgCardHover = 'standard_plus'" @mouseleave="pkgCardHover = null"
+                         :class="pkgCardHover === 'standard' ? 'scale-110' : 'scale-100'"
+                         @mouseenter="pkgCardHover = 'standard'" @mouseleave="pkgCardHover = null"
                          loading="lazy" decoding="async">
-                    <button type="button" x-show="getPackageImages('standard_plus').length > 1" @click.stop="pkgSlidePrev('standard_plus')"
+                    <button type="button" x-show="getPackageImages('standard').length > 1" @click.stop="pkgSlidePrev('standard')"
                             class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Oldingi">‹</button>
-                    <button type="button" x-show="getPackageImages('standard_plus').length > 1" @click.stop="pkgSlideNext('standard_plus')"
+                    <button type="button" x-show="getPackageImages('standard').length > 1" @click.stop="pkgSlideNext('standard')"
                             class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Keyingi">›</button>
-                    <span x-show="getPackageImages('standard_plus').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
-                          x-text="((pkgSlide.standard_plus || 0) + 1) + '/' + getPackageImages('standard_plus').length"></span>
+                    <span x-show="getPackageImages('standard').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
+                          x-text="((pkgSlide.standard || 0) + 1) + '/' + getPackageImages('standard').length"></span>
                 </div>
 
                 <!-- Paket Davomiyligi (13 kun) -->
@@ -788,13 +788,13 @@ window.SITE_I18N = {
 
                 <!-- Narxi ($1250 dan boshlab) -->
                 <div class="text-3xl font-bold text-brand-gold mb-6">
-                    $<span x-text="packagesData.standard_plus?.price || '1250'">1250</span>
+                    $<span x-text="packagesData.standard?.price || '1250'">1250</span>
                     <span class="text-sm text-gray-500 font-normal">/ <span x-text="t('package_price')">boshlab</span></span>
                 </div>
 
                 <!-- Harakatlar tugmalari -->
                 <div class="mt-auto space-y-3">
-                    <button @click="openPackageModal('standard_plus')" type="button"
+                    <button @click="openPackageModal('standard')" type="button"
                             class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')">Batafsil</button>
                     <button @click="activeModal = 'booking'; selectedPackage = 'Standard Plus Paket'" type="button"
                             class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')">Band qilish</button>
@@ -806,19 +806,19 @@ window.SITE_I18N = {
 
                 <!-- Paket Rasmlari Slider qismi -->
                 <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none"
-                     @click="openPackageModal('comfort_plus_10')"
-                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'comfort_plus_10', false)">
-                    <img :src="getPackageImageAt('comfort_plus_10', pkgSlide.comfort_plus_10 || 0)" alt="Comfort Plus 10 kunlik Umra paketi"
+                     @click="openPackageModal('comfort')"
+                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'comfort', false)">
+                    <img :src="getPackageImageAt('comfort', pkgSlide.comfort || 0)" alt="Comfort Plus 10 kunlik Umra paketi"
                          class="w-full h-full object-cover transition-transform duration-500"
-                         :class="pkgCardHover === 'comfort_plus_10' ? 'scale-110' : 'scale-100'"
-                         @mouseenter="pkgCardHover = 'comfort_plus_10'" @mouseleave="pkgCardHover = null"
+                         :class="pkgCardHover === 'comfort' ? 'scale-110' : 'scale-100'"
+                         @mouseenter="pkgCardHover = 'comfort'" @mouseleave="pkgCardHover = null"
                          loading="lazy" decoding="async">
-                    <button type="button" x-show="getPackageImages('comfort_plus_10').length > 1" @click.stop="pkgSlidePrev('comfort_plus_10')"
+                    <button type="button" x-show="getPackageImages('comfort').length > 1" @click.stop="pkgSlidePrev('comfort')"
                             class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Oldingi">‹</button>
-                    <button type="button" x-show="getPackageImages('comfort_plus_10').length > 1" @click.stop="pkgSlideNext('comfort_plus_10')"
+                    <button type="button" x-show="getPackageImages('comfort').length > 1" @click.stop="pkgSlideNext('comfort')"
                             class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Keyingi">›</button>
-                    <span x-show="getPackageImages('comfort_plus_10').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
-                          x-text="((pkgSlide.comfort_plus_10 || 0) + 1) + '/' + getPackageImages('comfort_plus_10').length"></span>
+                    <span x-show="getPackageImages('comfort').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
+                          x-text="((pkgSlide.comfort || 0) + 1) + '/' + getPackageImages('comfort').length"></span>
                 </div>
 
                 <!-- Mashhurlik nishoni (POPULAR) -->
@@ -839,36 +839,36 @@ window.SITE_I18N = {
 
                 <!-- Narxi (Eng minimal narx $1350 dan boshlab qo'yildi) -->
                 <div class="text-3xl font-bold text-brand-gold mb-6">
-                    $<span x-text="packagesData.comfort_plus_10?.price || '1350'">1350</span>
+                    $<span x-text="packagesData.comfort?.price || '1350'">1350</span>
                     <span class="text-sm text-gray-500 dark:text-gray-400 font-normal">/ <span x-text="t('package_price')">boshlab</span></span>
                 </div>
 
                 <!-- Harakatlar tugmalari -->
                 <div class="mt-auto space-y-3">
-                    <button @click="openPackageModal('comfort_plus_10')" type="button"
+                    <button @click="openPackageModal('comfort')" type="button"
                             class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')">Batafsil</button>
-                    <button @click="activeModal = 'booking'; selectedPackage = 'Comfort Plus 10 Kunlik Paket'" type="button"
+                    <button @click="activeModal = 'booking'; selectedPackage = 'Comfort Plus 10 Kunlik'" type="button"
                             class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')">Band qilish</button>
                 </div>
             </div>
 
-            <!-- LUX Card -->
+            <!-- Comfort Plus 14 Kunlik Card -->
             <div class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden">
                 <!-- Paket Rasmlari Slider qismi -->
                 <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none"
-                     @click="openPackageModal('comfort_plus')"
-                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'comfort_plus', false)">
-                    <img :src="getPackageImageAt('comfort_plus', pkgSlide.comfort_plus || 0)" alt="Comfort Plus Umra paketi"
+                     @click="openPackageModal('special_14day')"
+                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'special_14day', false)">
+                    <img :src="getPackageImageAt('special_14day', pkgSlide.special_14day || 0)" alt="Comfort Plus Umra paketi"
                          class="w-full h-full object-cover transition-transform duration-500"
-                         :class="pkgCardHover === 'comfort_plus' ? 'scale-110' : 'scale-100'"
-                         @mouseenter="pkgCardHover = 'comfort_plus'" @mouseleave="pkgCardHover = null"
+                         :class="pkgCardHover === 'special_14day' ? 'scale-110' : 'scale-100'"
+                         @mouseenter="pkgCardHover = 'special_14day'" @mouseleave="pkgCardHover = null"
                          loading="lazy" decoding="async">
-                    <button type="button" x-show="getPackageImages('comfort_plus').length > 1" @click.stop="pkgSlidePrev('comfort_plus')"
+                    <button type="button" x-show="getPackageImages('special_14day').length > 1" @click.stop="pkgSlidePrev('special_14day')"
                             class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Oldingi">‹</button>
-                    <button type="button" x-show="getPackageImages('comfort_plus').length > 1" @click.stop="pkgSlideNext('comfort_plus')"
+                    <button type="button" x-show="getPackageImages('special_14day').length > 1" @click.stop="pkgSlideNext('special_14day')"
                             class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Keyingi">›</button>
-                    <span x-show="getPackageImages('comfort_plus').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
-                          x-text="((pkgSlide.comfort_plus || 0) + 1) + '/' + getPackageImages('comfort_plus').length"></span>
+                    <span x-show="getPackageImages('special_14day').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
+                          x-text="((pkgSlide.special_14day || 0) + 1) + '/' + getPackageImages('special_14day').length"></span>
                 </div>
 
                 <!-- Paket Davomiyligi (14 kun) -->
@@ -885,50 +885,16 @@ window.SITE_I18N = {
 
                 <!-- Narxi (Eng minimal narx $1500 dan boshlab qo'yildi) -->
                 <div class="text-3xl font-bold text-brand-gold mb-6">
-                    $<span x-text="packagesData.comfort_plus?.price || '1500'">1500</span>
+                    $<span x-text="packagesData.special_14day?.price || '1500'">1500</span>
                     <span class="text-sm text-gray-500 font-normal">/ <span x-text="t('package_price')">boshlab</span></span>
                 </div>
 
                 <!-- Harakatlar tugmalari -->
                 <div class="mt-auto space-y-3">
-                    <button @click="openPackageModal('comfort_plus')" type="button"
+                    <button @click="openPackageModal('special_14day')" type="button"
                             class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')">Batafsil</button>
-                    <button @click="activeModal = 'booking'; selectedPackage = 'Comfort Plus Paket'" type="button"
+                    <button @click="activeModal = 'booking'; selectedPackage = 'Comfort Plus 14 Kunlik'" type="button"
                             class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')">Band qilish</button>
-                </div>
-            </div>
-
-            <!-- LUX Jumeirah Card -->
-            <div
-                    class="bg-gradient-to-b from-brand-cream to-brand-cream-dark dark:from-[#151C2C] dark:to-[#0B0F19] backdrop-blur-md rounded-3xl border-2 border-brand-gold/60 p-6 pt-8 shadow-xl hover:shadow-[0_0_35px_rgba(212,175,55,0.25)] transition-all duration-300 flex flex-col overflow-visible relative">
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-brand-gold to-yellow-600 text-brand-red px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg whitespace-nowrap"
-                     x-text="t('badge_premium')"></div>
-                <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none mt-2"
-                     @click="openPackageModal('lux_jumeirah')"
-                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'lux_jumeirah', false)">
-                    <img :src="getPackageImageAt('lux_jumeirah', pkgSlide.lux_jumeirah || 0)" alt="LUX Jumeirah Umra paketi"
-                         class="w-full h-full object-cover transition-transform duration-500"
-                         :class="pkgCardHover === 'lux_jumeirah' ? 'scale-110' : 'scale-100'"
-                         @mouseenter="pkgCardHover = 'lux_jumeirah'" @mouseleave="pkgCardHover = null"
-                         loading="lazy" decoding="async">
-                    <button type="button" x-show="getPackageImages('lux_jumeirah').length > 1" @click.stop="pkgSlidePrev('lux_jumeirah')"
-                            class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Oldingi">‹</button>
-                    <button type="button" x-show="getPackageImages('lux_jumeirah').length > 1" @click.stop="pkgSlideNext('lux_jumeirah')"
-                            class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Keyingi">›</button>
-                    <span x-show="getPackageImages('lux_jumeirah').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
-                          x-text="((pkgSlide.lux_jumeirah || 0) + 1) + '/' + getPackageImages('lux_jumeirah').length"></span>
-                </div>
-                <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2" x-text="t('pkg_jumeirah_nights')"></span>
-                <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white" x-text="t('pkg_jumeirah')"></h3>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mb-6" x-text="t('pkg_jumeirah_hotel')"></p>
-                <div class="text-3xl font-bold text-brand-gold mb-1">$<span x-text="packagesData.lux_jumeirah?.price || '1690'"></span> <span
-                        class="text-sm text-gray-500 font-normal">/ <span x-text="t('package_price')"></span></span></div>
-                <p class="text-[10px] text-gray-600 dark:text-gray-400 mb-6 uppercase tracking-wide" x-text="t('pkg_jumeirah_note')"></p>
-                <div class="mt-auto space-y-3">
-                    <button @click="openPackageModal('lux_jumeirah')" type="button"
-                            class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')"></button>
-                    <button @click="activeModal = 'booking'; selectedPackage = 'LUX Jumeirah Paket'; bookingRoom = '4 kishilik'" type="button"
-                            class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')"></button>
                 </div>
             </div>
 
@@ -996,7 +962,7 @@ window.SITE_I18N = {
                     <p class="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1" x-text="t('modal_starting_price') + ':'"></p>
                     <p class="text-3xl font-bold text-brand-gold">$<span x-text="packagesData.standard?.price"></span></p>
                 </div>
-                <button @click="activeModal = 'booking'; selectedPackage = 'Standart Paket'" type="button"
+                <button @click="activeModal = 'booking'; selectedPackage = 'Standard Plus Paket'" type="button"
                         class="block w-full bg-brand-gold text-brand-red py-4 rounded-2xl font-bold text-center hover:bg-yellow-600 shadow-xl transition-all" x-text="t('btn_book_now')"></button>
             </div>
         </div>
@@ -1095,7 +1061,7 @@ window.SITE_I18N = {
                         <p class="text-xs text-gray-500 dark:text-gray-400 uppercase" x-text="t('modal_starting_price_room') + ':'"></p>
                         <p class="text-4xl font-bold text-brand-gold">$<span x-text="packagesData.comfort?.price"></span></p>
                     </div>
-                    <button @click="activeModal = 'booking'; selectedPackage = 'Komfort Paket'" type="button"
+                    <button @click="activeModal = 'booking'; selectedPackage = 'Comfort Plus 10 Kunlik'" type="button"
                             class="w-full sm:w-auto bg-brand-gold text-brand-red px-10 py-4 rounded-2xl font-bold hover:bg-yellow-600 shadow-xl text-center" x-text="t('btn_book_now')"></button>
                 </div>
             </div>
@@ -1103,172 +1069,71 @@ window.SITE_I18N = {
     </div>
 </div>
 
-<!-- LUX Modal -->
-<div x-show="activeModal === 'lux'" x-cloak class="fixed inset-0 z-[100] overflow-y-auto">
+<!-- Comfort Plus 14 Kunlik Modal -->
+<div x-show="activeModal === 'special_14day'" x-cloak class="fixed inset-0 z-[100] overflow-y-auto">
     <div class="flex items-center justify-center min-h-screen px-4 sm:p-0">
         <div @click="activeModal = null" class="fixed inset-0 bg-[#04060B] bg-opacity-80 backdrop-blur-md"></div>
         <div
                 class="inline-block bg-brand-cream dark:bg-[#121824] border border-gray-200 dark:border-gray-800 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.3)] sm:max-w-lg sm:w-full z-10 overflow-hidden transform transition-all text-gray-900 dark:text-white">
             <div class="bg-brand-red/90 px-8 py-6 flex justify-between items-center text-white border-b border-red-900/50">
-                <h3 class="text-xl font-bold uppercase tracking-wider" x-text="t('modal_title_lux')"></h3>
+                <h3 class="text-xl font-bold uppercase tracking-wider" x-text="t('pkg_special_14day')"></h3>
                 <button @click="activeModal = null" type="button" class="modal-close-btn text-white hover:text-brand-gold" :aria-label="t('aria_close')">×</button>
             </div>
             <div class="px-8 py-8 space-y-6">
                 <div class="rounded-2xl overflow-hidden shadow-lg aspect-video bg-black relative select-none min-h-[12rem]"
-                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'lux', true)">
-                    <template x-if="activeModal === 'lux' && getCurrentModalSlide('lux').type === 'video'">
+                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'special_14day', true)">
+                    <template x-if="activeModal === 'special_14day' && getCurrentModalSlide('special_14day').type === 'video'">
                         <video class="pkg-modal-video absolute inset-0 w-full h-full object-contain bg-black"
-                               :src="getCurrentModalSlide('lux').url" controls playsinline preload="metadata"
-                               :key="'vid-lux-' + modalSlide"></video>
+                               :src="getCurrentModalSlide('special_14day').url" controls playsinline preload="metadata"
+                               :key="'vid-special-' + modalSlide"></video>
                     </template>
-                    <template x-if="activeModal === 'lux' && getCurrentModalSlide('lux').type === 'image'">
-                        <img :src="getCurrentModalSlide('lux').url"
-                             @click="openLightbox(getPackageImages('lux').map(u => mediaUrl(u)), getImageLightboxIndex('lux', modalSlide))"
+                    <template x-if="activeModal === 'special_14day' && getCurrentModalSlide('special_14day').type === 'image'">
+                        <img :src="getCurrentModalSlide('special_14day').url"
+                             @click="openLightbox(getPackageImages('special_14day').map(u => mediaUrl(u)), getImageLightboxIndex('special_14day', modalSlide))"
                              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 cursor-pointer"
-                             :class="pkgModalHover === 'lux' ? 'scale-110' : 'scale-100'"
-                             @mouseenter="pkgModalHover = 'lux'" @mouseleave="pkgModalHover = null"
-                             :key="'img-lux-' + modalSlide">
+                             :class="pkgModalHover === 'special_14day' ? 'scale-110' : 'scale-100'"
+                             @mouseenter="pkgModalHover = 'special_14day'" @mouseleave="pkgModalHover = null"
+                             :key="'img-special-' + modalSlide">
                     </template>
-                    <template x-if="getModalSlides('lux').length > 1">
-                        <button type="button" @click.stop="modalSlidePrev('lux')" class="pkg-modal-nav pkg-modal-nav--prev" aria-label="Oldingi">&#10094;</button>
-                        <button type="button" @click.stop="modalSlideNext('lux')" class="pkg-modal-nav pkg-modal-nav--next" aria-label="Keyingi">&#10095;</button>
+                    <template x-if="getModalSlides('special_14day').length > 1">
+                        <button type="button" @click.stop="modalSlidePrev('special_14day')" class="pkg-modal-nav pkg-modal-nav--prev" aria-label="Oldingi">&#10094;</button>
+                        <button type="button" @click.stop="modalSlideNext('special_14day')" class="pkg-modal-nav pkg-modal-nav--next" aria-label="Keyingi">&#10095;</button>
                         <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center justify-center gap-1.5 px-2 py-1 rounded-full bg-black/50">
-                            <template x-for="(slide, i) in getModalSlides('lux')" :key="'lux-dot-'+i">
-                                <button type="button" @click.stop="goModalSlide('lux', i)" class="rounded-full transition-all duration-200"
+                            <template x-for="(slide, i) in getModalSlides('special_14day')" :key="'special-dot-'+i">
+                                <button type="button" @click.stop="goModalSlide('special_14day', i)" class="rounded-full transition-all duration-200"
                                         :class="modalSlide === i ? (slide.type === 'video' ? 'bg-sky-400 w-5 h-2' : 'bg-brand-gold w-5 h-2') : 'bg-white/50 w-2 h-2'"
                                         :aria-label="slide.type === 'video' ? 'Video' : 'Rasm'"></button>
                             </template>
                         </div>
                         <span class="absolute top-3 right-3 z-20 text-xs font-semibold bg-black/70 text-white px-2.5 py-1 rounded-full"
-                              x-text="getModalSlideLabel('lux')"></span>
+                              x-text="getModalSlideLabel('special_14day')"></span>
                     </template>
                 </div>
                 <div>
                     <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('modal_hotel') + ':'"></h4>
-                    <p class="font-semibold text-gray-900 dark:text-white" x-text="t('hotel_lux_name')"></p>
-                    <p class="text-sm text-gray-600 dark:text-gray-400" x-text="t('hotel_lux_note')"></p>
+                    <p class="font-semibold text-gray-900 dark:text-white" x-text="'Al Ebaa hotel 4★ + Mehrob Toiba 4★'"></p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400" x-text="t('pkg_special_14day_hotel')"></p>
                 </div>
                 <div>
                     <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('modal_included') + ':'"></h4>
                     <ul class="text-gray-700 dark:text-gray-300 space-y-1">
-                        <template x-for="line in tList('feat_lux')" :key="line">
+                        <template x-for="line in tList('feat_comfort')" :key="line">
                             <li x-text="'• ' + line"></li>
                         </template>
                     </ul>
                 </div>
                 <div class="bg-brand-cream-dark dark:bg-[#1B2436] p-4 rounded-2xl border border-gray-200 dark:border-gray-800">
                     <p class="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1" x-text="t('modal_starting_price') + ':'"></p>
-                    <p class="text-3xl font-bold text-brand-gold">$<span x-text="packagesData.lux?.price || '1550'"></span></p>
+                    <p class="text-3xl font-bold text-brand-gold">$<span x-text="packagesData.special_14day?.price || '1500'"></span></p>
                 </div>
-                <button @click="activeModal = 'booking'; selectedPackage = 'LUX Paket'" type="button"
+                <button @click="activeModal = 'booking'; selectedPackage = 'Comfort Plus 14 Kunlik'" type="button"
                         class="block w-full bg-brand-gold text-brand-red py-4 rounded-2xl font-bold text-center hover:bg-yellow-600 shadow-xl transition-all" x-text="t('btn_book_now')"></button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- LUX Jumeirah Modal -->
-<div x-show="activeModal === 'lux_jumeirah'" x-cloak class="fixed inset-0 z-[100] overflow-y-auto">
-    <div class="flex items-center justify-center min-h-screen px-4 sm:p-0">
-        <div @click="activeModal = null" class="fixed inset-0 bg-[#04060B] bg-opacity-80 backdrop-blur-md"></div>
-        <div class="inline-block bg-brand-cream dark:bg-[#121824] border-2 border-brand-gold/40 rounded-3xl shadow-[0_0_50px_rgba(212,175,55,0.2)] sm:max-w-2xl sm:w-full z-10 overflow-hidden transform transition-all text-gray-900 dark:text-white my-8">
-            <div class="bg-gradient-to-r from-brand-gold/90 to-yellow-600/90 px-8 py-6 flex justify-between items-center text-brand-red border-b border-brand-gold/30">
-                <div>
-                    <p class="text-xs font-bold uppercase tracking-widest opacity-80" x-text="t('modal_jumeirah_sub')"></p>
-                    <h3 class="text-xl font-bold uppercase tracking-wider" x-text="t('modal_title_jumeirah')"></h3>
-                </div>
-                <button @click="activeModal = null" type="button" class="modal-close-btn text-brand-red hover:opacity-70" :aria-label="t('aria_close')">×</button>
-            </div>
-            <div class="px-8 py-8 max-h-[75vh] overflow-y-auto">
-                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video bg-black mb-8 relative select-none min-h-[12rem]"
-                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'lux_jumeirah', true)">
-                    <template x-if="activeModal === 'lux_jumeirah' && getCurrentModalSlide('lux_jumeirah').type === 'video'">
-                        <video class="pkg-modal-video absolute inset-0 w-full h-full object-contain bg-black"
-                               :src="getCurrentModalSlide('lux_jumeirah').url" controls playsinline preload="metadata"
-                               :key="'vid-jum-' + modalSlide"></video>
-                    </template>
-                    <template x-if="activeModal === 'lux_jumeirah' && getCurrentModalSlide('lux_jumeirah').type === 'image'">
-                        <img :src="getCurrentModalSlide('lux_jumeirah').url" alt="LUX Jumeirah paket"
-                             @click="openLightbox(getPackageImages('lux_jumeirah').map(u => mediaUrl(u)), getImageLightboxIndex('lux_jumeirah', modalSlide))"
-                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 cursor-pointer"
-                             :class="pkgModalHover === 'lux_jumeirah' ? 'scale-110' : 'scale-100'"
-                             @mouseenter="pkgModalHover = 'lux_jumeirah'" @mouseleave="pkgModalHover = null"
-                             :key="'img-jum-' + modalSlide">
-                    </template>
-                    <template x-if="getModalSlides('lux_jumeirah').length > 1">
-                        <button type="button" @click.stop="modalSlidePrev('lux_jumeirah')" class="pkg-modal-nav pkg-modal-nav--prev" aria-label="Oldingi">&#10094;</button>
-                        <button type="button" @click.stop="modalSlideNext('lux_jumeirah')" class="pkg-modal-nav pkg-modal-nav--next" aria-label="Keyingi">&#10095;</button>
-                        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center justify-center gap-1.5 px-2 py-1 rounded-full bg-black/50">
-                            <template x-for="(slide, i) in getModalSlides('lux_jumeirah')" :key="'jum-dot-'+i">
-                                <button type="button" @click.stop="goModalSlide('lux_jumeirah', i)" class="rounded-full transition-all duration-200"
-                                        :class="modalSlide === i ? (slide.type === 'video' ? 'bg-sky-400 w-5 h-2' : 'bg-brand-gold w-5 h-2') : 'bg-white/50 w-2 h-2'"
-                                        :aria-label="slide.type === 'video' ? 'Video' : 'Rasm'"></button>
-                            </template>
-                        </div>
-                        <span class="absolute top-3 right-3 z-20 text-xs font-semibold bg-black/70 text-white px-2.5 py-1 rounded-full"
-                              x-text="getModalSlideLabel('lux_jumeirah')"></span>
-                    </template>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 text-sm">
-                    <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-2xl p-4 border border-gray-200 dark:border-gray-800">
-                        <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('jumeirah_flights')"></h4>
-                        <p class="text-gray-700 dark:text-gray-300" x-text="t('jumeirah_flight_out')"></p>
-                        <p class="text-gray-700 dark:text-gray-300" x-text="t('jumeirah_flight_back')"></p>
-                    </div>
-                    <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-2xl p-4 border border-gray-200 dark:border-gray-800">
-                        <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('jumeirah_train')"></h4>
-                        <p class="text-gray-700 dark:text-gray-300" x-text="t('jumeirah_train_desc')"></p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <div>
-                        <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest border-b border-gray-200 dark:border-gray-800 pb-2" x-text="t('modal_hotels')"></h4>
-                        <p class="text-gray-800 dark:text-gray-200 font-semibold" x-text="t('jumeirah_madina_hotel')"></p>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-3" x-text="t('jumeirah_madina_nights')"></p>
-                        <p class="text-gray-800 dark:text-gray-200 font-semibold" x-text="t('jumeirah_makka_hotel')"></p>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm" x-text="t('jumeirah_makka_nights')"></p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest border-b border-gray-200 dark:border-gray-800 pb-2" x-text="t('jumeirah_room_prices')"></h4>
-                        <ul class="text-gray-700 dark:text-gray-300 space-y-2 text-sm">
-                            <li class="flex justify-between"><span x-text="t('room_4')"></span><strong class="text-brand-gold">$1690</strong></li>
-                            <li class="flex justify-between"><span x-text="t('room_3')"></span><strong class="text-brand-gold">$1790</strong></li>
-                            <li class="flex justify-between"><span x-text="t('room_2')"></span><strong class="text-brand-gold">$1990</strong></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest" x-text="t('jumeirah_services_title')"></h4>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 mb-6 text-gray-700 dark:text-gray-300 text-sm">
-                    <template x-for="line in tList('feat_jumeirah')" :key="line">
-                        <li x-text="line"></li>
-                    </template>
-                </ul>
-
-                <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest" x-text="t('jumeirah_gifts_title')"></h4>
-                <div class="flex flex-wrap gap-2 mb-8">
-                    <template x-for="gift in tList('gifts_jumeirah')" :key="gift">
-                        <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20" x-text="gift"></span>
-                    </template>
-                </div>
-
-                <div class="bg-brand-cream-dark dark:bg-[#1B2436] p-6 rounded-3xl border border-brand-gold/30 flex flex-col sm:flex-row justify-between items-center gap-4">
-                    <div>
-                        <p class="text-xs text-gray-500 dark:text-gray-400 uppercase" x-text="t('modal_starting_price_room') + ':'"></p>
-                        <p class="text-4xl font-bold text-brand-gold">$<span x-text="packagesData.lux_jumeirah?.price || '1690'"></span></p>
-                    </div>
-                    <button @click="activeModal = 'booking'; selectedPackage = 'LUX Jumeirah Paket'; bookingRoom = '4 kishilik'" type="button"
-                            class="w-full sm:w-auto bg-brand-gold text-brand-red px-10 py-4 rounded-2xl font-bold hover:bg-yellow-600 shadow-xl text-center" x-text="t('btn_book_now')"></button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- Why Choose Us -->
-<!-- Why Choose Section -->
 <section id="why-choose" class="py-24 bg-brand-cream-dark dark:bg-[#0B0F19] transition-colors duration-300 reveal">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16">
@@ -1276,32 +1141,26 @@ window.SITE_I18N = {
             <div class="w-24 h-1 bg-brand-gold mx-auto"></div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- License Card -->
-            <div class="text-center p-8 rounded-3xl bg-brand-cream dark:bg-[#151C2C]/40 border border-gray-200 dark:border-gray-800/80 hover:bg-brand-cream-dark dark:hover:bg-[#151C2C]/80 hover:border-brand-gold/30 shadow-sm dark:shadow-none hover:shadow-xl transition-all duration-300">
+            <div
+                    class="text-center p-8 rounded-3xl bg-brand-cream dark:bg-[#151C2C]/40 border border-gray-200 dark:border-gray-800/80 hover:bg-brand-cream-dark dark:hover:bg-[#151C2C]/80 hover:border-brand-gold/30 shadow-sm dark:shadow-none hover:shadow-xl transition-all duration-300">
                 <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                 </div>
                 <h4 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white" x-text="t('why_license_title')"></h4>
                 <p class="text-gray-600 dark:text-gray-400" x-text="t('why_license_desc')"></p>
             </div>
-            <!-- Team Card -->
-            <div class="text-center p-8 rounded-3xl bg-brand-cream dark:bg-[#151C2C]/40 border border-gray-200 dark:border-gray-800/80 hover:bg-brand-cream-dark dark:hover:bg-[#151C2C]/80 hover:border-brand-gold/30 shadow-sm dark:shadow-none hover:shadow-xl transition-all duration-300">
+            <div
+                    class="text-center p-8 rounded-3xl bg-brand-cream dark:bg-[#151C2C]/40 border border-gray-200 dark:border-gray-800/80 hover:bg-brand-cream-dark dark:hover:bg-[#151C2C]/80 hover:border-brand-gold/30 shadow-sm dark:shadow-none hover:shadow-xl transition-all duration-300">
                 <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                 </div>
                 <h4 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white" x-text="t('why_team_title')"></h4>
                 <p class="text-gray-600 dark:text-gray-400" x-text="t('why_team_desc')"></p>
             </div>
-            <!-- Peace Card -->
-            <div class="text-center p-8 rounded-3xl bg-brand-cream dark:bg-[#151C2C]/40 border border-gray-200 dark:border-gray-800/80 hover:bg-brand-cream-dark dark:hover:bg-[#151C2C]/80 hover:border-brand-gold/30 shadow-sm dark:shadow-none hover:shadow-xl transition-all duration-300">
+            <div
+                    class="text-center p-8 rounded-3xl bg-brand-cream dark:bg-[#151C2C]/40 border border-gray-200 dark:border-gray-800/80 hover:bg-brand-cream-dark dark:hover:bg-[#151C2C]/80 hover:border-brand-gold/30 shadow-sm dark:shadow-none hover:shadow-xl transition-all duration-300">
                 <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                 </div>
                 <h4 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white" x-text="t('why_peace_title')"></h4>
                 <p class="text-gray-600 dark:text-gray-400" x-text="t('why_peace_desc')"></p>
@@ -1318,7 +1177,7 @@ window.SITE_I18N = {
                 <h2 class="text-4xl font-serif section-title mb-4" x-text="t('section_gallery')"></h2>
                 <p class="text-gray-600 dark:text-gray-400 max-w-md" x-text="t('gallery_desc')"></p>
             </div>
-            <a href="https://t.me/safomarwa_umra" target="_blank" rel="noopener noreferrer"
+            <a href="https://t.me/safomarwa_umra"
                class="text-brand-gold border-b border-brand-gold pb-1 hover:text-gray-900 dark:hover:text-white hover:border-gray-900 dark:hover:border-white transition-all" x-text="t('gallery_view_all')"></a>
         </div>
     </div>
@@ -1328,27 +1187,43 @@ window.SITE_I18N = {
         <div class="marquee-container flex space-x-6 px-6">
             <!-- Original Set -->
             <div class="flex space-x-6 flex-shrink-0">
-                <img data-src="galereya/ziyorat1.jpg" alt="Ziyoratchilar 1" width="448" height="288" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
-                <img data-src="galereya/ziyorat2.jpg" alt="Ziyoratchilar 2" width="448" height="288" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
-                <img data-src="galereya/ziyorat3.jpg" alt="Ziyoratchilar 3" width="448" height="288" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
-                <img data-src="galereya/ziyorat1.jpg" alt="" width="448" height="288" aria-hidden="true" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
-                <img data-src="galereya/ziyorat2.jpg" alt="" width="448" height="288" aria-hidden="true" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
-                <img data-src="galereya/ziyorat3.jpg" alt="" width="448" height="288" aria-hidden="true" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat1.jpg" alt="Ziyoratchilar 1" width="448" height="288"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat2.jpg" alt="Ziyoratchilar 2" width="448" height="288"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat3.jpg" alt="Ziyoratchilar 3" width="448" height="288"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat1.jpg" alt="" width="448" height="288" aria-hidden="true"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat2.jpg" alt="" width="448" height="288" aria-hidden="true"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat3.jpg" alt="" width="448" height="288" aria-hidden="true"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
             </div>
-            <!-- Duplicate Set for continuous loop -->
+            <!-- Duplicate Set for loop (brauzer cache dan foydalanadi) -->
             <div class="flex space-x-6 flex-shrink-0" aria-hidden="true">
-                <img data-src="galereya/ziyorat1.jpg" alt="" width="448" height="288" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
-                <img data-src="galereya/ziyorat2.jpg" alt="" width="448" height="288" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
-                <img data-src="galereya/ziyorat3.jpg" alt="" width="448" height="288" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
-                <img data-src="galereya/ziyorat1.jpg" alt="" width="448" height="288" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
-                <img data-src="galereya/ziyorat2.jpg" alt="" width="448" height="288" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
-                <img data-src="galereya/ziyorat3.jpg" alt="" width="448" height="288" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat1.jpg" alt="" width="448" height="288"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat2.jpg" alt="" width="448" height="288"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat3.jpg" alt="" width="448" height="288"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat1.jpg" alt="" width="448" height="288"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat2.jpg" alt="" width="448" height="288"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat3.jpg" alt="" width="448" height="288"
+                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
             </div>
         </div>
 
         <!-- Gradient Overlays for smooth edges -->
-        <div class="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-brand-cream dark:from-brand-dark to-transparent z-10 pointer-events-none transition-colors duration-300"></div>
-        <div class="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-brand-cream dark:from-brand-dark to-transparent z-10 pointer-events-none transition-colors duration-300"></div>
+        <div
+                class="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-brand-cream dark:from-brand-dark to-transparent z-10 pointer-events-none transition-colors duration-300">
+        </div>
+        <div
+                class="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-brand-cream dark:from-brand-dark to-transparent z-10 pointer-events-none transition-colors duration-300">
+        </div>
     </div>
 </section>
 
@@ -1362,69 +1237,113 @@ window.SITE_I18N = {
 
         <div class="space-y-4">
             <!-- FAQ Item 1 -->
-            <div class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
-                 :class="activeFaq === 1 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
-                 @click="activeFaq = (activeFaq === 1) ? null : 1">
+            <div
+                    class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
+                    :class="activeFaq === 1 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
+                    @click="activeFaq = (activeFaq === 1) ? null : 1">
                 <div class="flex justify-between items-center gap-4">
-                    <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300" :class="activeFaq === 1 ? 'text-brand-gold' : ''" x-text="t('faq_q1')"></h4>
-                    <span class="text-brand-gold flex-shrink-0 transition-transform duration-300" :class="activeFaq === 1 ? 'rotate-180' : ''">
+                    <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300"
+                        :class="activeFaq === 1 ? 'text-brand-gold' : ''"
+                        x-text="t('faq_q1')"></h4>
+                    <span class="text-brand-gold flex-shrink-0 transition-transform duration-300"
+                          :class="activeFaq === 1 ? 'rotate-180' : ''">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
                         </svg>
                     </span>
                 </div>
-                <div x-show="activeFaq === 1" x-collapse class="overflow-hidden mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-gray-100 dark:border-gray-800/60 pt-4">
+                <div x-show="activeFaq === 1"
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0 max-h-0"
+                     x-transition:enter-end="opacity-100 max-h-[500px]"
+                     x-transition:leave="transition ease-in duration-200"
+                     x-transition:leave-start="opacity-100 max-h-[500px]"
+                     x-transition:leave-end="opacity-0 max-h-0"
+                     class="overflow-hidden mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-gray-100 dark:border-gray-800/60 pt-4">
                     <p x-text="t('faq_a1')"></p>
                 </div>
             </div>
 
             <!-- FAQ Item 2 -->
-            <div class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
-                 :class="activeFaq === 2 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
-                 @click="activeFaq = (activeFaq === 2) ? null : 2">
+            <div
+                    class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
+                    :class="activeFaq === 2 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
+                    @click="activeFaq = (activeFaq === 2) ? null : 2">
                 <div class="flex justify-between items-center gap-4">
-                    <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300" :class="activeFaq === 2 ? 'text-brand-gold' : ''" x-text="t('faq_q2')"></h4>
-                    <span class="text-brand-gold flex-shrink-0 transition-transform duration-300" :class="activeFaq === 2 ? 'rotate-180' : ''">
+                    <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300"
+                        :class="activeFaq === 2 ? 'text-brand-gold' : ''"
+                        x-text="t('faq_q2')"></h4>
+                    <span class="text-brand-gold flex-shrink-0 transition-transform duration-300"
+                          :class="activeFaq === 2 ? 'rotate-180' : ''">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
                         </svg>
                     </span>
                 </div>
-                <div x-show="activeFaq === 2" x-collapse class="overflow-hidden mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-gray-100 dark:border-gray-800/60 pt-4">
+                <div x-show="activeFaq === 2"
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0 max-h-0"
+                     x-transition:enter-end="opacity-100 max-h-[500px]"
+                     x-transition:leave="transition ease-in duration-200"
+                     x-transition:leave-start="opacity-100 max-h-[500px]"
+                     x-transition:leave-end="opacity-0 max-h-0"
+                     class="overflow-hidden mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-gray-100 dark:border-gray-800/60 pt-4">
                     <p x-text="t('faq_a2')"></p>
                 </div>
             </div>
 
             <!-- FAQ Item 3 -->
-            <div class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
-                 :class="activeFaq === 3 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
-                 @click="activeFaq = (activeFaq === 3) ? null : 3">
+            <div
+                    class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
+                    :class="activeFaq === 3 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
+                    @click="activeFaq = (activeFaq === 3) ? null : 3">
                 <div class="flex justify-between items-center gap-4">
-                    <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300" :class="activeFaq === 3 ? 'text-brand-gold' : ''" x-text="t('faq_q3')"></h4>
-                    <span class="text-brand-gold flex-shrink-0 transition-transform duration-300" :class="activeFaq === 3 ? 'rotate-180' : ''">
+                    <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300"
+                        :class="activeFaq === 3 ? 'text-brand-gold' : ''"
+                        x-text="t('faq_q3')"></h4>
+                    <span class="text-brand-gold flex-shrink-0 transition-transform duration-300"
+                          :class="activeFaq === 3 ? 'rotate-180' : ''">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
                         </svg>
                     </span>
                 </div>
-                <div x-show="activeFaq === 3" x-collapse class="overflow-hidden mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-gray-100 dark:border-gray-800/60 pt-4">
+                <div x-show="activeFaq === 3"
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0 max-h-0"
+                     x-transition:enter-end="opacity-100 max-h-[500px]"
+                     x-transition:leave="transition ease-in duration-200"
+                     x-transition:leave-start="opacity-100 max-h-[500px]"
+                     x-transition:leave-end="opacity-0 max-h-0"
+                     class="overflow-hidden mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-gray-100 dark:border-gray-800/60 pt-4">
                     <p x-text="t('faq_a3')"></p>
                 </div>
             </div>
 
             <!-- FAQ Item 4 -->
-            <div class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
-                 :class="activeFaq === 4 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
-                 @click="activeFaq = (activeFaq === 4) ? null : 4">
+            <div
+                    class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
+                    :class="activeFaq === 4 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
+                    @click="activeFaq = (activeFaq === 4) ? null : 4">
                 <div class="flex justify-between items-center gap-4">
-                    <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300" :class="activeFaq === 4 ? 'text-brand-gold' : ''" x-text="t('faq_q4')"></h4>
-                    <span class="text-brand-gold flex-shrink-0 transition-transform duration-300" :class="activeFaq === 4 ? 'rotate-180' : ''">
+                    <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300"
+                        :class="activeFaq === 4 ? 'text-brand-gold' : ''"
+                        x-text="t('faq_q4')"></h4>
+                    <span class="text-brand-gold flex-shrink-0 transition-transform duration-300"
+                          :class="activeFaq === 4 ? 'rotate-180' : ''">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
                         </svg>
                     </span>
                 </div>
-                <div x-show="activeFaq === 4" x-collapse class="overflow-hidden mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-gray-100 dark:border-gray-800/60 pt-4">
+                <div x-show="activeFaq === 4"
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0 max-h-0"
+                     x-transition:enter-end="opacity-100 max-h-[500px]"
+                     x-transition:leave="transition ease-in duration-200"
+                     x-transition:leave-start="opacity-100 max-h-[500px]"
+                     x-transition:leave-end="opacity-0 max-h-0"
+                     class="overflow-hidden mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-gray-100 dark:border-gray-800/60 pt-4">
                     <p x-text="t('faq_a4')"></p>
                 </div>
             </div>
@@ -1441,12 +1360,15 @@ window.SITE_I18N = {
             <h3 class="section-title text-4xl md:text-5xl font-serif mb-8 relative z-10" x-text="t('cta_title')"></h3>
             <p class="text-gray-700 dark:text-gray-300 text-xl mb-12 max-w-2xl mx-auto relative z-10" x-text="t('cta_desc')"></p>
             <div class="flex flex-col sm:flex-row justify-center gap-6 relative z-10">
-                <a href="tel:+998555177373" class="bg-brand-red text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-red-800 transition-all hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center" x-text="t('cta_call')"></a>
-                <a href="https://t.me/Safomarva_admin" target="_blank" rel="noopener noreferrer" class="bg-brand-gold text-brand-red px-12 py-5 rounded-2xl font-bold text-xl hover:bg-yellow-600 transition-all hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center" x-text="t('cta_telegram')"></a>
+                <a href="tel:+998555177373"
+                   class="bg-brand-red text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-red-800 transition-all hover:scale-105 active:scale-95 shadow-lg" x-text="t('cta_call')"></a>
+                <a href="https://t.me/Safomarva_admin" target="_blank" rel="noopener noreferrer"
+                   class="bg-brand-gold text-brand-red px-12 py-5 rounded-2xl font-bold text-xl hover:bg-yellow-600 transition-all hover:scale-105 active:scale-95 shadow-lg" x-text="t('cta_telegram')"></a>
             </div>
         </div>
     </div>
 </section>
+
 <!-- Footer -->
 <footer class="bg-brand-cream-dark dark:bg-brand-dark text-gray-900 dark:text-white transition-colors duration-300 py-20">
     <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-200 dark:border-gray-800 pb-16 text-center md:text-left">
@@ -2057,30 +1979,30 @@ window.SITE_I18N = {
         packagesData: {
             standard: {
                 price: '1250',
-                image_url: 'galereya/standart.png',
+                image_url: 'galereya/standart.jpg',
                 video_url: '',
-                images: ['galereya/standart.png'],
+                images: ['galereya/standart.jpg'],
                 videos: []
             },
             comfort: {
                 price: '1350',
-                image_url: 'galereya/komfort.png',
+                image_url: 'galereya/komfort.jpg',
                 video_url: '',
-                images: ['galereya/komfort.png'],
+                images: ['galereya/komfort.jpg'],
                 videos: []
             },
             special_14day: {
                 price: '1500',
-                image_url: 'galereya/lux.png',
+                image_url: 'galereya/kom_plus.jpg',
                 video_url: '',
-                images: ['galereya/lux.png'],
+                images: ['galereya/kom_plus.jpg'],
                 videos: []
             }
         },pkgDefaultImage(key) {
         const d = {
-            standard: 'galereya/standart.png',
-            comfort: 'galereya/komfort.png',
-            special_14day: 'galereya/lux.png'
+            standard: 'galereya/standart.jpg',
+            comfort: 'galereya/komfort.jpg',
+            special_14day: 'galereya/kom_plus.jpg'
         };
         return d[key] || '';
     },
