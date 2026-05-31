@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: blob: 'unsafe-inline' 'unsafe-eval'; connect-src 'self' https://hddpzctigsjqljtooogq.supabase.co https://*.supabase.co https://api.telegram.org https://www.facebook.com https://connect.facebook.net https://graph.facebook.com http://localhost:* http://127.0.0.1:*; img-src 'self' https: data: blob: https://www.facebook.com;">
     <!-- Meta Pixel: Events Manager → Manbalar → Veb-sayt → Pixel ID ni quyiga yozing -->
-    <script>window.META_PIXEL_ID = '1474056530709388';</script>
+    <script>window.META_PIXEL_ID = '';</script>
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="google-site-verification" content="33P92EN1Am0odA5qGKx4rTTEi2qxplxk30qiOjpzPqo" />
@@ -18,375 +18,375 @@
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
     <link rel="dns-prefetch" href="https://unpkg.com">
     <script>
-/** Qo‘shimcha tarjimalar — modallar, taqqoslash, forma */
-window.SITE_I18N = {
-  uz: {
-    menu_compare: "Taqqoslash",
-    section_compare_title: "Paketlarni taqqoslash",
-    section_compare_desc: "Barcha paketlarni bir jadvalda ko‘ring va o‘zingizga mosini tanlang.",
-    cmp_col_feature: "Xususiyat",
-    cmp_row_price: "Narx (1 kishi)",
-    cmp_row_hotel: "Haramgacha masofa",
-    cmp_row_nights: "Davomiyligi",
-    cmp_row_meals: "Ovqatlanish",
-    cmp_row_train: "Tezyurar poezd",
-    cmp_row_visa: "Viza va sug‘urta",
-    cmp_row_guide: "Guruh rahbari",
-    cmp_val_std_hotel: "1 km",
-    cmp_val_com_hotel: "500 m",
-    cmp_val_lux_hotel: "150 m",
-    cmp_val_jum_hotel: "5★ premium",
-    cmp_val_nights: "10 kecha",
-    cmp_val_meals: "2 mahal",
-    cmp_yes: "Ha",
-    modal_title_standard: "Standart paket tafsilotlari",
-    modal_title_comfort: "Komfort paket tafsilotlari",
-    modal_title_lux: "LUX paket tafsilotlari",
-    modal_title_jumeirah: "LUX Jumeirah Premium paket",
-    modal_jumeirah_sub: "Iyun va iyul oylari uchun",
-    modal_hotel: "Mehmonxona",
-    modal_hotels: "Mehmonxonalar",
-    modal_included: "Qulayliklar (ichiga kiritilgan)",
-    modal_starting_price: "Boshlang‘ich narx",
-    modal_starting_price_room: "Boshlang‘ich narx (4 kishilik xona)",
-    hotel_standard_name: "Ramada Zad Al Tayser",
-    hotel_comfort_name: "AL EBAA mehmonxonasi",
-    hotel_lux_name: "ANJUM mehmonxonasi",
-    hotel_lux_note: "Makkada Haramga juda yaqin masofada.",
-    jumeirah_flights: "Aviachiptalar",
-    jumeirah_flight_out: "Ketish: Toshkent – Madina",
-    jumeirah_flight_back: "Qaytish: Jidda – Toshkent",
-    jumeirah_train: "Tezyurar poezd",
-    jumeirah_train_desc: "Madina – Makka tezyurar poezd xizmati",
-    jumeirah_room_prices: "Xona narxlari",
-    jumeirah_services_title: "Paket ichiga kiritilgan xizmatlar",
-    jumeirah_gifts_title: "Hadiyalar",
-    jumeirah_madina_hotel: "Madina: Waqf As Safi (5 yulduz)",
-    jumeirah_madina_nights: "3 kecha",
-    jumeirah_makka_hotel: "Makka: Jumeirah Jabal Omar (5 yulduz)",
-    jumeirah_makka_nights: "6 kecha",
-    feat_standard: [
-      "3 kecha Madinada, 7 kecha Makkada",
-      "Aviabilet (borish-kelish)",
-      "Mehmonxona (Haramgacha: 1 km)",
-      "Viza (sug‘urta)",
-      "Transfer xizmati",
-      "Madinadan-Makkaga poyezd",
-      "2 mahal shved stol",
-      "Ekskursiya-ziyoratlar",
-      "Qizil dengizga sayohat",
-      "Malakali ellik boshi xizmati",
-      "Ravzaga kirish imkoniyati"
-    ],
-    feat_comfort: [
-      "3 kecha Madinada, 7 kecha Makkada",
-      "Aviabilet (borish-kelish)",
-      "Mehmonxona (Haramgacha: 500 metr)",
-      "Viza (sug‘urta)",
-      "Transfer xizmati",
-      "Madinadan-Makkaga poyezd",
-      "2 mahal shved stol",
-      "Ekskursiya-ziyoratlar",
-      "Qizil dengizga sayohat",
-      "Malakali ellik boshi xizmati",
-      "Ravzaga kirish imkoniyati"
-    ],
-    feat_lux: [
-      "3 kecha Madinada, 7 kecha Makkada",
-      "Aviabilet (borish-kelish)",
-      "Mehmonxona (Haramgacha: 150 metr)",
-      "Viza (sug‘urta)",
-      "Transfer xizmati",
-      "Madinadan-Makkaga poyezd",
-      "2 mahal shved stol",
-      "Ekskursiya-ziyoratlar",
-      "Qizil dengizga sayohat",
-      "Malakali ellik boshi xizmati",
-      "Ravzaga kirish imkoniyati"
-    ],
-    feat_jumeirah: [
-      "Tezyurar poezd xizmati",
-      "2 mahal taom (Madina)",
-      "2 mahal taom (Makka)",
-      "Makka va Madina bo‘ylab ekskursiyalar",
-      "Ravzaga kirish imkoniyati",
-      "Ilmiy guruh rahbarlari",
-      "Malakali shifokor xizmati",
-      "Qizil dengiz bo‘ylab sayohat",
-      "Viza, aviachipta va transferlar"
-    ],
-    gifts_jumeirah: ["Zam-Zam 5L", "Nimcha", "Sumka", "Beyjik", "Abaya (ayollar uchun)"],
-    booking_title: "Joyni band qilish",
-    booking_subtitle: "Ma’lumotlaringizni qoldiring — barcha tafsilotlarni tushuntiramiz.",
-    booking_success_title: "Muvaffaqiyatli!",
-    booking_success_desc: "So‘rovingiz qabul qilindi. Tez orada mutaxassislarimiz bog‘lanadi.",
-    booking_selected_pkg: "Tanlangan paket",
-    booking_per_person: "1 kishi",
-    booking_persons: "Ziyoratchilar soni",
-    booking_total: "Umumiy narx",
-    booking_name: "To‘liq ismingiz",
-    booking_phone: "Telefon raqamingiz",
-    booking_room: "Xona turini tanlang",
-    booking_operator: "Operator jinsi",
-    booking_payment: "To‘lov turi",
-    booking_submit: "SO‘ROV YUBORISH",
-    booking_submitting: "Yuborilmoqda...",
-    booking_privacy: "Ma’lumotlaringiz xavfsiz saqlanadi",
-    placeholder_name: "Masalan: Azizbek Karimov",
-    placeholder_phone: "+998 90 123 45 67",
-    room_4: "4 kishilik",
-    room_3: "3 kishilik",
-    room_2: "2 kishilik",
-    op_male: "Erkak",
-    op_female: "Ayol",
-    pay_cash: "Naqd pul",
-    pay_card: "Plastik karta"
-  },
-  ru: {
-    menu_compare: "Сравнение",
-    section_compare_title: "Сравнение пакетов",
-    section_compare_desc: "Сравните все пакеты в одной таблице и выберите подходящий.",
-    cmp_col_feature: "Параметр",
-    cmp_row_price: "Цена (1 чел.)",
-    cmp_row_hotel: "Расстояние до Харама",
-    cmp_row_nights: "Длительность",
-    cmp_row_meals: "Питание",
-    cmp_row_train: "Скоростной поезд",
-    cmp_row_visa: "Виза и страховка",
-    cmp_row_guide: "Руководитель группы",
-    cmp_val_std_hotel: "1 км",
-    cmp_val_com_hotel: "500 м",
-    cmp_val_lux_hotel: "150 м",
-    cmp_val_jum_hotel: "5★ premium",
-    cmp_val_nights: "10 ночей",
-    cmp_val_meals: "2 раза",
-    cmp_yes: "Да",
-    modal_title_standard: "Детали стандартного пакета",
-    modal_title_comfort: "Детали комфорт пакета",
-    modal_title_lux: "Детали LUX пакета",
-    modal_title_jumeirah: "LUX Jumeirah Premium пакет",
-    modal_jumeirah_sub: "На июнь и июль",
-    modal_hotel: "Отель",
-    modal_hotels: "Отели",
-    modal_included: "Включено в пакет",
-    modal_starting_price: "Цена от",
-    modal_starting_price_room: "Цена от (4-местный номер)",
-    hotel_standard_name: "Ramada Zad Al Tayser",
-    hotel_comfort_name: "Отель AL EBAA",
-    hotel_lux_name: "Отель ANJUM",
-    hotel_lux_note: "Очень близко к Хараму в Мекке.",
-    jumeirah_flights: "Авиабилеты",
-    jumeirah_flight_out: "Вылет: Ташкент – Медина",
-    jumeirah_flight_back: "Возврат: Джидда – Ташкент",
-    jumeirah_train: "Скоростной поезд",
-    jumeirah_train_desc: "Медина – Мекка на скоростном поезде",
-    jumeirah_room_prices: "Цены по номерам",
-    jumeirah_services_title: "Услуги в пакете",
-    jumeirah_gifts_title: "Подарки",
-    jumeirah_madina_hotel: "Медина: Waqf As Safi (5 зв.)",
-    jumeirah_madina_nights: "3 ночи",
-    jumeirah_makka_hotel: "Мекка: Jumeirah Jabal Omar (5 зв.)",
-    jumeirah_makka_nights: "6 ночей",
-    feat_standard: [
-      "3 ночи в Медине, 7 ночей в Мекке",
-      "Авиабилеты (туда-обратно)",
-      "Отель (до Харама: 1 км)",
-      "Виза (страховка)",
-      "Трансферы",
-      "Поезд Медина–Мекка",
-      "Шведский стол 2 раза",
-      "Экскурсии",
-      "Поездка к Красному морю",
-      "Опытный гид",
-      "Вход в Равду"
-    ],
-    feat_comfort: [
-      "3 ночи в Медине, 7 ночей в Мекке",
-      "Авиабилеты (туда-обратно)",
-      "Отель (до Харама: 500 м)",
-      "Виза (страховка)",
-      "Трансферы",
-      "Поезд Медина–Мекка",
-      "Шведский стол 2 раза",
-      "Экскурсии",
-      "Поездка к Красному морю",
-      "Опытный гид",
-      "Вход в Равду"
-    ],
-    feat_lux: [
-      "3 ночи в Медине, 7 ночей в Мекке",
-      "Авиабилеты (туда-обратно)",
-      "Отель (до Харама: 150 м)",
-      "Виза (страховка)",
-      "Трансферы",
-      "Поезд Медина–Мекка",
-      "Шведский стол 2 раза",
-      "Экскурсии",
-      "Поездка к Красному морю",
-      "Опытный гид",
-      "Вход в Равду"
-    ],
-    feat_jumeirah: [
-      "Скоростной поезд",
-      "2 приёма пищи (Медина)",
-      "2 приёма пищи (Мекка)",
-      "Экскурсии по Мекке и Медине",
-      "Вход в Равду",
-      "Научные руководители",
-      "Врач в группе",
-      "Поездка к Красному морю",
-      "Виза, билеты и трансферы"
-    ],
-    gifts_jumeirah: ["Zam-Zam 5L", "Нимча", "Сумка", "Бейдж", "Абая (для женщин)"],
-    booking_title: "Бронирование",
-    booking_subtitle: "Оставьте данные — мы объясним все детали.",
-    booking_success_title: "Успешно!",
-    booking_success_desc: "Заявка принята. Скоро с вами свяжутся.",
-    booking_selected_pkg: "Выбранный пакет",
-    booking_per_person: "За 1 чел.",
-    booking_persons: "Количество паломников",
-    booking_total: "Итого",
-    booking_name: "Ваше имя",
-    booking_phone: "Телефон",
-    booking_room: "Тип номера",
-    booking_operator: "Пол оператора",
-    booking_payment: "Способ оплаты",
-    booking_submit: "ОТПРАВИТЬ ЗАЯВКУ",
-    booking_submitting: "Отправка...",
-    booking_privacy: "Данные защищены",
-    placeholder_name: "Например: Azizbek Karimov",
-    placeholder_phone: "+998 90 123 45 67",
-    room_4: "4-местный",
-    room_3: "3-местный",
-    room_2: "2-местный",
-    op_male: "Мужчина",
-    op_female: "Женщина",
-    pay_cash: "Наличные",
-    pay_card: "Карта"
-  },
-  en: {
-    menu_compare: "Compare",
-    section_compare_title: "Compare packages",
-    section_compare_desc: "See all packages in one table and pick what fits you best.",
-    cmp_col_feature: "Feature",
-    cmp_row_price: "Price (per person)",
-    cmp_row_hotel: "Distance to Haram",
-    cmp_row_nights: "Duration",
-    cmp_row_meals: "Meals",
-    cmp_row_train: "High-speed train",
-    cmp_row_visa: "Visa & insurance",
-    cmp_row_guide: "Group guide",
-    cmp_val_std_hotel: "1 km",
-    cmp_val_com_hotel: "500 m",
-    cmp_val_lux_hotel: "150 m",
-    cmp_val_jum_hotel: "5★ premium",
-    cmp_val_nights: "10 nights",
-    cmp_val_meals: "2 meals",
-    cmp_yes: "Yes",
-    modal_title_standard: "Standard package details",
-    modal_title_comfort: "Comfort package details",
-    modal_title_lux: "LUX package details",
-    modal_title_jumeirah: "LUX Jumeirah Premium package",
-    modal_jumeirah_sub: "For June and July",
-    modal_hotel: "Hotel",
-    modal_hotels: "Hotels",
-    modal_included: "Included in package",
-    modal_starting_price: "Starting price",
-    modal_starting_price_room: "Starting price (4-bed room)",
-    hotel_standard_name: "Ramada Zad Al Tayser",
-    hotel_comfort_name: "AL EBAA Hotel",
-    hotel_lux_name: "ANJUM Hotel",
-    hotel_lux_note: "Very close to Haram in Makkah.",
-    jumeirah_flights: "Flights",
-    jumeirah_flight_out: "Outbound: Tashkent – Madinah",
-    jumeirah_flight_back: "Return: Jeddah – Tashkent",
-    jumeirah_train: "High-speed train",
-    jumeirah_train_desc: "Madinah – Makkah high-speed train",
-    jumeirah_room_prices: "Room prices",
-    jumeirah_services_title: "Services included",
-    jumeirah_gifts_title: "Gifts",
-    jumeirah_madina_hotel: "Madinah: Waqf As Safi (5 star)",
-    jumeirah_madina_nights: "3 nights",
-    jumeirah_makka_hotel: "Makkah: Jumeirah Jabal Omar (5 star)",
-    jumeirah_makka_nights: "6 nights",
-    feat_standard: [
-      "3 nights Madinah, 7 nights Makkah",
-      "Round-trip flights",
-      "Hotel (1 km to Haram)",
-      "Visa (insurance)",
-      "Transfers",
-      "Madinah–Makkah train",
-      "Buffet 2 meals",
-      "Guided tours",
-      "Red Sea trip",
-      "Experienced guide",
-      "Rawdah access"
-    ],
-    feat_comfort: [
-      "3 nights Madinah, 7 nights Makkah",
-      "Round-trip flights",
-      "Hotel (500 m to Haram)",
-      "Visa (insurance)",
-      "Transfers",
-      "Madinah–Makkah train",
-      "Buffet 2 meals",
-      "Guided tours",
-      "Red Sea trip",
-      "Experienced guide",
-      "Rawdah access"
-    ],
-    feat_lux: [
-      "3 nights Madinah, 7 nights Makkah",
-      "Round-trip flights",
-      "Hotel (150 m to Haram)",
-      "Visa (insurance)",
-      "Transfers",
-      "Madinah–Makkah train",
-      "Buffet 2 meals",
-      "Guided tours",
-      "Red Sea trip",
-      "Experienced guide",
-      "Rawdah access"
-    ],
-    feat_jumeirah: [
-      "High-speed train",
-      "2 meals (Madinah)",
-      "2 meals (Makkah)",
-      "Tours in Makkah & Madinah",
-      "Rawdah access",
-      "Scholarly group leaders",
-      "Doctor on trip",
-      "Red Sea excursion",
-      "Visa, flights & transfers"
-    ],
-    gifts_jumeirah: ["Zam-Zam 5L", "Prayer cap", "Bag", "Badge", "Abaya (women)"],
-    booking_title: "Book your spot",
-    booking_subtitle: "Leave your details and we will explain everything.",
-    booking_success_title: "Success!",
-    booking_success_desc: "Your request was received. We will contact you soon.",
-    booking_selected_pkg: "Selected package",
-    booking_per_person: "Per person",
-    booking_persons: "Number of pilgrims",
-    booking_total: "Total price",
-    booking_name: "Full name",
-    booking_phone: "Phone number",
-    booking_room: "Room type",
-    booking_operator: "Operator gender",
-    booking_payment: "Payment method",
-    booking_submit: "SUBMIT REQUEST",
-    booking_submitting: "Sending...",
-    booking_privacy: "Your data is kept secure",
-    placeholder_name: "e.g. Azizbek Karimov",
-    placeholder_phone: "+998 90 123 45 67",
-    room_4: "4-bed room",
-    room_3: "3-bed room",
-    room_2: "2-bed room",
-    op_male: "Male",
-    op_female: "Female",
-    pay_cash: "Cash",
-    pay_card: "Card"
-  }
-};
+        /** Qo‘shimcha tarjimalar — modallar, taqqoslash, forma */
+        window.SITE_I18N = {
+          uz: {
+            menu_compare: "Taqqoslash",
+            section_compare_title: "Paketlarni taqqoslash",
+            section_compare_desc: "Barcha paketlarni bir jadvalda ko‘ring va o‘zingizga mosini tanlang.",
+            cmp_col_feature: "Xususiyat",
+            cmp_row_price: "Narx (1 kishi)",
+            cmp_row_hotel: "Haramgacha masofa",
+            cmp_row_nights: "Davomiyligi",
+            cmp_row_meals: "Ovqatlanish",
+            cmp_row_train: "Tezyurar poezd",
+            cmp_row_visa: "Viza va sug‘urta",
+            cmp_row_guide: "Guruh rahbari",
+            cmp_val_std_hotel: "1 km",
+            cmp_val_com_hotel: "500 m",
+            cmp_val_lux_hotel: "150 m",
+            cmp_val_jum_hotel: "5★ premium",
+            cmp_val_nights: "10 kecha",
+            cmp_val_meals: "2 mahal",
+            cmp_yes: "Ha",
+            modal_title_standard: "Standart paket tafsilotlari",
+            modal_title_comfort: "Komfort paket tafsilotlari",
+            modal_title_lux: "LUX paket tafsilotlari",
+            modal_title_jumeirah: "LUX Jumeirah Premium paket",
+            modal_jumeirah_sub: "Iyun va iyul oylari uchun",
+            modal_hotel: "Mehmonxona",
+            modal_hotels: "Mehmonxonalar",
+            modal_included: "Qulayliklar (ichiga kiritilgan)",
+            modal_starting_price: "Boshlang‘ich narx",
+            modal_starting_price_room: "Boshlang‘ich narx (4 kishilik xona)",
+            hotel_standard_name: "Ramada Zad Al Tayser",
+            hotel_comfort_name: "AL EBAA mehmonxonasi",
+            hotel_lux_name: "ANJUM mehmonxonasi",
+            hotel_lux_note: "Makkada Haramga juda yaqin masofada.",
+            jumeirah_flights: "Aviachiptalar",
+            jumeirah_flight_out: "Ketish: Toshkent – Madina",
+            jumeirah_flight_back: "Qaytish: Jidda – Toshkent",
+            jumeirah_train: "Tezyurar poezd",
+            jumeirah_train_desc: "Madina – Makka tezyurar poezd xizmati",
+            jumeirah_room_prices: "Xona narxlari",
+            jumeirah_services_title: "Paket ichiga kiritilgan xizmatlar",
+            jumeirah_gifts_title: "Hadiyalar",
+            jumeirah_madina_hotel: "Madina: Waqf As Safi (5 yulduz)",
+            jumeirah_madina_nights: "3 kecha",
+            jumeirah_makka_hotel: "Makka: Jumeirah Jabal Omar (5 yulduz)",
+            jumeirah_makka_nights: "6 kecha",
+            feat_standard: [
+              "3 kecha Madinada, 7 kecha Makkada",
+              "Aviabilet (borish-kelish)",
+              "Mehmonxona (Haramgacha: 1 km)",
+              "Viza (sug‘urta)",
+              "Transfer xizmati",
+              "Madinadan-Makkaga poyezd",
+              "2 mahal shved stol",
+              "Ekskursiya-ziyoratlar",
+              "Qizil dengizga sayohat",
+              "Malakali ellik boshi xizmati",
+              "Ravzaga kirish imkoniyati"
+            ],
+            feat_comfort: [
+              "3 kecha Madinada, 7 kecha Makkada",
+              "Aviabilet (borish-kelish)",
+              "Mehmonxona (Haramgacha: 500 metr)",
+              "Viza (sug‘urta)",
+              "Transfer xizmati",
+              "Madinadan-Makkaga poyezd",
+              "2 mahal shved stol",
+              "Ekskursiya-ziyoratlar",
+              "Qizil dengizga sayohat",
+              "Malakali ellik boshi xizmati",
+              "Ravzaga kirish imkoniyati"
+            ],
+            feat_lux: [
+              "3 kecha Madinada, 7 kecha Makkada",
+              "Aviabilet (borish-kelish)",
+              "Mehmonxona (Haramgacha: 150 metr)",
+              "Viza (sug‘urta)",
+              "Transfer xizmati",
+              "Madinadan-Makkaga poyezd",
+              "2 mahal shved stol",
+              "Ekskursiya-ziyoratlar",
+              "Qizil dengizga sayohat",
+              "Malakali ellik boshi xizmati",
+              "Ravzaga kirish imkoniyati"
+            ],
+            feat_jumeirah: [
+              "Tezyurar poezd xizmati",
+              "2 mahal taom (Madina)",
+              "2 mahal taom (Makka)",
+              "Makka va Madina bo‘ylab ekskursiyalar",
+              "Ravzaga kirish imkoniyati",
+              "Ilmiy guruh rahbarlari",
+              "Malakali shifokor xizmati",
+              "Qizil dengiz bo‘ylab sayohat",
+              "Viza, aviachipta va transferlar"
+            ],
+            gifts_jumeirah: ["Zam-Zam 5L", "Nimcha", "Sumka", "Beyjik", "Abaya (ayollar uchun)"],
+            booking_title: "Joyni band qilish",
+            booking_subtitle: "Ma’lumotlaringizni qoldiring — barcha tafsilotlarni tushuntiramiz.",
+            booking_success_title: "Muvaffaqiyatli!",
+            booking_success_desc: "So‘rovingiz qabul qilindi. Tez orada mutaxassislarimiz bog‘lanadi.",
+            booking_selected_pkg: "Tanlangan paket",
+            booking_per_person: "1 kishi",
+            booking_persons: "Ziyoratchilar soni",
+            booking_total: "Umumiy narx",
+            booking_name: "To‘liq ismingiz",
+            booking_phone: "Telefon raqamingiz",
+            booking_room: "Xona turini tanlang",
+            booking_operator: "Operator jinsi",
+            booking_payment: "To‘lov turi",
+            booking_submit: "SO‘ROV YUBORISH",
+            booking_submitting: "Yuborilmoqda...",
+            booking_privacy: "Ma’lumotlaringiz xavfsiz saqlanadi",
+            placeholder_name: "Masalan: Azizbek Karimov",
+            placeholder_phone: "+998 90 123 45 67",
+            room_4: "4 kishilik",
+            room_3: "3 kishilik",
+            room_2: "2 kishilik",
+            op_male: "Erkak",
+            op_female: "Ayol",
+            pay_cash: "Naqd pul",
+            pay_card: "Plastik karta"
+          },
+          ru: {
+            menu_compare: "Сравнение",
+            section_compare_title: "Сравнение пакетов",
+            section_compare_desc: "Сравните все пакеты в одной таблице и выберите подходящий.",
+            cmp_col_feature: "Параметр",
+            cmp_row_price: "Цена (1 чел.)",
+            cmp_row_hotel: "Расстояние до Харама",
+            cmp_row_nights: "Длительность",
+            cmp_row_meals: "Питание",
+            cmp_row_train: "Скоростной поезд",
+            cmp_row_visa: "Виза и страховка",
+            cmp_row_guide: "Руководитель группы",
+            cmp_val_std_hotel: "1 км",
+            cmp_val_com_hotel: "500 м",
+            cmp_val_lux_hotel: "150 м",
+            cmp_val_jum_hotel: "5★ premium",
+            cmp_val_nights: "10 ночей",
+            cmp_val_meals: "2 раза",
+            cmp_yes: "Да",
+            modal_title_standard: "Детали стандартного пакета",
+            modal_title_comfort: "Детали комфорт пакета",
+            modal_title_lux: "Детали LUX пакета",
+            modal_title_jumeirah: "LUX Jumeirah Premium пакет",
+            modal_jumeirah_sub: "На июнь и июль",
+            modal_hotel: "Отель",
+            modal_hotels: "Отели",
+            modal_included: "Включено в пакет",
+            modal_starting_price: "Цена от",
+            modal_starting_price_room: "Цена от (4-местный номер)",
+            hotel_standard_name: "Ramada Zad Al Tayser",
+            hotel_comfort_name: "Отель AL EBAA",
+            hotel_lux_name: "Отель ANJUM",
+            hotel_lux_note: "Очень близко к Хараму в Мекке.",
+            jumeirah_flights: "Авиабилеты",
+            jumeirah_flight_out: "Вылет: Ташкент – Медина",
+            jumeirah_flight_back: "Возврат: Джидда – Ташкент",
+            jumeirah_train: "Скоростной поезд",
+            jumeirah_train_desc: "Медина – Мекка на скоростном поезде",
+            jumeirah_room_prices: "Цены по номерам",
+            jumeirah_services_title: "Услуги в пакете",
+            jumeirah_gifts_title: "Подарки",
+            jumeirah_madina_hotel: "Медина: Waqf As Safi (5 зв.)",
+            jumeirah_madina_nights: "3 ночи",
+            jumeirah_makka_hotel: "Мекка: Jumeirah Jabal Omar (5 зв.)",
+            jumeirah_makka_nights: "6 ночей",
+            feat_standard: [
+              "3 ночи в Медине, 7 ночей в Мекке",
+              "Авиабилеты (туда-обратно)",
+              "Отель (до Харама: 1 км)",
+              "Виза (страховка)",
+              "Трансферы",
+              "Поезд Медина–Мекка",
+              "Шведский стол 2 раза",
+              "Экскурсии",
+              "Поездка к Красному морю",
+              "Опытный гид",
+              "Вход в Равду"
+            ],
+            feat_comfort: [
+              "3 ночи в Медине, 7 ночей в Мекке",
+              "Авиабилеты (туда-обратно)",
+              "Отель (до Харама: 500 м)",
+              "Виза (страховка)",
+              "Трансферы",
+              "Поезд Медина–Мекка",
+              "Шведский стол 2 раза",
+              "Экскурсии",
+              "Поездка к Красному морю",
+              "Опытный гид",
+              "Вход в Равду"
+            ],
+            feat_lux: [
+              "3 ночи в Медине, 7 ночей в Мекке",
+              "Авиабилеты (туда-обратно)",
+              "Отель (до Харама: 150 м)",
+              "Виза (страховка)",
+              "Трансферы",
+              "Поезд Медина–Мекка",
+              "Шведский стол 2 раза",
+              "Экскурсии",
+              "Поездка к Красному морю",
+              "Опытный гид",
+              "Вход в Равду"
+            ],
+            feat_jumeirah: [
+              "Скоростной поезд",
+              "2 приёма пищи (Медина)",
+              "2 приёма пищи (Мекка)",
+              "Экскурсии по Мекке и Медине",
+              "Вход в Равду",
+              "Научные руководители",
+              "Врач в группе",
+              "Поездка к Красному морю",
+              "Виза, билеты и трансферы"
+            ],
+            gifts_jumeirah: ["Zam-Zam 5L", "Нимча", "Сумка", "Бейдж", "Абая (для женщин)"],
+            booking_title: "Бронирование",
+            booking_subtitle: "Оставьте данные — мы объясним все детали.",
+            booking_success_title: "Успешно!",
+            booking_success_desc: "Заявка принята. Скоро с вами свяжутся.",
+            booking_selected_pkg: "Выбранный пакет",
+            booking_per_person: "За 1 чел.",
+            booking_persons: "Количество паломников",
+            booking_total: "Итого",
+            booking_name: "Ваше имя",
+            booking_phone: "Телефон",
+            booking_room: "Тип номера",
+            booking_operator: "Пол оператора",
+            booking_payment: "Способ оплаты",
+            booking_submit: "ОТПРАВИТЬ ЗАЯВКУ",
+            booking_submitting: "Отправка...",
+            booking_privacy: "Данные защищены",
+            placeholder_name: "Например: Azizbek Karimov",
+            placeholder_phone: "+998 90 123 45 67",
+            room_4: "4-местный",
+            room_3: "3-местный",
+            room_2: "2-местный",
+            op_male: "Мужчина",
+            op_female: "Женщина",
+            pay_cash: "Наличные",
+            pay_card: "Карта"
+          },
+          en: {
+            menu_compare: "Compare",
+            section_compare_title: "Compare packages",
+            section_compare_desc: "See all packages in one table and pick what fits you best.",
+            cmp_col_feature: "Feature",
+            cmp_row_price: "Price (per person)",
+            cmp_row_hotel: "Distance to Haram",
+            cmp_row_nights: "Duration",
+            cmp_row_meals: "Meals",
+            cmp_row_train: "High-speed train",
+            cmp_row_visa: "Visa & insurance",
+            cmp_row_guide: "Group guide",
+            cmp_val_std_hotel: "1 km",
+            cmp_val_com_hotel: "500 m",
+            cmp_val_lux_hotel: "150 m",
+            cmp_val_jum_hotel: "5★ premium",
+            cmp_val_nights: "10 nights",
+            cmp_val_meals: "2 meals",
+            cmp_yes: "Yes",
+            modal_title_standard: "Standard package details",
+            modal_title_comfort: "Comfort package details",
+            modal_title_lux: "LUX package details",
+            modal_title_jumeirah: "LUX Jumeirah Premium package",
+            modal_jumeirah_sub: "For June and July",
+            modal_hotel: "Hotel",
+            modal_hotels: "Hotels",
+            modal_included: "Included in package",
+            modal_starting_price: "Starting price",
+            modal_starting_price_room: "Starting price (4-bed room)",
+            hotel_standard_name: "Ramada Zad Al Tayser",
+            hotel_comfort_name: "AL EBAA Hotel",
+            hotel_lux_name: "ANJUM Hotel",
+            hotel_lux_note: "Very close to Haram in Makkah.",
+            jumeirah_flights: "Flights",
+            jumeirah_flight_out: "Outbound: Tashkent – Madinah",
+            jumeirah_flight_back: "Return: Jeddah – Tashkent",
+            jumeirah_train: "High-speed train",
+            jumeirah_train_desc: "Madinah – Makkah high-speed train",
+            jumeirah_room_prices: "Room prices",
+            jumeirah_services_title: "Services included",
+            jumeirah_gifts_title: "Gifts",
+            jumeirah_madina_hotel: "Madinah: Waqf As Safi (5 star)",
+            jumeirah_madina_nights: "3 nights",
+            jumeirah_makka_hotel: "Makkah: Jumeirah Jabal Omar (5 star)",
+            jumeirah_makka_nights: "6 nights",
+            feat_standard: [
+              "3 nights Madinah, 7 nights Makkah",
+              "Round-trip flights",
+              "Hotel (1 km to Haram)",
+              "Visa (insurance)",
+              "Transfers",
+              "Madinah–Makkah train",
+              "Buffet 2 meals",
+              "Guided tours",
+              "Red Sea trip",
+              "Experienced guide",
+              "Rawdah access"
+            ],
+            feat_comfort: [
+              "3 nights Madinah, 7 nights Makkah",
+              "Round-trip flights",
+              "Hotel (500 m to Haram)",
+              "Visa (insurance)",
+              "Transfers",
+              "Madinah–Makkah train",
+              "Buffet 2 meals",
+              "Guided tours",
+              "Red Sea trip",
+              "Experienced guide",
+              "Rawdah access"
+            ],
+            feat_lux: [
+              "3 nights Madinah, 7 nights Makkah",
+              "Round-trip flights",
+              "Hotel (150 m to Haram)",
+              "Visa (insurance)",
+              "Transfers",
+              "Madinah–Makkah train",
+              "Buffet 2 meals",
+              "Guided tours",
+              "Red Sea trip",
+              "Experienced guide",
+              "Rawdah access"
+            ],
+            feat_jumeirah: [
+              "High-speed train",
+              "2 meals (Madinah)",
+              "2 meals (Makkah)",
+              "Tours in Makkah & Madinah",
+              "Rawdah access",
+              "Scholarly group leaders",
+              "Doctor on trip",
+              "Red Sea excursion",
+              "Visa, flights & transfers"
+            ],
+            gifts_jumeirah: ["Zam-Zam 5L", "Prayer cap", "Bag", "Badge", "Abaya (women)"],
+            booking_title: "Book your spot",
+            booking_subtitle: "Leave your details and we will explain everything.",
+            booking_success_title: "Success!",
+            booking_success_desc: "Your request was received. We will contact you soon.",
+            booking_selected_pkg: "Selected package",
+            booking_per_person: "Per person",
+            booking_persons: "Number of pilgrims",
+            booking_total: "Total price",
+            booking_name: "Full name",
+            booking_phone: "Phone number",
+            booking_room: "Room type",
+            booking_operator: "Operator gender",
+            booking_payment: "Payment method",
+            booking_submit: "SUBMIT REQUEST",
+            booking_submitting: "Sending...",
+            booking_privacy: "Your data is kept secure",
+            placeholder_name: "e.g. Azizbek Karimov",
+            placeholder_phone: "+998 90 123 45 67",
+            room_4: "4-bed room",
+            room_3: "3-bed room",
+            room_2: "2-bed room",
+            op_male: "Male",
+            op_female: "Female",
+            pay_cash: "Cash",
+            pay_card: "Card"
+          }
+        };
 
     </script>
     <script defer src="https://unpkg.com/alpinejs@3.14.8/dist/cdn.min.js"></script>
@@ -415,60 +415,60 @@ window.SITE_I18N = {
     <link rel="alternate" hreflang="en" href="https://safomarvaumra.uz/">
     <link rel="alternate" hreflang="x-default" href="https://safomarvaumra.uz/">
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
         {
-          "@type": "TravelAgency",
-          "@id": "https://safomarvaumra.uz/#organization",
-          "name": "Safo Marva Tour",
-          "url": "https://safomarvaumra.uz/",
-          "logo": "https://safomarvaumra.uz/safo_marva.png",
-          "image": "https://safomarvaumra.uz/safo_marva.png",
-          "telephone": ["+998555177373", "+998700190373"],
-          "priceRange": "$1150 - $1990",
-          "address": { "@type": "PostalAddress", "addressCountry": "UZ", "addressLocality": "Toshkent" },
-          "sameAs": [
-            "https://t.me/safomarwa_umra",
-            "https://www.instagram.com/safomarva_umra"
-          ],
-          "description": "O'zbekistondagi ishonchli Umra va Haj sayohat agentligi. 10 kechalik Standart, Komfort va LUX paketlar."
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://safomarvaumra.uz/#website",
-          "url": "https://safomarvaumra.uz/",
-          "name": "Safo Marva Tour",
-          "publisher": { "@id": "https://safomarvaumra.uz/#organization" },
-          "inLanguage": ["uz", "ru", "en"]
-        },
-        {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Viza uchun qanday hujjatlar kerak?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Biometrik pasport (kamida 6 oy) va 3x4 o'lchamdagi 2 ta rasm. Viza rasmiylashtirishni biz o'z zimmamizga olamiz." }
-            },
-            {
-              "@type": "Question",
-              "name": "Paket narxiga hamma narsa kiradimi?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Ha: aviachipta, viza, mehmonxona, transport, guruh rahbari va tibbiy sug'urta. Yashirin to'lovlar yo'q." }
-            },
-            {
-              "@type": "Question",
-              "name": "Tibbiy sug'urta qanday ishlaydi?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Saudiya va kompaniya sug'urtasi safar davomida amal qiladi. Guruh shifokori tibbiy yordamni tashkil qiladi." }
-            },
-            {
-              "@type": "Question",
-              "name": "Boshqa shaharlardan ziyoratchilarni qabul qilasizmi?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Ha, O'zbekistonning barcha viloyatlari va qo'shni davlatlardan. Toshkent aeroportida kutib olinasiz." }
-            }
-          ]
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "TravelAgency",
+                    "@id": "https://safomarvaumra.uz/#organization",
+                    "name": "Safo Marva Tour",
+                    "url": "https://safomarvaumra.uz/",
+                    "logo": "https://safomarvaumra.uz/safo_marva.png",
+                    "image": "https://safomarvaumra.uz/safo_marva.png",
+                    "telephone": ["+998555177373", "+998700190373"],
+                    "priceRange": "$1250 - $1500",
+                    "address": { "@type": "PostalAddress", "addressCountry": "UZ", "addressLocality": "Toshkent" },
+                    "sameAs": [
+                        "https://t.me/safomarwa_umra",
+                        "https://www.instagram.com/safomarva_umra"
+                    ],
+                    "description": "O'zbekistondagi ishonchli Umra va Haj sayohat agentligi. 13 kunlik Standard Plus, 10 kunlik Comfort Plus va 14 kunlik Comfort Plus paketlar."
+                },
+                {
+                    "@type": "WebSite",
+                    "@id": "https://safomarvaumra.uz/#website",
+                    "url": "https://safomarvaumra.uz/",
+                    "name": "Safo Marva Tour",
+                    "publisher": { "@id": "https://safomarvaumra.uz/#organization" },
+                    "inLanguage": ["uz", "ru", "en"]
+                },
+                {
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": "Viza uchun qanday hujjatlar kerak?",
+                            "acceptedAnswer": { "@type": "Answer", "text": "Biometrik pasport (kamida 6 oy) va 3x4 o'lchamdagi 2 ta rasm. Viza rasmiylashtirishni biz o'z zimmamizga olamiz." }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Paket narxiga hamma narsa kiradimi?",
+                            "acceptedAnswer": { "@type": "Answer", "text": "Ha: aviachipta, viza, mehmonxona, transport, guruh rahbari va tibbiy sug'urta. Yashirin to'lovlar yo'q." }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Tibbiy sug'urta qanday ishlaydi?",
+                            "acceptedAnswer": { "@type": "Answer", "text": "Saudiya va kompaniya sug'urtasi safar davomida amal qiladi. Guruh shifokori tibbiy yordamni tashkil qiladi." }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Boshqa shaharlardan ziyoratchilarni qabul qilasizmi?",
+                            "acceptedAnswer": { "@type": "Answer", "text": "Ha, O'zbekistonning barcha viloyatlari va qo'shni davlatlardan. Toshkent aeroportida kutib olinasiz." }
+                        }
+                    ]
+                }
+            ]
         }
-      ]
-    }
     </script>
     <style>
         .glass {
@@ -484,14 +484,14 @@ window.SITE_I18N = {
         .hero-gradient {
             background-color: #1a1a1a;
             background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=65');
+            url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=65');
             background-size: cover;
             background-position: center;
         }
         @media (min-width: 768px) {
             .hero-gradient {
                 background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-                    url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1280&q=70');
+                url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1280&q=70');
             }
         }
 
@@ -631,9 +631,7 @@ window.SITE_I18N = {
 </head>
 
 <body class="bg-brand-cream-dark dark:bg-[#0B0F19] font-sans text-gray-900 dark:text-gray-100 transition-colors duration-300" @scroll.window="scrolled = (window.pageYOffset > 50)">
-<noscript><img height="1" width="1" style="display:none"
-               src="https://www.facebook.com/tr?id=1474056530709388&ev=PageView&noscript=1"
-/></noscript>
+
 <!-- Toast xabarlari -->
 <div x-show="toastMessage" x-cloak x-transition
      class="fixed top-24 left-1/2 -translate-x-1/2 z-[300] max-w-md w-[90%] px-5 py-4 rounded-2xl shadow-2xl text-sm font-medium text-center"
@@ -689,8 +687,8 @@ window.SITE_I18N = {
             <button @click="mobileMenu = !mobileMenu" class="lg:hidden text-gray-900 dark:text-white p-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor">
-                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                           d="M4 6h16M4 12h16M4 18h16" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
         </div>
@@ -702,7 +700,7 @@ window.SITE_I18N = {
          x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
          x-transition:leave-end="opacity-0 -translate-y-4"
          class="lg:hidden bg-brand-cream dark:bg-[#0B0F19] border-t border-gray-200 dark:border-gray-800 absolute top-full left-0 w-full shadow-2xl py-6 px-6 text-center z-40">
-        
+
         <div class="flex justify-center items-center gap-6 mb-6">
             <button @click="toggleTheme()" class="text-gray-600 dark:text-gray-400 p-2" type="button" :aria-label="t('aria_theme')">
                 <svg x-show="!isDark" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
@@ -753,15 +751,16 @@ window.SITE_I18N = {
             <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto" x-text="t('section_packages_desc')"></p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 reveal items-stretch">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 reveal items-stretch">
 
             <!-- Standard Card -->
-            <div
-                    class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden">
+            <div class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden">
+
+                <!-- Paket Rasmlari Slider qismi -->
                 <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none"
                      @click="openPackageModal('standard')"
                      @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'standard', false)">
-                    <img :src="getPackageImageAt('standard', pkgSlide.standard || 0)" alt="Standart Umra paketi"
+                    <img :src="getPackageImageAt('standard', pkgSlide.standard || 0)" alt="Standard Plus Umra paketi"
                          class="w-full h-full object-cover transition-transform duration-500"
                          :class="pkgCardHover === 'standard' ? 'scale-110' : 'scale-100'"
                          @mouseenter="pkgCardHover = 'standard'" @mouseleave="pkgCardHover = null"
@@ -773,26 +772,43 @@ window.SITE_I18N = {
                     <span x-show="getPackageImages('standard').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
                           x-text="((pkgSlide.standard || 0) + 1) + '/' + getPackageImages('standard').length"></span>
                 </div>
-                <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2" x-text="t('pkg_nights')"></span>
-                <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white" x-text="t('pkg_standard')"></h3>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mb-6" x-text="t('pkg_standard_hotel')"></p>
-                <div class="text-3xl font-bold text-brand-gold mb-6">$<span x-text="packagesData.standard?.price || '1150'"></span> <span
-                        class="text-sm text-gray-500 font-normal">/ <span x-text="t('package_price')"></span></span></div>
+
+                <!-- Paket Davomiyligi (13 kun) -->
+                <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">13 KUNLIK PAKET (Iyun, Iyul, Avgust)</span>
+
+                <!-- Paket Nomi -->
+                <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">“Standard Plus” – SAFO MARVA TOUR</h3>
+
+                <!-- Safar marshruti va mehmonxonalar -->
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-6">
+                    Jidda: Shinam hotel (1 kecha) <br>
+                    Makka: Ramada Zad al Tayser (8 kecha - 3 mahal taom) <br>
+                    Madina: Mehrob Toiba (3 kecha - 2 mahal taom)
+                </p>
+
+                <!-- Narxi ($1250 dan boshlab) -->
+                <div class="text-3xl font-bold text-brand-gold mb-6">
+                    $<span x-text="packagesData.standard?.price || '1250'">1250</span>
+                    <span class="text-sm text-gray-500 font-normal">/ <span x-text="t('package_price')">boshlab</span></span>
+                </div>
+
+                <!-- Harakatlar tugmalari -->
                 <div class="mt-auto space-y-3">
                     <button @click="openPackageModal('standard')" type="button"
-                            class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')"></button>
-                    <button @click="activeModal = 'booking'; selectedPackage = 'Standart Paket'" type="button"
-                            class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')"></button>
+                            class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')">Batafsil</button>
+                    <button @click="activeModal = 'booking'; selectedPackage = 'Standard Plus Paket'" type="button"
+                            class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')">Band qilish</button>
                 </div>
             </div>
 
             <!-- Comfort Card -->
-            <div
-                    class="bg-brand-cream dark:bg-[#151C2C]/80 backdrop-blur-md rounded-3xl border-2 border-brand-gold p-6 pt-8 shadow-xl dark:shadow-[0_0_35px_rgba(212,175,55,0.2)] transition-all duration-300 flex flex-col relative xl:scale-[1.02] z-10 overflow-visible">
+            <div class="bg-brand-cream dark:bg-[#151C2C]/80 backdrop-blur-md rounded-3xl border-2 border-brand-gold p-6 pt-8 shadow-xl dark:shadow-[0_0_35px_rgba(212,175,55,0.2)] transition-all duration-300 flex flex-col relative xl:scale-[1.02] z-10 overflow-visible">
+
+                <!-- Paket Rasmlari Slider qismi -->
                 <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none"
                      @click="openPackageModal('comfort')"
                      @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'comfort', false)">
-                    <img :src="getPackageImageAt('comfort', pkgSlide.comfort || 0)" alt="Komfort Umra paketi"
+                    <img :src="getPackageImageAt('comfort', pkgSlide.comfort || 0)" alt="Comfort Plus 10 kunlik Umra paketi"
                          class="w-full h-full object-cover transition-transform duration-500"
                          :class="pkgCardHover === 'comfort' ? 'scale-110' : 'scale-100'"
                          @mouseenter="pkgCardHover = 'comfort'" @mouseleave="pkgCardHover = null"
@@ -804,84 +820,81 @@ window.SITE_I18N = {
                     <span x-show="getPackageImages('comfort').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
                           x-text="((pkgSlide.comfort || 0) + 1) + '/' + getPackageImages('comfort').length"></span>
                 </div>
-                <div
-                        class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-red px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg whitespace-nowrap"
-                        x-text="t('badge_popular')"></div>
-                <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2" x-text="t('pkg_nights')"></span>
-                <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white" x-text="t('pkg_comfort')"></h3>
-                <p class="text-gray-600 dark:text-gray-300 text-sm mb-6" x-text="t('pkg_comfort_hotel')"></p>
-                <div class="text-3xl font-bold text-brand-gold mb-6">$<span x-text="packagesData.comfort?.price || '1300'"></span> <span
-                        class="text-sm text-gray-500 dark:text-gray-400 font-normal">/ <span x-text="t('package_price')"></span></span></div>
+
+                <!-- Mashhurlik nishoni (POPULAR) -->
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-red px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg whitespace-nowrap"
+                     x-text="t('badge_popular')">MASHHUR</div>
+
+                <!-- Paket Davomiyligi (10 kun) -->
+                <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">10 KUNLIK PAKET (Iyun, Iyul, Avgust)</span>
+
+                <!-- Paket Nomi -->
+                <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">“Comfort Plus” – SAFO MARVA TOUR</h3>
+
+                <!-- Mehmonxonalar haqida qisqacha ma'lumot -->
+                <p class="text-gray-600 dark:text-gray-300 text-sm mb-6">
+                    Madina: Nusk al Hijra 4★ (3 kecha) <br>
+                    Makka: Al Ebaa hotel 4★ (6 kecha)
+                </p>
+
+                <!-- Narxi (Eng minimal narx $1350 dan boshlab qo'yildi) -->
+                <div class="text-3xl font-bold text-brand-gold mb-6">
+                    $<span x-text="packagesData.comfort?.price || '1350'">1350</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400 font-normal">/ <span x-text="t('package_price')">boshlab</span></span>
+                </div>
+
+                <!-- Harakatlar tugmalari -->
                 <div class="mt-auto space-y-3">
                     <button @click="openPackageModal('comfort')" type="button"
-                            class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')"></button>
-                    <button @click="activeModal = 'booking'; selectedPackage = 'Komfort Paket'" type="button"
-                            class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')"></button>
+                            class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')">Batafsil</button>
+                    <button @click="activeModal = 'booking'; selectedPackage = 'Comfort Plus 10 Kunlik'" type="button"
+                            class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')">Band qilish</button>
                 </div>
             </div>
 
-            <!-- LUX Card -->
-            <div
-                    class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden">
+            <!-- Comfort Plus 14 Kunlik Card -->
+            <div class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden">
+                <!-- Paket Rasmlari Slider qismi -->
                 <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none"
-                     @click="openPackageModal('lux')"
-                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'lux', false)">
-                    <img :src="getPackageImageAt('lux', pkgSlide.lux || 0)" alt="LUX Umra paketi"
+                     @click="openPackageModal('special_14day')"
+                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'special_14day', false)">
+                    <img :src="getPackageImageAt('special_14day', pkgSlide.special_14day || 0)" alt="Comfort Plus Umra paketi"
                          class="w-full h-full object-cover transition-transform duration-500"
-                         :class="pkgCardHover === 'lux' ? 'scale-110' : 'scale-100'"
-                         @mouseenter="pkgCardHover = 'lux'" @mouseleave="pkgCardHover = null"
+                         :class="pkgCardHover === 'special_14day' ? 'scale-110' : 'scale-100'"
+                         @mouseenter="pkgCardHover = 'special_14day'" @mouseleave="pkgCardHover = null"
                          loading="lazy" decoding="async">
-                    <button type="button" x-show="getPackageImages('lux').length > 1" @click.stop="pkgSlidePrev('lux')"
+                    <button type="button" x-show="getPackageImages('special_14day').length > 1" @click.stop="pkgSlidePrev('special_14day')"
                             class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Oldingi">‹</button>
-                    <button type="button" x-show="getPackageImages('lux').length > 1" @click.stop="pkgSlideNext('lux')"
+                    <button type="button" x-show="getPackageImages('special_14day').length > 1" @click.stop="pkgSlideNext('special_14day')"
                             class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Keyingi">›</button>
-                    <span x-show="getPackageImages('lux').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
-                          x-text="((pkgSlide.lux || 0) + 1) + '/' + getPackageImages('lux').length"></span>
+                    <span x-show="getPackageImages('special_14day').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
+                          x-text="((pkgSlide.special_14day || 0) + 1) + '/' + getPackageImages('special_14day').length"></span>
                 </div>
-                <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2" x-text="t('pkg_nights')"></span>
-                <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white" x-text="t('pkg_lux')"></h3>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mb-6" x-text="t('pkg_lux_hotel')"></p>
-                <div class="text-3xl font-bold text-brand-gold mb-6">$<span x-text="packagesData.lux?.price || '1550'"></span> <span
-                        class="text-sm text-gray-500 font-normal">/ <span x-text="t('package_price')"></span></span></div>
-                <div class="mt-auto space-y-3">
-                    <button @click="openPackageModal('lux')" type="button"
-                            class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')"></button>
-                    <button @click="activeModal = 'booking'; selectedPackage = 'LUX Paket'" type="button"
-                            class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')"></button>
-                </div>
-            </div>
 
-            <!-- LUX Jumeirah Card -->
-            <div
-                    class="bg-gradient-to-b from-brand-cream to-brand-cream-dark dark:from-[#151C2C] dark:to-[#0B0F19] backdrop-blur-md rounded-3xl border-2 border-brand-gold/60 p-6 pt-8 shadow-xl hover:shadow-[0_0_35px_rgba(212,175,55,0.25)] transition-all duration-300 flex flex-col overflow-visible relative">
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-brand-gold to-yellow-600 text-brand-red px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg whitespace-nowrap"
-                     x-text="t('badge_premium')"></div>
-                <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none mt-2"
-                     @click="openPackageModal('lux_jumeirah')"
-                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'lux_jumeirah', false)">
-                    <img :src="getPackageImageAt('lux_jumeirah', pkgSlide.lux_jumeirah || 0)" alt="LUX Jumeirah Umra paketi"
-                         class="w-full h-full object-cover transition-transform duration-500"
-                         :class="pkgCardHover === 'lux_jumeirah' ? 'scale-110' : 'scale-100'"
-                         @mouseenter="pkgCardHover = 'lux_jumeirah'" @mouseleave="pkgCardHover = null"
-                         loading="lazy" decoding="async">
-                    <button type="button" x-show="getPackageImages('lux_jumeirah').length > 1" @click.stop="pkgSlidePrev('lux_jumeirah')"
-                            class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Oldingi">‹</button>
-                    <button type="button" x-show="getPackageImages('lux_jumeirah').length > 1" @click.stop="pkgSlideNext('lux_jumeirah')"
-                            class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Keyingi">›</button>
-                    <span x-show="getPackageImages('lux_jumeirah').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
-                          x-text="((pkgSlide.lux_jumeirah || 0) + 1) + '/' + getPackageImages('lux_jumeirah').length"></span>
+                <!-- Paket Davomiyligi (14 kun) -->
+                <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">14 KUNLIK PAKET (Iyun, Iyul, Avgust)</span>
+
+                <!-- Paket Nomi -->
+                <h3 class="text-xl font-bold mb-2 uppercase text-gray-900 dark:text-white">“Comfort Plus” – SAFO MARVA TOUR</h3>
+
+                <!-- Mehmonxonalar haqida qisqacha ma'lumot -->
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                    Madina: Mehrob Toiba 4★ (7 kecha) <br>
+                    Makka: Al Ebaa hotel 4★ (7 kecha)
+                </p>
+
+                <!-- Narxi (Eng minimal narx $1500 dan boshlab qo'yildi) -->
+                <div class="text-3xl font-bold text-brand-gold mb-6">
+                    $<span x-text="packagesData.special_14day?.price || '1500'">1500</span>
+                    <span class="text-sm text-gray-500 font-normal">/ <span x-text="t('package_price')">boshlab</span></span>
                 </div>
-                <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2" x-text="t('pkg_jumeirah_nights')"></span>
-                <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white" x-text="t('pkg_jumeirah')"></h3>
-                <p class="text-gray-600 dark:text-gray-400 text-sm mb-6" x-text="t('pkg_jumeirah_hotel')"></p>
-                <div class="text-3xl font-bold text-brand-gold mb-1">$<span x-text="packagesData.lux_jumeirah?.price || '1690'"></span> <span
-                        class="text-sm text-gray-500 font-normal">/ <span x-text="t('package_price')"></span></span></div>
-                <p class="text-[10px] text-gray-600 dark:text-gray-400 mb-6 uppercase tracking-wide" x-text="t('pkg_jumeirah_note')"></p>
+
+                <!-- Harakatlar tugmalari -->
                 <div class="mt-auto space-y-3">
-                    <button @click="openPackageModal('lux_jumeirah')" type="button"
-                            class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')"></button>
-                    <button @click="activeModal = 'booking'; selectedPackage = 'LUX Jumeirah Paket'; bookingRoom = '4 kishilik'" type="button"
-                            class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')"></button>
+                    <button @click="openPackageModal('special_14day')" type="button"
+                            class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')">Batafsil</button>
+                    <button @click="activeModal = 'booking'; selectedPackage = 'Comfort Plus 14 Kunlik'" type="button"
+                            class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')">Band qilish</button>
                 </div>
             </div>
 
@@ -949,7 +962,7 @@ window.SITE_I18N = {
                     <p class="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1" x-text="t('modal_starting_price') + ':'"></p>
                     <p class="text-3xl font-bold text-brand-gold">$<span x-text="packagesData.standard?.price"></span></p>
                 </div>
-                <button @click="activeModal = 'booking'; selectedPackage = 'Standart Paket'" type="button"
+                <button @click="activeModal = 'booking'; selectedPackage = 'Standard Plus Paket'" type="button"
                         class="block w-full bg-brand-gold text-brand-red py-4 rounded-2xl font-bold text-center hover:bg-yellow-600 shadow-xl transition-all" x-text="t('btn_book_now')"></button>
             </div>
         </div>
@@ -960,14 +973,16 @@ window.SITE_I18N = {
 <div x-show="activeModal === 'comfort'" x-cloak class="fixed inset-0 z-[100] overflow-y-auto">
     <div class="flex items-center justify-center min-h-screen px-4 sm:p-0">
         <div @click="activeModal = null" class="fixed inset-0 bg-[#04060B] bg-opacity-80 backdrop-blur-md"></div>
-        <div
-                class="inline-block bg-brand-cream dark:bg-[#121824] border border-gray-200 dark:border-gray-800 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.3)] sm:max-w-lg sm:w-full z-10 overflow-hidden transform transition-all text-gray-900 dark:text-white">
-            <div class="bg-brand-gold px-8 py-6 flex justify-between items-center text-brand-red">
-                <h3 class="text-xl font-bold uppercase tracking-wider" x-text="t('modal_title_comfort')"></h3>
+        <div class="inline-block bg-brand-cream dark:bg-[#121824] border border-gray-200 dark:border-gray-800 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.3)] sm:max-w-2xl sm:w-full z-10 overflow-hidden transform transition-all text-gray-900 dark:text-white my-8">
+            <div class="bg-gradient-to-r from-brand-gold/90 to-yellow-600/90 px-8 py-6 flex justify-between items-center text-brand-red border-b border-brand-gold/30">
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-widest opacity-80" x-text="t('modal_comfort_sub')"></p>
+                    <h3 class="text-xl font-bold uppercase tracking-wider" x-text="t('modal_title_comfort')"></h3 >
+                </div>
                 <button @click="activeModal = null" type="button" class="modal-close-btn text-brand-red hover:opacity-70" :aria-label="t('aria_close')">×</button>
             </div>
-            <div class="px-8 py-8 space-y-6">
-                <div class="rounded-2xl overflow-hidden shadow-lg bg-black aspect-video mb-6 relative select-none min-h-[12rem]"
+            <div class="px-8 py-8 max-h-[75vh] overflow-y-auto">
+                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video bg-black mb-8 relative select-none min-h-[12rem]"
                      @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'comfort', true)">
                     <template x-if="activeModal === 'comfort' && getCurrentModalSlide('comfort').type === 'video'">
                         <video class="pkg-modal-video absolute inset-0 w-full h-full object-contain bg-black"
@@ -975,7 +990,7 @@ window.SITE_I18N = {
                                :key="'vid-comfort-' + modalSlide"></video>
                     </template>
                     <template x-if="activeModal === 'comfort' && getCurrentModalSlide('comfort').type === 'image'">
-                        <img :src="getCurrentModalSlide('comfort').url"
+                        <img :src="getCurrentModalSlide('comfort').url" alt="Comfort Plus"
                              @click="openLightbox(getPackageImages('comfort').map(u => mediaUrl(u)), getImageLightboxIndex('comfort', modalSlide))"
                              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 cursor-pointer"
                              :class="pkgModalHover === 'comfort' ? 'scale-110' : 'scale-100'"
@@ -986,7 +1001,7 @@ window.SITE_I18N = {
                         <button type="button" @click.stop="modalSlidePrev('comfort')" class="pkg-modal-nav pkg-modal-nav--prev" aria-label="Oldingi">&#10094;</button>
                         <button type="button" @click.stop="modalSlideNext('comfort')" class="pkg-modal-nav pkg-modal-nav--next" aria-label="Keyingi">&#10095;</button>
                         <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center justify-center gap-1.5 px-2 py-1 rounded-full bg-black/50">
-                            <template x-for="(slide, i) in getModalSlides('comfort')" :key="'com-dot-'+i">
+                            <template x-for="(slide, i) in getModalSlides('comfort')" :key="'comfort-dot-'+i">
                                 <button type="button" @click.stop="goModalSlide('comfort', i)" class="rounded-full transition-all duration-200"
                                         :class="modalSlide === i ? (slide.type === 'video' ? 'bg-sky-400 w-5 h-2' : 'bg-brand-gold w-5 h-2') : 'bg-white/50 w-2 h-2'"
                                         :aria-label="slide.type === 'video' ? 'Video' : 'Rasm'"></button>
@@ -996,9 +1011,108 @@ window.SITE_I18N = {
                               x-text="getModalSlideLabel('comfort')"></span>
                     </template>
                 </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 text-sm">
+                    <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-2xl p-4 border border-gray-200 dark:border-gray-800">
+                        <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('comfort_flights')"></h4>
+                        <p class="text-gray-700 dark:text-gray-300" x-text="t('comfort_flight_out')"></p>
+                        <p class="text-gray-700 dark:text-gray-300" x-text="t('comfort_flight_back')"></p>
+                    </div>
+                    <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-2xl p-4 border border-gray-200 dark:border-gray-800">
+                        <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('comfort_train')"></h4>
+                        <p class="text-gray-700 dark:text-gray-300" x-text="t('comfort_train_desc')"></p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest border-b border-gray-200 dark:border-gray-800 pb-2" x-text="t('modal_hotels')"></h4>
+                        <p class="text-gray-800 dark:text-gray-200 font-semibold" x-text="t('comfort_madina_hotel')"></p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-3" x-text="t('comfort_madina_nights')"></p>
+                        <p class="text-gray-800 dark:text-gray-200 font-semibold" x-text="t('comfort_makka_hotel')"></p>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm" x-text="t('comfort_makka_nights')"></p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest border-b border-gray-200 dark:border-gray-800 pb-2" x-text="t('comfort_room_prices')"></h4>
+                        <ul class="text-gray-700 dark:text-gray-300 space-y-2 text-sm">
+                            <li class="flex justify-between"><span x-text="t('room_4')"></span><strong class="text-brand-gold">$1350</strong></li>
+                            <li class="flex justify-between"><span x-text="t('room_3')"></span><strong class="text-brand-gold">$1450</strong></li>
+                            <li class="flex justify-between"><span x-text="t('room_2')"></span><strong class="text-brand-gold">$1550</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest" x-text="t('comfort_services_title')"></h4>
+                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 mb-6 text-gray-700 dark:text-gray-300 text-sm">
+                    <template x-for="line in tList('feat_comfort')" :key="line">
+                        <li x-text="line"></li>
+                    </template>
+                </ul>
+
+                <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest" x-text="t('comfort_gifts_title')"></h4>
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <template x-for="gift in tList('gifts_comfort')" :key="gift">
+                        <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20" x-text="gift"></span>
+                    </template>
+                </div>
+
+                <div class="bg-brand-cream-dark dark:bg-[#1B2436] p-6 rounded-3xl border border-brand-gold/30 flex flex-col sm:flex-row justify-between items-center gap-4">
+                    <div>
+                        <p class="text-xs text-gray-500 dark:text-gray-400 uppercase" x-text="t('modal_starting_price_room') + ':'"></p>
+                        <p class="text-4xl font-bold text-brand-gold">$<span x-text="packagesData.comfort?.price"></span></p>
+                    </div>
+                    <button @click="activeModal = 'booking'; selectedPackage = 'Comfort Plus 10 Kunlik'" type="button"
+                            class="w-full sm:w-auto bg-brand-gold text-brand-red px-10 py-4 rounded-2xl font-bold hover:bg-yellow-600 shadow-xl text-center" x-text="t('btn_book_now')"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Comfort Plus 14 Kunlik Modal -->
+<div x-show="activeModal === 'special_14day'" x-cloak class="fixed inset-0 z-[100] overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen px-4 sm:p-0">
+        <div @click="activeModal = null" class="fixed inset-0 bg-[#04060B] bg-opacity-80 backdrop-blur-md"></div>
+        <div
+                class="inline-block bg-brand-cream dark:bg-[#121824] border border-gray-200 dark:border-gray-800 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.3)] sm:max-w-lg sm:w-full z-10 overflow-hidden transform transition-all text-gray-900 dark:text-white">
+            <div class="bg-brand-red/90 px-8 py-6 flex justify-between items-center text-white border-b border-red-900/50">
+                <h3 class="text-xl font-bold uppercase tracking-wider" x-text="t('pkg_special_14day')"></h3>
+                <button @click="activeModal = null" type="button" class="modal-close-btn text-white hover:text-brand-gold" :aria-label="t('aria_close')">×</button>
+            </div>
+            <div class="px-8 py-8 space-y-6">
+                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video bg-black relative select-none min-h-[12rem]"
+                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'special_14day', true)">
+                    <template x-if="activeModal === 'special_14day' && getCurrentModalSlide('special_14day').type === 'video'">
+                        <video class="pkg-modal-video absolute inset-0 w-full h-full object-contain bg-black"
+                               :src="getCurrentModalSlide('special_14day').url" controls playsinline preload="metadata"
+                               :key="'vid-special-' + modalSlide"></video>
+                    </template>
+                    <template x-if="activeModal === 'special_14day' && getCurrentModalSlide('special_14day').type === 'image'">
+                        <img :src="getCurrentModalSlide('special_14day').url"
+                             @click="openLightbox(getPackageImages('special_14day').map(u => mediaUrl(u)), getImageLightboxIndex('special_14day', modalSlide))"
+                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 cursor-pointer"
+                             :class="pkgModalHover === 'special_14day' ? 'scale-110' : 'scale-100'"
+                             @mouseenter="pkgModalHover = 'special_14day'" @mouseleave="pkgModalHover = null"
+                             :key="'img-special-' + modalSlide">
+                    </template>
+                    <template x-if="getModalSlides('special_14day').length > 1">
+                        <button type="button" @click.stop="modalSlidePrev('special_14day')" class="pkg-modal-nav pkg-modal-nav--prev" aria-label="Oldingi">&#10094;</button>
+                        <button type="button" @click.stop="modalSlideNext('special_14day')" class="pkg-modal-nav pkg-modal-nav--next" aria-label="Keyingi">&#10095;</button>
+                        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center justify-center gap-1.5 px-2 py-1 rounded-full bg-black/50">
+                            <template x-for="(slide, i) in getModalSlides('special_14day')" :key="'special-dot-'+i">
+                                <button type="button" @click.stop="goModalSlide('special_14day', i)" class="rounded-full transition-all duration-200"
+                                        :class="modalSlide === i ? (slide.type === 'video' ? 'bg-sky-400 w-5 h-2' : 'bg-brand-gold w-5 h-2') : 'bg-white/50 w-2 h-2'"
+                                        :aria-label="slide.type === 'video' ? 'Video' : 'Rasm'"></button>
+                            </template>
+                        </div>
+                        <span class="absolute top-3 right-3 z-20 text-xs font-semibold bg-black/70 text-white px-2.5 py-1 rounded-full"
+                              x-text="getModalSlideLabel('special_14day')"></span>
+                    </template>
+                </div>
                 <div>
                     <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('modal_hotel') + ':'"></h4>
-                    <p class="font-semibold italic text-gray-900 dark:text-white" x-text="t('hotel_comfort_name')"></p>
+                    <p class="font-semibold text-gray-900 dark:text-white" x-text="'Al Ebaa hotel 4★ + Mehrob Toiba 4★'"></p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400" x-text="t('pkg_special_14day_hotel')"></p>
                 </div>
                 <div>
                     <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('modal_included') + ':'"></h4>
@@ -1008,176 +1122,12 @@ window.SITE_I18N = {
                         </template>
                     </ul>
                 </div>
-                <div class="bg-brand-cream-dark dark:bg-[#1B2436] p-4 rounded-2xl border border-gray-200 dark:border-brand-gold/30">
-                    <p class="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1" x-text="t('modal_starting_price') + ':'"></p>
-                    <p class="text-3xl font-bold text-brand-gold">$<span x-text="packagesData.comfort?.price"></span></p>
-                </div>
-                <button @click="activeModal = 'booking'; selectedPackage = 'Komfort Paket'" type="button"
-                        class="block w-full bg-brand-gold text-brand-red py-4 rounded-2xl font-bold text-center hover:bg-yellow-600 shadow-xl transition-all" x-text="t('btn_book_now')"></button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- LUX Modal -->
-<div x-show="activeModal === 'lux'" x-cloak class="fixed inset-0 z-[100] overflow-y-auto">
-    <div class="flex items-center justify-center min-h-screen px-4 sm:p-0">
-        <div @click="activeModal = null" class="fixed inset-0 bg-[#04060B] bg-opacity-80 backdrop-blur-md"></div>
-        <div
-                class="inline-block bg-brand-cream dark:bg-[#121824] border border-gray-200 dark:border-gray-800 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.3)] sm:max-w-lg sm:w-full z-10 overflow-hidden transform transition-all text-gray-900 dark:text-white">
-            <div class="bg-brand-red/90 px-8 py-6 flex justify-between items-center text-white border-b border-red-900/50">
-                <h3 class="text-xl font-bold uppercase tracking-wider" x-text="t('modal_title_lux')"></h3>
-                <button @click="activeModal = null" type="button" class="modal-close-btn text-white hover:text-brand-gold" :aria-label="t('aria_close')">×</button>
-            </div>
-            <div class="px-8 py-8 space-y-6">
-                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video bg-black relative select-none min-h-[12rem]"
-                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'lux', true)">
-                    <template x-if="activeModal === 'lux' && getCurrentModalSlide('lux').type === 'video'">
-                        <video class="pkg-modal-video absolute inset-0 w-full h-full object-contain bg-black"
-                               :src="getCurrentModalSlide('lux').url" controls playsinline preload="metadata"
-                               :key="'vid-lux-' + modalSlide"></video>
-                    </template>
-                    <template x-if="activeModal === 'lux' && getCurrentModalSlide('lux').type === 'image'">
-                        <img :src="getCurrentModalSlide('lux').url"
-                             @click="openLightbox(getPackageImages('lux').map(u => mediaUrl(u)), getImageLightboxIndex('lux', modalSlide))"
-                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 cursor-pointer"
-                             :class="pkgModalHover === 'lux' ? 'scale-110' : 'scale-100'"
-                             @mouseenter="pkgModalHover = 'lux'" @mouseleave="pkgModalHover = null"
-                             :key="'img-lux-' + modalSlide">
-                    </template>
-                    <template x-if="getModalSlides('lux').length > 1">
-                        <button type="button" @click.stop="modalSlidePrev('lux')" class="pkg-modal-nav pkg-modal-nav--prev" aria-label="Oldingi">&#10094;</button>
-                        <button type="button" @click.stop="modalSlideNext('lux')" class="pkg-modal-nav pkg-modal-nav--next" aria-label="Keyingi">&#10095;</button>
-                        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center justify-center gap-1.5 px-2 py-1 rounded-full bg-black/50">
-                            <template x-for="(slide, i) in getModalSlides('lux')" :key="'lux-dot-'+i">
-                                <button type="button" @click.stop="goModalSlide('lux', i)" class="rounded-full transition-all duration-200"
-                                        :class="modalSlide === i ? (slide.type === 'video' ? 'bg-sky-400 w-5 h-2' : 'bg-brand-gold w-5 h-2') : 'bg-white/50 w-2 h-2'"
-                                        :aria-label="slide.type === 'video' ? 'Video' : 'Rasm'"></button>
-                            </template>
-                        </div>
-                        <span class="absolute top-3 right-3 z-20 text-xs font-semibold bg-black/70 text-white px-2.5 py-1 rounded-full"
-                              x-text="getModalSlideLabel('lux')"></span>
-                    </template>
-                </div>
-                <div>
-                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('modal_hotel') + ':'"></h4>
-                    <p class="font-semibold text-gray-900 dark:text-white" x-text="t('hotel_lux_name')"></p>
-                    <p class="text-sm text-gray-600 dark:text-gray-400" x-text="t('hotel_lux_note')"></p>
-                </div>
-                <div>
-                    <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('modal_included') + ':'"></h4>
-                    <ul class="text-gray-700 dark:text-gray-300 space-y-1">
-                        <template x-for="line in tList('feat_lux')" :key="line">
-                            <li x-text="'• ' + line"></li>
-                        </template>
-                    </ul>
-                </div>
                 <div class="bg-brand-cream-dark dark:bg-[#1B2436] p-4 rounded-2xl border border-gray-200 dark:border-gray-800">
                     <p class="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1" x-text="t('modal_starting_price') + ':'"></p>
-                    <p class="text-3xl font-bold text-brand-gold">$<span x-text="packagesData.lux?.price || '1550'"></span></p>
+                    <p class="text-3xl font-bold text-brand-gold">$<span x-text="packagesData.special_14day?.price || '1500'"></span></p>
                 </div>
-                <button @click="activeModal = 'booking'; selectedPackage = 'LUX Paket'" type="button"
+                <button @click="activeModal = 'booking'; selectedPackage = 'Comfort Plus 14 Kunlik'" type="button"
                         class="block w-full bg-brand-gold text-brand-red py-4 rounded-2xl font-bold text-center hover:bg-yellow-600 shadow-xl transition-all" x-text="t('btn_book_now')"></button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- LUX Jumeirah Modal -->
-<div x-show="activeModal === 'lux_jumeirah'" x-cloak class="fixed inset-0 z-[100] overflow-y-auto">
-    <div class="flex items-center justify-center min-h-screen px-4 sm:p-0">
-        <div @click="activeModal = null" class="fixed inset-0 bg-[#04060B] bg-opacity-80 backdrop-blur-md"></div>
-        <div class="inline-block bg-brand-cream dark:bg-[#121824] border-2 border-brand-gold/40 rounded-3xl shadow-[0_0_50px_rgba(212,175,55,0.2)] sm:max-w-2xl sm:w-full z-10 overflow-hidden transform transition-all text-gray-900 dark:text-white my-8">
-            <div class="bg-gradient-to-r from-brand-gold/90 to-yellow-600/90 px-8 py-6 flex justify-between items-center text-brand-red border-b border-brand-gold/30">
-                <div>
-                    <p class="text-xs font-bold uppercase tracking-widest opacity-80" x-text="t('modal_jumeirah_sub')"></p>
-                    <h3 class="text-xl font-bold uppercase tracking-wider" x-text="t('modal_title_jumeirah')"></h3>
-            </div>
-                <button @click="activeModal = null" type="button" class="modal-close-btn text-brand-red hover:opacity-70" :aria-label="t('aria_close')">×</button>
-                </div>
-            <div class="px-8 py-8 max-h-[75vh] overflow-y-auto">
-                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video bg-black mb-8 relative select-none min-h-[12rem]"
-                     @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'lux_jumeirah', true)">
-                    <template x-if="activeModal === 'lux_jumeirah' && getCurrentModalSlide('lux_jumeirah').type === 'video'">
-                        <video class="pkg-modal-video absolute inset-0 w-full h-full object-contain bg-black"
-                               :src="getCurrentModalSlide('lux_jumeirah').url" controls playsinline preload="metadata"
-                               :key="'vid-jum-' + modalSlide"></video>
-                    </template>
-                    <template x-if="activeModal === 'lux_jumeirah' && getCurrentModalSlide('lux_jumeirah').type === 'image'">
-                        <img :src="getCurrentModalSlide('lux_jumeirah').url" alt="LUX Jumeirah paket"
-                             @click="openLightbox(getPackageImages('lux_jumeirah').map(u => mediaUrl(u)), getImageLightboxIndex('lux_jumeirah', modalSlide))"
-                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 cursor-pointer"
-                             :class="pkgModalHover === 'lux_jumeirah' ? 'scale-110' : 'scale-100'"
-                             @mouseenter="pkgModalHover = 'lux_jumeirah'" @mouseleave="pkgModalHover = null"
-                             :key="'img-jum-' + modalSlide">
-                    </template>
-                    <template x-if="getModalSlides('lux_jumeirah').length > 1">
-                        <button type="button" @click.stop="modalSlidePrev('lux_jumeirah')" class="pkg-modal-nav pkg-modal-nav--prev" aria-label="Oldingi">&#10094;</button>
-                        <button type="button" @click.stop="modalSlideNext('lux_jumeirah')" class="pkg-modal-nav pkg-modal-nav--next" aria-label="Keyingi">&#10095;</button>
-                        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center justify-center gap-1.5 px-2 py-1 rounded-full bg-black/50">
-                            <template x-for="(slide, i) in getModalSlides('lux_jumeirah')" :key="'jum-dot-'+i">
-                                <button type="button" @click.stop="goModalSlide('lux_jumeirah', i)" class="rounded-full transition-all duration-200"
-                                        :class="modalSlide === i ? (slide.type === 'video' ? 'bg-sky-400 w-5 h-2' : 'bg-brand-gold w-5 h-2') : 'bg-white/50 w-2 h-2'"
-                                        :aria-label="slide.type === 'video' ? 'Video' : 'Rasm'"></button>
-                            </template>
-                    </div>
-                        <span class="absolute top-3 right-3 z-20 text-xs font-semibold bg-black/70 text-white px-2.5 py-1 rounded-full"
-                              x-text="getModalSlideLabel('lux_jumeirah')"></span>
-                    </template>
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 text-sm">
-                    <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-2xl p-4 border border-gray-200 dark:border-gray-800">
-                        <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('jumeirah_flights')"></h4>
-                        <p class="text-gray-700 dark:text-gray-300" x-text="t('jumeirah_flight_out')"></p>
-                        <p class="text-gray-700 dark:text-gray-300" x-text="t('jumeirah_flight_back')"></p>
-                    </div>
-                    <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-2xl p-4 border border-gray-200 dark:border-gray-800">
-                        <h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest" x-text="t('jumeirah_train')"></h4>
-                        <p class="text-gray-700 dark:text-gray-300" x-text="t('jumeirah_train_desc')"></p>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <div>
-                        <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest border-b border-gray-200 dark:border-gray-800 pb-2" x-text="t('modal_hotels')"></h4>
-                        <p class="text-gray-800 dark:text-gray-200 font-semibold" x-text="t('jumeirah_madina_hotel')"></p>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-3" x-text="t('jumeirah_madina_nights')"></p>
-                        <p class="text-gray-800 dark:text-gray-200 font-semibold" x-text="t('jumeirah_makka_hotel')"></p>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm" x-text="t('jumeirah_makka_nights')"></p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest border-b border-gray-200 dark:border-gray-800 pb-2" x-text="t('jumeirah_room_prices')"></h4>
-                        <ul class="text-gray-700 dark:text-gray-300 space-y-2 text-sm">
-                            <li class="flex justify-between"><span x-text="t('room_4')"></span><strong class="text-brand-gold">$1690</strong></li>
-                            <li class="flex justify-between"><span x-text="t('room_3')"></span><strong class="text-brand-gold">$1790</strong></li>
-                            <li class="flex justify-between"><span x-text="t('room_2')"></span><strong class="text-brand-gold">$1990</strong></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest" x-text="t('jumeirah_services_title')"></h4>
-                <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 mb-6 text-gray-700 dark:text-gray-300 text-sm">
-                    <template x-for="line in tList('feat_jumeirah')" :key="line">
-                        <li x-text="line"></li>
-                    </template>
-                </ul>
-
-                <h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest" x-text="t('jumeirah_gifts_title')"></h4>
-                <div class="flex flex-wrap gap-2 mb-8">
-                    <template x-for="gift in tList('gifts_jumeirah')" :key="gift">
-                        <span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20" x-text="gift"></span>
-                    </template>
-                </div>
-
-                <div class="bg-brand-cream-dark dark:bg-[#1B2436] p-6 rounded-3xl border border-brand-gold/30 flex flex-col sm:flex-row justify-between items-center gap-4">
-                    <div>
-                        <p class="text-xs text-gray-500 dark:text-gray-400 uppercase" x-text="t('modal_starting_price_room') + ':'"></p>
-                        <p class="text-4xl font-bold text-brand-gold">$<span x-text="packagesData.lux_jumeirah?.price || '1690'"></span></p>
-                    </div>
-                    <button @click="activeModal = 'booking'; selectedPackage = 'LUX Jumeirah Paket'; bookingRoom = '4 kishilik'" type="button"
-                            class="w-full sm:w-auto bg-brand-gold text-brand-red px-10 py-4 rounded-2xl font-bold hover:bg-yellow-600 shadow-xl text-center" x-text="t('btn_book_now')"></button>
-                </div>
             </div>
         </div>
     </div>
@@ -1287,10 +1237,10 @@ window.SITE_I18N = {
 
         <div class="space-y-4">
             <!-- FAQ Item 1 -->
-            <div 
-                class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
-                :class="activeFaq === 1 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
-                @click="activeFaq = (activeFaq === 1) ? null : 1">
+            <div
+                    class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
+                    :class="activeFaq === 1 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
+                    @click="activeFaq = (activeFaq === 1) ? null : 1">
                 <div class="flex justify-between items-center gap-4">
                     <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300"
                         :class="activeFaq === 1 ? 'text-brand-gold' : ''"
@@ -1315,10 +1265,10 @@ window.SITE_I18N = {
             </div>
 
             <!-- FAQ Item 2 -->
-            <div 
-                class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
-                :class="activeFaq === 2 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
-                @click="activeFaq = (activeFaq === 2) ? null : 2">
+            <div
+                    class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
+                    :class="activeFaq === 2 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
+                    @click="activeFaq = (activeFaq === 2) ? null : 2">
                 <div class="flex justify-between items-center gap-4">
                     <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300"
                         :class="activeFaq === 2 ? 'text-brand-gold' : ''"
@@ -1343,10 +1293,10 @@ window.SITE_I18N = {
             </div>
 
             <!-- FAQ Item 3 -->
-            <div 
-                class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
-                :class="activeFaq === 3 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
-                @click="activeFaq = (activeFaq === 3) ? null : 3">
+            <div
+                    class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
+                    :class="activeFaq === 3 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
+                    @click="activeFaq = (activeFaq === 3) ? null : 3">
                 <div class="flex justify-between items-center gap-4">
                     <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300"
                         :class="activeFaq === 3 ? 'text-brand-gold' : ''"
@@ -1371,10 +1321,10 @@ window.SITE_I18N = {
             </div>
 
             <!-- FAQ Item 4 -->
-            <div 
-                class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
-                :class="activeFaq === 4 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
-                @click="activeFaq = (activeFaq === 4) ? null : 4">
+            <div
+                    class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
+                    :class="activeFaq === 4 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
+                    @click="activeFaq = (activeFaq === 4) ? null : 4">
                 <div class="flex justify-between items-center gap-4">
                     <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300"
                         :class="activeFaq === 4 ? 'text-brand-gold' : ''"
@@ -1421,8 +1371,7 @@ window.SITE_I18N = {
 
 <!-- Footer -->
 <footer class="bg-brand-cream-dark dark:bg-brand-dark text-gray-900 dark:text-white transition-colors duration-300 py-20">
-    <div
-            class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-200 dark:border-gray-800 pb-16 text-center md:text-left">
+    <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-200 dark:border-gray-800 pb-16 text-center md:text-left">
         <div class="col-span-1 md:col-span-2 flex flex-col items-center md:items-start">
             <img src="safo_marva.png" alt="Safo Marva Tour" class="h-20 mb-6 rounded-lg bg-white/90 dark:bg-transparent p-1 shadow-sm dark:shadow-none">
             <p class="text-gray-600 dark:text-gray-400 max-w-sm" x-text="t('footer_tagline')"></p>
@@ -1430,10 +1379,8 @@ window.SITE_I18N = {
         <div>
             <h4 class="text-brand-gold font-bold mb-6" x-text="t('footer_contact')"></h4>
             <div class="space-y-4">
-                <p class="flex items-center justify-center md:justify-start text-gray-600 dark:text-gray-400"><span
-                        class="mr-3">📞</span> +998 55 517 73 73</p>
-                <p class="flex items-center justify-center md:justify-start text-gray-600 dark:text-gray-400"><span
-                        class="mr-3">📞</span> +998 70 019 03 73</p>
+                <p class="flex items-center justify-center md:justify-start text-gray-600 dark:text-gray-400"><span class="mr-3">📞</span> +998 55 517 73 73</p>
+                <p class="flex items-center justify-center md:justify-start text-gray-600 dark:text-gray-400"><span class="mr-3">📞</span> +998 70 019 03 73</p>
             </div>
         </div>
         <div>
@@ -1462,7 +1409,6 @@ window.SITE_I18N = {
     </div>
 </footer>
 
-<!-- Pastki o'ng: Telegram, Qo'ng'iroq, Yuqoriga -->
 <div class="fixed bottom-5 right-4 sm:right-6 z-[70] flex flex-col gap-3 items-center" aria-label="Tezkor aloqa">
     <button @click="window.scrollTo({top: 0, behavior: 'smooth'})" x-show="scrolled" x-cloak
             x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4"
@@ -1471,7 +1417,7 @@ window.SITE_I18N = {
             class="bg-brand-red text-white p-3.5 sm:p-4 rounded-full shadow-2xl hover:scale-110 hover:bg-red-800 transition-all"
             :title="t('fab_scroll')" :aria-label="t('fab_scroll')">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
     </button>
     <a href="tel:+998555177373"
@@ -1493,7 +1439,6 @@ window.SITE_I18N = {
     </a>
 </div>
 
-<!-- Booking Modal -->
 <div x-show="activeModal === 'booking'" x-cloak class="fixed inset-0 z-[250] overflow-y-auto">
     <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
         <div @click="activeModal = null" class="fixed inset-0 transition-opacity bg-[#04060B]/90 backdrop-blur-md"></div>
@@ -1501,42 +1446,39 @@ window.SITE_I18N = {
 
         <div class="inline-block overflow-hidden text-left align-bottom transition-all transform bg-brand-cream dark:bg-[#121824] border border-gray-200 dark:border-gray-800 rounded-[2.5rem] shadow-[0_0_50px_rgba(0,0,0,0.3)] sm:my-8 sm:align-middle sm:max-w-lg sm:w-full relative text-gray-900 dark:text-white">
 
-            <!-- Success State -->
             <div x-show="showSuccess" x-transition class="absolute inset-0 bg-brand-cream dark:bg-[#121824] z-10 flex flex-col items-center justify-center p-8 text-center">
                 <div class="w-20 h-20 bg-green-50 dark:bg-green-950 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center mb-6 border border-green-200 dark:border-green-800">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                 </div>
-                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" x-text="t('booking_success_title')"></h3>
-                <p class="text-gray-600 dark:text-gray-300" x-text="t('booking_success_desc')"></p>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" x-text="t('success_msg')"></h3>
+                <p class="text-gray-600 dark:text-gray-300" x-text="t('hero_subtitle')"></p>
             </div>
 
             <div class="bg-brand-red/90 p-6 md:p-8 text-white relative border-b border-red-950/50">
                 <button @click="activeModal = null" type="button" class="modal-close-btn absolute top-5 right-5 text-white hover:text-brand-gold" :aria-label="t('aria_close')">×</button>
-                <h3 class="text-2xl font-serif mb-1" x-text="t('booking_title')"></h3>
-                <p class="text-red-100 text-sm" x-text="t('booking_subtitle')"></p>
+                <h3 class="text-2xl font-serif mb-1" x-text="t('btn_booking')"></h3>
+                <p class="text-red-100 text-sm" x-text="t('calc_subtitle')"></p>
             </div>
 
             <form @submit.prevent="submitBooking()" class="p-6 md:p-8 space-y-5">
-                <!-- Honeypot field (Antispam) -->
                 <input type="text" id="hp_field" style="display:none !important" tabindex="-1" autocomplete="off">
 
-                <!-- Selected Package + Price Calculator -->
                 <div class="bg-gradient-to-br from-brand-gold/5 to-brand-gold/10 dark:from-brand-gold/5 dark:to-brand-gold/10 border border-brand-gold/20 rounded-2xl p-5">
                     <div class="flex items-center justify-between mb-4">
                         <div>
-                            <p class="text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest" x-text="t('booking_selected_pkg')"></p>
+                            <p class="text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest" x-text="t('calc_package')"></p>
                             <p class="text-base font-bold text-gray-900 dark:text-white mt-1" x-text="displayPackageName()"></p>
                         </div>
                         <div class="text-right">
-                            <p class="text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest" x-text="t('booking_per_person')"></p>
+                            <p class="text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest" x-text="t('calc_per_person')"></p>
                             <p class="text-lg font-bold text-brand-gold" x-text="'$' + getBookingPricePerPerson()"></p>
                         </div>
                     </div>
                     <div class="border-t border-brand-gold/15 pt-4">
-                        <label class="block text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3" x-text="t('booking_persons')"></label>
+                        <label class="block text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3" x-text="t('calc_persons')"></label>
                         <div class="flex items-center gap-3">
                             <button @click="calcPersons = Math.max(1, calcPersons - 1)" type="button"
-                                class="w-11 h-11 rounded-xl bg-brand-cream dark:bg-[#1B2436] border border-gray-200 dark:border-gray-700 flex items-center justify-center text-xl font-bold text-gray-600 dark:text-gray-300 hover:border-brand-gold/40 hover:text-brand-gold transition-all active:scale-90 select-none">
+                                    class="w-11 h-11 rounded-xl bg-brand-cream dark:bg-[#1B2436] border border-gray-200 dark:border-gray-700 flex items-center justify-center text-xl font-bold text-gray-600 dark:text-gray-300 hover:border-brand-gold/40 hover:text-brand-gold transition-all active:scale-90 select-none">
                                 −
                             </button>
                             <div class="flex-1 text-center">
@@ -1544,29 +1486,30 @@ window.SITE_I18N = {
                                 <span class="text-xs text-gray-500 dark:text-gray-400 ml-1" x-text="t('calc_person_word')"></span>
                             </div>
                             <button @click="calcPersons = Math.min(50, calcPersons + 1)" type="button"
-                                class="w-11 h-11 rounded-xl bg-brand-cream dark:bg-[#1B2436] border border-gray-200 dark:border-gray-700 flex items-center justify-center text-xl font-bold text-gray-600 dark:text-gray-300 hover:border-brand-gold/40 hover:text-brand-gold transition-all active:scale-90 select-none">
+                                    class="w-11 h-11 rounded-xl bg-brand-cream dark:bg-[#1B2436] border border-gray-200 dark:border-gray-700 flex items-center justify-center text-xl font-bold text-gray-600 dark:text-gray-300 hover:border-brand-gold/40 hover:text-brand-gold transition-all active:scale-90 select-none">
                                 +
                             </button>
                         </div>
                         <div class="mt-4 flex items-center justify-between bg-white/60 dark:bg-[#1B2436]/60 rounded-xl px-4 py-3 border border-brand-gold/10">
-                            <span class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider" x-text="t('booking_total') + ':'"></span>
+                            <span class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider" x-text="t('calc_total') + ':'"></span>
                             <span class="text-2xl font-bold text-brand-gold" x-text="'$' + getBookingTotal().toLocaleString()"></span>
                         </div>
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2" x-text="t('booking_name')"></label>
-                    <input type="text" x-model="bookingName" required :placeholder="t('placeholder_name')"
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2" x-text="t('form_name')"></label>
+                    <input type="text" x-model="bookingName" required :placeholder="t('form_name')"
                            class="w-full bg-brand-cream-dark dark:bg-[#1B2436] border border-gray-200 dark:border-gray-800 rounded-2xl px-6 py-4 text-gray-900 dark:text-white focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2" x-text="t('booking_phone')"></label>
-                    <input type="tel" x-model="bookingPhone" required :placeholder="t('placeholder_phone')"
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2" x-text="t('form_phone')"></label>
+                    <input type="tel" x-model="bookingPhone" required placeholder="+998"
                            class="w-full bg-brand-cream-dark dark:bg-[#1B2436] border border-gray-200 dark:border-gray-800 rounded-2xl px-6 py-4 text-gray-900 dark:text-white focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500">
                 </div>
+
                 <div x-show="roomBasedPackages.includes(selectedPackage)">
-                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3" x-text="t('booking_room')"></label>
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3" x-text="t('calc_package')"></label>
                     <div class="grid grid-cols-3 gap-3">
                         <template x-for="room in roomOptions" :key="room.value">
                             <button type="button" @click="bookingRoom = room.value"
@@ -1579,7 +1522,7 @@ window.SITE_I18N = {
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3" x-text="t('booking_operator')"></label>
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3" x-text="t('menu_why_us')"></label>
                     <div class="grid grid-cols-2 gap-3">
                         <template x-for="op in operatorOptions" :key="op.value">
                             <button type="button" @click="bookingOperator = op.value"
@@ -1590,7 +1533,7 @@ window.SITE_I18N = {
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3" x-text="t('booking_payment')"></label>
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3" x-text="t('package_price')"></label>
                     <div class="grid grid-cols-2 gap-3">
                         <template x-for="pay in paymentOptions" :key="pay.value">
                             <button type="button" @click="bookingPayment = pay.value"
@@ -1604,16 +1547,14 @@ window.SITE_I18N = {
                         :disabled="isSubmitting"
                         :class="isSubmitting ? 'bg-gray-300 dark:bg-gray-700 text-gray-500 cursor-not-allowed' : 'bg-brand-gold text-brand-red hover:shadow-2xl hover:bg-yellow-600'"
                         class="w-full py-5 rounded-2xl font-bold text-lg transition-all active:scale-95">
-                    <span x-show="!isSubmitting" x-text="t('booking_submit')"></span>
-                    <span x-show="isSubmitting" x-text="t('booking_submitting')"></span>
+                    <span x-show="!isSubmitting" x-text="t('btn_send')"></span>
+                    <span x-show="isSubmitting" x-text="'...' + t('btn_send')"></span>
                 </button>
-                <p class="text-[10px] text-gray-500 dark:text-gray-400 text-center uppercase tracking-wider" x-text="t('booking_privacy')"></p>
             </form>
         </div>
     </div>
 </div>
 
-<!-- Global Lightbox Overlay (Slider) -->
 <div x-show="lightboxImages.length > 0" x-cloak
      class="fixed inset-0 z-[200] flex items-center justify-center bg-black/95 transition-opacity duration-300"
      x-transition:enter="opacity-0" x-transition:enter-end="opacity-100"
@@ -1622,10 +1563,8 @@ window.SITE_I18N = {
      @keydown.window.left="lightboxIndex = (lightboxIndex > 0) ? lightboxIndex - 1 : lightboxImages.length - 1"
      @keydown.window.right="lightboxIndex = (lightboxIndex < lightboxImages.length - 1) ? lightboxIndex + 1 : 0">
 
-    <!-- Close Button -->
     <button @click="lightboxImages = []" class="absolute top-6 right-6 text-white text-4xl z-[210] hover:text-brand-gold transition-colors">&times;</button>
 
-    <!-- Navigation Buttons -->
     <button @click="lightboxIndex = (lightboxIndex > 0) ? lightboxIndex - 1 : lightboxImages.length - 1"
             class="absolute left-4 md:left-10 text-white bg-white/10 hover:bg-white/20 p-4 rounded-full z-[210] transition-all">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
@@ -1636,19 +1575,16 @@ window.SITE_I18N = {
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
     </button>
 
-    <!-- Image Container -->
     <div class="w-full h-full flex flex-col items-center justify-center p-4 md:p-12" @click.self="lightboxImages = []">
         <img :src="lightboxImages[lightboxIndex]"
              class="max-w-full max-h-[85vh] md:max-h-[90vh] rounded-lg shadow-2xl object-contain transition-all duration-300 transform"
              x-transition:enter="scale-95 opacity-0" x-transition:enter-end="scale-100 opacity-100">
 
-        <!-- Counter -->
         <div class="mt-6 text-white font-medium tracking-widest uppercase text-sm bg-white/10 px-6 py-2 rounded-full">
             <span x-text="lightboxIndex + 1"></span> / <span x-text="lightboxImages.length"></span>
         </div>
     </div>
 </div>
-
 <script>
     function initMetaPixel(pixelId) {
         if (!pixelId || window._metaPixelReady) return;
@@ -1694,8 +1630,7 @@ window.SITE_I18N = {
         galleryObserver.observe(gallerySection);
     }
 </script>
-<script>
-    function tourApp() {
+<script>function tourApp() {
         const app = {
             isDark: localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches),
             toggleTheme() {
@@ -1710,10 +1645,10 @@ window.SITE_I18N = {
                     menu_gallery: "Galereya",
                     menu_faq: "Savollar",
                     hero_subtitle: "Muborak Safarga Taklif Etamiz",
-                    hero_title: "Yangi Mavsum — Iyun-Iyul Oylaridan!",
+                    hero_title: "Yangi Mavsum — Iyun-Iyul-Avgust!",
                     hero_desc: "SAFO MARVA TOUR bilan — litsenziyalangan, xavfsiz va xotirjam ziyorat!",
-                    offer_title: "14 Kunlik \"Al Ebaa\" Komfort Paketi",
-                    offer_desc: "Iyun va Iyul oylari uchun maxsus. Toshkentdan to'g'ridan-to'g'ri reyslar va barcha qulayliklar mujassam.",
+                    offer_title: "Comfort Plus — 14 Kunlik Umra Paketi",
+                    offer_desc: "Iyun, Iyul va Avgust oylari uchun maxsus. Toshkentdan to'g'ridan-to'g'ri reyslar va barcha qulayliklar mujassam.",
                     hero_btn1: "PAKETLARNI TANLASH",
                     hero_btn2: "BEPUL KONSULTATSIYA",
                     btn_booking: "Band qilish",
@@ -1744,19 +1679,18 @@ window.SITE_I18N = {
                     calc_person_word: "kishi",
                     section_packages_title: "Umra Paketlarimiz",
                     section_packages_desc: "Siz va yaqinlaringiz uchun maxsus ishlab chiqilgan, barcha qulayliklarga ega takliflar.",
-                    pkg_nights: "10 KECHALIK",
-                    pkg_jumeirah_nights: "10 KECHALIK · IYUN-IYUL",
-                    pkg_standard: "Standart Paket",
-                    pkg_standard_hotel: "Ramada Zad Al Tayser (Haramga: 1 km)",
-                    pkg_comfort: "Komfort Paket",
-                    pkg_comfort_hotel: "AL EBAA mehmonxonasi (Haramga: 500 metr)",
-                    pkg_lux: "LUX Paket",
-                    pkg_lux_hotel: "ANJUM mehmonxonasi (Haramga: 150 metr)",
-                    pkg_jumeirah: "LUX Jumeirah Paket",
-                    pkg_jumeirah_hotel: "Waqf As Safi (Madina) + Jumeirah Jabal Omar (Makka)",
-                    pkg_jumeirah_note: "4 kishilik xonadan boshlanadi",
+                    pkg_nights_13: "13 KUNLIK PAKET",
+                    pkg_nights_10: "10 KUNLIK PAKET",
+                    pkg_nights_14: "14 KUNLIK PAKET",
+                    pkg_standard: "Standard Plus Paket",
+                    pkg_standard_hotel: "Ramada Zad al Tayser (Makka) + Mehrob Toiba (Madina)",
+                    pkg_comfort: "Comfort Plus 10 Kunlik",
+                    pkg_comfort_hotel: "Al Ebaa hotel (Makka) + Nusk al Hijra (Madina)",
+                    pkg_special_14day: "Comfort Plus 14 Kunlik",
+                    pkg_special_14day_hotel: "Al Ebaa hotel 4★ (Makka) + Mehrob Toiba 4★ (Madina)",
+                    pkg_room_note: "Xona joylashuviga qarab narx o'zgaradi",
                     badge_popular: "Ommabop",
-                    badge_premium: "LUX Premium",
+                    badge_premium: "Tavsiya etiladi",
                     btn_details: "Batafsil ma'lumot",
                     btn_book_now: "HOZIR BAND QILISH",
                     section_why_title: "Nega Aynan Safo Marva Tour?",
@@ -1788,8 +1722,10 @@ window.SITE_I18N = {
                     menu_gallery: "Галерея",
                     menu_faq: "Вопросы",
                     hero_subtitle: "Приглашаем в Священное Путешествие",
-                    hero_title: "Новый Сезон — с Июня-Июля!",
+                    hero_title: "Новый Сезон — Июнь-Июль-Август!",
                     hero_desc: "С SAFO MARVA TOUR — лицензированное, безопасное и спокойное паломничество!",
+                    offer_title: "Comfort Plus — 14-дневный пакет Умры",
+                    offer_desc: "Специально для месяцев Июнь, Июль и Август. Прямые рейсы из Ташкента и все удобства включены.",
                     hero_btn1: "ВЫБРАТЬ ПАКЕТ",
                     hero_btn2: "БЕСПЛАТНАЯ КОНСУЛЬТАЦИЯ",
                     btn_booking: "Забронировать",
@@ -1805,7 +1741,7 @@ window.SITE_I18N = {
                     faq_q1: "Какие документы нужны для визы?",
                     faq_a1: "Для получения визы Умры требуется биометрический заграничный паспорт (срок действия не менее 6 месяцев) и 2 цветные фотографии размером 3х4 на белом фоне. Все процедуры оформления визы наша команда берет на себя.",
                     faq_q2: "Всё ли включено в стоимость пакета?",
-                    faq_a2: "Да, в наши пакеты (в зависимости от вашего выбора) полностью включены авиабилеты в обе стороны, визовая поддержка, проживание в отелях Мекки и Медины, транспортные услуги (скоростной поезд и трансферы), услуги опытных руководителей групп и медицинская страховка. Никаких скрытых платежей.",
+                    faq_a2: "Да, в наши пакеты полностью включены авиабилеты в обе стороны, визовая поддержка, проживание в отелях Мекки и Медины, транспортные услуги (скоростной поезд и трансферы), услуги опытных руководителей групп и медицинская страховка. Никаких скрытых платежей.",
                     faq_q3: "Как работает медицинская страховка?",
                     faq_a3: "Во время вашего путешествия вас сопровождает специальная медицинская страховка, предоставленная Саудовской Аравией и нашей компанией. При возникновении проблем со здоровьем врач или руководитель группы организуют бесплатную медицинскую помощь по страховке.",
                     faq_q4: "Принимаете ли вы паломников из других городов?",
@@ -1820,19 +1756,18 @@ window.SITE_I18N = {
                     calc_person_word: "чел.",
                     section_packages_title: "Наши пакеты Умры",
                     section_packages_desc: "Специальные предложения со всеми удобствами для вас и ваших близких.",
-                    pkg_nights: "10 НОЧЕЙ",
-                    pkg_jumeirah_nights: "10 НОЧЕЙ · ИЮНЬ-ИЮЛЬ",
-                    pkg_standard: "Стандартный пакет",
-                    pkg_standard_hotel: "Ramada Zad Al Tayser (до Харама: 1 км)",
-                    pkg_comfort: "Комфорт пакет",
-                    pkg_comfort_hotel: "Отель AL EBAA (до Харама: 500 м)",
-                    pkg_lux: "LUX пакет",
-                    pkg_lux_hotel: "Отель ANJUM (до Харама: 150 м)",
-                    pkg_jumeirah: "LUX Jumeirah пакет",
-                    pkg_jumeirah_hotel: "Waqf As Safi (Медина) + Jumeirah Jabal Omar (Мекка)",
-                    pkg_jumeirah_note: "Цена от 4-местного номера",
+                    pkg_nights_13: "13-ДНЕВНЫЙ ПАКЕТ",
+                    pkg_nights_10: "10-ДНЕВНЫЙ ПАКЕТ",
+                    pkg_nights_14: "14-ДНЕВНЫЙ ПАКЕТ",
+                    pkg_standard: "Пакет Standard Plus",
+                    pkg_standard_hotel: "Ramada Zad al Tayser (Мекка) + Mehrob Toiba (Медина)",
+                    pkg_comfort: "Comfort Plus 10 Дней",
+                    pkg_comfort_hotel: "Al Ebaa hotel (Мекка) + Nusk al Hijra (Медина)",
+                    pkg_special_14day: "Comfort Plus 14 Дней",
+                    pkg_special_14day_hotel: "Al Ebaa hotel 4★ (Мекка) + Mehrob Toiba 4★ (Медина)",
+                    pkg_room_note: "Цена меняется в зависимости от размещения",
                     badge_popular: "Популярный",
-                    badge_premium: "LUX Premium",
+                    badge_premium: "Рекомендуется",
                     btn_details: "Подробнее",
                     btn_book_now: "ЗАБРОНИРОВАТЬ СЕЙЧАС",
                     section_why_title: "Почему Safo Marva Tour?",
@@ -1864,8 +1799,10 @@ window.SITE_I18N = {
                     menu_gallery: "Gallery",
                     menu_faq: "FAQ",
                     hero_subtitle: "Invite to Sacred Journey",
-                    hero_title: "New Season — from June-July!",
+                    hero_title: "New Season — June-July-August!",
                     hero_desc: "With SAFO MARVA TOUR — licensed, safe and peaceful pilgrimage!",
+                    offer_title: "Comfort Plus — 14 Days Umrah Package",
+                    offer_desc: "Special for June, July and August. Direct flights from Tashkent and all amenities included.",
                     hero_btn1: "CHOOSE PACKAGE",
                     hero_btn2: "FREE CONSULTATION",
                     btn_booking: "Book Now",
@@ -1896,19 +1833,18 @@ window.SITE_I18N = {
                     calc_person_word: "persons",
                     section_packages_title: "Our Umrah Packages",
                     section_packages_desc: "Tailored offers with every comfort for you and your loved ones.",
-                    pkg_nights: "10 NIGHTS",
-                    pkg_jumeirah_nights: "10 NIGHTS · JUNE-JULY",
-                    pkg_standard: "Standard Package",
-                    pkg_standard_hotel: "Ramada Zad Al Tayser (1 km to Haram)",
-                    pkg_comfort: "Comfort Package",
-                    pkg_comfort_hotel: "AL EBAA Hotel (500 m to Haram)",
-                    pkg_lux: "LUX Package",
-                    pkg_lux_hotel: "ANJUM Hotel (150 m to Haram)",
-                    pkg_jumeirah: "LUX Jumeirah Package",
-                    pkg_jumeirah_hotel: "Waqf As Safi (Madinah) + Jumeirah Jabal Omar (Makkah)",
-                    pkg_jumeirah_note: "From 4-person room",
+                    pkg_nights_13: "13 DAYS PACKAGE",
+                    pkg_nights_10: "10 DAYS PACKAGE",
+                    pkg_nights_14: "14 DAYS PACKAGE",
+                    pkg_standard: "Standard Plus Package",
+                    pkg_standard_hotel: "Ramada Zad al Tayser (Makkah) + Mehrob Toiba (Madinah)",
+                    pkg_comfort: "Comfort Plus 10 Days",
+                    pkg_comfort_hotel: "Al Ebaa hotel (Makkah) + Nusk al Hijra (Madinah)",
+                    pkg_special_14day: "Comfort Plus 14 Days",
+                    pkg_special_14day_hotel: "Al Ebaa hotel 4★ (Makkah) + Mehrob Toiba 4★ (Madinah)",
+                    pkg_room_note: "Price varies based on room occupancy",
                     badge_popular: "Most Popular",
-                    badge_premium: "LUX Premium",
+                    badge_premium: "Recommended",
                     btn_details: "View details",
                     btn_book_now: "BOOK NOW",
                     section_why_title: "Why Safo Marva Tour?",
@@ -1935,41 +1871,50 @@ window.SITE_I18N = {
                     aria_theme: "Toggle theme"
                 }
             },
-                t(key) {
+            t(key) {
                 return this.translations[this.currentLang][key] || key;
             },
             tList(key) {
                 const v = this.translations[this.currentLang][key];
                 return Array.isArray(v) ? v : [];
-            },
+            },// Paketlar kalitlarini yangi struktura bilan yangilaymiz
             packageNameKeys: {
-                'Standart Paket': 'pkg_standard',
-                'Komfort Paket': 'pkg_comfort',
-                'LUX Paket': 'pkg_lux',
-                'LUX Jumeirah Paket': 'pkg_jumeirah'
+                'Standard Plus Paket': 'pkg_standard',
+                'Comfort Plus 10 Kunlik': 'pkg_comfort',
+                'Comfort Plus 14 Kunlik': 'pkg_special_14day'
             },
             displayPackageName() {
                 const k = this.packageNameKeys[this.selectedPackage];
                 return k ? this.t(k) : this.selectedPackage;
             },
+
+            // Xonalar uchun tarjima kalitlari bilan variantlar
             roomOptions: [
                 { value: '4 kishilik', labelKey: 'room_4' },
                 { value: '3 kishilik', labelKey: 'room_3' },
                 { value: '2 kishilik', labelKey: 'room_2' }
             ],
+
+            // Guruh rahbari (Operator) uchun variantlar
             operatorOptions: [
                 { value: 'Erkak', labelKey: 'op_male' },
                 { value: 'Ayol kishi', labelKey: 'op_female' }
             ],
+
+            // To'lov turlari uchun variantlar
             paymentOptions: [
                 { value: 'Naqd pul', labelKey: 'pay_cash' },
                 { value: 'Plastik karta', labelKey: 'pay_card' }
             ],
+
+            // Tilni almashtirish funksiyasi
             setLang(lang) {
                 this.currentLang = lang;
                 localStorage.setItem('lang', lang);
                 document.documentElement.lang = lang;
             },
+
+            // Toast xabarnoma tizimi
             toastMessage: '',
             toastType: 'error',
             showToast(message, type = 'error') {
@@ -1977,376 +1922,372 @@ window.SITE_I18N = {
                 this.toastType = type;
                 clearTimeout(this._toastTimer);
                 this._toastTimer = setTimeout(() => { this.toastMessage = ''; }, 4500);
+            },activeModal: null,
+        scrolled: false,
+        mobileMenu: false,
+        lightboxImages: [],
+        lightboxIndex: 0,
+        bookingName: '',
+        bookingPhone: '',
+        bookingRoom: '4 kishilik',
+        bookingOperator: 'Erkak',
+        bookingPayment: 'Naqd pul',
+        selectedPackage: '',
+        calcPackage: 'comfort',
+        calcPersons: 1,
+        calcPackages: {
+            standard: { name: 'Standard Plus Paket', price: 1250 },
+            comfort: { name: 'Comfort Plus 10 Kunlik', price: 1350 },
+            special_14day: { name: 'Comfort Plus 14 Kunlik', price: 1500 }
+        },
+        // Comfort Plus 14 Kunlik paketida xona turiga qarab narx o'zgaradi
+        roomBasedPackages: ['Comfort Plus 14 Kunlik'],
+        roomPrices: {
+            'Comfort Plus 14 Kunlik': {
+                '4 kishilik': 1500,
+                '3 kishilik': 1600,
+                '2 kishilik': 1750
+            }
+        },
+        get calcPricePerPerson() {
+            return this.calcPackages[this.calcPackage]?.price || 0;
+        },
+        get calcTotalPrice() {
+            return this.calcPricePerPerson * this.calcPersons;
+        },
+        getBookingPricePerPerson() {
+            if (this.roomBasedPackages.includes(this.selectedPackage)) {
+                return this.roomPrices[this.selectedPackage]?.[this.bookingRoom] || 0;
+            }
+            const key = Object.keys(this.calcPackages).find(k => this.calcPackages[k].name === this.selectedPackage);
+            return this.calcPackages[key]?.price || 0;
+        },
+        getBookingTotal() {
+            return this.getBookingPricePerPerson() * this.calcPersons;
+        },
+        bookFromCalc() {
+            this.selectedPackage = this.calcPackages[this.calcPackage]?.name || '';
+            this.activeModal = 'booking';
+        },
+        showSuccess: false,
+        isSubmitting: false,
+        pkgSlide: { standard: 0, comfort: 0, special_14day: 0 },
+        modalSlide: 0,
+        pkgCardHover: null,
+        pkgModalHover: null,
+        pkgTouchStartX: 0,
+        packagesData: {
+            standard: {
+                price: '1250',
+                image_url: 'galereya/standart.jpg',
+                video_url: '',
+                images: ['galereya/standart.jpg'],
+                videos: []
             },
-            activeModal: null,
-            scrolled: false,
-            mobileMenu: false,
-            lightboxImages: [],
-            lightboxIndex: 0,
-            bookingName: '',
-            bookingPhone: '',
-            bookingRoom: '4 kishilik',
-            bookingOperator: 'Erkak',
-            bookingPayment: 'Naqd pul',
-            selectedPackage: '',
-            calcPackage: 'comfort',
-            calcPersons: 1,
-            calcPackages: {
-                standard: { name: 'Standart Paket', price: 1150 },
-                comfort: { name: 'Komfort Paket', price: 1300 },
-                lux: { name: 'LUX Paket', price: 1550 },
-                lux_jumeirah: { name: 'LUX Jumeirah Paket', price: 1690 }
+            comfort: {
+                price: '1350',
+                image_url: 'galereya/komfort.jpg',
+                video_url: '',
+                images: ['galereya/komfort.jpg'],
+                videos: []
             },
-            roomBasedPackages: ['LUX Jumeirah Paket'],
-            roomPrices: {
-                'LUX Jumeirah Paket': { '4 kishilik': 1690, '3 kishilik': 1790, '2 kishilik': 1990 }
-            },
-            get calcPricePerPerson() {
-                return this.calcPackages[this.calcPackage]?.price || 0;
-            },
-            get calcTotalPrice() {
-                return this.calcPricePerPerson * this.calcPersons;
-            },
-            getBookingPricePerPerson() {
-                if (this.roomBasedPackages.includes(this.selectedPackage)) {
-                    return this.roomPrices[this.selectedPackage]?.[this.bookingRoom] || 0;
-                }
-                const key = Object.keys(this.calcPackages).find(k => this.calcPackages[k].name === this.selectedPackage);
-                return this.calcPackages[key]?.price || 0;
-            },
-            getBookingTotal() {
-                return this.getBookingPricePerPerson() * this.calcPersons;
-            },
-            bookFromCalc() {
-                this.selectedPackage = this.calcPackages[this.calcPackage]?.name || '';
-                this.activeModal = 'booking';
-            },
-            showSuccess: false,
-            isSubmitting: false,
-            pkgSlide: { standard: 0, comfort: 0, lux: 0, lux_jumeirah: 0 },
-            modalSlide: 0,
-            pkgCardHover: null,
-            pkgModalHover: null,
-            pkgTouchStartX: 0,
-            packagesData: {
-                standard: {
-                    price: '1150',
-                    image_url: 'galereya/standart.png',
-                    video_url: '',
-                    images: ['galereya/standart.png'],
-                    videos: []
-                },
-                comfort: {
-                    price: '1300',
-                    image_url: 'galereya/komfort.png',
-                    video_url: '',
-                    images: ['galereya/komfort.png'],
-                    videos: []
-                },
-                lux: {
-                    price: '1550',
-                    image_url: 'galereya/lux.png',
-                    video_url: '',
-                    images: ['galereya/lux.png'],
-                    videos: []
-                },
-                lux_jumeirah: {
-                    price: '1690',
-                    image_url: 'galereya/jumeirah.png',
-                    video_url: '',
-                    images: ['galereya/jumeirah.png'],
-                    videos: []
-                }
-            },
-            pkgDefaultImage(key) {
-                const d = { standard: 'galereya/standart.png', comfort: 'galereya/komfort.png', lux: 'galereya/lux.png', lux_jumeirah: 'galereya/jumeirah.png' };
-                return d[key] || '';
-            },
-            mediaUrl(path) {
-                if (!path) return '';
-                const p = String(path).trim();
-                if (p.startsWith('http://') || p.startsWith('https://') || p.startsWith('//')) return p;
-                if (p.startsWith('/')) return p;
-                return '/' + p;
-            },
-            normalizePackageMedia(key, raw) {
-                const fallback = this.pkgDefaultImage(key);
-                let images = Array.isArray(raw?.images) ? [...raw.images] : [];
-                let videos = Array.isArray(raw?.videos) ? [...raw.videos] : [];
-                const imageUrl = (raw?.image_url || '').trim() || fallback;
-                const videoUrl = (raw?.video_url || '').trim();
-                if (!images.length && imageUrl) images = [imageUrl];
-                if (imageUrl && !images.includes(imageUrl)) images.unshift(imageUrl);
-                if (!images.length && fallback) images = [fallback];
-                if (videoUrl && !videos.includes(videoUrl)) videos.push(videoUrl);
-                videos = videos.filter(Boolean);
-                return { image_url: images[0] || imageUrl, video_url: videoUrl, images, videos };
-            },
-            getPackageImages(key) {
-                const p = this.packagesData[key];
-                if (!p) return [this.pkgDefaultImage(key)];
-                return (p.images && p.images.length) ? p.images : [p.image_url || this.pkgDefaultImage(key)];
-            },
-            getPackageImageAt(key, index) {
-                const imgs = this.getPackageImages(key);
-                return this.mediaUrl(imgs[index] || imgs[0]);
-            },
-            getModalSlides(key) {
-                const p = this.packagesData[key] || {};
-                const slides = [];
-                const seen = new Set();
-                const add = (type, url) => {
-                    const u = this.mediaUrl(url);
-                    if (!u || seen.has(u)) return;
-                    seen.add(u);
-                    slides.push({ type, url: u });
-                };
-                (p.images || []).forEach(url => add('image', url));
-                const videoList = [...(p.videos || [])];
-                if (p.video_url) videoList.push(p.video_url);
-                videoList.forEach(url => add('video', url));
-                if (!slides.length) {
-                    add('image', p.image_url || this.pkgDefaultImage(key));
-                }
-                return slides;
-            },
-            getModalSlideLabel(key) {
-                const total = this.getModalSlides(key).length;
-                const slide = this.getCurrentModalSlide(key);
-                const typeLabel = slide.type === 'video' ? 'Video' : 'Rasm';
-                return (this.modalSlide + 1) + '/' + total + ' · ' + typeLabel;
-            },
-            pauseModalVideos() {
-                document.querySelectorAll('.pkg-modal-video').forEach(v => {
-                    try { v.pause(); v.currentTime = 0; } catch (e) { /* ignore */ }
-                });
-            },
-            goModalSlide(key, index) {
-                this.pauseModalVideos();
-                this.modalSlide = index;
-            },
-            getCurrentModalSlide(key) {
-                const slides = this.getModalSlides(key);
-                return slides[this.modalSlide] || { type: 'image', url: this.pkgDefaultImage(key) };
-            },
-            getImageLightboxIndex(key, slideIdx) {
-                const slides = this.getModalSlides(key);
-                let imgIndex = 0;
-                for (let i = 0; i < slideIdx; i++) {
-                    if (slides[i]?.type === 'image') imgIndex++;
-                }
-                return imgIndex;
-            },
-            openPackageModal(key) {
-                this.modalSlide = 0;
-                this.pkgSlide[key] = 0;
-                this.activeModal = key;
-            },
-            pkgSlideNext(key) {
-                const n = this.getPackageImages(key).length;
-                if (n <= 1) return;
-                this.pkgSlide[key] = ((this.pkgSlide[key] || 0) + 1) % n;
-            },
-            pkgSlidePrev(key) {
-                const n = this.getPackageImages(key).length;
-                if (n <= 1) return;
-                this.pkgSlide[key] = ((this.pkgSlide[key] || 0) - 1 + n) % n;
-            },
-            modalSlideNext(key) {
-                const n = this.getModalSlides(key).length;
-                if (n <= 1) return;
-                this.pauseModalVideos();
-                this.modalSlide = (this.modalSlide + 1) % n;
-            },
-            modalSlidePrev(key) {
-                const n = this.getModalSlides(key).length;
-                if (n <= 1) return;
-                this.pauseModalVideos();
-                this.modalSlide = (this.modalSlide - 1 + n) % n;
-            },
-            pkgTouchStart(e) {
-                const t = e.changedTouches ? e.changedTouches[0] : e;
-                this.pkgTouchStartX = t.clientX;
-            },
-            pkgTouchEnd(e, key, isModal) {
-                const t = e.changedTouches ? e.changedTouches[0] : e;
-                const dx = t.clientX - this.pkgTouchStartX;
-                if (dx < -40) {
-                    if (isModal) this.modalSlideNext(key);
-                    else this.pkgSlideNext(key);
-                } else if (dx > 40) {
-                    if (isModal) this.modalSlidePrev(key);
-                    else this.pkgSlidePrev(key);
-                }
-            },
-            apiBase() {
-                const local = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
-                return local ? 'http://localhost:3000' : '';
-            },
-            async loadRemoteData() {
-                const base = this.apiBase();
-                const [packagesResult, mediaResult, settingsResult] = await Promise.allSettled([
-                    fetch(`${base}/api/packages`),
-                    fetch(`${base}/api/packages/media`),
-                    fetch(`${base}/api/settings`)
-                ]);
+            special_14day: {
+                price: '1500',
+                image_url: 'galereya/kom_plus.jpg',
+                video_url: '',
+                images: ['galereya/kom_plus.jpg'],
+                videos: []
+            }
+        },pkgDefaultImage(key) {
+        const d = {
+            standard: 'galereya/standart.jpg',
+            comfort: 'galereya/komfort.jpg',
+            special_14day: 'galereya/kom_plus.jpg'
+        };
+        return d[key] || '';
+    },
+    mediaUrl(path) {
+        if (!path) return '';
+        const p = String(path).trim();
+        if (p.startsWith('http://') || p.startsWith('https://') || p.startsWith('//')) return p;
+        if (p.startsWith('/')) return p;
+        return '/' + p;
+    },
+    normalizePackageMedia(key, raw) {
+        const fallback = this.pkgDefaultImage(key);
+        let images = Array.isArray(raw?.images) ? [...raw.images] : [];
+        let videos = Array.isArray(raw?.videos) ? [...raw.videos] : [];
+        const imageUrl = (raw?.image_url || '').trim() || fallback;
+        const videoUrl = (raw?.video_url || '').trim();
+        if (!images.length && imageUrl) images = [imageUrl];
+        if (imageUrl && !images.includes(imageUrl)) images.unshift(imageUrl);
+        if (!images.length && fallback) images = [fallback];
+        if (videoUrl && !videos.includes(videoUrl)) videos.push(videoUrl);
+        videos = videos.filter(Boolean);
+        return { image_url: images[0] || imageUrl, video_url: videoUrl, images, videos };
+    },
+    getPackageImages(key) {
+        const p = this.packagesData[key];
+        if (!p) return [this.pkgDefaultImage(key)];
+        return (p.images && p.images.length) ? p.images : [p.image_url || this.pkgDefaultImage(key)];
+    },
+    getPackageImageAt(key, index) {
+        const imgs = this.getPackageImages(key);
+        return this.mediaUrl(imgs[index] || imgs[0]);
+    },
+    getModalSlides(key) {
+        const p = this.packagesData[key] || {};
+        const slides = [];
+        const seen = new Set();
+        const add = (type, url) => {
+            const u = this.mediaUrl(url);
+            if (!u || seen.has(u)) return;
+            seen.add(u);
+            slides.push({ type, url: u });
+        };
+        (p.images || []).forEach(url => add('image', url));
+        const videoList = [...(p.videos || [])];
+        if (p.video_url) videoList.push(p.video_url);
+        videoList.forEach(url => add('video', url));
+        if (!slides.length) {
+            add('image', p.image_url || this.pkgDefaultImage(key));
+        }
+        return slides;
+    },
+    getModalSlideLabel(key) {
+        const total = this.getModalSlides(key).length;
+        const slide = this.getCurrentModalSlide(key);
+        const typeLabel = slide.type === 'video' ? 'Video' : 'Rasm';
+        return (this.modalSlide + 1) + '/' + total + ' · ' + typeLabel;
+    },
+    pauseModalVideos() {
+        document.querySelectorAll('.pkg-modal-video').forEach(v => {
+            try { v.pause(); v.currentTime = 0; } catch (e) { /* ignore */ }
+        });
+    },
+    goModalSlide(key, index) {
+        this.pauseModalVideos();
+        this.modalSlide = index;
+    },
+    getCurrentModalSlide(key) {
+        const slides = this.getModalSlides(key);
+        return slides[this.modalSlide] || { type: 'image', url: this.pkgDefaultImage(key) };
+    },
+    getImageLightboxIndex(key, slideIdx) {
+        const slides = this.getModalSlides(key);
+        let imgIndex = 0;
+        for (let i = 0; i < slideIdx; i++) {
+            if (slides[i]?.type === 'image') imgIndex++;
+        }
+        return imgIndex;
+    },
+    openPackageModal(key) {
+        this.modalSlide = 0;
+        this.pkgSlide[key] = 0;
+        this.activeModal = key;
+    },
+    pkgSlideNext(key) {
+        const n = this.getPackageImages(key).length;
+        if (n <= 1) return;
+        this.pkgSlide[key] = ((this.pkgSlide[key] || 0) + 1) % n;
+    },
+    pkgSlidePrev(key) {
+        const n = this.getPackageImages(key).length;
+        if (n <= 1) return;
+        this.pkgSlide[key] = ((this.pkgSlide[key] || 0) - 1 + n) % n;
+    },
+    modalSlideNext(key) {
+        const n = this.getModalSlides(key).length;
+        if (n <= 1) return;
+        this.pauseModalVideos();
+        this.modalSlide = (this.modalSlide + 1) % n;
+    },
+    modalSlidePrev(key) {
+        const n = this.getModalSlides(key).length;
+        if (n <= 1) return;
+        this.pauseModalVideos();
+        this.modalSlide = (this.modalSlide - 1 + n) % n;
+    },
+    pkgTouchStart(e) {
+        const t = e.changedTouches ? e.changedTouches[0] : e;
+        this.pkgTouchStartX = t.clientX;
+    },pkgTouchEnd(e, key, isModal) {
+            const t = e.changedTouches ? e.changedTouches[0] : e;
+            const dx = t.clientX - this.pkgTouchStartX;
+            if (dx < -40) {
+                if (isModal) this.modalSlideNext(key);
+                else this.pkgSlideNext(key);
+            } else if (dx > 40) {
+                if (isModal) this.modalSlidePrev(key);
+                else this.pkgSlidePrev(key);
+            }
+        },
+        apiBase() {
+            const local = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
+            return local ? 'http://localhost:3000' : '';
+        },
+        async loadRemoteData() {
+            const base = this.apiBase();
+            const [packagesResult, mediaResult, settingsResult] = await Promise.allSettled([
+                fetch(`${base}/api/packages`),
+                fetch(`${base}/api/packages/media`),
+                fetch(`${base}/api/settings`)
+            ]);
 
-                if (packagesResult.status === 'fulfilled' && packagesResult.value.ok) {
-                    try {
-                        const packages = await packagesResult.value.json();
-                        packages.forEach(pkg => {
-                            const key = pkg.keyName || pkg.key_name;
-                            if (!key || !this.packagesData[key]) return;
-                            this.packagesData[key] = {
-                                ...this.packagesData[key],
-                                price: pkg.price,
-                                display_name: pkg.displayName || pkg.display_name,
-                                description: pkg.description
-                            };
-                        });
-                    } catch (e) { console.warn('Packages parse error', e); }
-                }
+            if (packagesResult.status === 'fulfilled' && packagesResult.value.ok) {
+                try {
+                    const packages = await packagesResult.value.json();
+                    packages.forEach(pkg => {
+                        const key = pkg.keyName || pkg.key_name;
+                        if (!key || !this.packagesData[key]) return;
+                        this.packagesData[key] = {
+                            ...this.packagesData[key],
+                            price: pkg.price,
+                            display_name: pkg.displayName || pkg.display_name,
+                            description: pkg.description
+                        };
+                    });
+                } catch (e) { console.warn('Packages parse error', e); }
+            }
 
-                if (mediaResult.status === 'fulfilled' && mediaResult.value.ok) {
-                    try {
-                        const mediaData = await mediaResult.value.json();
-                        Object.keys(mediaData).forEach(key => {
-                            const normalized = this.normalizePackageMedia(key, mediaData[key]);
-                            if (this.packagesData[key]) {
-                                this.packagesData[key] = { ...this.packagesData[key], ...normalized };
-                            } else {
-                                this.packagesData[key] = normalized;
-                            }
-                        });
-                    } catch (e) { console.warn('Media parse error', e); }
-                }
+            if (mediaResult.status === 'fulfilled' && mediaResult.value.ok) {
+                try {
+                    const mediaData = await mediaResult.value.json();
+                    Object.keys(mediaData).forEach(key => {
+                        const normalized = this.normalizePackageMedia(key, mediaData[key]);
+                        if (this.packagesData[key]) {
+                            this.packagesData[key] = { ...this.packagesData[key], ...normalized };
+                        } else {
+                            this.packagesData[key] = normalized;
+                        }
+                    });
+                } catch (e) { console.warn('Media parse error', e); }
+            }
 
-                if (settingsResult.status === 'fulfilled' && settingsResult.value.ok) {
-                    try {
-                        const settingsData = await settingsResult.value.json();
-                        if (settingsData.hero_subtitle) this.translations.uz.hero_subtitle = settingsData.hero_subtitle;
-                        if (settingsData.hero_title) this.translations.uz.hero_title = settingsData.hero_title;
-                        if (settingsData.hero_desc) this.translations.uz.hero_desc = settingsData.hero_desc;
-                        if (settingsData.offer_title) this.translations.uz.offer_title = settingsData.offer_title;
-                        if (settingsData.offer_desc) this.translations.uz.offer_desc = settingsData.offer_desc;
-                        const pixelId = (settingsData.meta_pixel_id || window.META_PIXEL_ID || '').trim();
-                        if (pixelId) initMetaPixel(pixelId);
-                    } catch (e) { console.warn('Settings parse error', e); }
-                } else {
-                    const pixelId = (window.META_PIXEL_ID || '').trim();
+            if (settingsResult.status === 'fulfilled' && settingsResult.value.ok) {
+                try {
+                    const settingsData = await settingsResult.value.json();
+                    if (settingsData.hero_subtitle) this.translations.uz.hero_subtitle = settingsData.hero_subtitle;
+                    if (settingsData.hero_title) this.translations.uz.hero_title = settingsData.hero_title;
+                    if (settingsData.hero_desc) this.translations.uz.hero_desc = settingsData.hero_desc;
+                    if (settingsData.offer_title) this.translations.uz.offer_title = settingsData.offer_title;
+                    if (settingsData.offer_desc) this.translations.uz.offer_desc = settingsData.offer_desc;
+                    const pixelId = (settingsData.meta_pixel_id || window.META_PIXEL_ID || '').trim();
                     if (pixelId) initMetaPixel(pixelId);
-                }
-            },
-            init() {
-                document.documentElement.lang = this.currentLang;
-                const runRemote = () => this.loadRemoteData();
-                if ('requestIdleCallback' in window) {
-                    requestIdleCallback(runRemote, { timeout: 2500 });
-                } else {
-                    setTimeout(runRemote, 150);
-                }
+                } catch (e) { console.warn('Settings parse error', e); }
+            } else {
+                const pixelId = (window.META_PIXEL_ID || '').trim();
+                if (pixelId) initMetaPixel(pixelId);
+            }
+        },
+        init() {
+            document.documentElement.lang = this.currentLang;
+            const runRemote = () => this.loadRemoteData();
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(runRemote, { timeout: 2500 });
+            } else {
+                setTimeout(runRemote, 150);
+            }
 
-                this.$watch('activeModal', value => {
-                    if (['standard', 'comfort', 'lux', 'lux_jumeirah'].includes(value)) {
-                        this.modalSlide = 0;
-                    }
-                    if (!value) {
-                        this.pauseModalVideos();
-                        document.querySelectorAll('video').forEach(v => {
-                            v.pause();
-                            v.currentTime = 0;
-                        });
-                    } else if (value === 'booking') {
-                        trackMetaEvent('InitiateCheckout', {
+            // $watch qismida faqat mavjud 3 ta paket kalitlari tekshiriladi
+            this.$watch('activeModal', value => {
+                if (['standard', 'comfort', 'special_14day'].includes(value)) {
+                    this.modalSlide = 0;
+                }
+                if (!value) {
+                    this.pauseModalVideos();
+                    document.querySelectorAll('video').forEach(v => {
+                        v.pause();
+                        v.currentTime = 0;
+                    });
+                } else if (value === 'booking') {
+                    trackMetaEvent('InitiateCheckout', {
+                        content_name: this.selectedPackage,
+                        value: this.getBookingTotal(),
+                        currency: 'USD'
+                    });
+                }
+            });
+        },
+        openLightbox(imgs, index) {
+            this.lightboxImages = imgs;
+            this.lightboxIndex = index;
+        },
+        async submitBooking() {
+            if (document.getElementById('hp_field').value !== "") return;
+
+            const cleanName = this.bookingName.trim().replace(/[<>]/g, "");
+            let cleanPhone = this.bookingPhone.trim().replace(/[^+0-9]/g, "");
+
+            // Validatsiya
+            if (cleanName.length < 3) {
+                this.showToast("Iltimos, ismingizni kiriting.");
+                return;
+            }
+            if (!cleanPhone.startsWith('+')) cleanPhone = '+' + cleanPhone;
+            const phoneRegex = /^\+998[0-9]{9}$/;
+            if (!phoneRegex.test(cleanPhone.replace(/\s/g, ''))) {
+                this.showToast("Telefon raqamini to'g'ri kiriting: +998XXXXXXXXX");
+                return;
+            }
+
+            if(!this.isSubmitting) {
+                this.isSubmitting = true;
+                try {
+                    const apiHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:'
+                        ? 'http://localhost:3000/api/leads'
+                        : '/api/leads';
+
+                    const response = await fetch(apiHost, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name: cleanName,
+                            phone: cleanPhone,
+                            package: this.selectedPackage,
+                            persons: this.calcPersons,
+                            room: this.roomBasedPackages.includes(this.selectedPackage) ? this.bookingRoom : "",
+                            operator: this.bookingOperator,
+                            paymentMethod: this.bookingPayment
+                        })
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok && result.success) {
+                        trackMetaEvent('Lead', {
                             content_name: this.selectedPackage,
                             value: this.getBookingTotal(),
                             currency: 'USD'
                         });
+                        this.showSuccess = true;
+                        setTimeout(() => {
+                            this.activeModal = null;
+                            this.showSuccess = false;
+                            this.bookingName = '';
+                            this.bookingPhone = '';
+                            this.calcPersons = 1;
+                            this.bookingOperator = 'Erkak';
+                            this.bookingPayment = 'Naqd pul';
+                        }, 3000);
+                    } else {
+                        throw new Error(result.error || "Murojaat yuborishda xatolik.");
                     }
-                });
-            },
-            openLightbox(imgs, index) {
-                this.lightboxImages = imgs;
-                this.lightboxIndex = index;
-            },
-            async submitBooking() {
-                if (document.getElementById('hp_field').value !== "") return;
-
-                const cleanName = this.bookingName.trim().replace(/[<>]/g, "");
-                let cleanPhone = this.bookingPhone.trim().replace(/[^+0-9]/g, "");
-
-                // Validatsiya
-                if (cleanName.length < 3) {
-                    this.showToast("Iltimos, ismingizni kiriting.");
-                    return;
-                }
-                if (!cleanPhone.startsWith('+')) cleanPhone = '+' + cleanPhone;
-                const phoneRegex = /^\+998[0-9]{9}$/;
-                if (!phoneRegex.test(cleanPhone.replace(/\s/g, ''))) {
-                    this.showToast("Telefon raqamini to'g'ri kiriting: +998XXXXXXXXX");
-                    return;
-                }
-
-                if(!this.isSubmitting) {
-                    this.isSubmitting = true;
-                    try {
-                        // Backend API orqali xavfsiz yuborish
-                        // Agar lokal ishlayotgan bo'lsa (file:// yoki localhost), u holda http://localhost:3000 ga yuboradi.
-                        // Agar serverda bo'lsa relative '/api/leads' dan foydalanadi.
-                        const apiHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:'
-                            ? 'http://localhost:3000/api/leads'
-                            : '/api/leads';
-
-                        const response = await fetch(apiHost, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                name: cleanName,
-                                phone: cleanPhone,
-                                package: this.selectedPackage,
-                                persons: this.calcPersons,
-                                room: this.roomBasedPackages.includes(this.selectedPackage) ? this.bookingRoom : "",
-                                operator: this.bookingOperator,
-                                paymentMethod: this.bookingPayment
-                            })
-                        });
-
-                        const result = await response.json();
-
-                        if (response.ok && result.success) {
-                            trackMetaEvent('Lead', {
-                                content_name: this.selectedPackage,
-                                value: this.getBookingTotal(),
-                                currency: 'USD'
-                            });
-                            this.showSuccess = true;
-                            setTimeout(() => {
-                                this.activeModal = null;
-                                this.showSuccess = false;
-                                this.bookingName = '';
-                                this.bookingPhone = '';
-                                this.calcPersons = 1;
-                                this.bookingOperator = 'Erkak';
-                                this.bookingPayment = 'Naqd pul';
-                            }, 3000);
-                        } else {
-                            throw new Error(result.error || "Murojaat yuborishda xatolik.");
-                        }
-                    } catch (err) {
-                        console.error("Booking error:", err);
-                        this.showToast("Xatolik yuz berdi. Qayta urinib ko'ring yoki qo'ng'iroq qiling.");
-                    } finally {
-                        this.isSubmitting = false;
-                    }
+                } catch (err) {
+                    console.error("Booking error:", err);
+                    this.showToast("Xatolik yuz berdi. Qayta urinib ko'ring yoki qo'ng'iroq qiling.");
+                } finally {
+                    this.isSubmitting = false;
                 }
             }
-        };
-        if (window.SITE_I18N) {
-            ['uz', 'ru', 'en'].forEach((lang) => Object.assign(app.translations[lang], window.SITE_I18N[lang] || {}));
         }
-        return app;
+    };
+    if (window.SITE_I18N) {
+        ['uz', 'ru', 'en'].forEach((lang) => Object.assign(app.translations[lang], window.SITE_I18N[lang] || {}));
     }
-    </script>
+    return app;
+}
+</script>
 </body>
 
 </html>
