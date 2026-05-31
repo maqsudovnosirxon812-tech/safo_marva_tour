@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="uz" class="scroll-smooth" :class="{ 'dark': isDark }" x-data="tourApp()">
+<html lang="uz" class="scroll-smooth" :class="{ 'dark': isDark }" x-data="tourApp()"
+      xmlns:x-transition="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -699,7 +700,7 @@ window.SITE_I18N = {
          x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
          x-transition:leave-end="opacity-0 -translate-y-4"
          class="lg:hidden bg-brand-cream dark:bg-[#0B0F19] border-t border-gray-200 dark:border-gray-800 absolute top-full left-0 w-full shadow-2xl py-6 px-6 text-center z-40">
-        
+
         <div class="flex justify-center items-center gap-6 mb-6">
             <button @click="toggleTheme()" class="text-gray-600 dark:text-gray-400 p-2" type="button" :aria-label="t('aria_theme')">
                 <svg x-show="!isDark" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
@@ -1267,6 +1268,7 @@ window.SITE_I18N = {
 </div>
 
 <!-- Why Choose Us -->
+<!-- Why Choose Section -->
 <section id="why-choose" class="py-24 bg-brand-cream-dark dark:bg-[#0B0F19] transition-colors duration-300 reveal">
     <div class="container mx-auto px-6">
         <div class="text-center mb-16">
@@ -1274,26 +1276,32 @@ window.SITE_I18N = {
             <div class="w-24 h-1 bg-brand-gold mx-auto"></div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div
-                    class="text-center p-8 rounded-3xl bg-brand-cream dark:bg-[#151C2C]/40 border border-gray-200 dark:border-gray-800/80 hover:bg-brand-cream-dark dark:hover:bg-[#151C2C]/80 hover:border-brand-gold/30 shadow-sm dark:shadow-none hover:shadow-xl transition-all duration-300">
+            <!-- License Card -->
+            <div class="text-center p-8 rounded-3xl bg-brand-cream dark:bg-[#151C2C]/40 border border-gray-200 dark:border-gray-800/80 hover:bg-brand-cream-dark dark:hover:bg-[#151C2C]/80 hover:border-brand-gold/30 shadow-sm dark:shadow-none hover:shadow-xl transition-all duration-300">
                 <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
                 </div>
                 <h4 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white" x-text="t('why_license_title')"></h4>
                 <p class="text-gray-600 dark:text-gray-400" x-text="t('why_license_desc')"></p>
             </div>
-            <div
-                    class="text-center p-8 rounded-3xl bg-brand-cream dark:bg-[#151C2C]/40 border border-gray-200 dark:border-gray-800/80 hover:bg-brand-cream-dark dark:hover:bg-[#151C2C]/80 hover:border-brand-gold/30 shadow-sm dark:shadow-none hover:shadow-xl transition-all duration-300">
+            <!-- Team Card -->
+            <div class="text-center p-8 rounded-3xl bg-brand-cream dark:bg-[#151C2C]/40 border border-gray-200 dark:border-gray-800/80 hover:bg-brand-cream-dark dark:hover:bg-[#151C2C]/80 hover:border-brand-gold/30 shadow-sm dark:shadow-none hover:shadow-xl transition-all duration-300">
                 <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
                 </div>
                 <h4 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white" x-text="t('why_team_title')"></h4>
                 <p class="text-gray-600 dark:text-gray-400" x-text="t('why_team_desc')"></p>
             </div>
-            <div
-                    class="text-center p-8 rounded-3xl bg-brand-cream dark:bg-[#151C2C]/40 border border-gray-200 dark:border-gray-800/80 hover:bg-brand-cream-dark dark:hover:bg-[#151C2C]/80 hover:border-brand-gold/30 shadow-sm dark:shadow-none hover:shadow-xl transition-all duration-300">
+            <!-- Peace Card -->
+            <div class="text-center p-8 rounded-3xl bg-brand-cream dark:bg-[#151C2C]/40 border border-gray-200 dark:border-gray-800/80 hover:bg-brand-cream-dark dark:hover:bg-[#151C2C]/80 hover:border-brand-gold/30 shadow-sm dark:shadow-none hover:shadow-xl transition-all duration-300">
                 <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-brand-gold/10 flex items-center justify-center text-brand-gold">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
                 </div>
                 <h4 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white" x-text="t('why_peace_title')"></h4>
                 <p class="text-gray-600 dark:text-gray-400" x-text="t('why_peace_desc')"></p>
@@ -1310,7 +1318,7 @@ window.SITE_I18N = {
                 <h2 class="text-4xl font-serif section-title mb-4" x-text="t('section_gallery')"></h2>
                 <p class="text-gray-600 dark:text-gray-400 max-w-md" x-text="t('gallery_desc')"></p>
             </div>
-            <a href="https://t.me/safomarwa_umra"
+            <a href="https://t.me/safomarwa_umra" target="_blank" rel="noopener noreferrer"
                class="text-brand-gold border-b border-brand-gold pb-1 hover:text-gray-900 dark:hover:text-white hover:border-gray-900 dark:hover:border-white transition-all" x-text="t('gallery_view_all')"></a>
         </div>
     </div>
@@ -1320,43 +1328,27 @@ window.SITE_I18N = {
         <div class="marquee-container flex space-x-6 px-6">
             <!-- Original Set -->
             <div class="flex space-x-6 flex-shrink-0">
-                <img data-src="galereya/ziyorat1.jpg" alt="Ziyoratchilar 1" width="448" height="288"
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
-                <img data-src="galereya/ziyorat2.jpg" alt="Ziyoratchilar 2" width="448" height="288"
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
-                <img data-src="galereya/ziyorat3.jpg" alt="Ziyoratchilar 3" width="448" height="288"
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
-                <img data-src="galereya/ziyorat1.jpg" alt="" width="448" height="288" aria-hidden="true"
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
-                <img data-src="galereya/ziyorat2.jpg" alt="" width="448" height="288" aria-hidden="true"
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
-                <img data-src="galereya/ziyorat3.jpg" alt="" width="448" height="288" aria-hidden="true"
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat1.jpg" alt="Ziyoratchilar 1" width="448" height="288" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat2.jpg" alt="Ziyoratchilar 2" width="448" height="288" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat3.jpg" alt="Ziyoratchilar 3" width="448" height="288" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat1.jpg" alt="" width="448" height="288" aria-hidden="true" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat2.jpg" alt="" width="448" height="288" aria-hidden="true" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat3.jpg" alt="" width="448" height="288" aria-hidden="true" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
             </div>
-            <!-- Duplicate Set for loop (brauzer cache dan foydalanadi) -->
+            <!-- Duplicate Set for continuous loop -->
             <div class="flex space-x-6 flex-shrink-0" aria-hidden="true">
-                <img data-src="galereya/ziyorat1.jpg" alt="" width="448" height="288"
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
-                <img data-src="galereya/ziyorat2.jpg" alt="" width="448" height="288"
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
-                <img data-src="galereya/ziyorat3.jpg" alt="" width="448" height="288"
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
-                <img data-src="galereya/ziyorat1.jpg" alt="" width="448" height="288"
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
-                <img data-src="galereya/ziyorat2.jpg" alt="" width="448" height="288"
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
-                <img data-src="galereya/ziyorat3.jpg" alt="" width="448" height="288"
-                     class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat1.jpg" alt="" width="448" height="288" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat2.jpg" alt="" width="448" height="288" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat3.jpg" alt="" width="448" height="288" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat1.jpg" alt="" width="448" height="288" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat2.jpg" alt="" width="448" height="288" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
+                <img data-src="galereya/ziyorat3.jpg" alt="" width="448" height="288" class="h-72 w-[28rem] object-cover rounded-3xl shadow-2xl flex-shrink-0 bg-gray-200 dark:bg-gray-800" decoding="async">
             </div>
         </div>
 
         <!-- Gradient Overlays for smooth edges -->
-        <div
-                class="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-brand-cream dark:from-brand-dark to-transparent z-10 pointer-events-none transition-colors duration-300">
-        </div>
-        <div
-                class="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-brand-cream dark:from-brand-dark to-transparent z-10 pointer-events-none transition-colors duration-300">
-        </div>
+        <div class="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-brand-cream dark:from-brand-dark to-transparent z-10 pointer-events-none transition-colors duration-300"></div>
+        <div class="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-brand-cream dark:from-brand-dark to-transparent z-10 pointer-events-none transition-colors duration-300"></div>
     </div>
 </section>
 
@@ -1370,113 +1362,69 @@ window.SITE_I18N = {
 
         <div class="space-y-4">
             <!-- FAQ Item 1 -->
-            <div 
-                class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
-                :class="activeFaq === 1 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
-                @click="activeFaq = (activeFaq === 1) ? null : 1">
+            <div class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
+                 :class="activeFaq === 1 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
+                 @click="activeFaq = (activeFaq === 1) ? null : 1">
                 <div class="flex justify-between items-center gap-4">
-                    <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300"
-                        :class="activeFaq === 1 ? 'text-brand-gold' : ''"
-                        x-text="t('faq_q1')"></h4>
-                    <span class="text-brand-gold flex-shrink-0 transition-transform duration-300"
-                          :class="activeFaq === 1 ? 'rotate-180' : ''">
+                    <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300" :class="activeFaq === 1 ? 'text-brand-gold' : ''" x-text="t('faq_q1')"></h4>
+                    <span class="text-brand-gold flex-shrink-0 transition-transform duration-300" :class="activeFaq === 1 ? 'rotate-180' : ''">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
                         </svg>
                     </span>
                 </div>
-                <div x-show="activeFaq === 1"
-                     x-transition:enter="transition ease-out duration-300"
-                     x-transition:enter-start="opacity-0 max-h-0"
-                     x-transition:enter-end="opacity-100 max-h-[500px]"
-                     x-transition:leave="transition ease-in duration-200"
-                     x-transition:leave-start="opacity-100 max-h-[500px]"
-                     x-transition:leave-end="opacity-0 max-h-0"
-                     class="overflow-hidden mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-gray-100 dark:border-gray-800/60 pt-4">
+                <div x-show="activeFaq === 1" x-collapse class="overflow-hidden mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-gray-100 dark:border-gray-800/60 pt-4">
                     <p x-text="t('faq_a1')"></p>
                 </div>
             </div>
 
             <!-- FAQ Item 2 -->
-            <div 
-                class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
-                :class="activeFaq === 2 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
-                @click="activeFaq = (activeFaq === 2) ? null : 2">
+            <div class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
+                 :class="activeFaq === 2 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
+                 @click="activeFaq = (activeFaq === 2) ? null : 2">
                 <div class="flex justify-between items-center gap-4">
-                    <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300"
-                        :class="activeFaq === 2 ? 'text-brand-gold' : ''"
-                        x-text="t('faq_q2')"></h4>
-                    <span class="text-brand-gold flex-shrink-0 transition-transform duration-300"
-                          :class="activeFaq === 2 ? 'rotate-180' : ''">
+                    <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300" :class="activeFaq === 2 ? 'text-brand-gold' : ''" x-text="t('faq_q2')"></h4>
+                    <span class="text-brand-gold flex-shrink-0 transition-transform duration-300" :class="activeFaq === 2 ? 'rotate-180' : ''">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
                         </svg>
                     </span>
                 </div>
-                <div x-show="activeFaq === 2"
-                     x-transition:enter="transition ease-out duration-300"
-                     x-transition:enter-start="opacity-0 max-h-0"
-                     x-transition:enter-end="opacity-100 max-h-[500px]"
-                     x-transition:leave="transition ease-in duration-200"
-                     x-transition:leave-start="opacity-100 max-h-[500px]"
-                     x-transition:leave-end="opacity-0 max-h-0"
-                     class="overflow-hidden mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-gray-100 dark:border-gray-800/60 pt-4">
+                <div x-show="activeFaq === 2" x-collapse class="overflow-hidden mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-gray-100 dark:border-gray-800/60 pt-4">
                     <p x-text="t('faq_a2')"></p>
                 </div>
             </div>
 
             <!-- FAQ Item 3 -->
-            <div 
-                class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
-                :class="activeFaq === 3 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
-                @click="activeFaq = (activeFaq === 3) ? null : 3">
+            <div class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
+                 :class="activeFaq === 3 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
+                 @click="activeFaq = (activeFaq === 3) ? null : 3">
                 <div class="flex justify-between items-center gap-4">
-                    <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300"
-                        :class="activeFaq === 3 ? 'text-brand-gold' : ''"
-                        x-text="t('faq_q3')"></h4>
-                    <span class="text-brand-gold flex-shrink-0 transition-transform duration-300"
-                          :class="activeFaq === 3 ? 'rotate-180' : ''">
+                    <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300" :class="activeFaq === 3 ? 'text-brand-gold' : ''" x-text="t('faq_q3')"></h4>
+                    <span class="text-brand-gold flex-shrink-0 transition-transform duration-300" :class="activeFaq === 3 ? 'rotate-180' : ''">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
                         </svg>
                     </span>
                 </div>
-                <div x-show="activeFaq === 3"
-                     x-transition:enter="transition ease-out duration-300"
-                     x-transition:enter-start="opacity-0 max-h-0"
-                     x-transition:enter-end="opacity-100 max-h-[500px]"
-                     x-transition:leave="transition ease-in duration-200"
-                     x-transition:leave-start="opacity-100 max-h-[500px]"
-                     x-transition:leave-end="opacity-0 max-h-0"
-                     class="overflow-hidden mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-gray-100 dark:border-gray-800/60 pt-4">
+                <div x-show="activeFaq === 3" x-collapse class="overflow-hidden mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-gray-100 dark:border-gray-800/60 pt-4">
                     <p x-text="t('faq_a3')"></p>
                 </div>
             </div>
 
             <!-- FAQ Item 4 -->
-            <div 
-                class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
-                :class="activeFaq === 4 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
-                @click="activeFaq = (activeFaq === 4) ? null : 4">
+            <div class="bg-brand-cream dark:bg-[#151C2C]/40 border rounded-3xl p-6 cursor-pointer transition-all duration-300"
+                 :class="activeFaq === 4 ? 'border-brand-gold/50 dark:border-brand-gold/40 shadow-lg' : 'border-gray-200 dark:border-gray-800/80 hover:shadow-md hover:border-brand-gold/20'"
+                 @click="activeFaq = (activeFaq === 4) ? null : 4">
                 <div class="flex justify-between items-center gap-4">
-                    <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300"
-                        :class="activeFaq === 4 ? 'text-brand-gold' : ''"
-                        x-text="t('faq_q4')"></h4>
-                    <span class="text-brand-gold flex-shrink-0 transition-transform duration-300"
-                          :class="activeFaq === 4 ? 'rotate-180' : ''">
+                    <h4 class="text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300" :class="activeFaq === 4 ? 'text-brand-gold' : ''" x-text="t('faq_q4')"></h4>
+                    <span class="text-brand-gold flex-shrink-0 transition-transform duration-300" :class="activeFaq === 4 ? 'rotate-180' : ''">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
                         </svg>
                     </span>
                 </div>
-                <div x-show="activeFaq === 4"
-                     x-transition:enter="transition ease-out duration-300"
-                     x-transition:enter-start="opacity-0 max-h-0"
-                     x-transition:enter-end="opacity-100 max-h-[500px]"
-                     x-transition:leave="transition ease-in duration-200"
-                     x-transition:leave-start="opacity-100 max-h-[500px]"
-                     x-transition:leave-end="opacity-0 max-h-0"
-                     class="overflow-hidden mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-gray-100 dark:border-gray-800/60 pt-4">
+                <div x-show="activeFaq === 4" x-collapse class="overflow-hidden mt-4 text-gray-600 dark:text-gray-300 text-sm md:text-base leading-relaxed border-t border-gray-100 dark:border-gray-800/60 pt-4">
                     <p x-text="t('faq_a4')"></p>
                 </div>
             </div>
@@ -1493,19 +1441,15 @@ window.SITE_I18N = {
             <h3 class="section-title text-4xl md:text-5xl font-serif mb-8 relative z-10" x-text="t('cta_title')"></h3>
             <p class="text-gray-700 dark:text-gray-300 text-xl mb-12 max-w-2xl mx-auto relative z-10" x-text="t('cta_desc')"></p>
             <div class="flex flex-col sm:flex-row justify-center gap-6 relative z-10">
-                <a href="tel:+998555177373"
-                   class="bg-brand-red text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-red-800 transition-all hover:scale-105 active:scale-95 shadow-lg" x-text="t('cta_call')"></a>
-                <a href="https://t.me/Safomarva_admin" target="_blank" rel="noopener noreferrer"
-                   class="bg-brand-gold text-brand-red px-12 py-5 rounded-2xl font-bold text-xl hover:bg-yellow-600 transition-all hover:scale-105 active:scale-95 shadow-lg" x-text="t('cta_telegram')"></a>
+                <a href="tel:+998555177373" class="bg-brand-red text-white px-12 py-5 rounded-2xl font-bold text-xl hover:bg-red-800 transition-all hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center" x-text="t('cta_call')"></a>
+                <a href="https://t.me/Safomarva_admin" target="_blank" rel="noopener noreferrer" class="bg-brand-gold text-brand-red px-12 py-5 rounded-2xl font-bold text-xl hover:bg-yellow-600 transition-all hover:scale-105 active:scale-95 shadow-lg flex items-center justify-center" x-text="t('cta_telegram')"></a>
             </div>
         </div>
     </div>
 </section>
-
 <!-- Footer -->
 <footer class="bg-brand-cream-dark dark:bg-brand-dark text-gray-900 dark:text-white transition-colors duration-300 py-20">
-    <div
-            class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-200 dark:border-gray-800 pb-16 text-center md:text-left">
+    <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-gray-200 dark:border-gray-800 pb-16 text-center md:text-left">
         <div class="col-span-1 md:col-span-2 flex flex-col items-center md:items-start">
             <img src="safo_marva.png" alt="Safo Marva Tour" class="h-20 mb-6 rounded-lg bg-white/90 dark:bg-transparent p-1 shadow-sm dark:shadow-none">
             <p class="text-gray-600 dark:text-gray-400 max-w-sm" x-text="t('footer_tagline')"></p>
@@ -1513,10 +1457,8 @@ window.SITE_I18N = {
         <div>
             <h4 class="text-brand-gold font-bold mb-6" x-text="t('footer_contact')"></h4>
             <div class="space-y-4">
-                <p class="flex items-center justify-center md:justify-start text-gray-600 dark:text-gray-400"><span
-                        class="mr-3">📞</span> +998 55 517 73 73</p>
-                <p class="flex items-center justify-center md:justify-start text-gray-600 dark:text-gray-400"><span
-                        class="mr-3">📞</span> +998 70 019 03 73</p>
+                <p class="flex items-center justify-center md:justify-start text-gray-600 dark:text-gray-400"><span class="mr-3">📞</span> +998 55 517 73 73</p>
+                <p class="flex items-center justify-center md:justify-start text-gray-600 dark:text-gray-400"><span class="mr-3">📞</span> +998 70 019 03 73</p>
             </div>
         </div>
         <div>
@@ -1545,7 +1487,6 @@ window.SITE_I18N = {
     </div>
 </footer>
 
-<!-- Pastki o'ng: Telegram, Qo'ng'iroq, Yuqoriga -->
 <div class="fixed bottom-5 right-4 sm:right-6 z-[70] flex flex-col gap-3 items-center" aria-label="Tezkor aloqa">
     <button @click="window.scrollTo({top: 0, behavior: 'smooth'})" x-show="scrolled" x-cloak
             x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4"
@@ -1576,7 +1517,6 @@ window.SITE_I18N = {
     </a>
 </div>
 
-<!-- Booking Modal -->
 <div x-show="activeModal === 'booking'" x-cloak class="fixed inset-0 z-[250] overflow-y-auto">
     <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
         <div @click="activeModal = null" class="fixed inset-0 transition-opacity bg-[#04060B]/90 backdrop-blur-md"></div>
@@ -1584,42 +1524,39 @@ window.SITE_I18N = {
 
         <div class="inline-block overflow-hidden text-left align-bottom transition-all transform bg-brand-cream dark:bg-[#121824] border border-gray-200 dark:border-gray-800 rounded-[2.5rem] shadow-[0_0_50px_rgba(0,0,0,0.3)] sm:my-8 sm:align-middle sm:max-w-lg sm:w-full relative text-gray-900 dark:text-white">
 
-            <!-- Success State -->
             <div x-show="showSuccess" x-transition class="absolute inset-0 bg-brand-cream dark:bg-[#121824] z-10 flex flex-col items-center justify-center p-8 text-center">
                 <div class="w-20 h-20 bg-green-50 dark:bg-green-950 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center mb-6 border border-green-200 dark:border-green-800">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
                 </div>
-                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" x-text="t('booking_success_title')"></h3>
-                <p class="text-gray-600 dark:text-gray-300" x-text="t('booking_success_desc')"></p>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2" x-text="t('success_msg')"></h3>
+                <p class="text-gray-600 dark:text-gray-300" x-text="t('hero_subtitle')"></p>
             </div>
 
             <div class="bg-brand-red/90 p-6 md:p-8 text-white relative border-b border-red-950/50">
                 <button @click="activeModal = null" type="button" class="modal-close-btn absolute top-5 right-5 text-white hover:text-brand-gold" :aria-label="t('aria_close')">×</button>
-                <h3 class="text-2xl font-serif mb-1" x-text="t('booking_title')"></h3>
-                <p class="text-red-100 text-sm" x-text="t('booking_subtitle')"></p>
+                <h3 class="text-2xl font-serif mb-1" x-text="t('btn_booking')"></h3>
+                <p class="text-red-100 text-sm" x-text="t('calc_subtitle')"></p>
             </div>
 
             <form @submit.prevent="submitBooking()" class="p-6 md:p-8 space-y-5">
-                <!-- Honeypot field (Antispam) -->
                 <input type="text" id="hp_field" style="display:none !important" tabindex="-1" autocomplete="off">
 
-                <!-- Selected Package + Price Calculator -->
                 <div class="bg-gradient-to-br from-brand-gold/5 to-brand-gold/10 dark:from-brand-gold/5 dark:to-brand-gold/10 border border-brand-gold/20 rounded-2xl p-5">
                     <div class="flex items-center justify-between mb-4">
                         <div>
-                            <p class="text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest" x-text="t('booking_selected_pkg')"></p>
+                            <p class="text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest" x-text="t('calc_package')"></p>
                             <p class="text-base font-bold text-gray-900 dark:text-white mt-1" x-text="displayPackageName()"></p>
                         </div>
                         <div class="text-right">
-                            <p class="text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest" x-text="t('booking_per_person')"></p>
+                            <p class="text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest" x-text="t('calc_per_person')"></p>
                             <p class="text-lg font-bold text-brand-gold" x-text="'$' + getBookingPricePerPerson()"></p>
                         </div>
                     </div>
                     <div class="border-t border-brand-gold/15 pt-4">
-                        <label class="block text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3" x-text="t('booking_persons')"></label>
+                        <label class="block text-[10px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3" x-text="t('calc_persons')"></label>
                         <div class="flex items-center gap-3">
                             <button @click="calcPersons = Math.max(1, calcPersons - 1)" type="button"
-                                class="w-11 h-11 rounded-xl bg-brand-cream dark:bg-[#1B2436] border border-gray-200 dark:border-gray-700 flex items-center justify-center text-xl font-bold text-gray-600 dark:text-gray-300 hover:border-brand-gold/40 hover:text-brand-gold transition-all active:scale-90 select-none">
+                                    class="w-11 h-11 rounded-xl bg-brand-cream dark:bg-[#1B2436] border border-gray-200 dark:border-gray-700 flex items-center justify-center text-xl font-bold text-gray-600 dark:text-gray-300 hover:border-brand-gold/40 hover:text-brand-gold transition-all active:scale-90 select-none">
                                 −
                             </button>
                             <div class="flex-1 text-center">
@@ -1627,29 +1564,30 @@ window.SITE_I18N = {
                                 <span class="text-xs text-gray-500 dark:text-gray-400 ml-1" x-text="t('calc_person_word')"></span>
                             </div>
                             <button @click="calcPersons = Math.min(50, calcPersons + 1)" type="button"
-                                class="w-11 h-11 rounded-xl bg-brand-cream dark:bg-[#1B2436] border border-gray-200 dark:border-gray-700 flex items-center justify-center text-xl font-bold text-gray-600 dark:text-gray-300 hover:border-brand-gold/40 hover:text-brand-gold transition-all active:scale-90 select-none">
+                                    class="w-11 h-11 rounded-xl bg-brand-cream dark:bg-[#1B2436] border border-gray-200 dark:border-gray-700 flex items-center justify-center text-xl font-bold text-gray-600 dark:text-gray-300 hover:border-brand-gold/40 hover:text-brand-gold transition-all active:scale-90 select-none">
                                 +
                             </button>
                         </div>
                         <div class="mt-4 flex items-center justify-between bg-white/60 dark:bg-[#1B2436]/60 rounded-xl px-4 py-3 border border-brand-gold/10">
-                            <span class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider" x-text="t('booking_total') + ':'"></span>
+                            <span class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider" x-text="t('calc_total') + ':'"></span>
                             <span class="text-2xl font-bold text-brand-gold" x-text="'$' + getBookingTotal().toLocaleString()"></span>
                         </div>
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2" x-text="t('booking_name')"></label>
-                    <input type="text" x-model="bookingName" required :placeholder="t('placeholder_name')"
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2" x-text="t('form_name')"></label>
+                    <input type="text" x-model="bookingName" required :placeholder="t('form_name')"
                            class="w-full bg-brand-cream-dark dark:bg-[#1B2436] border border-gray-200 dark:border-gray-800 rounded-2xl px-6 py-4 text-gray-900 dark:text-white focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2" x-text="t('booking_phone')"></label>
-                    <input type="tel" x-model="bookingPhone" required :placeholder="t('placeholder_phone')"
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-2" x-text="t('form_phone')"></label>
+                    <input type="tel" x-model="bookingPhone" required placeholder="+998"
                            class="w-full bg-brand-cream-dark dark:bg-[#1B2436] border border-gray-200 dark:border-gray-800 rounded-2xl px-6 py-4 text-gray-900 dark:text-white focus:ring-2 focus:ring-brand-gold focus:border-transparent outline-none transition-all placeholder-gray-400 dark:placeholder-gray-500">
                 </div>
+
                 <div x-show="roomBasedPackages.includes(selectedPackage)">
-                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3" x-text="t('booking_room')"></label>
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3" x-text="t('calc_package')"></label>
                     <div class="grid grid-cols-3 gap-3">
                         <template x-for="room in roomOptions" :key="room.value">
                             <button type="button" @click="bookingRoom = room.value"
@@ -1662,7 +1600,7 @@ window.SITE_I18N = {
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3" x-text="t('booking_operator')"></label>
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3" x-text="t('menu_why_us')"></label>
                     <div class="grid grid-cols-2 gap-3">
                         <template x-for="op in operatorOptions" :key="op.value">
                             <button type="button" @click="bookingOperator = op.value"
@@ -1673,7 +1611,7 @@ window.SITE_I18N = {
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3" x-text="t('booking_payment')"></label>
+                    <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-3" x-text="t('package_price')"></label>
                     <div class="grid grid-cols-2 gap-3">
                         <template x-for="pay in paymentOptions" :key="pay.value">
                             <button type="button" @click="bookingPayment = pay.value"
@@ -1687,16 +1625,14 @@ window.SITE_I18N = {
                         :disabled="isSubmitting"
                         :class="isSubmitting ? 'bg-gray-300 dark:bg-gray-700 text-gray-500 cursor-not-allowed' : 'bg-brand-gold text-brand-red hover:shadow-2xl hover:bg-yellow-600'"
                         class="w-full py-5 rounded-2xl font-bold text-lg transition-all active:scale-95">
-                    <span x-show="!isSubmitting" x-text="t('booking_submit')"></span>
-                    <span x-show="isSubmitting" x-text="t('booking_submitting')"></span>
+                    <span x-show="!isSubmitting" x-text="t('btn_send')"></span>
+                    <span x-show="isSubmitting" x-text="'...' + t('btn_send')"></span>
                 </button>
-                <p class="text-[10px] text-gray-500 dark:text-gray-400 text-center uppercase tracking-wider" x-text="t('booking_privacy')"></p>
             </form>
         </div>
     </div>
 </div>
 
-<!-- Global Lightbox Overlay (Slider) -->
 <div x-show="lightboxImages.length > 0" x-cloak
      class="fixed inset-0 z-[200] flex items-center justify-center bg-black/95 transition-opacity duration-300"
      x-transition:enter="opacity-0" x-transition:enter-end="opacity-100"
@@ -1705,10 +1641,8 @@ window.SITE_I18N = {
      @keydown.window.left="lightboxIndex = (lightboxIndex > 0) ? lightboxIndex - 1 : lightboxImages.length - 1"
      @keydown.window.right="lightboxIndex = (lightboxIndex < lightboxImages.length - 1) ? lightboxIndex + 1 : 0">
 
-    <!-- Close Button -->
     <button @click="lightboxImages = []" class="absolute top-6 right-6 text-white text-4xl z-[210] hover:text-brand-gold transition-colors">&times;</button>
 
-    <!-- Navigation Buttons -->
     <button @click="lightboxIndex = (lightboxIndex > 0) ? lightboxIndex - 1 : lightboxImages.length - 1"
             class="absolute left-4 md:left-10 text-white bg-white/10 hover:bg-white/20 p-4 rounded-full z-[210] transition-all">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
@@ -1719,19 +1653,16 @@ window.SITE_I18N = {
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
     </button>
 
-    <!-- Image Container -->
     <div class="w-full h-full flex flex-col items-center justify-center p-4 md:p-12" @click.self="lightboxImages = []">
         <img :src="lightboxImages[lightboxIndex]"
              class="max-w-full max-h-[85vh] md:max-h-[90vh] rounded-lg shadow-2xl object-contain transition-all duration-300 transform"
              x-transition:enter="scale-95 opacity-0" x-transition:enter-end="scale-100 opacity-100">
 
-        <!-- Counter -->
         <div class="mt-6 text-white font-medium tracking-widest uppercase text-sm bg-white/10 px-6 py-2 rounded-full">
             <span x-text="lightboxIndex + 1"></span> / <span x-text="lightboxImages.length"></span>
         </div>
     </div>
 </div>
-
 <script>
     function initMetaPixel(pixelId) {
         if (!pixelId || window._metaPixelReady) return;
@@ -1777,8 +1708,7 @@ window.SITE_I18N = {
         galleryObserver.observe(gallerySection);
     }
 </script>
-<script>
-    function tourApp() {
+<script>function tourApp() {
         const app = {
             isDark: localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches),
             toggleTheme() {
@@ -1793,10 +1723,10 @@ window.SITE_I18N = {
                     menu_gallery: "Galereya",
                     menu_faq: "Savollar",
                     hero_subtitle: "Muborak Safarga Taklif Etamiz",
-                    hero_title: "Yangi Mavsum — Iyun-Iyul Oylaridan!",
+                    hero_title: "Yangi Mavsum — Iyun-Iyul-Avgust!",
                     hero_desc: "SAFO MARVA TOUR bilan — litsenziyalangan, xavfsiz va xotirjam ziyorat!",
-                    offer_title: "14 Kunlik \"Al Ebaa\" Komfort Paketi",
-                    offer_desc: "Iyun va Iyul oylari uchun maxsus. Toshkentdan to'g'ridan-to'g'ri reyslar va barcha qulayliklar mujassam.",
+                    offer_title: "Comfort Plus — 14 Kunlik Umra Paketi",
+                    offer_desc: "Iyun, Iyul va Avgust oylari uchun maxsus. Toshkentdan to'g'ridan-to'g'ri reyslar va barcha qulayliklar mujassam.",
                     hero_btn1: "PAKETLARNI TANLASH",
                     hero_btn2: "BEPUL KONSULTATSIYA",
                     btn_booking: "Band qilish",
@@ -1827,19 +1757,18 @@ window.SITE_I18N = {
                     calc_person_word: "kishi",
                     section_packages_title: "Umra Paketlarimiz",
                     section_packages_desc: "Siz va yaqinlaringiz uchun maxsus ishlab chiqilgan, barcha qulayliklarga ega takliflar.",
-                    pkg_nights: "10 KECHALIK",
-                    pkg_jumeirah_nights: "10 KECHALIK · IYUN-IYUL",
-                    pkg_standard: "Standart Paket",
-                    pkg_standard_hotel: "Ramada Zad Al Tayser (Haramga: 1 km)",
-                    pkg_comfort: "Komfort Paket",
-                    pkg_comfort_hotel: "AL EBAA mehmonxonasi (Haramga: 500 metr)",
-                    pkg_lux: "LUX Paket",
-                    pkg_lux_hotel: "ANJUM mehmonxonasi (Haramga: 150 metr)",
-                    pkg_jumeirah: "LUX Jumeirah Paket",
-                    pkg_jumeirah_hotel: "Waqf As Safi (Madina) + Jumeirah Jabal Omar (Makka)",
-                    pkg_jumeirah_note: "4 kishilik xonadan boshlanadi",
+                    pkg_nights_13: "13 KUNLIK PAKET",
+                    pkg_nights_10: "10 KUNLIK PAKET",
+                    pkg_nights_14: "14 KUNLIK PAKET",
+                    pkg_standard: "Standard Plus Paket",
+                    pkg_standard_hotel: "Ramada Zad al Tayser (Makka) + Mehrob Toiba (Madina)",
+                    pkg_comfort: "Comfort Plus 10 Kunlik",
+                    pkg_comfort_hotel: "Al Ebaa hotel (Makka) + Nusk al Hijra (Madina)",
+                    pkg_special_14day: "Comfort Plus 14 Kunlik",
+                    pkg_special_14day_hotel: "Al Ebaa hotel 4★ (Makka) + Mehrob Toiba 4★ (Madina)",
+                    pkg_room_note: "Xona joylashuviga qarab narx o'zgaradi",
                     badge_popular: "Ommabop",
-                    badge_premium: "LUX Premium",
+                    badge_premium: "Tavsiya etiladi",
                     btn_details: "Batafsil ma'lumot",
                     btn_book_now: "HOZIR BAND QILISH",
                     section_why_title: "Nega Aynan Safo Marva Tour?",
@@ -1871,8 +1800,10 @@ window.SITE_I18N = {
                     menu_gallery: "Галерея",
                     menu_faq: "Вопросы",
                     hero_subtitle: "Приглашаем в Священное Путешествие",
-                    hero_title: "Новый Сезон — с Июня-Июля!",
+                    hero_title: "Новый Сезон — Июнь-Июль-Август!",
                     hero_desc: "С SAFO MARVA TOUR — лицензированное, безопасное и спокойное паломничество!",
+                    offer_title: "Comfort Plus — 14-дневный пакет Умры",
+                    offer_desc: "Специально для месяцев Июнь, Июль и Август. Прямые рейсы из Ташкента и все удобства включены.",
                     hero_btn1: "ВЫБРАТЬ ПАКЕТ",
                     hero_btn2: "БЕСПЛАТНАЯ КОНСУЛЬТАЦИЯ",
                     btn_booking: "Забронировать",
@@ -1888,7 +1819,7 @@ window.SITE_I18N = {
                     faq_q1: "Какие документы нужны для визы?",
                     faq_a1: "Для получения визы Умры требуется биометрический заграничный паспорт (срок действия не менее 6 месяцев) и 2 цветные фотографии размером 3х4 на белом фоне. Все процедуры оформления визы наша команда берет на себя.",
                     faq_q2: "Всё ли включено в стоимость пакета?",
-                    faq_a2: "Да, в наши пакеты (в зависимости от вашего выбора) полностью включены авиабилеты в обе стороны, визовая поддержка, проживание в отелях Мекки и Медины, транспортные услуги (скоростной поезд и трансферы), услуги опытных руководителей групп и медицинская страховка. Никаких скрытых платежей.",
+                    faq_a2: "Да, в наши пакеты полностью включены авиабилеты в обе стороны, визовая поддержка, проживание в отелях Мекки и Медины, транспортные услуги (скоростной поезд и трансферы), услуги опытных руководителей групп и медицинская страховка. Никаких скрытых платежей.",
                     faq_q3: "Как работает медицинская страховка?",
                     faq_a3: "Во время вашего путешествия вас сопровождает специальная медицинская страховка, предоставленная Саудовской Аравией и нашей компанией. При возникновении проблем со здоровьем врач или руководитель группы организуют бесплатную медицинскую помощь по страховке.",
                     faq_q4: "Принимаете ли вы паломников из других городов?",
@@ -1903,19 +1834,18 @@ window.SITE_I18N = {
                     calc_person_word: "чел.",
                     section_packages_title: "Наши пакеты Умры",
                     section_packages_desc: "Специальные предложения со всеми удобствами для вас и ваших близких.",
-                    pkg_nights: "10 НОЧЕЙ",
-                    pkg_jumeirah_nights: "10 НОЧЕЙ · ИЮНЬ-ИЮЛЬ",
-                    pkg_standard: "Стандартный пакет",
-                    pkg_standard_hotel: "Ramada Zad Al Tayser (до Харама: 1 км)",
-                    pkg_comfort: "Комфорт пакет",
-                    pkg_comfort_hotel: "Отель AL EBAA (до Харама: 500 м)",
-                    pkg_lux: "LUX пакет",
-                    pkg_lux_hotel: "Отель ANJUM (до Харама: 150 м)",
-                    pkg_jumeirah: "LUX Jumeirah пакет",
-                    pkg_jumeirah_hotel: "Waqf As Safi (Медина) + Jumeirah Jabal Omar (Мекка)",
-                    pkg_jumeirah_note: "Цена от 4-местного номера",
+                    pkg_nights_13: "13-ДНЕВНЫЙ ПАКЕТ",
+                    pkg_nights_10: "10-ДНЕВНЫЙ ПАКЕТ",
+                    pkg_nights_14: "14-ДНЕВНЫЙ ПАКЕТ",
+                    pkg_standard: "Пакет Standard Plus",
+                    pkg_standard_hotel: "Ramada Zad al Tayser (Мекка) + Mehrob Toiba (Медина)",
+                    pkg_comfort: "Comfort Plus 10 Дней",
+                    pkg_comfort_hotel: "Al Ebaa hotel (Мекка) + Nusk al Hijra (Медина)",
+                    pkg_special_14day: "Comfort Plus 14 Дней",
+                    pkg_special_14day_hotel: "Al Ebaa hotel 4★ (Мекка) + Mehrob Toiba 4★ (Медина)",
+                    pkg_room_note: "Цена меняется в зависимости от размещения",
                     badge_popular: "Популярный",
-                    badge_premium: "LUX Premium",
+                    badge_premium: "Рекомендуется",
                     btn_details: "Подробнее",
                     btn_book_now: "ЗАБРОНИРОВАТЬ СЕЙЧАС",
                     section_why_title: "Почему Safo Marva Tour?",
@@ -1947,8 +1877,10 @@ window.SITE_I18N = {
                     menu_gallery: "Gallery",
                     menu_faq: "FAQ",
                     hero_subtitle: "Invite to Sacred Journey",
-                    hero_title: "New Season — from June-July!",
+                    hero_title: "New Season — June-July-August!",
                     hero_desc: "With SAFO MARVA TOUR — licensed, safe and peaceful pilgrimage!",
+                    offer_title: "Comfort Plus — 14 Days Umrah Package",
+                    offer_desc: "Special for June, July and August. Direct flights from Tashkent and all amenities included.",
                     hero_btn1: "CHOOSE PACKAGE",
                     hero_btn2: "FREE CONSULTATION",
                     btn_booking: "Book Now",
@@ -1979,19 +1911,18 @@ window.SITE_I18N = {
                     calc_person_word: "persons",
                     section_packages_title: "Our Umrah Packages",
                     section_packages_desc: "Tailored offers with every comfort for you and your loved ones.",
-                    pkg_nights: "10 NIGHTS",
-                    pkg_jumeirah_nights: "10 NIGHTS · JUNE-JULY",
-                    pkg_standard: "Standard Package",
-                    pkg_standard_hotel: "Ramada Zad Al Tayser (1 km to Haram)",
-                    pkg_comfort: "Comfort Package",
-                    pkg_comfort_hotel: "AL EBAA Hotel (500 m to Haram)",
-                    pkg_lux: "LUX Package",
-                    pkg_lux_hotel: "ANJUM Hotel (150 m to Haram)",
-                    pkg_jumeirah: "LUX Jumeirah Package",
-                    pkg_jumeirah_hotel: "Waqf As Safi (Madinah) + Jumeirah Jabal Omar (Makkah)",
-                    pkg_jumeirah_note: "From 4-person room",
+                    pkg_nights_13: "13 DAYS PACKAGE",
+                    pkg_nights_10: "10 DAYS PACKAGE",
+                    pkg_nights_14: "14 DAYS PACKAGE",
+                    pkg_standard: "Standard Plus Package",
+                    pkg_standard_hotel: "Ramada Zad al Tayser (Makkah) + Mehrob Toiba (Madinah)",
+                    pkg_comfort: "Comfort Plus 10 Days",
+                    pkg_comfort_hotel: "Al Ebaa hotel (Makkah) + Nusk al Hijra (Madinah)",
+                    pkg_special_14day: "Comfort Plus 14 Days",
+                    pkg_special_14day_hotel: "Al Ebaa hotel 4★ (Makkah) + Mehrob Toiba 4★ (Madinah)",
+                    pkg_room_note: "Price varies based on room occupancy",
                     badge_popular: "Most Popular",
-                    badge_premium: "LUX Premium",
+                    badge_premium: "Recommended",
                     btn_details: "View details",
                     btn_book_now: "BOOK NOW",
                     section_why_title: "Why Safo Marva Tour?",
@@ -2018,41 +1949,50 @@ window.SITE_I18N = {
                     aria_theme: "Toggle theme"
                 }
             },
-                t(key) {
+            t(key) {
                 return this.translations[this.currentLang][key] || key;
             },
             tList(key) {
                 const v = this.translations[this.currentLang][key];
                 return Array.isArray(v) ? v : [];
-            },
+            },// Paketlar kalitlarini yangi struktura bilan yangilaymiz
             packageNameKeys: {
-                'Standart Paket': 'pkg_standard',
-                'Komfort Paket': 'pkg_comfort',
-                'LUX Paket': 'pkg_lux',
-                'LUX Jumeirah Paket': 'pkg_jumeirah'
+                'Standard Plus Paket': 'pkg_standard',
+                'Comfort Plus 10 Kunlik': 'pkg_comfort',
+                'Comfort Plus 14 Kunlik': 'pkg_special_14day'
             },
             displayPackageName() {
                 const k = this.packageNameKeys[this.selectedPackage];
                 return k ? this.t(k) : this.selectedPackage;
             },
+
+            // Xonalar uchun tarjima kalitlari bilan variantlar
             roomOptions: [
                 { value: '4 kishilik', labelKey: 'room_4' },
                 { value: '3 kishilik', labelKey: 'room_3' },
                 { value: '2 kishilik', labelKey: 'room_2' }
             ],
+
+            // Guruh rahbari (Operator) uchun variantlar
             operatorOptions: [
                 { value: 'Erkak', labelKey: 'op_male' },
                 { value: 'Ayol kishi', labelKey: 'op_female' }
             ],
+
+            // To'lov turlari uchun variantlar
             paymentOptions: [
                 { value: 'Naqd pul', labelKey: 'pay_cash' },
                 { value: 'Plastik karta', labelKey: 'pay_card' }
             ],
+
+            // Tilni almashtirish funksiyasi
             setLang(lang) {
                 this.currentLang = lang;
                 localStorage.setItem('lang', lang);
                 document.documentElement.lang = lang;
             },
+
+            // Toast xabarnoma tizimi
             toastMessage: '',
             toastType: 'error',
             showToast(message, type = 'error') {
@@ -2060,375 +2000,371 @@ window.SITE_I18N = {
                 this.toastType = type;
                 clearTimeout(this._toastTimer);
                 this._toastTimer = setTimeout(() => { this.toastMessage = ''; }, 4500);
+            },activeModal: null,
+        scrolled: false,
+        mobileMenu: false,
+        lightboxImages: [],
+        lightboxIndex: 0,
+        bookingName: '',
+        bookingPhone: '',
+        bookingRoom: '4 kishilik',
+        bookingOperator: 'Erkak',
+        bookingPayment: 'Naqd pul',
+        selectedPackage: '',
+        calcPackage: 'comfort',
+        calcPersons: 1,
+        calcPackages: {
+            standard: { name: 'Standard Plus Paket', price: 1250 },
+            comfort: { name: 'Comfort Plus 10 Kunlik', price: 1350 },
+            special_14day: { name: 'Comfort Plus 14 Kunlik', price: 1500 }
+        },
+        // Comfort Plus 14 Kunlik paketida xona turiga qarab narx o'zgaradi
+        roomBasedPackages: ['Comfort Plus 14 Kunlik'],
+        roomPrices: {
+            'Comfort Plus 14 Kunlik': {
+                '4 kishilik': 1500,
+                '3 kishilik': 1600,
+                '2 kishilik': 1750
+            }
+        },
+        get calcPricePerPerson() {
+            return this.calcPackages[this.calcPackage]?.price || 0;
+        },
+        get calcTotalPrice() {
+            return this.calcPricePerPerson * this.calcPersons;
+        },
+        getBookingPricePerPerson() {
+            if (this.roomBasedPackages.includes(this.selectedPackage)) {
+                return this.roomPrices[this.selectedPackage]?.[this.bookingRoom] || 0;
+            }
+            const key = Object.keys(this.calcPackages).find(k => this.calcPackages[k].name === this.selectedPackage);
+            return this.calcPackages[key]?.price || 0;
+        },
+        getBookingTotal() {
+            return this.getBookingPricePerPerson() * this.calcPersons;
+        },
+        bookFromCalc() {
+            this.selectedPackage = this.calcPackages[this.calcPackage]?.name || '';
+            this.activeModal = 'booking';
+        },
+        showSuccess: false,
+        isSubmitting: false,
+        pkgSlide: { standard: 0, comfort: 0, special_14day: 0 },
+        modalSlide: 0,
+        pkgCardHover: null,
+        pkgModalHover: null,
+        pkgTouchStartX: 0,
+        packagesData: {
+            standard: {
+                price: '1250',
+                image_url: 'galereya/standart.png',
+                video_url: '',
+                images: ['galereya/standart.png'],
+                videos: []
             },
-            activeModal: null,
-            scrolled: false,
-            mobileMenu: false,
-            lightboxImages: [],
-            lightboxIndex: 0,
-            bookingName: '',
-            bookingPhone: '',
-            bookingRoom: '4 kishilik',
-            bookingOperator: 'Erkak',
-            bookingPayment: 'Naqd pul',
-            selectedPackage: '',
-            calcPackage: 'comfort',
-            calcPersons: 1,
-            calcPackages: {
-                standard: { name: 'Standart Paket', price: 1150 },
-                comfort: { name: 'Komfort Paket', price: 1300 },
-                lux: { name: 'LUX Paket', price: 1550 },
-                lux_jumeirah: { name: 'LUX Jumeirah Paket', price: 1690 }
+            comfort: {
+                price: '1350',
+                image_url: 'galereya/komfort.png',
+                video_url: '',
+                images: ['galereya/komfort.png'],
+                videos: []
             },
-            roomBasedPackages: ['LUX Jumeirah Paket'],
-            roomPrices: {
-                'LUX Jumeirah Paket': { '4 kishilik': 1690, '3 kishilik': 1790, '2 kishilik': 1990 }
-            },
-            get calcPricePerPerson() {
-                return this.calcPackages[this.calcPackage]?.price || 0;
-            },
-            get calcTotalPrice() {
-                return this.calcPricePerPerson * this.calcPersons;
-            },
-            getBookingPricePerPerson() {
-                if (this.roomBasedPackages.includes(this.selectedPackage)) {
-                    return this.roomPrices[this.selectedPackage]?.[this.bookingRoom] || 0;
-                }
-                const key = Object.keys(this.calcPackages).find(k => this.calcPackages[k].name === this.selectedPackage);
-                return this.calcPackages[key]?.price || 0;
-            },
-            getBookingTotal() {
-                return this.getBookingPricePerPerson() * this.calcPersons;
-            },
-            bookFromCalc() {
-                this.selectedPackage = this.calcPackages[this.calcPackage]?.name || '';
-                this.activeModal = 'booking';
-            },
-            showSuccess: false,
-            isSubmitting: false,
-            pkgSlide: { standard: 0, comfort: 0, lux: 0, lux_jumeirah: 0 },
-            modalSlide: 0,
-            pkgCardHover: null,
-            pkgModalHover: null,
-            pkgTouchStartX: 0,
-            packagesData: {
-                standard: {
-                    price: '1150',
-                    image_url: 'galereya/standart.png',
-                    video_url: '',
-                    images: ['galereya/standart.png'],
-                    videos: []
-                },
-                comfort: {
-                    price: '1300',
-                    image_url: 'galereya/komfort.png',
-                    video_url: '',
-                    images: ['galereya/komfort.png'],
-                    videos: []
-                },
-                lux: {
-                    price: '1550',
-                    image_url: 'galereya/lux.png',
-                    video_url: '',
-                    images: ['galereya/lux.png'],
-                    videos: []
-                },
-                lux_jumeirah: {
-                    price: '1690',
-                    image_url: 'galereya/jumeirah.png',
-                    video_url: '',
-                    images: ['galereya/jumeirah.png'],
-                    videos: []
-                }
-            },
-            pkgDefaultImage(key) {
-                const d = { standard: 'galereya/standart.png', comfort: 'galereya/komfort.png', lux: 'galereya/lux.png', lux_jumeirah: 'galereya/jumeirah.png' };
-                return d[key] || '';
-            },
-            mediaUrl(path) {
-                if (!path) return '';
-                const p = String(path).trim();
-                if (p.startsWith('http://') || p.startsWith('https://') || p.startsWith('//')) return p;
-                if (p.startsWith('/')) return p;
-                return '/' + p;
-            },
-            normalizePackageMedia(key, raw) {
-                const fallback = this.pkgDefaultImage(key);
-                let images = Array.isArray(raw?.images) ? [...raw.images] : [];
-                let videos = Array.isArray(raw?.videos) ? [...raw.videos] : [];
-                const imageUrl = (raw?.image_url || '').trim() || fallback;
-                const videoUrl = (raw?.video_url || '').trim();
-                if (!images.length && imageUrl) images = [imageUrl];
-                if (imageUrl && !images.includes(imageUrl)) images.unshift(imageUrl);
-                if (!images.length && fallback) images = [fallback];
-                if (videoUrl && !videos.includes(videoUrl)) videos.push(videoUrl);
-                videos = videos.filter(Boolean);
-                return { image_url: images[0] || imageUrl, video_url: videoUrl, images, videos };
-            },
-            getPackageImages(key) {
-                const p = this.packagesData[key];
-                if (!p) return [this.pkgDefaultImage(key)];
-                return (p.images && p.images.length) ? p.images : [p.image_url || this.pkgDefaultImage(key)];
-            },
-            getPackageImageAt(key, index) {
-                const imgs = this.getPackageImages(key);
-                return this.mediaUrl(imgs[index] || imgs[0]);
-            },
-            getModalSlides(key) {
-                const p = this.packagesData[key] || {};
-                const slides = [];
-                const seen = new Set();
-                const add = (type, url) => {
-                    const u = this.mediaUrl(url);
-                    if (!u || seen.has(u)) return;
-                    seen.add(u);
-                    slides.push({ type, url: u });
-                };
-                (p.images || []).forEach(url => add('image', url));
-                const videoList = [...(p.videos || [])];
-                if (p.video_url) videoList.push(p.video_url);
-                videoList.forEach(url => add('video', url));
-                if (!slides.length) {
-                    add('image', p.image_url || this.pkgDefaultImage(key));
-                }
-                return slides;
-            },
-            getModalSlideLabel(key) {
-                const total = this.getModalSlides(key).length;
-                const slide = this.getCurrentModalSlide(key);
-                const typeLabel = slide.type === 'video' ? 'Video' : 'Rasm';
-                return (this.modalSlide + 1) + '/' + total + ' · ' + typeLabel;
-            },
-            pauseModalVideos() {
-                document.querySelectorAll('.pkg-modal-video').forEach(v => {
-                    try { v.pause(); v.currentTime = 0; } catch (e) { /* ignore */ }
-                });
-            },
-            goModalSlide(key, index) {
-                this.pauseModalVideos();
-                this.modalSlide = index;
-            },
-            getCurrentModalSlide(key) {
-                const slides = this.getModalSlides(key);
-                return slides[this.modalSlide] || { type: 'image', url: this.pkgDefaultImage(key) };
-            },
-            getImageLightboxIndex(key, slideIdx) {
-                const slides = this.getModalSlides(key);
-                let imgIndex = 0;
-                for (let i = 0; i < slideIdx; i++) {
-                    if (slides[i]?.type === 'image') imgIndex++;
-                }
-                return imgIndex;
-            },
-            openPackageModal(key) {
-                this.modalSlide = 0;
-                this.pkgSlide[key] = 0;
-                this.activeModal = key;
-            },
-            pkgSlideNext(key) {
-                const n = this.getPackageImages(key).length;
-                if (n <= 1) return;
-                this.pkgSlide[key] = ((this.pkgSlide[key] || 0) + 1) % n;
-            },
-            pkgSlidePrev(key) {
-                const n = this.getPackageImages(key).length;
-                if (n <= 1) return;
-                this.pkgSlide[key] = ((this.pkgSlide[key] || 0) - 1 + n) % n;
-            },
-            modalSlideNext(key) {
-                const n = this.getModalSlides(key).length;
-                if (n <= 1) return;
-                this.pauseModalVideos();
-                this.modalSlide = (this.modalSlide + 1) % n;
-            },
-            modalSlidePrev(key) {
-                const n = this.getModalSlides(key).length;
-                if (n <= 1) return;
-                this.pauseModalVideos();
-                this.modalSlide = (this.modalSlide - 1 + n) % n;
-            },
-            pkgTouchStart(e) {
-                const t = e.changedTouches ? e.changedTouches[0] : e;
-                this.pkgTouchStartX = t.clientX;
-            },
-            pkgTouchEnd(e, key, isModal) {
-                const t = e.changedTouches ? e.changedTouches[0] : e;
-                const dx = t.clientX - this.pkgTouchStartX;
-                if (dx < -40) {
-                    if (isModal) this.modalSlideNext(key);
-                    else this.pkgSlideNext(key);
-                } else if (dx > 40) {
-                    if (isModal) this.modalSlidePrev(key);
-                    else this.pkgSlidePrev(key);
-                }
-            },
-            apiBase() {
-                const local = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
-                return local ? 'http://localhost:3000' : '';
-            },
-            async loadRemoteData() {
-                const base = this.apiBase();
-                const [packagesResult, mediaResult, settingsResult] = await Promise.allSettled([
-                    fetch(`${base}/api/packages`),
-                    fetch(`${base}/api/packages/media`),
-                    fetch(`${base}/api/settings`)
-                ]);
+            special_14day: {
+                price: '1500',
+                image_url: 'galereya/lux.png',
+                video_url: '',
+                images: ['galereya/lux.png'],
+                videos: []
+            }
+        },pkgDefaultImage(key) {
+        const d = {
+            standard: 'galereya/standart.png',
+            comfort: 'galereya/komfort.png',
+            special_14day: 'galereya/lux.png'
+        };
+        return d[key] || '';
+    },
+    mediaUrl(path) {
+        if (!path) return '';
+        const p = String(path).trim();
+        if (p.startsWith('http://') || p.startsWith('https://') || p.startsWith('//')) return p;
+        if (p.startsWith('/')) return p;
+        return '/' + p;
+    },
+    normalizePackageMedia(key, raw) {
+        const fallback = this.pkgDefaultImage(key);
+        let images = Array.isArray(raw?.images) ? [...raw.images] : [];
+        let videos = Array.isArray(raw?.videos) ? [...raw.videos] : [];
+        const imageUrl = (raw?.image_url || '').trim() || fallback;
+        const videoUrl = (raw?.video_url || '').trim();
+        if (!images.length && imageUrl) images = [imageUrl];
+        if (imageUrl && !images.includes(imageUrl)) images.unshift(imageUrl);
+        if (!images.length && fallback) images = [fallback];
+        if (videoUrl && !videos.includes(videoUrl)) videos.push(videoUrl);
+        videos = videos.filter(Boolean);
+        return { image_url: images[0] || imageUrl, video_url: videoUrl, images, videos };
+    },
+    getPackageImages(key) {
+        const p = this.packagesData[key];
+        if (!p) return [this.pkgDefaultImage(key)];
+        return (p.images && p.images.length) ? p.images : [p.image_url || this.pkgDefaultImage(key)];
+    },
+    getPackageImageAt(key, index) {
+        const imgs = this.getPackageImages(key);
+        return this.mediaUrl(imgs[index] || imgs[0]);
+    },
+    getModalSlides(key) {
+        const p = this.packagesData[key] || {};
+        const slides = [];
+        const seen = new Set();
+        const add = (type, url) => {
+            const u = this.mediaUrl(url);
+            if (!u || seen.has(u)) return;
+            seen.add(u);
+            slides.push({ type, url: u });
+        };
+        (p.images || []).forEach(url => add('image', url));
+        const videoList = [...(p.videos || [])];
+        if (p.video_url) videoList.push(p.video_url);
+        videoList.forEach(url => add('video', url));
+        if (!slides.length) {
+            add('image', p.image_url || this.pkgDefaultImage(key));
+        }
+        return slides;
+    },
+    getModalSlideLabel(key) {
+        const total = this.getModalSlides(key).length;
+        const slide = this.getCurrentModalSlide(key);
+        const typeLabel = slide.type === 'video' ? 'Video' : 'Rasm';
+        return (this.modalSlide + 1) + '/' + total + ' · ' + typeLabel;
+    },
+    pauseModalVideos() {
+        document.querySelectorAll('.pkg-modal-video').forEach(v => {
+            try { v.pause(); v.currentTime = 0; } catch (e) { /* ignore */ }
+        });
+    },
+    goModalSlide(key, index) {
+        this.pauseModalVideos();
+        this.modalSlide = index;
+    },
+    getCurrentModalSlide(key) {
+        const slides = this.getModalSlides(key);
+        return slides[this.modalSlide] || { type: 'image', url: this.pkgDefaultImage(key) };
+    },
+    getImageLightboxIndex(key, slideIdx) {
+        const slides = this.getModalSlides(key);
+        let imgIndex = 0;
+        for (let i = 0; i < slideIdx; i++) {
+            if (slides[i]?.type === 'image') imgIndex++;
+        }
+        return imgIndex;
+    },
+    openPackageModal(key) {
+        this.modalSlide = 0;
+        this.pkgSlide[key] = 0;
+        this.activeModal = key;
+    },
+    pkgSlideNext(key) {
+        const n = this.getPackageImages(key).length;
+        if (n <= 1) return;
+        this.pkgSlide[key] = ((this.pkgSlide[key] || 0) + 1) % n;
+    },
+    pkgSlidePrev(key) {
+        const n = this.getPackageImages(key).length;
+        if (n <= 1) return;
+        this.pkgSlide[key] = ((this.pkgSlide[key] || 0) - 1 + n) % n;
+    },
+    modalSlideNext(key) {
+        const n = this.getModalSlides(key).length;
+        if (n <= 1) return;
+        this.pauseModalVideos();
+        this.modalSlide = (this.modalSlide + 1) % n;
+    },
+    modalSlidePrev(key) {
+        const n = this.getModalSlides(key).length;
+        if (n <= 1) return;
+        this.pauseModalVideos();
+        this.modalSlide = (this.modalSlide - 1 + n) % n;
+    },
+    pkgTouchStart(e) {
+        const t = e.changedTouches ? e.changedTouches[0] : e;
+        this.pkgTouchStartX = t.clientX;
+    },pkgTouchEnd(e, key, isModal) {
+            const t = e.changedTouches ? e.changedTouches[0] : e;
+            const dx = t.clientX - this.pkgTouchStartX;
+            if (dx < -40) {
+                if (isModal) this.modalSlideNext(key);
+                else this.pkgSlideNext(key);
+            } else if (dx > 40) {
+                if (isModal) this.modalSlidePrev(key);
+                else this.pkgSlidePrev(key);
+            }
+        },
+        apiBase() {
+            const local = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:';
+            return local ? 'http://localhost:3000' : '';
+        },
+        async loadRemoteData() {
+            const base = this.apiBase();
+            const [packagesResult, mediaResult, settingsResult] = await Promise.allSettled([
+                fetch(`${base}/api/packages`),
+                fetch(`${base}/api/packages/media`),
+                fetch(`${base}/api/settings`)
+            ]);
 
-                if (packagesResult.status === 'fulfilled' && packagesResult.value.ok) {
-                    try {
-                        const packages = await packagesResult.value.json();
-                        packages.forEach(pkg => {
-                            const key = pkg.keyName || pkg.key_name;
-                            if (!key || !this.packagesData[key]) return;
-                            this.packagesData[key] = {
-                                ...this.packagesData[key],
-                                price: pkg.price,
-                                display_name: pkg.displayName || pkg.display_name,
-                                description: pkg.description
-                            };
-                        });
-                    } catch (e) { console.warn('Packages parse error', e); }
-                }
+            if (packagesResult.status === 'fulfilled' && packagesResult.value.ok) {
+                try {
+                    const packages = await packagesResult.value.json();
+                    packages.forEach(pkg => {
+                        const key = pkg.keyName || pkg.key_name;
+                        if (!key || !this.packagesData[key]) return;
+                        this.packagesData[key] = {
+                            ...this.packagesData[key],
+                            price: pkg.price,
+                            display_name: pkg.displayName || pkg.display_name,
+                            description: pkg.description
+                        };
+                    });
+                } catch (e) { console.warn('Packages parse error', e); }
+            }
 
-                if (mediaResult.status === 'fulfilled' && mediaResult.value.ok) {
-                    try {
-                        const mediaData = await mediaResult.value.json();
-                        Object.keys(mediaData).forEach(key => {
-                            const normalized = this.normalizePackageMedia(key, mediaData[key]);
-                            if (this.packagesData[key]) {
-                                this.packagesData[key] = { ...this.packagesData[key], ...normalized };
-                            } else {
-                                this.packagesData[key] = normalized;
-                            }
-                        });
-                    } catch (e) { console.warn('Media parse error', e); }
-                }
+            if (mediaResult.status === 'fulfilled' && mediaResult.value.ok) {
+                try {
+                    const mediaData = await mediaResult.value.json();
+                    Object.keys(mediaData).forEach(key => {
+                        const normalized = this.normalizePackageMedia(key, mediaData[key]);
+                        if (this.packagesData[key]) {
+                            this.packagesData[key] = { ...this.packagesData[key], ...normalized };
+                        } else {
+                            this.packagesData[key] = normalized;
+                        }
+                    });
+                } catch (e) { console.warn('Media parse error', e); }
+            }
 
-                if (settingsResult.status === 'fulfilled' && settingsResult.value.ok) {
-                    try {
-                        const settingsData = await settingsResult.value.json();
-                        if (settingsData.hero_subtitle) this.translations.uz.hero_subtitle = settingsData.hero_subtitle;
-                        if (settingsData.hero_title) this.translations.uz.hero_title = settingsData.hero_title;
-                        if (settingsData.hero_desc) this.translations.uz.hero_desc = settingsData.hero_desc;
-                        if (settingsData.offer_title) this.translations.uz.offer_title = settingsData.offer_title;
-                        if (settingsData.offer_desc) this.translations.uz.offer_desc = settingsData.offer_desc;
-                        const pixelId = (settingsData.meta_pixel_id || window.META_PIXEL_ID || '').trim();
-                        if (pixelId) initMetaPixel(pixelId);
-                    } catch (e) { console.warn('Settings parse error', e); }
-                } else {
-                    const pixelId = (window.META_PIXEL_ID || '').trim();
+            if (settingsResult.status === 'fulfilled' && settingsResult.value.ok) {
+                try {
+                    const settingsData = await settingsResult.value.json();
+                    if (settingsData.hero_subtitle) this.translations.uz.hero_subtitle = settingsData.hero_subtitle;
+                    if (settingsData.hero_title) this.translations.uz.hero_title = settingsData.hero_title;
+                    if (settingsData.hero_desc) this.translations.uz.hero_desc = settingsData.hero_desc;
+                    if (settingsData.offer_title) this.translations.uz.offer_title = settingsData.offer_title;
+                    if (settingsData.offer_desc) this.translations.uz.offer_desc = settingsData.offer_desc;
+                    const pixelId = (settingsData.meta_pixel_id || window.META_PIXEL_ID || '').trim();
                     if (pixelId) initMetaPixel(pixelId);
-                }
-            },
-            init() {
-                document.documentElement.lang = this.currentLang;
-                const runRemote = () => this.loadRemoteData();
-                if ('requestIdleCallback' in window) {
-                    requestIdleCallback(runRemote, { timeout: 2500 });
-                } else {
-                    setTimeout(runRemote, 150);
-                }
+                } catch (e) { console.warn('Settings parse error', e); }
+            } else {
+                const pixelId = (window.META_PIXEL_ID || '').trim();
+                if (pixelId) initMetaPixel(pixelId);
+            }
+        },
+        init() {
+            document.documentElement.lang = this.currentLang;
+            const runRemote = () => this.loadRemoteData();
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(runRemote, { timeout: 2500 });
+            } else {
+                setTimeout(runRemote, 150);
+            }
 
-                this.$watch('activeModal', value => {
-                    if (['standard', 'comfort', 'lux', 'lux_jumeirah'].includes(value)) {
-                        this.modalSlide = 0;
-                    }
-                    if (!value) {
-                        this.pauseModalVideos();
-                        document.querySelectorAll('video').forEach(v => {
-                            v.pause();
-                            v.currentTime = 0;
-                        });
-                    } else if (value === 'booking') {
-                        trackMetaEvent('InitiateCheckout', {
+            // $watch qismida faqat mavjud 3 ta paket kalitlari tekshiriladi
+            this.$watch('activeModal', value => {
+                if (['standard', 'comfort', 'special_14day'].includes(value)) {
+                    this.modalSlide = 0;
+                }
+                if (!value) {
+                    this.pauseModalVideos();
+                    document.querySelectorAll('video').forEach(v => {
+                        v.pause();
+                        v.currentTime = 0;
+                    });
+                } else if (value === 'booking') {
+                    trackMetaEvent('InitiateCheckout', {
+                        content_name: this.selectedPackage,
+                        value: this.getBookingTotal(),
+                        currency: 'USD'
+                    });
+                }
+            });
+        },
+        openLightbox(imgs, index) {
+            this.lightboxImages = imgs;
+            this.lightboxIndex = index;
+        },
+        async submitBooking() {
+            if (document.getElementById('hp_field').value !== "") return;
+
+            const cleanName = this.bookingName.trim().replace(/[<>]/g, "");
+            let cleanPhone = this.bookingPhone.trim().replace(/[^+0-9]/g, "");
+
+            // Validatsiya
+            if (cleanName.length < 3) {
+                this.showToast("Iltimos, ismingizni kiriting.");
+                return;
+            }
+            if (!cleanPhone.startsWith('+')) cleanPhone = '+' + cleanPhone;
+            const phoneRegex = /^\+998[0-9]{9}$/;
+            if (!phoneRegex.test(cleanPhone.replace(/\s/g, ''))) {
+                this.showToast("Telefon raqamini to'g'ri kiriting: +998XXXXXXXXX");
+                return;
+            }
+
+            if(!this.isSubmitting) {
+                this.isSubmitting = true;
+                try {
+                    const apiHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:'
+                        ? 'http://localhost:3000/api/leads'
+                        : '/api/leads';
+
+                    const response = await fetch(apiHost, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            name: cleanName,
+                            phone: cleanPhone,
+                            package: this.selectedPackage,
+                            persons: this.calcPersons,
+                            room: this.roomBasedPackages.includes(this.selectedPackage) ? this.bookingRoom : "",
+                            operator: this.bookingOperator,
+                            paymentMethod: this.bookingPayment
+                        })
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok && result.success) {
+                        trackMetaEvent('Lead', {
                             content_name: this.selectedPackage,
                             value: this.getBookingTotal(),
                             currency: 'USD'
                         });
+                        this.showSuccess = true;
+                        setTimeout(() => {
+                            this.activeModal = null;
+                            this.showSuccess = false;
+                            this.bookingName = '';
+                            this.bookingPhone = '';
+                            this.calcPersons = 1;
+                            this.bookingOperator = 'Erkak';
+                            this.bookingPayment = 'Naqd pul';
+                        }, 3000);
+                    } else {
+                        throw new Error(result.error || "Murojaat yuborishda xatolik.");
                     }
-                });
-            },
-            openLightbox(imgs, index) {
-                this.lightboxImages = imgs;
-                this.lightboxIndex = index;
-            },
-            async submitBooking() {
-                if (document.getElementById('hp_field').value !== "") return;
-
-                const cleanName = this.bookingName.trim().replace(/[<>]/g, "");
-                let cleanPhone = this.bookingPhone.trim().replace(/[^+0-9]/g, "");
-
-                // Validatsiya
-                if (cleanName.length < 3) {
-                    this.showToast("Iltimos, ismingizni kiriting.");
-                    return;
-                }
-                if (!cleanPhone.startsWith('+')) cleanPhone = '+' + cleanPhone;
-                const phoneRegex = /^\+998[0-9]{9}$/;
-                if (!phoneRegex.test(cleanPhone.replace(/\s/g, ''))) {
-                    this.showToast("Telefon raqamini to'g'ri kiriting: +998XXXXXXXXX");
-                    return;
-                }
-
-                if(!this.isSubmitting) {
-                    this.isSubmitting = true;
-                    try {
-                        // Backend API orqali xavfsiz yuborish
-                        // Agar lokal ishlayotgan bo'lsa (file:// yoki localhost), u holda http://localhost:3000 ga yuboradi.
-                        // Agar serverda bo'lsa relative '/api/leads' dan foydalanadi.
-                        const apiHost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:'
-                            ? 'http://localhost:3000/api/leads'
-                            : '/api/leads';
-
-                        const response = await fetch(apiHost, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                name: cleanName,
-                                phone: cleanPhone,
-                                package: this.selectedPackage,
-                                persons: this.calcPersons,
-                                room: this.roomBasedPackages.includes(this.selectedPackage) ? this.bookingRoom : "",
-                                operator: this.bookingOperator,
-                                paymentMethod: this.bookingPayment
-                            })
-                        });
-
-                        const result = await response.json();
-
-                        if (response.ok && result.success) {
-                            trackMetaEvent('Lead', {
-                                content_name: this.selectedPackage,
-                                value: this.getBookingTotal(),
-                                currency: 'USD'
-                            });
-                            this.showSuccess = true;
-                            setTimeout(() => {
-                                this.activeModal = null;
-                                this.showSuccess = false;
-                                this.bookingName = '';
-                                this.bookingPhone = '';
-                                this.calcPersons = 1;
-                                this.bookingOperator = 'Erkak';
-                                this.bookingPayment = 'Naqd pul';
-                            }, 3000);
-                        } else {
-                            throw new Error(result.error || "Murojaat yuborishda xatolik.");
-                        }
-                    } catch (err) {
-                        console.error("Booking error:", err);
-                        this.showToast("Xatolik yuz berdi. Qayta urinib ko'ring yoki qo'ng'iroq qiling.");
-                    } finally {
-                        this.isSubmitting = false;
-                    }
+                } catch (err) {
+                    console.error("Booking error:", err);
+                    this.showToast("Xatolik yuz berdi. Qayta urinib ko'ring yoki qo'ng'iroq qiling.");
+                } finally {
+                    this.isSubmitting = false;
                 }
             }
-        };
-        if (window.SITE_I18N) {
-            ['uz', 'ru', 'en'].forEach((lang) => Object.assign(app.translations[lang], window.SITE_I18N[lang] || {}));
         }
-        return app;
+    };
+    if (window.SITE_I18N) {
+        ['uz', 'ru', 'en'].forEach((lang) => Object.assign(app.translations[lang], window.SITE_I18N[lang] || {}));
     }
+    return app;
+}
 </script>
 </body>
 
