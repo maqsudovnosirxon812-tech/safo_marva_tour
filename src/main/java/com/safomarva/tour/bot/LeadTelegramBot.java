@@ -146,7 +146,8 @@ public class LeadTelegramBot extends TelegramLongPollingBot {
         if ("/start".equals(text)) {
             userStates.remove(chatId);
             String welcome = "👋 <b>Assalomu alaykum, Safo Marva Tour Tizimiga Xush Kelibsiz!</b>\n\n" +
-                    "Ushbu bot yordamida siz veb-saytingizdan kelgan yangi arizalarni ko'rishingiz va boshqarishingiz mumkin.\n\n" +
+                    "Ushbu bot yordamida siz veb-sahifangizdan kelgan yangi arizalarni ko'rishingiz va " +
+                    "boshqarishingiz mumkin.\n\n" +
                     "👇 Boshlash uchun quyidagi menyudan foydalaning:";
             sendCustomKeyboardMessage(chatId, welcome, mainMenuKeyboard);
             return;
@@ -158,7 +159,9 @@ public class LeadTelegramBot extends TelegramLongPollingBot {
                 sendLeadsList(chatId);
             } else if ("❓ Yordam".equals(text)) {
                 String helpMsg = "❓ <b>Yordam bo'limi</b>\n\n" +
-                        "Ushbu bot Safo Marva Tour veb-saytidan keladigan arizalar va murojaatlarni (leads) boshqarish uchun mo'ljallangan.\n\n" +
+                        "Ushbu bot Safo Marva Tour veb-sahifasidan keladigan arizalar va murojaatlarni (leads) " +
+                        "boshqarish " +
+                        "uchun mo'ljallangan.\n\n" +
                         "📍 <b>Imkoniyatlar:</b>\n" +
                         "• 👥 <b>Murojaatlar:</b> Sayt orqali buyurtma qoldirgan oxirgi 10 ta mijoz ro'yxatini ko'rish, batafsil ma'lumot olish va ularni o'chirish.\n" +
                         "• 🔔 <b>Avtomatik bildirishnoma:</b> Saytda har safar yangi ariza qoldirilganda, bot sizga darhol mijoz ma'lumotlarini yuboradi.\n\n" +

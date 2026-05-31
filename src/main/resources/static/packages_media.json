@@ -1,26 +1,20 @@
 {
   "standard": {
-    "image_url": "galereya/standart.png",
+    "image_url": "galereya/standart.jpg",
+    "images": ["galereya/standart.jpg"],
     "video_url": "",
-    "images": ["galereya/standart.png"],
     "videos": []
   },
   "comfort": {
-    "image_url": "galereya/komfort.png",
+    "image_url": "galereya/komfort.jpg",
+    "images": ["galereya/komfort.jpg"],
     "video_url": "",
-    "images": ["galereya/komfort.png"],
     "videos": []
   },
-  "lux": {
-    "image_url": "galereya/lux.png",
+  "special_14day": {
+    "image_url": "galereya/kom_plus.jpg",
+    "images": ["galereya/kom_plus.jpg"],
     "video_url": "",
-    "images": ["galereya/lux.png"],
-    "videos": []
-  },
-  "lux_jumeirah": {
-    "image_url": "galereya/jumeirah.png",
-    "video_url": "",
-    "images": ["galereya/jumeirah.png"],
     "videos": []
   }
 }
