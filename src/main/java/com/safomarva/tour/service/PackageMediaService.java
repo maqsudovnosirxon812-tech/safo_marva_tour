@@ -18,7 +18,7 @@ public class PackageMediaService {
         File file = new File(MEDIA_FILE_PATH);
         if (!file.exists()) {
             return new HashMap<>();
-        }
+          }
         try {
             Map<String, Map<String, Object>> raw = objectMapper.readValue(file,
                     new TypeReference<Map<String, Map<String, Object>>>() {});
