@@ -639,7 +639,7 @@
         background-color: rgba(255, 255, 255, 0.12);
     }
     </style>
-</head><body class="bg-brand-cream-dark dark:bg-[#0B0F19] font-sans text-gray-900 dark:text-gray-100 transition-colors duration-300" @scroll.window="scrolled = (window.pageYOffset > 50)"><!-- Toast xabarlari -->
+</head><body class="bg-brand-cream-dark dark:bg-[#0B0F19] font-sans text-gray-900 dark:text-gray-100 transition-colors duration-300"><!-- Toast xabarlari -->
 <div x-show="toastMessage" x-cloak x-transition
      class="fixed top-24 left-1/2 -translate-x-1/2 z-[300] max-w-md w-[90%] px-5 py-4 rounded-2xl shadow-2xl text-sm font-medium text-center"
      :class="toastType === 'success' ? 'bg-green-600 text-white' : 'bg-brand-red text-white'"
@@ -673,9 +673,7 @@
              @click="openPackageModal('standard')"
              @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'standard', false)">
             <img :src="getPackageImageAt('standard', pkgSlide.standard || 0)" alt="Standard Plus 13 kunlik Umra paketi"
-                 class="w-full h-full object-cover transition-transform duration-500"
-                 :class="pkgCardHover === 'standard' ? 'scale-110' : 'scale-100'"
-                 @mouseenter="pkgCardHover = 'standard'" @mouseleave="pkgCardHover = null"
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                  loading="lazy" decoding="async">
             <button type="button" x-show="getPackageImages('standard').length > 1" @click.stop="pkgSlidePrev('standard')"
                     class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Oldingi">‹</button>
@@ -715,9 +713,7 @@
     <!-- Comfort Card --><div class="bg-brand-cream dark:bg-[#151C2C]/80 backdrop-blur-md rounded-3xl border-2 border-brand-gold p-6 pt-8 shadow-xl dark:shadow-[0_0_35px_rgba(212,175,55,0.2)] transition-all duration-300 flex flex-col relative xl:scale-[1.02] z-10 overflow-visible"><!-- Paket Rasmlari Slider qismi --><div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none"
                                                                                                                                                                                                                                                                                                                                    @click="openPackageModal('comfort')"
                                                                                                                                                                                                                                                                                                                                    @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'comfort', false)"><img :src="getPackageImageAt('comfort', pkgSlide.comfort || 0)" alt="Comfort Plus 10 kunlik Umra paketi"
-                                                                                                                                                                                                                                                                                                                                                                                                                              class="w-full h-full object-cover transition-transform duration-500"
-                                                                                                                                                                                                                                                                                                                                                                                                                              :class="pkgCardHover === 'comfort' ? 'scale-110' : 'scale-100'"
-                                                                                                                                                                                                                                                                                                                                                                                                                              @mouseenter="pkgCardHover = 'comfort'" @mouseleave="pkgCardHover = null"
+                                                                                                                                                                                                                                                                                                                                                                                                                              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                                                                                                                                                                                                                                                                                                                                                                                                               loading="lazy" decoding="async"><button type="button" x-show="getPackageImages('comfort').length > 1" @click.stop="pkgSlidePrev('comfort')"
                                                                                                                                                                                                                                                                                                                                                                                                                                                                       class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Oldingi">‹</button><button type="button" x-show="getPackageImages('comfort').length > 1" @click.stop="pkgSlideNext('comfort')"
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Keyingi">›</button><span x-show="getPackageImages('comfort').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
@@ -728,9 +724,7 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')">Band qilish</button></div></div><!-- Comfort Plus 14 Kunlik Card --><div class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden"><!-- Paket Rasmlari Slider qismi --><div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none"
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                @click="openPackageModal('special_14day')"
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'special_14day', false)"><img :src="getPackageImageAt('special_14day', pkgSlide.special_14day || 0)" alt="Comfort Plus Umra paketi"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                class="w-full h-full object-cover transition-transform duration-500"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                :class="pkgCardHover === 'special_14day' ? 'scale-110' : 'scale-100'"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                @mouseenter="pkgCardHover = 'special_14day'" @mouseleave="pkgCardHover = null"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 loading="lazy" decoding="async"><button type="button" x-show="getPackageImages('special_14day').length > 1" @click.stop="pkgSlidePrev('special_14day')"
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Oldingi">‹</button><button type="button" x-show="getPackageImages('special_14day').length > 1" @click.stop="pkgSlideNext('special_14day')"
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Keyingi">›</button><span x-show="getPackageImages('special_14day').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
@@ -749,9 +743,7 @@
              @click="openPackageModal('anjum_lux')"
              @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'anjum_lux', false)">
             <img :src="getPackageImageAt('anjum_lux', pkgSlide.anjum_lux || 0)" alt="ANJUM LUX Hoji Aka 10 kunlik Umra paketi"
-                 class="w-full h-full object-cover transition-transform duration-500"
-                 :class="pkgCardHover === 'anjum_lux' ? 'scale-110' : 'scale-100'"
-                 @mouseenter="pkgCardHover = 'anjum_lux'" @mouseleave="pkgCardHover = null"
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                  loading="lazy" decoding="async">
             <button type="button" x-show="getPackageImages('anjum_lux').length > 1" @click.stop="pkgSlidePrev('anjum_lux')"
                     class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Oldingi">‹</button>
@@ -1671,9 +1663,10 @@
         isSubmitting: false,
         pkgSlide: { standard: 0, comfort: 0, special_14day: 0, anjum_lux: 0 },
         modalSlide: 0,
-        pkgCardHover: null,
         pkgModalHover: null,
         pkgTouchStartX: 0,
+        packageImagesCache: {},
+        modalSlidesCache: {},
         packagesData: {
             standard: {
                 price: '1250',
@@ -1732,16 +1725,25 @@
         videos = videos.filter(Boolean);
         return { image_url: images[0] || imageUrl, video_url: videoUrl, images, videos };
     },
+    clearPackageMediaCache() {
+        this.packageImagesCache = {};
+        this.modalSlidesCache = {};
+    },
     getPackageImages(key) {
+        if (this.packageImagesCache[key]) return this.packageImagesCache[key];
         const p = this.packagesData[key];
-        if (!p) return [this.pkgDefaultImage(key)];
-        return (p.images && p.images.length) ? p.images : [p.image_url || this.pkgDefaultImage(key)];
+        const images = !p
+            ? [this.pkgDefaultImage(key)]
+            : ((p.images && p.images.length) ? p.images : [p.image_url || this.pkgDefaultImage(key)]);
+        this.packageImagesCache[key] = images;
+        return images;
     },
     getPackageImageAt(key, index) {
         const imgs = this.getPackageImages(key);
         return this.mediaUrl(imgs[index] || imgs[0]);
     },
     getModalSlides(key) {
+        if (this.modalSlidesCache[key]) return this.modalSlidesCache[key];
         const p = this.packagesData[key] || {};
         const slides = [];
         const seen = new Set();
@@ -1758,6 +1760,7 @@
         if (!slides.length) {
             add('image', p.image_url || this.pkgDefaultImage(key));
         }
+        this.modalSlidesCache[key] = slides;
         return slides;
     },
     getModalSlideLabel(key) {
@@ -1853,6 +1856,7 @@
                             description: pkg.description
                         };
                     });
+                    this.clearPackageMediaCache();
                 } catch (e) { console.warn('Packages parse error', e); }
             }
 
@@ -1867,6 +1871,7 @@
                             this.packagesData[key] = normalized;
                         }
                     });
+                    this.clearPackageMediaCache();
                 } catch (e) { console.warn('Media parse error', e); }
             }
 
@@ -1888,6 +1893,20 @@
         },
         init() {
             document.documentElement.lang = this.currentLang;
+            let scrollTicking = false;
+            const updateScrolled = () => {
+                scrollTicking = false;
+                const next = window.pageYOffset > 50;
+                if (this.scrolled !== next) this.scrolled = next;
+            };
+            window.addEventListener('scroll', () => {
+                if (!scrollTicking) {
+                    scrollTicking = true;
+                    requestAnimationFrame(updateScrolled);
+                }
+            }, { passive: true });
+            updateScrolled();
+
             const runRemote = () => this.loadRemoteData();
             if ('requestIdleCallback' in window) {
                 requestIdleCallback(runRemote, { timeout: 2500 });
