@@ -36,6 +36,8 @@ public class LeadController {
         String name = body.get("name") != null ? String.valueOf(body.get("name")) : null;
         String phone = body.get("phone") != null ? String.valueOf(body.get("phone")) : null;
         String selectedPackage = body.get("package") != null ? String.valueOf(body.get("package")) : null;
+        String selectedPackageKey = body.get("packageKey") != null ? String.valueOf(body.get("packageKey")) : selectedPackage;
+        String selectedPackageName = body.get("packageName") != null ? String.valueOf(body.get("packageName")) : selectedPackage;
         String room = body.get("room") != null ? String.valueOf(body.get("room")) : null;
         String operator = body.get("operator") != null ? String.valueOf(body.get("operator")) : null;
         String paymentMethod = body.get("paymentMethod") != null ? String.valueOf(body.get("paymentMethod")) : null;
@@ -51,7 +53,7 @@ public class LeadController {
         }
 
         // Basic Validation
-        if (name == null || phone == null || selectedPackage == null) {
+        if (name == null || phone == null || selectedPackageKey == null) {
             return ResponseEntity.badRequest().body(Map.of("error", "Name, phone, and package are required."));
         }
 
@@ -64,11 +66,18 @@ public class LeadController {
         String finalRoom = room != null ? room.trim() : "Kiritilmagan";
         String finalOperator = operator != null ? operator.trim() : "Erkak";
         String finalPayment = paymentMethod != null ? paymentMethod.trim() : "Naqd pul";
+        String cleanPackageKey = selectedPackageKey.trim().replaceAll("[^A-Za-z0-9_\\-]", "");
+        String cleanPackageName = selectedPackageName != null
+                ? selectedPackageName.trim().replaceAll("[<>]", "")
+                : cleanPackageKey;
+        if (cleanPackageKey.isEmpty()) {
+            return ResponseEntity.badRequest().body(Map.of("error", "Package key is required."));
+        }
 
         boolean dbSaved = false;
         try {
             // 1. Save to PostgreSQL database
-            LeadEntity lead = new LeadEntity(cleanName, cleanPhone, selectedPackage, finalRoom, "web-site");
+            LeadEntity lead = new LeadEntity(cleanName, cleanPhone, cleanPackageKey, finalRoom, "web-site");
             lead.setOperator(finalOperator);
             lead.setPaymentMethod(finalPayment);
             lead.setPersons(finalPersons);
@@ -83,14 +92,16 @@ public class LeadController {
         try {
             String[] adminIds = adminsStr.split(",");
             String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
-            String roomInfo = (selectedPackage.contains("14") || selectedPackage.equalsIgnoreCase("special_14day"))
+            String roomInfo = ("standard".equalsIgnoreCase(cleanPackageKey)
+                    || "special_14day".equalsIgnoreCase(cleanPackageKey)
+                    || "anjum_lux".equalsIgnoreCase(cleanPackageKey))
                     ? "\n🛏 <b>Xona turi:</b> " + finalRoom
                     : "";
 
             String message = "🌟 <b>YANGI MUROJAAT!</b> 🌟\n\n" +
                     "👤 <b>Mijoz:</b> " + cleanName + "\n" +
                     "📞 <b>Telefon:</b> <code>" + cleanPhone + "</code>\n" +
-                    "📦 <b>Tanlangan paket:</b> " + selectedPackage + roomInfo + "\n" +
+                    "📦 <b>Tanlangan paket:</b> " + cleanPackageName + " (<code>" + cleanPackageKey + "</code>)" + roomInfo + "\n" +
                     "👥 <b>Ziyoratchilar soni:</b> " + finalPersons + " kishi\n" +
                     "🎧 <b>Operator jinsi:</b> " + finalOperator + "\n" +
                     "💳 <b>To'lov turi:</b> " + finalPayment + "\n\n" +
