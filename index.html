@@ -13,6 +13,7 @@
         'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', '1972581996979047');
         fbq('track', 'PageView');
+        window._metaPixelReady = true;
     </script>
     <noscript><img height="1" width="1" style="display:none"
                    src="https://www.facebook.com/tr?id=1972581996979047&ev=PageView&noscript=1"
@@ -637,6 +638,59 @@
     }
     .modal-close-btn:hover {
         background-color: rgba(255, 255, 255, 0.12);
+    }
+
+
+    /* Performance-friendly motion: qotmaydigan yengil animatsiya */
+    .marquee-container {
+        animation: none !important;
+        transform: none !important;
+    }
+
+    .reveal {
+        transition: opacity 0.35s ease-out, transform 0.35s ease-out !important;
+        will-change: opacity, transform;
+    }
+
+    .hero-gradient {
+        background-attachment: scroll !important;
+    }
+
+    .bg-brand-gold,
+    button,
+    a,
+    .rounded-3xl,
+    .shadow-lg {
+        transition-duration: 180ms !important;
+    }
+
+    @media (max-width: 768px) {
+        .glass,
+        .backdrop-blur-md,
+        [class*="backdrop-blur"] {
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+
+        .group:hover img,
+        img:hover {
+            transform: none !important;
+        }
+
+        .hover\:scale-105:hover,
+        .active\:scale-95:active {
+            transform: none !important;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation: none !important;
+            transition: none !important;
+            scroll-behavior: auto !important;
+        }
     }
     </style>
 </head><body class="bg-brand-cream-dark dark:bg-[#0B0F19] font-sans text-gray-900 dark:text-gray-100 transition-colors duration-300" @scroll.window="scrolled = (window.pageYOffset > 50)"><!-- Toast xabarlari -->
@@ -1263,11 +1317,29 @@
 </div>
 <script>function initMetaPixel(pixelId) {
         if (!pixelId || window._metaPixelReady) return;
-        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-        document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+        if (typeof fbq === 'function') {
+            window._metaPixelReady = true;
+            return;
+        }
+
+        !function(f,b,e,v,n,t,s){
+            if(f.fbq)return;
+            n=f.fbq=function(){
+                n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments)
+            };
+            if(!f._fbq)f._fbq=n;
+            n.push=n;
+            n.loaded=!0;
+            n.version='2.0';
+            n.queue=[];
+            t=b.createElement(e);
+            t.async=!0;
+            t.src=v;
+            s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s);
+        }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
         fbq('init', pixelId);
         fbq('track', 'PageView');
         window._metaPixelReady = true;
@@ -1994,4 +2066,5 @@
     return app;
 }
 </script>
-</body></html>
+</body>
+</html>
