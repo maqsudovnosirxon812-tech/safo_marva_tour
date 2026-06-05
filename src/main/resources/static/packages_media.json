@@ -11,9 +11,21 @@
     "video_url": "",
     "videos": []
   },
-  "special_14day": {
+  "comfort_14": {
+    "image_url": "galereya/standart.jpg",
+    "images": ["galereya/standart.jpg"],
+    "video_url": "",
+    "videos": []
+  },
+  "comfort_plus_14": {
     "image_url": "galereya/kom_plus.jpg",
     "images": ["galereya/kom_plus.jpg"],
+    "video_url": "",
+    "videos": []
+  },
+  "anjum_lux": {
+    "image_url": "galereya/anjum_lux.jpg",
+    "images": ["galereya/anjum_lux.jpg"],
     "video_url": "",
     "videos": []
   }
