@@ -11,6 +11,12 @@
     "video_url": "",
     "videos": []
   },
+  "special_14day": {
+    "image_url": "galereya/kom_plus.jpg",
+    "images": ["galereya/kom_plus.jpg"],
+    "video_url": "",
+    "videos": []
+  },
   "comfort_14": {
     "image_url": "galereya/standart.jpg",
     "images": ["galereya/standart.jpg"],

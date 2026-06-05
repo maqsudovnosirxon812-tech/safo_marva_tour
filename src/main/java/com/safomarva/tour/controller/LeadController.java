@@ -93,6 +93,7 @@ public class LeadController {
             String[] adminIds = adminsStr.split(",");
             String now = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
             String roomInfo = ("standard".equalsIgnoreCase(cleanPackageKey)
+                    || "special_14day".equalsIgnoreCase(cleanPackageKey)
                     || "comfort_14".equalsIgnoreCase(cleanPackageKey)
                     || "comfort_plus_14".equalsIgnoreCase(cleanPackageKey)
                     || "anjum_lux".equalsIgnoreCase(cleanPackageKey))
