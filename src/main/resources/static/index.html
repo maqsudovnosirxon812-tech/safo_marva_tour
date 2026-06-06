@@ -765,8 +765,8 @@
     </div>
 
     <!-- Comfort 14 Kunlik Card -->
-    <div class="bg-brand-cream dark:bg-[#151C2C]/60 backdrop-blur-md rounded-3xl border border-brand-gold/35 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.14)] hover:border-brand-gold/60 transition-all duration-300 flex flex-col overflow-hidden">
-        <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none"
+    <div class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-brand-gold/40 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden">
+        <div class="rounded-2xl overflow-hidden aspect-square mb-4 -mx-1 relative group cursor-pointer select-none"
              @click="openPackageModal('comfort_14')"
              @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'comfort_14', false)">
             <img :src="getPackageImageAt('comfort_14', pkgSlide.comfort_14 || 0)" alt="Comfort 14 kunlik Umra paketi" width="528" height="900"
@@ -799,7 +799,7 @@
 
     <!-- Comfort Plus 14 Kunlik Card -->
     <div class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden">
-        <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none"
+        <div class="rounded-2xl overflow-hidden aspect-square mb-4 -mx-1 relative group cursor-pointer select-none"
              @click="openPackageModal('comfort_plus_14')"
              @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'comfort_plus_14', false)">
             <img :src="getPackageImageAt('comfort_plus_14', pkgSlide.comfort_plus_14 || 0)" alt="Comfort Plus 14 kunlik Umra paketi" width="528" height="900"
@@ -1126,7 +1126,7 @@
                 <button @click="activeModal = null" type="button" class="modal-close-btn text-white hover:text-brand-gold" :aria-label="t('aria_close')">×</button>
             </div>
             <div class="px-6 py-6 space-y-5 max-h-[78vh] overflow-y-auto">
-                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video bg-black relative select-none min-h-[12rem]" @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'comfort_14', true)">
+                <div class="rounded-2xl overflow-hidden shadow-lg aspect-square bg-black relative select-none min-h-[12rem]" @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'comfort_14', true)">
                     <template x-if="activeModal === 'comfort_14' && getCurrentModalSlide('comfort_14').type === 'image'">
                         <img :src="getCurrentModalSlide('comfort_14').url" alt="Comfort 14 kunlik paket" @click="openLightbox(getPackageImages('comfort_14').map(u => mediaUrl(u)), getImageLightboxIndex('comfort_14', modalSlide))" class="absolute inset-0 w-full h-full object-cover cursor-pointer" loading="lazy" decoding="async" :key="'img-comfort14-' + modalSlide">
                     </template>
@@ -1161,7 +1161,7 @@
                 <button @click="activeModal = null" type="button" class="modal-close-btn text-white hover:text-brand-gold" :aria-label="t('aria_close')">×</button>
             </div>
             <div class="px-6 py-6 space-y-5 max-h-[78vh] overflow-y-auto">
-                <div class="rounded-2xl overflow-hidden shadow-lg aspect-video bg-black relative select-none min-h-[12rem]" @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'comfort_plus_14', true)">
+                <div class="rounded-2xl overflow-hidden shadow-lg aspect-square bg-black relative select-none min-h-[12rem]" @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'comfort_plus_14', true)">
                     <template x-if="activeModal === 'comfort_plus_14' && getCurrentModalSlide('comfort_plus_14').type === 'image'">
                         <img :src="getCurrentModalSlide('comfort_plus_14').url" alt="Comfort Plus 14 kunlik paket" @click="openLightbox(getPackageImages('comfort_plus_14').map(u => mediaUrl(u)), getImageLightboxIndex('comfort_plus_14', modalSlide))" class="absolute inset-0 w-full h-full object-cover cursor-pointer" loading="lazy" decoding="async" :key="'img-comfortplus14-' + modalSlide">
                     </template>
@@ -1940,16 +1940,16 @@
             },
             comfort_14: {
                 price: '1450',
-                image_url: 'galereya/standart.jpg',
+                image_url: 'galereya/comfort_14_june.jpg',
                 video_url: '',
-                images: ['galereya/standart.jpg'],
+                images: ['galereya/comfort_14_june.jpg'],
                 videos: []
             },
             comfort_plus_14: {
                 price: '1550',
-                image_url: 'galereya/kom_plus.jpg',
+                image_url: 'galereya/comfort_plus_14_june.jpg',
                 video_url: '',
-                images: ['galereya/kom_plus.jpg'],
+                images: ['galereya/comfort_plus_14_june.jpg'],
                 videos: []
             },
             anjum_lux: {
@@ -1964,8 +1964,8 @@
             standard: 'galereya/standart.jpg',
             comfort: 'galereya/komfort.jpg',
             special_14day: 'galereya/kom_plus.jpg',
-            comfort_14: 'galereya/standart.jpg',
-            comfort_plus_14: 'galereya/kom_plus.jpg',
+            comfort_14: 'galereya/comfort_14_june.jpg',
+            comfort_plus_14: 'galereya/comfort_plus_14_june.jpg',
             anjum_lux: 'galereya/anjum_lux.jpg'
         };
         return d[key] || '';

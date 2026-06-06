@@ -18,14 +18,14 @@
     "videos": []
   },
   "comfort_14": {
-    "image_url": "galereya/standart.jpg",
-    "images": ["galereya/standart.jpg"],
+    "image_url": "galereya/comfort_14_june.jpg",
+    "images": ["galereya/comfort_14_june.jpg"],
     "video_url": "",
     "videos": []
   },
   "comfort_plus_14": {
-    "image_url": "galereya/kom_plus.jpg",
-    "images": ["galereya/kom_plus.jpg"],
+    "image_url": "galereya/comfort_plus_14_june.jpg",
+    "images": ["galereya/comfort_plus_14_june.jpg"],
     "video_url": "",
     "videos": []
   },
