@@ -96,6 +96,8 @@ public class LeadController {
                     || "special_14day".equalsIgnoreCase(cleanPackageKey)
                     || "comfort_14".equalsIgnoreCase(cleanPackageKey)
                     || "comfort_plus_14".equalsIgnoreCase(cleanPackageKey)
+                    || "comfort_plus_14_june27".equalsIgnoreCase(cleanPackageKey)
+                    || "comfort_plus_13_weekly".equalsIgnoreCase(cleanPackageKey)
                     || "anjum_lux".equalsIgnoreCase(cleanPackageKey))
                     ? "\n🛏 <b>Xona turi:</b> " + finalRoom
                     : "";

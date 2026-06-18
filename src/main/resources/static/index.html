@@ -830,6 +830,60 @@
         </div>
     </div>
 
+    <!-- Comfort Plus 14 Kunlik (27.06) Card -->
+    <div class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-brand-gold/40 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden">
+        <div class="rounded-2xl overflow-hidden aspect-[2/3] mb-4 -mx-1 relative group cursor-pointer select-none"
+             @click="openPackageModal('comfort_plus_14_june27')"
+             @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'comfort_plus_14_june27', false)">
+            <img :src="getPackageImageAt('comfort_plus_14_june27', pkgSlide.comfort_plus_14_june27 || 0)" alt="Comfort Plus 14 kunlik 27 iyun Umra paketi" width="682" height="1024"
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                 loading="lazy" decoding="async">
+        </div>
+        <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">14 KUNLIK PAKET · 27.06 - 11.07</span>
+        <h3 class="text-xl font-bold mb-2 uppercase text-gray-900 dark:text-white">“Comfort Plus” – SAFO MARVA TOUR</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
+            Madina: Mehrob Toiba / Nusk al Hijra 4★ (7 kecha)<br>
+            Makka: Al Ebaa hotel 4★ (7 kecha)
+        </p>
+        <div class="text-5xl md:text-6xl font-extrabold text-brand-gold mb-6 leading-none">
+            $<span x-text="packagesData.comfort_plus_14_june27?.price || '1550'">1550</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400 font-normal">/ <span x-text="t('package_price')">boshlab</span></span>
+        </div>
+        <div class="mt-auto space-y-3">
+            <button @click="openPackageModal('comfort_plus_14_june27')" type="button"
+                    class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')">Batafsil</button>
+            <button @click="openBooking('comfort_plus_14_june27')" type="button"
+                    class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')">Band qilish</button>
+        </div>
+    </div>
+
+    <!-- Comfort Plus 13 Kunlik Weekly Card -->
+    <div class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden">
+        <div class="rounded-2xl overflow-hidden aspect-[2/3] mb-4 -mx-1 relative group cursor-pointer select-none"
+             @click="openPackageModal('comfort_plus_13_weekly')"
+             @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'comfort_plus_13_weekly', false)">
+            <img :src="getPackageImageAt('comfort_plus_13_weekly', pkgSlide.comfort_plus_13_weekly || 0)" alt="Comfort Plus 13 kunlik haftalik Umra paketi" width="719" height="1080"
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                 loading="lazy" decoding="async">
+        </div>
+        <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">13 KUNLIK PAKET · 04.07 DAN BOSHLAB</span>
+        <h3 class="text-xl font-bold mb-2 uppercase text-gray-900 dark:text-white">“Comfort Plus” – SAFO MARVA TOUR</h3>
+        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
+            Makka: Al Ebaa hotel (6 kecha)<br>
+            Madina: Mehrob Toiba / Sabal Al Masi (6 kecha)
+        </p>
+        <div class="text-5xl md:text-6xl font-extrabold text-brand-gold mb-6 leading-none">
+            $<span x-text="packagesData.comfort_plus_13_weekly?.price || '1500'">1500</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400 font-normal">/ <span x-text="t('package_price')">boshlab</span></span>
+        </div>
+        <div class="mt-auto space-y-3">
+            <button @click="openPackageModal('comfort_plus_13_weekly')" type="button"
+                    class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')">Batafsil</button>
+            <button @click="openBooking('comfort_plus_13_weekly')" type="button"
+                    class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')">Band qilish</button>
+        </div>
+    </div>
+
     <!-- ANJUM LUX Hoji Aka 10 Kunlik Card -->
     <div class="bg-brand-cream dark:bg-[#151C2C]/80 backdrop-blur-md rounded-3xl border-2 border-brand-gold p-6 pt-8 shadow-xl dark:shadow-[0_0_35px_rgba(212,175,55,0.2)] transition-all duration-300 flex flex-col relative overflow-visible">
         <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-red px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg whitespace-nowrap">
@@ -1177,6 +1231,73 @@
                 <div><h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest">Paketga kiradi</h4><ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 text-gray-700 dark:text-gray-300 text-sm"><li>Tezyurar poyezd xizmati</li><li>2 mahal taom Madinada</li><li>2 mahal taom Makkada</li><li>Makka va Madinada ekskursiyalar</li><li>Ravzaga kirish imkoniyati</li><li>Ilmli guruh rahbarlari</li><li>Malakali shifokor xizmati</li><li>Qizil dengiz sayohati</li></ul></div>
                 <div><h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest">Hadyalar</h4><div class="flex flex-wrap gap-2"><span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Zam-zam 5 litr</span><span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Nimcha</span><span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Sumka</span><span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Beyjik</span><span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Abaya</span></div></div>
                 <div class="bg-brand-red/95 p-5 rounded-3xl border border-red-900/40 text-white flex flex-col sm:flex-row justify-between items-center gap-4"><div><p class="text-xs text-red-100 uppercase tracking-widest mb-1">Boshlang‘ich narx</p><p class="text-5xl md:text-6xl font-extrabold text-brand-gold leading-none">$<span x-text="packagesData.comfort_plus_14?.price || '1550'"></span></p></div><button @click="openBooking('comfort_plus_14')" type="button" class="bg-brand-gold text-brand-red px-8 py-3 rounded-xl font-bold hover:bg-yellow-600 transition-colors" x-text="t('btn_booking')">Band qilish</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Comfort Plus 14 Kunlik (27.06) Modal -->
+<div x-show="activeModal === 'comfort_plus_14_june27'" x-cloak class="fixed inset-0 z-[100] overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen px-4 py-8">
+        <div @click="activeModal = null" class="fixed inset-0 bg-[#04060B]/80 backdrop-blur-md"></div>
+        <div class="relative z-10 w-full max-w-2xl overflow-hidden rounded-3xl bg-brand-cream dark:bg-[#121824] border border-gray-200 dark:border-gray-800 shadow-2xl text-gray-900 dark:text-white">
+            <div class="bg-brand-red/90 px-6 py-5 flex justify-between items-start gap-4 text-white">
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-widest text-brand-gold mb-2">27.06.2026 - 11.07.2026</p>
+                    <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wider">Comfort Plus — 14 kunlik paket</h3>
+                    <p class="text-sm text-red-100 mt-2">Toshkent — Madina · Jidda — Toshkent</p>
+                </div>
+                <button @click="activeModal = null" type="button" class="modal-close-btn text-white hover:text-brand-gold" :aria-label="t('aria_close')">×</button>
+            </div>
+            <div class="px-6 py-6 space-y-5 max-h-[78vh] overflow-y-auto">
+                <div class="rounded-2xl overflow-hidden shadow-lg aspect-[2/3] bg-black relative select-none min-h-[12rem]">
+                    <img :src="mediaUrl(packagesData.comfort_plus_14_june27?.image_url || pkgDefaultImage('comfort_plus_14_june27'))" alt="Comfort Plus 14 kunlik 27 iyun paketi" class="absolute inset-0 w-full h-full object-cover cursor-pointer" loading="lazy" decoding="async" @click="openLightbox(getPackageImages('comfort_plus_14_june27').map(u => mediaUrl(u)), 0)">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                    <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-2xl p-4 border border-gray-200 dark:border-gray-800"><h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Yo‘nalish</h4><p class="font-semibold">Toshkent — Madina</p><p class="font-semibold">Jidda — Toshkent</p><p class="text-gray-600 dark:text-gray-400 mt-1">1 Juma Madinada + 1 Juma Makkada</p></div>
+                    <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-2xl p-4 border border-gray-200 dark:border-gray-800"><h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Davomiyligi</h4><p class="font-semibold">14 kun</p><p class="text-gray-600 dark:text-gray-400 mt-1">Madina 7 kecha, Makka 7 kecha</p></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div><h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest border-b border-gray-200 dark:border-gray-800 pb-2">Mehmonxonalar</h4><p class="font-semibold">Madina: Mehrob Toiba / Nusk al Hijra 4★</p><p class="text-gray-600 dark:text-gray-400 text-sm mb-2">7 kecha</p><p class="font-semibold">Makka: Al Ebaa hotel 4★</p><p class="text-gray-600 dark:text-gray-400 text-sm">7 kecha</p></div>
+                    <div><h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest border-b border-gray-200 dark:border-gray-800 pb-2">Narxlar</h4><ul class="text-gray-700 dark:text-gray-300 space-y-2 text-sm"><li class="flex justify-between gap-4"><span>4 kishilik xona</span><strong class="text-brand-gold text-xl md:text-2xl font-extrabold">$1550</strong></li><li class="flex justify-between gap-4"><span>3 kishilik xona</span><strong class="text-brand-gold text-xl md:text-2xl font-extrabold">$1650</strong></li><li class="flex justify-between gap-4"><span>2 kishilik xona</span><strong class="text-brand-gold text-xl md:text-2xl font-extrabold">$1800</strong></li></ul></div>
+                </div>
+                <div><h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest">Paketga kiradi</h4><ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 text-gray-700 dark:text-gray-300 text-sm"><li>Tezyurar poyezd xizmati</li><li>2 mahal taom Madinada</li><li>2 mahal taom Makkada</li><li>Makka va Madinada ekskursiyalar</li><li>Ravzaga kirish imkoniyati</li><li>Ilmli guruh rahbarlari</li><li>Malakali shifokor xizmati</li><li>Qizil dengiz sayohati</li></ul></div>
+                <div><h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest">Hadyalar</h4><div class="flex flex-wrap gap-2"><span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Zam-zam 5 litr</span><span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Nimcha</span><span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Sumka</span><span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Beyjik</span><span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Abaya</span></div></div>
+                <div class="bg-brand-red/95 p-5 rounded-3xl border border-red-900/40 text-white flex flex-col sm:flex-row justify-between items-center gap-4"><div><p class="text-xs text-red-100 uppercase tracking-widest mb-1">Boshlang‘ich narx</p><p class="text-5xl md:text-6xl font-extrabold text-brand-gold leading-none">$<span x-text="packagesData.comfort_plus_14_june27?.price || '1550'"></span></p></div><button @click="openBooking('comfort_plus_14_june27')" type="button" class="bg-brand-gold text-brand-red px-8 py-3 rounded-xl font-bold hover:bg-yellow-600 transition-colors" x-text="t('btn_booking')">Band qilish</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Comfort Plus 13 Kunlik Weekly Modal -->
+<div x-show="activeModal === 'comfort_plus_13_weekly'" x-cloak class="fixed inset-0 z-[100] overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen px-4 py-8">
+        <div @click="activeModal = null" class="fixed inset-0 bg-[#04060B]/80 backdrop-blur-md"></div>
+        <div class="relative z-10 w-full max-w-2xl overflow-hidden rounded-3xl bg-brand-cream dark:bg-[#121824] border border-gray-200 dark:border-gray-800 shadow-2xl text-gray-900 dark:text-white">
+            <div class="bg-brand-red/90 px-6 py-5 flex justify-between items-start gap-4 text-white">
+                <div>
+                    <p class="text-xs font-bold uppercase tracking-widest text-brand-gold mb-2">04.07.2026 DAN BOSHLAB · HAR SHANBA</p>
+                    <h3 class="text-xl md:text-2xl font-bold uppercase tracking-wider">Comfort Plus — 13 kunlik paket</h3>
+                    <p class="text-sm text-red-100 mt-2">Toshkent — Jidda · Madina — Toshkent</p>
+                </div>
+                <button @click="activeModal = null" type="button" class="modal-close-btn text-white hover:text-brand-gold" :aria-label="t('aria_close')">×</button>
+            </div>
+            <div class="px-6 py-6 space-y-5 max-h-[78vh] overflow-y-auto">
+                <div class="rounded-2xl overflow-hidden shadow-lg aspect-[2/3] bg-black relative select-none min-h-[12rem]">
+                    <img :src="mediaUrl(packagesData.comfort_plus_13_weekly?.image_url || pkgDefaultImage('comfort_plus_13_weekly'))" alt="Comfort Plus 13 kunlik haftalik paket" class="absolute inset-0 w-full h-full object-cover cursor-pointer" loading="lazy" decoding="async" @click="openLightbox(getPackageImages('comfort_plus_13_weekly').map(u => mediaUrl(u)), 0)">
+                </div>
+                <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-2xl p-4 border border-gray-200 dark:border-gray-800 text-sm"><h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Ketish sanalari</h4><p class="leading-relaxed">04.07 · 11.07 · 18.07 · 25.07 · 01.08 · 08.08 · 15.08 · 22.08 · 29.08</p><p class="text-gray-600 dark:text-gray-400 mt-1">Haftaning har shanba kuni</p></div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                    <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-2xl p-4 border border-gray-200 dark:border-gray-800"><h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Yo‘nalish</h4><p class="font-semibold">Toshkent — Jidda</p><p class="font-semibold">Madina — Toshkent</p></div>
+                    <div class="bg-brand-cream-dark dark:bg-[#1B2436] rounded-2xl p-4 border border-gray-200 dark:border-gray-800"><h4 class="font-bold text-brand-gold mb-2 uppercase text-xs tracking-widest">Davomiyligi</h4><p class="font-semibold">13 kun</p><p class="text-gray-600 dark:text-gray-400 mt-1">Makka 6 kecha, Madina 6 kecha</p></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div><h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest border-b border-gray-200 dark:border-gray-800 pb-2">Mehmonxonalar</h4><p class="font-semibold">Makka: Al Ebaa hotel</p><p class="text-gray-600 dark:text-gray-400 text-sm mb-2">6 kecha</p><p class="font-semibold">Madina: Mehrob Toiba / Sabal Al Masi</p><p class="text-gray-600 dark:text-gray-400 text-sm">6 kecha</p></div>
+                    <div><h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest border-b border-gray-200 dark:border-gray-800 pb-2">Narxlar</h4><ul class="text-gray-700 dark:text-gray-300 space-y-2 text-sm"><li class="flex justify-between gap-4"><span>4 kishilik xona</span><strong class="text-brand-gold text-xl md:text-2xl font-extrabold">$1500</strong></li><li class="flex justify-between gap-4"><span>3 kishilik xona</span><strong class="text-brand-gold text-xl md:text-2xl font-extrabold">$1600</strong></li><li class="flex justify-between gap-4"><span>2 kishilik xona</span><strong class="text-brand-gold text-xl md:text-2xl font-extrabold">$1750</strong></li></ul></div>
+                </div>
+                <div><h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest">Paketga kiradi</h4><ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-4 text-gray-700 dark:text-gray-300 text-sm"><li>Tezyurar poyezd xizmati</li><li>2 mahal taom Madinada</li><li>2 mahal taom Makkada</li><li>Makka va Madinada ekskursiyalar</li><li>Ravzaga kirish imkoniyati</li><li>Ilmli guruh rahbarlari</li><li>Malakali shifokor xizmati</li><li>Qizil dengiz sayohati</li></ul></div>
+                <div><h4 class="font-bold text-brand-gold mb-3 uppercase text-xs tracking-widest">Hadyalar</h4><div class="flex flex-wrap gap-2"><span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Zam-zam 5 litr</span><span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Nimcha</span><span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Sumka</span><span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Beyjik</span><span class="bg-gray-100 dark:bg-[#1B2436] text-brand-gold px-3 py-1 rounded-full text-xs font-semibold border border-brand-gold/20">Abaya</span></div></div>
+                <div class="bg-brand-red/95 p-5 rounded-3xl border border-red-900/40 text-white flex flex-col sm:flex-row justify-between items-center gap-4"><div><p class="text-xs text-red-100 uppercase tracking-widest mb-1">Boshlang‘ich narx</p><p class="text-5xl md:text-6xl font-extrabold text-brand-gold leading-none">$<span x-text="packagesData.comfort_plus_13_weekly?.price || '1500'"></span></p></div><button @click="openBooking('comfort_plus_13_weekly')" type="button" class="bg-brand-gold text-brand-red px-8 py-3 rounded-xl font-bold hover:bg-yellow-600 transition-colors" x-text="t('btn_booking')">Band qilish</button></div>
             </div>
         </div>
     </div>
@@ -1547,6 +1668,10 @@
                     pkg_comfort_hotel: "Al Ebaa hotel (Makka) + Nusk al Hijra (Madina)",
                     pkg_comfort_plus_14: "Comfort Plus 14 Kunlik (18.06)",
                     pkg_comfort_plus_14_hotel: "Al Ebaa hotel 4★ (Makka) + Mehrob Toiba / Manazel al Safiyah 4★ (Madina)",
+                    pkg_comfort_plus_14_june27: "Comfort Plus 14 Kunlik (27.06)",
+                    pkg_comfort_plus_14_june27_hotel: "Al Ebaa hotel 4★ (Makka) + Mehrob Toiba / Nusk al Hijra 4★ (Madina)",
+                    pkg_comfort_plus_13_weekly: "Comfort Plus 13 Kunlik (Har shanba)",
+                    pkg_comfort_plus_13_weekly_hotel: "Al Ebaa hotel (Makka) + Mehrob Toiba / Sabal Al Masi (Madina)",
                     pkg_anjum_lux: "ANJUM LUX Hoji Aka",
                     pkg_anjum_lux_hotel: "Anjum Makkah 5★ (Makka) + Waqf As Safi 5★ (Madina)",
                     pkg_room_note: "Xona joylashuviga qarab narx o'zgaradi",
@@ -1630,6 +1755,10 @@
                     pkg_comfort_hotel: "Al Ebaa hotel (Мекка) + Nusk al Hijra (Медина)",
                     pkg_comfort_plus_14: "Comfort Plus 14 Дней (18.06)",
                     pkg_comfort_plus_14_hotel: "Al Ebaa hotel 4★ (Мекка) + Mehrob Toiba / Manazel al Safiyah 4★ (Медина)",
+                    pkg_comfort_plus_14_june27: "Comfort Plus 14 Дней (27.06)",
+                    pkg_comfort_plus_14_june27_hotel: "Al Ebaa hotel 4★ (Мекка) + Mehrob Toiba / Nusk al Hijra 4★ (Медина)",
+                    pkg_comfort_plus_13_weekly: "Comfort Plus 13 Дней (каждую субботу)",
+                    pkg_comfort_plus_13_weekly_hotel: "Al Ebaa hotel (Мекка) + Mehrob Toiba / Sabal Al Masi (Медина)",
                     pkg_anjum_lux: "ANJUM LUX Hoji Aka",
                     pkg_anjum_lux_hotel: "Anjum Makkah 5★ (Мекка) + Waqf As Safi 5★ (Медина)",
                     pkg_room_note: "Цена меняется в зависимости от размещения",
@@ -1713,6 +1842,10 @@
                     pkg_comfort_hotel: "Al Ebaa hotel (Makkah) + Nusk al Hijra (Madinah)",
                     pkg_comfort_plus_14: "Comfort Plus 14 Days (18.06)",
                     pkg_comfort_plus_14_hotel: "Al Ebaa hotel 4★ (Makkah) + Mehrob Toiba / Manazel al Safiyah 4★ (Madinah)",
+                    pkg_comfort_plus_14_june27: "Comfort Plus 14 Days (27.06)",
+                    pkg_comfort_plus_14_june27_hotel: "Al Ebaa hotel 4★ (Makkah) + Mehrob Toiba / Nusk al Hijra 4★ (Madinah)",
+                    pkg_comfort_plus_13_weekly: "Comfort Plus 13 Days (Every Saturday)",
+                    pkg_comfort_plus_13_weekly_hotel: "Al Ebaa hotel (Makkah) + Mehrob Toiba / Sabal Al Masi (Madinah)",
                     pkg_anjum_lux: "ANJUM LUX Hoji Aka",
                     pkg_anjum_lux_hotel: "Anjum Makkah 5★ (Makkah) + Waqf As Safi 5★ (Madinah)",
                     pkg_room_note: "Price varies based on room occupancy",
@@ -1761,6 +1894,10 @@
                 'Comfort 14 kunlik paket': 'pkg_comfort_14',
                 'Comfort Plus 14 Kunlik (18.06)': 'pkg_comfort_plus_14',
                 'Comfort Plus 14 kunlik paket (18.06)': 'pkg_comfort_plus_14',
+                'Comfort Plus 14 Kunlik (27.06)': 'pkg_comfort_plus_14_june27',
+                'Comfort Plus 14 kunlik paket (27.06)': 'pkg_comfort_plus_14_june27',
+                'Comfort Plus 13 Kunlik (Har shanba)': 'pkg_comfort_plus_13_weekly',
+                'Comfort Plus 13 kunlik paket (Har shanba)': 'pkg_comfort_plus_13_weekly',
                 'ANJUM LUX Hoji Aka 10 kunlik paket': 'pkg_anjum_lux'
             },
             displayPackageName() {
@@ -1822,6 +1959,8 @@
             special_14day: { name: 'Comfort Plus 14 Kunlik', labelKey: 'pkg_special_14day' },
             comfort_14: { name: 'Comfort 14 Kunlik', labelKey: 'pkg_comfort_14' },
             comfort_plus_14: { name: 'Comfort Plus 14 Kunlik (18.06)', labelKey: 'pkg_comfort_plus_14' },
+            comfort_plus_14_june27: { name: 'Comfort Plus 14 Kunlik (27.06)', labelKey: 'pkg_comfort_plus_14_june27' },
+            comfort_plus_13_weekly: { name: 'Comfort Plus 13 Kunlik (Har shanba)', labelKey: 'pkg_comfort_plus_13_weekly' },
             anjum_lux: { name: 'ANJUM LUX Hoji Aka 10 kunlik paket', labelKey: 'pkg_anjum_lux' }
         },
         calcPackages: {
@@ -1830,11 +1969,13 @@
             special_14day: { name: 'Comfort Plus 14 Kunlik', price: 1500 },
             comfort_14: { name: 'Comfort 14 Kunlik', price: 1450 },
             comfort_plus_14: { name: 'Comfort Plus 14 Kunlik (18.06)', price: 1550 },
+            comfort_plus_14_june27: { name: 'Comfort Plus 14 Kunlik (27.06)', price: 1550 },
+            comfort_plus_13_weekly: { name: 'Comfort Plus 13 Kunlik (Har shanba)', price: 1500 },
             anjum_lux: { name: 'ANJUM LUX Hoji Aka 10 kunlik paket', price: 1590 }
         },
         // Comfort Plus 14 Kunlik paketida xona turiga qarab narx o'zgaradi
-        roomBasedPackages: ['Standard Plus Paket', 'Comfort Plus 14 Kunlik', 'Comfort Plus 14 kunlik paket', 'Comfort 14 Kunlik', 'Comfort 14 kunlik paket', 'Comfort Plus 14 Kunlik (18.06)', 'Comfort Plus 14 kunlik paket (18.06)', 'ANJUM LUX Hoji Aka 10 kunlik paket'],
-        roomBasedPackageKeys: ['standard', 'special_14day', 'comfort_14', 'comfort_plus_14', 'anjum_lux'],
+        roomBasedPackages: ['Standard Plus Paket', 'Comfort Plus 14 Kunlik', 'Comfort Plus 14 kunlik paket', 'Comfort 14 Kunlik', 'Comfort 14 kunlik paket', 'Comfort Plus 14 Kunlik (18.06)', 'Comfort Plus 14 kunlik paket (18.06)', 'Comfort Plus 14 Kunlik (27.06)', 'Comfort Plus 14 kunlik paket (27.06)', 'Comfort Plus 13 Kunlik (Har shanba)', 'Comfort Plus 13 kunlik paket (Har shanba)', 'ANJUM LUX Hoji Aka 10 kunlik paket'],
+        roomBasedPackageKeys: ['standard', 'special_14day', 'comfort_14', 'comfort_plus_14', 'comfort_plus_14_june27', 'comfort_plus_13_weekly', 'anjum_lux'],
         roomPrices: {
             'Standard Plus Paket': {
                 '4 kishilik': 1250,
@@ -1870,6 +2011,26 @@
                 '4 kishilik': 1550,
                 '3 kishilik': 1650,
                 '2 kishilik': 1800
+            },
+            'Comfort Plus 14 Kunlik (27.06)': {
+                '4 kishilik': 1550,
+                '3 kishilik': 1650,
+                '2 kishilik': 1800
+            },
+            'Comfort Plus 14 kunlik paket (27.06)': {
+                '4 kishilik': 1550,
+                '3 kishilik': 1650,
+                '2 kishilik': 1800
+            },
+            'Comfort Plus 13 Kunlik (Har shanba)': {
+                '4 kishilik': 1500,
+                '3 kishilik': 1600,
+                '2 kishilik': 1750
+            },
+            'Comfort Plus 13 kunlik paket (Har shanba)': {
+                '4 kishilik': 1500,
+                '3 kishilik': 1600,
+                '2 kishilik': 1750
             },
             'ANJUM LUX Hoji Aka 10 kunlik paket': {
                 '4 kishilik': 1590,
@@ -1910,7 +2071,7 @@
         },
         showSuccess: false,
         isSubmitting: false,
-        pkgSlide: { standard: 0, comfort: 0, special_14day: 0, comfort_14: 0, comfort_plus_14: 0, anjum_lux: 0 },
+        pkgSlide: { standard: 0, comfort: 0, special_14day: 0, comfort_14: 0, comfort_plus_14: 0, comfort_plus_14_june27: 0, comfort_plus_13_weekly: 0, anjum_lux: 0 },
         modalSlide: 0,
         pkgModalHover: null,
         pkgTouchStartX: 0,
@@ -1952,6 +2113,20 @@
                 images: ['galereya/comfort_plus_14_june.jpg'],
                 videos: []
             },
+            comfort_plus_14_june27: {
+                price: '1550',
+                image_url: 'galereya/comfort_plus_14_june27.jpg',
+                video_url: '',
+                images: ['galereya/comfort_plus_14_june27.jpg'],
+                videos: []
+            },
+            comfort_plus_13_weekly: {
+                price: '1500',
+                image_url: 'galereya/comfort_plus_13_weekly.jpg',
+                video_url: '',
+                images: ['galereya/comfort_plus_13_weekly.jpg'],
+                videos: []
+            },
             anjum_lux: {
                 price: '1590',
                 image_url: 'galereya/anjum_lux.jpg',
@@ -1966,6 +2141,8 @@
             special_14day: 'galereya/kom_plus.jpg',
             comfort_14: 'galereya/comfort_14_june.jpg',
             comfort_plus_14: 'galereya/comfort_plus_14_june.jpg',
+            comfort_plus_14_june27: 'galereya/comfort_plus_14_june27.jpg',
+            comfort_plus_13_weekly: 'galereya/comfort_plus_13_weekly.jpg',
             anjum_lux: 'galereya/anjum_lux.jpg'
         };
         return d[key] || '';
@@ -2179,9 +2356,9 @@
                 setTimeout(runRemote, 150);
             }
 
-            // $watch qismida faqat mavjud 3 ta paket kalitlari tekshiriladi
+            // Paket modali almashganda media slayderini boshidan ochamiz.
             this.$watch('activeModal', value => {
-                if (['standard', 'comfort', 'special_14day', 'comfort_14', 'comfort_plus_14', 'anjum_lux'].includes(value)) {
+                if (['standard', 'comfort', 'special_14day', 'comfort_14', 'comfort_plus_14', 'comfort_plus_14_june27', 'comfort_plus_13_weekly', 'anjum_lux'].includes(value)) {
                     this.modalSlide = 0;
                 }
                 if (!value) {
