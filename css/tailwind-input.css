@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  /* Package cards stay cheap to paint on low-end phones and laptops. */
+  #packages .backdrop-blur-md {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.08);
+    transition-property: border-color, background-color;
+    transition-duration: 120ms;
+  }
+
+  #packages .backdrop-blur-md:hover {
+    box-shadow: 0 5px 14px rgb(0 0 0 / 0.1);
+  }
+
+  #packages .group img {
+    transform: none;
+    transition: none;
+  }
+
+  #packages .group:hover img {
+    transform: none;
+  }
+}

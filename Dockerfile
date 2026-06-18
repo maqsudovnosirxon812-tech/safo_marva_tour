@@ -19,5 +19,5 @@ COPY --from=build /app/target/tour-1.0.0.jar ./app.jar
 # Expose port
 EXPOSE 3000
 
-# Run the application
-CMD ["java", "-jar", "app.jar"]
+# Keep enough headroom for native memory on Render's 512 MB instance.
+CMD ["java", "-XX:+UseSerialGC", "-XX:MaxRAMPercentage=55", "-XX:InitialRAMPercentage=15", "-XX:MaxMetaspaceSize=128m", "-Xss512k", "-XX:+ExitOnOutOfMemoryError", "-jar", "app.jar"]
