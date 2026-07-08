@@ -890,23 +890,16 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   class="bg-brand-gold text-brand-red px-10 py-4 rounded-full font-bold text-lg hover:bg-yellow-600 transition-all shadow-lg" x-text="t('hero_btn1')"></a><a href="tel:+998555177373"
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              class="border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-brand-red transition-all" x-text="t('hero_btn2')"></a></div></div>
 </section><!-- Packages Section -->
-<section id="packages" class="py-24 bg-brand-cream-dark dark:bg-[#0B0F19] transition-colors duration-300"><div class="container mx-auto px-6"><div class="text-center mb-16"><h2 class="text-4xl md:text-5xl font-serif section-title mb-4" x-text="t('section_packages_title')"></h2><div class="w-24 h-1 bg-brand-gold mx-auto mb-6"></div><p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto" x-text="t('section_packages_desc')"></p></div><div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 reveal items-stretch">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @click="openPackageModal('special_14day')"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'special_14day', false)"><img :src="getPackageImageAt('special_14day', pkgSlide.special_14day || 0)" alt="Comfort Plus Umra paketi"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                class="w-full h-full object-cover transition-transform duration-500"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                :class="pkgCardHover === 'special_14day' ? 'scale-110' : 'scale-100'"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                @mouseenter="pkgCardHover = 'special_14day'" @mouseleave="pkgCardHover = null"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                loading="lazy" decoding="async"><button type="button" x-show="getPackageImages('special_14day').length > 1" @click.stop="pkgSlidePrev('special_14day')"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Oldingi">‹</button><button type="button" x-show="getPackageImages('special_14day').length > 1" @click.stop="pkgSlideNext('special_14day')"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Keyingi">›</button><span x-show="getPackageImages('special_14day').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         x-text="((pkgSlide.special_14day || 0) + 1) + '/' + getPackageImages('special_14day').length"></span></div><!-- Paket Davomiyligi (14 kun) --><span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">14 KUNLIK PAKET (Iyul, Avgust)</span><!-- Paket Nomi --><h3 class="text-xl font-bold mb-2 uppercase text-gray-900 dark:text-white">“Comfort Plus” – SAFO MARVA TOUR</h3><!-- Mehmonxonalar haqida qisqacha ma'lumot --><p class="text-gray-600 dark:text-gray-400 text-sm mb-4">Madina: Mehrob Toiba 4★ (7 kecha) <br>Makka: Al Ebaa hotel 4★ (7 kecha)
-    </p><!-- Narxi (Eng minimal narx $1550 dan boshlab qo'yildi) --><div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none"
+<section id="packages" class="py-24 bg-brand-cream-dark dark:bg-[#0B0F19] transition-colors duration-300"><div class="container mx-auto px-6"><div class="text-center mb-16"><h2 class="text-4xl md:text-5xl font-serif section-title mb-4" x-text="t('section_packages_title')"></h2><div class="w-24 h-1 bg-brand-gold mx-auto mb-6"></div><p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto" x-text="t('section_packages_desc')"></p></div><div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 reveal items-stretch">    <!-- Standard 13 Kunlik Card -->
+    <div class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden relative">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-red px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg whitespace-nowrap">
+            YANGI
+        </div>
+        <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none"
              @click="openPackageModal('standard_13')"
              @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'standard_13', false)">
-            <img :src="getPackageImageAt('standard_13', pkgSlide.standard_13 || 0)" alt="Standard 13 kunlik Umra paketi"
-                 class="w-full h-full object-cover transition-transform duration-500"
-                 :class="pkgCardHover === 'standard_13' ? 'scale-110' : 'scale-100'"
-                 @mouseenter="pkgCardHover = 'standard_13'" @mouseleave="pkgCardHover = null"
+            <img :src="getPackageImageAt('standard_13', pkgSlide.standard_13 || 0)" alt="Standard 13 kunlik Umra paketi" width="720" height="900"
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                  loading="lazy" decoding="async">
             <button type="button" x-show="getPackageImages('standard_13').length > 1" @click.stop="pkgSlidePrev('standard_13')"
                     class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Oldingi">‹</button>
@@ -917,28 +910,33 @@
         </div>
         <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">13 KUNLIK PAKET (Iyul)</span>
         <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">"Standard" – SAFO MARVA TOUR</h3>
-        <p class="text-gray-600 dark:text-gray-300 text-sm mb-6">Makka: Jabri Makka 4★ (9 kecha) <br>Madina: Mehrob Toiba 4★ (3 kecha)</p>
-        <div class="text-5xl md:text-6xl font-extrabold text-brand-gold mb-6 leading-none">$<span x-text="packagesData.standard_13?.price || '1100'">1100</span><span class="text-sm text-gray-500 dark:text-gray-400 font-normal">/ <span x-text="t('package_price')">boshlab</span></span></div>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-6 leading-relaxed">
+            Makka: Jabri Makka 4★ (9 kecha)<br>
+            Madina: Mehrob Toiba 4★ (3 kecha)
+        </p>
+        <div class="text-5xl md:text-6xl font-extrabold text-brand-gold mb-6 leading-none">
+            $<span x-text="packagesData.standard_13?.price || '1100'">1100</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400 font-normal">/ <span x-text="t('package_price')">boshlab</span></span>
+        </div>
         <div class="mt-auto space-y-3">
             <button @click="openPackageModal('standard_13')" type="button"
                     class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')">Batafsil</button>
-            <button @click="activeModal = 'booking'; selectedPackage = 'Standard 13 kunlik paket'" type="button"
+            <button @click="openBooking('standard_13')" type="button"
                     class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')">Band qilish</button>
         </div>
     </div>
 
-    <!-- Al Jabri Standart 14 Kunlik Card -->
-    <!-- Comfort Plus 10 Kunlik Card -->
-    <div class="bg-brand-cream dark:bg-[#151C2C]/50  rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-red px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg whitespace-nowrap">MASHHUR</div>
-        
-<div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none"
+    
+<!-- Al Jabri Standart 14 Kunlik Card -->
+    <div class="bg-brand-cream dark:bg-[#151C2C]/50 backdrop-blur-md rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden relative">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-red px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg whitespace-nowrap">
+            MASHHUR
+        </div>
+        <div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none"
              @click="openPackageModal('al_jabri_14')"
              @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'al_jabri_14', false)">
-            <img :src="getPackageImageAt('al_jabri_14', pkgSlide.al_jabri_14 || 0)" alt="Al Jabri Standart 14 kunlik Umra paketi"
-                 class="w-full h-full object-cover transition-transform duration-500"
-                 :class="pkgCardHover === 'al_jabri_14' ? 'scale-110' : 'scale-100'"
-                 @mouseenter="pkgCardHover = 'al_jabri_14'" @mouseleave="pkgCardHover = null"
+            <img :src="getPackageImageAt('al_jabri_14', pkgSlide.al_jabri_14 || 0)" alt="Al Jabri Standart 14 kunlik Umra paketi" width="720" height="900"
+                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                  loading="lazy" decoding="async">
             <button type="button" x-show="getPackageImages('al_jabri_14').length > 1" @click.stop="pkgSlidePrev('al_jabri_14')"
                     class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Oldingi">‹</button>
@@ -949,106 +947,22 @@
         </div>
         <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">14 KUNLIK PAKET (Iyul, Avgust)</span>
         <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">"Al Jabri Standart" – SAFO MARVA TOUR</h3>
-        <p class="text-gray-600 dark:text-gray-300 text-sm mb-6">Madina: Mehrob Toiba 4★ (7 kecha) <br>Makka: Al Jabri 4★ (7 kecha)</p>
-        <div class="text-5xl md:text-6xl font-extrabold text-brand-gold mb-6 leading-none">$<span x-text="packagesData.al_jabri_14?.price || '1250'">1250</span><span class="text-sm text-gray-500 dark:text-gray-400 font-normal">/ <span x-text="t('package_price')">boshlab</span></span></div>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-6 leading-relaxed">
+            Madina: Mehrob Toiba 4★ (7 kecha)<br>
+            Makka: Al Jabri 4★ (7 kecha)
+        </p>
+        <div class="text-5xl md:text-6xl font-extrabold text-brand-gold mb-6 leading-none">
+            $<span x-text="packagesData.al_jabri_14?.price || '1250'">1250</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400 font-normal">/ <span x-text="t('package_price')">boshlab</span></span>
+        </div>
         <div class="mt-auto space-y-3">
             <button @click="openPackageModal('al_jabri_14')" type="button"
                     class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')">Batafsil</button>
-            <button @click="activeModal = 'booking'; selectedPackage = 'Al Jabri Standart 14 kunlik paket'" type="button"
+            <button @click="openBooking('al_jabri_14')" type="button"
                     class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')">Band qilish</button>
         </div>
     </div>
 
-    <!-- ANJUM LUX Hoji Aka 10 Kunlik Card -->
-    <div class="bg-brand-cream dark:bg-[#151C2C]/80  rounded-3xl border-2 border-brand-gold p-6 pt-8 shadow-xl dark:shadow-[0_0_35px_rgba(212,175,55,0.2)] transition-all duration-300 flex flex-col relative overflow-visible">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-red px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg whitespace-nowrap">
-            LUX
-        </div>
-
-        
-<div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none"
-             @click="openPackageModal('comfort_plus_10')"
-             @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'comfort_plus_10', false)">
-            <img :src="getPackageImageAt('comfort_plus_10', pkgSlide.comfort_plus_10 || 0)" alt="Comfort Plus 10 kunlik Umra paketi"
-                 class="w-full h-full object-cover transition-transform duration-500"
-                 :class="pkgCardHover === 'comfort_plus_10' ? 'scale-110' : 'scale-100'"
-                 @mouseenter="pkgCardHover = 'comfort_plus_10'" @mouseleave="pkgCardHover = null"
-                 loading="lazy" decoding="async">
-            <button type="button" x-show="getPackageImages('comfort_plus_10').length > 1" @click.stop="pkgSlidePrev('comfort_plus_10')"
-                    class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Oldingi">‹</button>
-            <button type="button" x-show="getPackageImages('comfort_plus_10').length > 1" @click.stop="pkgSlideNext('comfort_plus_10')"
-                    class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Keyingi">›</button>
-            <span x-show="getPackageImages('comfort_plus_10').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
-                  x-text="((pkgSlide.comfort_plus_10 || 0) + 1) + '/' + getPackageImages('comfort_plus_10').length"></span>
-        </div>
-        <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">10 KUNLIK PAKET (Iyun, Iyul, Avgust)</span>
-        <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">“Comfort Plus” – SAFO MARVA TOUR</h3>
-        <p class="text-gray-600 dark:text-gray-300 text-sm mb-6">Madina: Nusk al Hijra 4★ (3 kecha) <br>Makka: Al Ebaa hotel 4★ (6 kecha)</p>
-        <div class="text-5xl md:text-6xl font-extrabold text-brand-gold mb-6 leading-none">$<span x-text="packagesData.comfort_plus_10?.price || '1390'">1390</span><span class="text-sm text-gray-500 dark:text-gray-400 font-normal">/ <span x-text="t('package_price')">boshlab</span></span></div>
-        <div class="mt-auto space-y-3">
-            <button @click="openPackageModal('comfort_plus_10')" type="button"
-                    class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')">Batafsil</button>
-            <button @click="activeModal = 'booking'; selectedPackage = 'Comfort Plus 10 kunlik paket'" type="button"
-                    class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')">Band qilish</button>
-        </div>
-    </div>
-
-    <div class="bg-brand-cream dark:bg-[#151C2C]/50 rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-red px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg whitespace-nowrap">
-            MASHHUR
-        </div>
-        
-<div class="text-5xl md:text-6xl font-extrabold text-brand-gold mb-6 leading-none">$<span x-text="packagesData.special_14day?.price || '1550'">1550</span><span class="text-sm text-gray-500 font-normal">/ <span x-text="t('package_price')">boshlab</span></span></div><!-- Harakatlar tugmalari --><div class="mt-auto space-y-3"><button @click="openPackageModal('special_14day')" type="button"
-                                                                                                                                                                                                                                                                                                                                                                                                                 class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')">Batafsil</button><button @click="activeModal = 'booking'; selectedPackage = 'Comfort Plus 14 kunlik paket'" type="button"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')">Band qilish</button></div></div>
-    <!-- Standard 13 Kunlik Card -->
-    <div class="bg-brand-cream dark:bg-[#151C2C]/50 rounded-3xl border border-gray-200 dark:border-gray-800 p-6 shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] hover:border-brand-gold/40 transition-all duration-300 flex flex-col overflow-hidden">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand-gold text-brand-red px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest shadow-lg whitespace-nowrap">
-            YANGI
-        </div>
-        
-<div class="rounded-2xl overflow-hidden aspect-[4/3] mb-4 -mx-1 relative group cursor-pointer select-none"
-             @click="openPackageModal('anjum_lux')"
-             @touchstart="pkgTouchStart($event)" @touchend="pkgTouchEnd($event, 'anjum_lux', false)">
-            <img :src="getPackageImageAt('anjum_lux', pkgSlide.anjum_lux || 0)" alt="ANJUM LUX Hoji Aka 10 kunlik Umra paketi"
-                 class="w-full h-full object-cover transition-transform duration-500"
-                 :class="pkgCardHover === 'anjum_lux' ? 'scale-110' : 'scale-100'"
-                 @mouseenter="pkgCardHover = 'anjum_lux'" @mouseleave="pkgCardHover = null"
-                 loading="lazy" decoding="async">
-            <button type="button" x-show="getPackageImages('anjum_lux').length > 1" @click.stop="pkgSlidePrev('anjum_lux')"
-                    class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Oldingi">‹</button>
-            <button type="button" x-show="getPackageImages('anjum_lux').length > 1" @click.stop="pkgSlideNext('anjum_lux')"
-                    class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Keyingi">›</button>
-            <span x-show="getPackageImages('anjum_lux').length > 1" class="absolute bottom-2 right-2 text-xs bg-black/60 text-white px-2 py-0.5 rounded-full"
-                  x-text="((pkgSlide.anjum_lux || 0) + 1) + '/' + getPackageImages('anjum_lux').length"></span>
-        </div>
-
-        <span class="text-brand-gold font-bold text-xs tracking-widest uppercase mb-2">
-                    10 KUNLIK LUX PAKET
-                </span>
-
-        <h3 class="text-xl font-bold mb-4 uppercase text-gray-900 dark:text-white">
-            ANJUM LUX Hoji Aka
-        </h3>
-
-        <p class="text-gray-600 dark:text-gray-300 text-sm mb-6 leading-relaxed">
-            Toshkent — Madina<br>
-            Jidda — Toshkent<br>
-            Madina 4 kecha, Makka 5 kecha
-        </p>
-
-        <div class="text-5xl md:text-6xl font-extrabold text-brand-gold mb-6 leading-none">
-            $<span x-text="packagesData.anjum_lux?.price || '1650'">1650</span>
-            <span class="text-sm text-gray-500 dark:text-gray-400 font-normal">/ <span x-text="t('package_price')">boshlab</span></span>
-        </div>
-
-        <div class="mt-auto space-y-3">
-            <button @click="openPackageModal('anjum_lux')" type="button"
-                    class="w-full bg-gray-100 dark:bg-[#1B2538] text-gray-800 dark:text-gray-200 py-3 rounded-xl font-semibold hover:bg-gray-200 dark:hover:bg-[#25324D] transition-colors" x-text="t('btn_details')">Batafsil</button>
-            <button @click="activeModal = 'booking'; selectedPackage = 'ANJUM LUX Hoji Aka 10 kunlik paket'" type="button"
-                    class="block w-full bg-brand-gold text-brand-red py-3 rounded-xl font-bold text-center hover:bg-yellow-600 shadow-md transition-all active:scale-95" x-text="t('btn_booking')">Band qilish</button>
-        </div>
-    </div>
 </div></div>
 </section><!-- Modals -->
 
