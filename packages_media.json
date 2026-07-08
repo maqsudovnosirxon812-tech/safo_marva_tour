@@ -1,4 +1,10 @@
 {
+  "standard": {
+    "image_url": "galereya/standart.jpg",
+    "images": ["galereya/standart.jpg"],
+    "video_url": "",
+    "videos": []
+  },
   "comfort": {
     "image_url": "galereya/komfort.jpg",
     "images": ["galereya/komfort.jpg"],
