@@ -1,7 +1,13 @@
 {
-  "comfort": {
-    "image_url": "galereya/komfort.jpg",
-    "images": ["galereya/komfort.jpg"],
+  "standard_13": {
+    "image_url": "galereya/standard_13.png",
+    "images": ["galereya/standard_13.png"],
+    "video_url": "",
+    "videos": []
+  },
+  "al_jabri_14": {
+    "image_url": "galereya/al_jabri_14.png",
+    "images": ["galereya/al_jabri_14.png"],
     "video_url": "",
     "videos": []
   },
