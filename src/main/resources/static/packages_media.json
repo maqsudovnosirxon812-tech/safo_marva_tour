@@ -18,6 +18,12 @@
     "videos": []
   },
 
+  "jumeirah_lux": {
+    "image_url": "galereya/jumeirah.jpg",
+    "images": ["galereya/jumeirah.jpg"],
+    "video_url": "galereya/jumeirah.mp4",
+    "videos": ["galereya/jumeirah.mp4"]
+  },
   "anjum_lux": {
     "image_url": "galereya/anjum_lux.jpg",
     "images": ["galereya/anjum_lux.jpg"],

@@ -18,7 +18,7 @@ public class SafoMarvaTourApplication {
 
     private static final Set<String> ACTIVE_PACKAGE_KEYS = Set.of(
             "special_14day", "comfort_plus_10", "standard_13", "al_jabri_14",
-            "anjum_lux");
+            "anjum_lux", "jumeirah_lux");
     private static final Set<String> RETIRED_PACKAGE_KEYS = Set.of("lux", "lux_premium", "lux_jumeirah");
 
     @Bean
@@ -31,6 +31,15 @@ public class SafoMarvaTourApplication {
             upsertPackage(packageRepository, "special_14day", "Comfort Plus (14 kunlik)", "1550",
                     "Июл ва Август ойилари учун SAFO MARVA TOUR нинг \"Comfort Plus\" 14 кунлик пакети\n\nSAFO MARVA TOUR билан — лицензияланган, хавфсиз, хотиржам\n\n✈️✈️✈️✈️✈️✈️\n\n📆18.07.2026 - 01.08.2026\n\n✈️ Тошкент – Мадина - Тошкент\n\n1 - Жума Мадинада\n1- Жума Маккада\n\n🏨 Мадинада: Mehrob Toiba 4️⃣⭐️\n🏨 Маккада: Al Ebaa hotel 4️⃣⭐️\n\n🏨 Мадинада: 7 - кеча \n🏨 Маккада: 7 - кеча\n\n‼️ Хона жойлашувлари бўйича:\n🛏 4 кишилик - 1550$\n🛏 3 кишилик - 1650$\n🛏 2 кишилик - 1850$\n\n\n🎁 Пакетимиз ичига кирувчи хизматлар:\n🚄 Тезюрар поезд хизмати\n🍽 2 маҳал таом — Мадинада \n🍽 2 маҳал таом — Маккада \n🕌 Макка ва Мадинада экскурсиялар\n🕌 Равзага кириш имконияти\n📖 Илмли гуруҳ раҳбарлари хизматлари\n⚕️ Малакали шифокор хизматлари\n🐳 Қизил денгиз саёхати\n\n🎁 Ҳадиялар:\n🧊 Зам-Зам 5 л \n🧥 Нимча\n🎒 Сумка\n🪪 Бейжик\n👗 Абая (аёллар учун)\n\n👨‍💻 Murojaat uchun:\n📞 +998 55 517 73 73\n📩 @Safomarva_admin");
 
+            upsertPackage(packageRepository, "jumeirah_lux", "Jumeirah Premium LUX (10 kunlik)", "1750",
+                    "Avgust va sentyabr oylari uchun SAFO MARVA TOUR ning \"Jumeirah\" 10 kunlik Premium LUX paketi.\\n\\n" +
+                            "Ketish: Toshkent - Madina, Qaytish: Jidda - Toshkent.\\n" +
+                            "1 Juma Madinada, 1 Juma Makkada.\\n" +
+                            "Madina: Waqf as Safi 5★, 4 kecha. Makka: Jumeirah Jabal Omar 5★, 5 kecha.\\n" +
+                            "Xona narxlari: 4 kishilik 1750$, 3 kishilik 1850$, 2 kishilik 2050$.\\n" +
+                            "Paketga kiradi: tezyurar poyezd, 2 mahal taom, ekskursiyalar, Ravza, guruh rahbarlari, shifokor, Qizil dengiz sayohati.\\n" +
+                            "Hadyalar: Zam-Zam 5 l, nimcha, sumka, beyjik, abaya.\\n" +
+                            "Murojaat uchun: 555177373");
             upsertPackage(packageRepository, "anjum_lux", "ANJUM LUX Hoji Aka (10 kunlik)", "1650",
                     "Август ва Сентябр ойи учун SAFO MARVA TOUR нинг \"ANJUM HOJI AKA\" 10 кунлик LUX пакети\n\nSAFO MARVA TOUR билан — лицензияланган, хавфсиз, хотиржам\n\n✈️ Кетиш: Тошкент – Мадина\n✈️ Қайтиш: Жидда - Тошкент\n\n1 - Жума Мадинада\n1- Жума Маккада\n\n🏨 Мадинада: Waqf as Safi 5️⃣⭐️\n🏨 Маккада: ANJUM MAKKAH 5️⃣⭐️\n\n🏨 Мадинада: 4 - кеча \n🏨 Маккада: 5 - кеча\n\nКетиш саналари:\n📆13.08.2026 (11:00 - 16:20)\n\nХафтанинг ҳар Пайшанба кунлари\n\n‼️ Хона жойлашувлари бўйича:\n🛏 4 кишилик - 1650$\n🛏 3 кишилик - 1750$\n🛏 2 кишилик - 1900$\n\n\n🎁 Пакетимиз ичига кирувчи хизматлар:\n🚄 Тезюрар поезд хизмати\n ▶️Мадина ▶️Макка томон\n🍽 2 маҳал таом — Мадинада \n🍽 2 маҳал таом — Маккада \n🕌 Макка ва Мадинада экскурсиялар\n🕌 Равзага кириш имконияти\n📖 Илмли гуруҳ раҳбарлари хизматлари\n⚕️ Малакали шифокор хизматлари\n🐳 Қизил денгиз саёхати\n\n🎁 Ҳадиялар:\n🧊 Зам-Зам 5 л \n🧥 Нимча\n🎒 Сумка\n🪪 Бейжик\n👗 Абая (аёллар учун)\n\n👨‍💻 Мурожаат учун: \n📞 555177373\n✅ @Safomarva_admin");
             upsertPackage(packageRepository, "standard_13", "Standard (13 kunlik)", "1100",
