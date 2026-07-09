@@ -39,9 +39,9 @@ public class SettingsController {
         settings.putIfAbsent("offer_desc", "Iyun, Iyul va Avgust oylari uchun maxsus. Toshkentdan to'g'ridan-to'g'ri reyslar va barcha qulayliklar mujassam.");
         settings.putIfAbsent("offer_makka_days", "7");
         settings.putIfAbsent("offer_madina_days", "7");
-        settings.putIfAbsent("offer_price_4", "1500");
-        settings.putIfAbsent("offer_price_3", "1600");
-        settings.putIfAbsent("offer_price_2", "1750");
+        settings.putIfAbsent("offer_price_4", "1550");
+        settings.putIfAbsent("offer_price_3", "1650");
+        settings.putIfAbsent("offer_price_2", "1850");
 
         return ResponseEntity.ok()
                 .cacheControl(CacheControl.noStore())
