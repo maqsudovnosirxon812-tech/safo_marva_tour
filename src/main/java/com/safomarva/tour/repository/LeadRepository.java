@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface LeadRepository extends JpaRepository<LeadEntity, Long> {
     List<LeadEntity> findFirst10ByOrderByIdDesc();
+    List<LeadEntity> findAllByOrderByCreatedAtDesc();
 }

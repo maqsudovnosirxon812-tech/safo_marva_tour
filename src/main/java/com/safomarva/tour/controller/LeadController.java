@@ -10,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -28,6 +29,16 @@ public class LeadController {
 
     public LeadController(LeadRepository leadRepository) {
         this.leadRepository = leadRepository;
+    }
+
+    // Admin API: Get all leads (for web admin panel)
+    @GetMapping("/leads")
+    public ResponseEntity<?> getLeads(@RequestHeader(value = "X-Admin-Key", required = false) String adminKey) {
+        if (adminKey == null || !adminKey.equals("safo_marva_secret_admin_key_2026")) {
+            return ResponseEntity.status(401).body(Map.of("error", "Unauthorized"));
+        }
+        List<LeadEntity> leads = leadRepository.findAllByOrderByCreatedAtDesc();
+        return ResponseEntity.ok(leads);
     }
 
     // Public API: Capture landing page lead registration form
