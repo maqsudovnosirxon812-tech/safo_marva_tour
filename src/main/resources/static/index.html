@@ -2549,7 +2549,12 @@
             document.documentElement.lang = this.currentLang;
 
             // Hash-based routing for #request
-            this.requestPage = window.location.hash === '#request';
+            const isTelegramMiniApp = !!window.Telegram && !!window.Telegram.WebApp && !!window.Telegram.WebApp.initData;
+            const isRequestHash = window.location.hash === '#request';
+            this.requestPage = isRequestHash || isTelegramMiniApp;
+            if (isRequestHash || isTelegramMiniApp) {
+                window.location.hash = '#request';
+            }
             window.addEventListener('hashchange', () => {
                 this.requestPage = window.location.hash === '#request';
                 if (this.requestPage && this.requestAuth) {
@@ -2607,7 +2612,7 @@
         },
         // Request Dashboard
         requestAuth: localStorage.getItem('req_auth') === 'true',
-        requestPage: window.location.hash === '#request',
+        requestPage: window.location.hash === '#request' || (!!window.Telegram && !!window.Telegram.WebApp && !!window.Telegram.WebApp.initData),
         requestEmail: '',
         requestPassword: '',
         requestLeads: [],
