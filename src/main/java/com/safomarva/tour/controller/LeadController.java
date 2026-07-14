@@ -112,7 +112,7 @@ public class LeadController {
             String message = "🌟 <b>YANGI MUROJAAT!</b> 🌟\n\n" +
                     "👤 <b>Mijoz:</b> " + cleanName + "\n" +
                     "📞 <b>Telefon:</b> <code>" + cleanPhone + "</code>\n" +
-                    "📦 <b>Tanlangan paket:</b> " + cleanPackageName + " (<code>" + cleanPackageKey + "</code>)" + roomInfo + "\n" +
+                    "📦 <b>Tanlangan paket:</b> " + cleanPackageName + roomInfo + "\n" +
                     "👥 <b>Ziyoratchilar soni:</b> " + finalPersons + " kishi\n" +
                     "🎧 <b>Operator jinsi:</b> " + finalOperator + "\n" +
                     "💳 <b>To'lov turi:</b> " + finalPayment + "\n\n" +

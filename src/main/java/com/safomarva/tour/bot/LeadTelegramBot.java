@@ -752,7 +752,7 @@ public class LeadTelegramBot extends TelegramLongPollingBot {
             String message = "👤 <b>Mijoz Ma'lumotlari:</b>\n\n" +
                     "👤 <b>Ismi:</b> " + lead.getName() + "\n" +
                     "📞 <b>Telefon:</b> <code>" + lead.getPhone() + "</code>\n" +
-                    "📦 <b>Tanlangan paket:</b> " + lead.getPackageSelected() + "\n" +
+                    "📦 <b>Tanlangan paket:</b> " + packageDisplayName(lead.getPackageSelected()) + "\n" +
                     "👥 <b>Ziyoratchilar soni:</b> " + persons + " kishi\n" +
                     "🛏 <b>Xona turi:</b> " + room + "\n" +
                     "🎧 <b>Operator jinsi:</b> " + operator + "\n" +
@@ -988,5 +988,18 @@ public class LeadTelegramBot extends TelegramLongPollingBot {
             }
         }
         return sb.toString();
+    }
+
+    private String packageDisplayName(String key) {
+        if (key == null) return "-";
+        switch (key) {
+            case "special_14day": return "Comfort Plus 14 Kunlik";
+            case "jumeirah_lux": return "Jumeirah Premium LUX 10 Kunlik";
+            case "anjum_lux": return "ANJUM LUX Hoji Aka 10 Kunlik";
+            case "standard_13": return "Standard 13 Kunlik";
+            case "al_jabri_14": return "Al Jabri Standart 14 Kunlik";
+            case "comfort_plus_10": return "Comfort Plus 10 Kunlik";
+            default: return key;
+        }
     }
 }
