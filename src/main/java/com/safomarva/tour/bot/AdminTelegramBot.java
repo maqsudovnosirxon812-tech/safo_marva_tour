@@ -160,7 +160,16 @@ public class AdminTelegramBot extends TelegramLongPollingBot {
                     "📊 <b>Statistika:</b> Umumiy ma'lumotlar\n" +
                     "⚙️ <b>Sayt Sozlamalari:</b> Bosh sahifa matnlari va narxlar\n\n" +
                     "👇 Boshlash uchun quyidagi menyudan foydalaning:";
-            sendCustomKeyboardMessage(chatId, welcome, mainMenuKeyboard);
+            InlineKeyboardMarkup startKeyboard = new InlineKeyboardMarkup();
+            List<List<InlineKeyboardButton>> startRows = new ArrayList<>();
+            List<InlineKeyboardButton> row = new ArrayList<>();
+            InlineKeyboardButton requestBtn = new InlineKeyboardButton();
+            requestBtn.setText("📋 Murojaatlar (Web)");
+            requestBtn.setUrl("https://safomarvaumra.uz/#request");
+            row.add(requestBtn);
+            startRows.add(row);
+            startKeyboard.setKeyboard(startRows);
+            sendInlineKeyboardMessage(chatId, welcome, startKeyboard);
             return;
         }
 

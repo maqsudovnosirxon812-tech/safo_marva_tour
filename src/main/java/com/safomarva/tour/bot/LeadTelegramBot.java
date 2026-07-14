@@ -149,7 +149,16 @@ public class LeadTelegramBot extends TelegramLongPollingBot {
                     "Ushbu bot yordamida siz veb-sahifangizdan kelgan yangi arizalarni ko'rishingiz va " +
                     "boshqarishingiz mumkin.\n\n" +
                     "👇 Boshlash uchun quyidagi menyudan foydalaning:";
-            sendCustomKeyboardMessage(chatId, welcome, mainMenuKeyboard);
+            InlineKeyboardMarkup startKeyboard = new InlineKeyboardMarkup();
+            List<List<InlineKeyboardButton>> startRows = new ArrayList<>();
+            List<InlineKeyboardButton> row = new ArrayList<>();
+            InlineKeyboardButton requestBtn = new InlineKeyboardButton();
+            requestBtn.setText("📋 Murojaatlar (Web)");
+            requestBtn.setUrl("https://safomarvaumra.uz/#request");
+            row.add(requestBtn);
+            startRows.add(row);
+            startKeyboard.setKeyboard(startRows);
+            sendInlineKeyboardMessage(chatId, welcome, startKeyboard);
             return;
         }
 
