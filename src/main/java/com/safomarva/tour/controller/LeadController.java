@@ -32,7 +32,7 @@ public class LeadController {
     }
 
     // Admin API: Get all leads (for web admin panel)
-    @GetMapping("/leads")
+    @RequestMapping(value = "/leads", method = RequestMethod.GET)
     public ResponseEntity<?> getLeads(@RequestHeader(value = "X-Admin-Key", required = false) String adminKey) {
         if (adminKey == null || !adminKey.equals("safo_marva_secret_admin_key_2026")) {
             return ResponseEntity.status(401).body(Map.of("error", "Unauthorized"));
