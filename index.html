@@ -934,7 +934,7 @@
      class="fixed top-24 left-1/2 -translate-x-1/2 z-[300] max-w-md w-[90%] px-5 py-4 rounded-2xl shadow-2xl text-sm font-medium text-center"
      :class="toastType === 'success' ? 'bg-green-600 text-white' : 'bg-brand-red text-white'"
      x-text="toastMessage"></div><!-- Navbar -->
-<nav class="fixed w-full z-50 py-4 transition-all duration-300"
+<nav x-show="!requestPage" class="fixed w-full z-50 py-4 transition-all duration-300"
      :class="scrolled ? 'bg-brand-cream/95 dark:bg-[#0B0F19]/95 border-b border-gray-200 dark:border-brand-gold/20 shadow-xl py-2 ' : 'glass py-4'"><div class="container mx-auto px-6 flex justify-between items-center"><div class="flex items-center"><img src="safo_marva.png" alt="Safo Marva Logo" width="48" height="48" class="h-12 w-12 mr-3 rounded-lg shadow-lg object-contain" decoding="async" fetchpriority="high"><span class="text-gray-900 dark:text-white font-bold text-xl tracking-wider hidden md:block uppercase">SAFO MARVA
                     TOUR</span></div><!-- Desktop Menu Links --><div class="hidden lg:flex items-center space-x-8"><a href="#packages"
                                                                                                                       class="text-gray-800 dark:text-white hover:text-brand-gold transition-colors text-sm font-medium uppercase tracking-widest" x-text="t('menu_packages')"></a><a href="#why-choose"
@@ -2123,12 +2123,21 @@
             }
 
             // Hash-based routing for #request
-            const isTelegramMiniApp = !!window.Telegram && !!window.Telegram.WebApp && !!window.Telegram.WebApp.initData;
+            const isTelegramMiniApp = !!(window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe);
             const isRequestHash = window.location.hash === '#request';
             this.requestPage = isRequestHash || isTelegramMiniApp;
-            if (isRequestHash || isTelegramMiniApp) {
+            if (this.requestPage) {
                 window.location.hash = '#request';
             }
+            // Fallback: check again after Telegram script loads
+            setTimeout(() => {
+                const tg = !!(window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe);
+                if (tg && !this.requestPage) {
+                    this.requestPage = true;
+                    window.location.hash = '#request';
+                    if (this.requestAuth) this.loadLeads();
+                }
+            }, 500);
             window.addEventListener('hashchange', () => {
                 this.requestPage = window.location.hash === '#request';
                 if (this.requestPage && this.requestAuth) {
